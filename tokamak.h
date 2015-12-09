@@ -10,9 +10,11 @@ typedef struct TOKAMAK
 typedef struct GRID
 {
 	int nx,nL,nE,ntheta;
-	double ra,rb;
-	double La,Lb;
-	double Ea,Eb;
+	double ra,rb,dr;
+	double La,Lb,dL;
+	double Ea,Eb,dE;
+	double dtheta;
+	double *xarray,*Larray,*Earray,*tarray;
 }Grid;
 
 typedef struct SLOWING
@@ -24,7 +26,8 @@ typedef struct SLOWING
 Slowing;
 
 
-void qprofile(int nx,const double *xarray, double *q_1D);
+void qprofile(const int nx,const double *xarray, double *q_1D);
+double bf(const Tokamak *tok,const double theta, const double r);
 
 
 #endif

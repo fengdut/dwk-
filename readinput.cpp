@@ -1,7 +1,10 @@
 #include <iostream>
+#include<libconfig.h>
 #include <libconfig.h++>
 #include"tokamak.h"
+#include<cmath>
 
+#define EXIT_FAILURE 100
 
 int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing)
 {
@@ -91,10 +94,17 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing)
 	
 	pgrid->ra=1e-6;
 	pgrid->rb=1;
+	pgrid->dr= (pgrid->rb- pgrid->ra)/(pgrid->nx-1);
+
 	pgrid->La=1e-6;
 	pgrid->Lb=0.1;
+	pgrid->dL= (pgrid->Lb - pgrid->La)/(pgrid->nL-1);
+
 	pgrid->Ea=0.1;
 	pgrid->Eb=pslowing->E0;	
+	pgrid->dE= (pgrid->Eb -pgrid->Ea)/(pgrid->nE-1);	
+	
+	pgrid->dtheta=2*M_PI/(pgrid->ntheta-1);
 	
 	return 0;
 }
