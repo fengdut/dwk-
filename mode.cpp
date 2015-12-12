@@ -34,6 +34,11 @@ void G_R_theta(const Grid *grid,const Tokamak *tok,const double r_s,const double
 		xi_r[ix] =  (delta_r -  grid->xarray[ix] +r_s - 0.5*delta_r)/delta_r;
 		xi_t[ix] = -(delta_r -2*grid->xarray[ix] +r_s - 0.5*delta_r)/delta_r;	
 	}		
+	for(int ix=nx2;ix<grid->nx;ix++)
+	{
+		xi_r[ix]=0;
+		xi_t[ix]=0;
+	}
 	for(int ix=0;ix<grid->nx;ix++)
 		xi_t[ix] = xi_t[ix] *grid->xarray[ix];
 	

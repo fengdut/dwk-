@@ -2,7 +2,7 @@ PRGM = dwk++
 
 CC = g++-5
 
-CPPFLAGS =  -g
+CPPFLAGS =  -g -O0
 LDFLAGS = 
 CFLAGS = -fopenmp 
 

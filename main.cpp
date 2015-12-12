@@ -44,6 +44,9 @@ int main()
 	
 //	cout<<"pi: \t"<<M_PI<<endl;
 	clock_t c_start=clock();
+	double **test;
+Alloc2D(test,grid.nx,grid.nL);
+Free2D(test);
 	
 //to begin to calculate non-omega parts
 	double *xarray,*Larray,*Earray, *tarray;
@@ -121,12 +124,23 @@ int main()
 	max_min_2D(grid.nx,grid.nL,K_2D);
 	
 	complex<double> **Yps_2D;	
+	double **Yp2_2D;	
 	Alloc2D(Yps_2D,grid.nx,grid.nL);
+	Alloc2D(Yp2_2D,grid.nx,grid.nL);
 	int p=0; ////////////////////////////////////p number
 	Yps(&grid,G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,p,Yps_2D);
 	cout<<"Yps_2D:";
 	max_min_2D(grid.nx,grid.nL,Yps_2D);
+	Yp_2(Yps_2D,&grid,Yp2_2D);
+	cout<<"Yp2_2D: ";
+	max_min_2D(grid.nx,grid.nL,Yp2_2D);	
+
+	double *** omega_b_3D;
+	Alloc3D(omega_b_3D,grid.nx,grid.nL,grid.nE);
+	omega_b(&grid, kappa_2D, K_2D, q_1D,omega_b_3D);
 	
+	Free3D(omega_b_3D);
+	Free2D(Yp2_2D);
 	Free2D(Yps_2D);
 	Free2D(kappa_2D);
 	Free2D(K_2D);
@@ -139,6 +153,8 @@ int main()
 	Free3D(FR_3D);	
 	Free3D(FE_3D);	
 	Free1D(q_1D);
+
+	Free1D(tarray);
 	Free1D(xarray);
 	Free1D(Larray);
 	Free1D(Earray);

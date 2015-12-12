@@ -31,10 +31,10 @@ void Yps(const Grid *grid, double ** G_2D, double ** Chi_2D, double *** b_lambda
 	using namespace std;
 	complex<double> *tY;	
 	Alloc1D(tY,grid->ntheta);
-	for(int ix=1;ix<grid->nx;ix++)
+	for(int ix=0;ix<grid->nx;ix++)
 		for(int iL=0;iL<grid->nL;iL++)
 		{
-			complex<double> texp;
+			complex<double> texp=0;
 			for(int it=0;it<grid->ntheta;it++)
 			{
 				complex<double> ti(0,-1.0);
@@ -45,6 +45,32 @@ void Yps(const Grid *grid, double ** G_2D, double ** Chi_2D, double *** b_lambda
 			Yps_2D[ix][iL] = simpintegral(tY,grid->ntheta,grid->dtheta)*Chi_2D[ix][iL]/(2*M_PI);
 		}	
 	Free1D(tY);
+}
+
+void Yp_2( std::complex<double> ** const Yps_2D, Grid * const grid, double **Yp2)
+{
+	for(int ix=0;ix<grid->nx;ix++)
+	for(int iL=0;iL<grid->nL;iL++)
+	{
+		Yp2[ix][iL] =abs(Yps_2D[ix][iL])*abs(Yps_2D[ix][iL]);	
+	}
+}
+
+void omega_b(Grid * const grid, Tokamak * const tok,double ** const kappa, double ** const K, double * const q_1D,double *** omega_b_3D)
+{
+	for(int ix=0;ix<grid->nx;ix++)
+	{
+		double q=q_1D
+		for(int iL=0;iL<grid->nL;iL++)
+		{
+			double E = grid->Earray[iE];
+			for(int iE=0;iE<grid->nE;iE++)
+			{
+				omega_b_3D[ix][iL][iE] = M_PI *sqrt(kappa_2D[ix][iL])	
+			}
+		}
+	}
+
 }
 
 
