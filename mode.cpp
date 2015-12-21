@@ -1,13 +1,16 @@
 
+#include<iostream>
+#include<cmath>
 #include"tokamak.h"
 #include"AllocArray.h"
-#include<cmath>
 #include"vector.h"
-#include<iostream>
+#include"mode.h"
 using namespace std;
 
-void G_R_theta(const Grid *grid,const Tokamak *tok,const double r_s,const double delta_r,double **G_2D)
+void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D)
 {	
+	double r_s=pmode->r_s;
+	double delta_r =pmode->delta_r;
 	double *cost,*sint;
 	double *xi_r,*xi_t;
 	Alloc1D(cost,grid->ntheta);

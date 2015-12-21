@@ -1,12 +1,14 @@
 #include <iostream>
+#include<cmath>
 #include<libconfig.h>
 #include <libconfig.h++>
 #include"tokamak.h"
-#include<cmath>
+#include"mode.h"
+
 
 #define EXIT_FAILURE 100
 
-int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing)
+int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode *mode)
 {
 	using namespace std;
 	using namespace libconfig;
@@ -85,26 +87,44 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing)
 		pslowing->E0 =E0;
 		pslowing->Ed =Ed;
 		pslowing->Ec =Ec;
+		double rho_h;
+		int sigma;
+		slowing.lookupValue("rho_h",rho_h);
+		slowing.lookupValue("sigma",sigma);
+		pslowing->rho_h = rho_h;
+		pslowing->sigma = sigma;
 	}	
 	catch(const SettingNotFoundException &nfex)
 	{
 		cout<<"No slowing down parameters in filename \t"<<filename<<endl;
                 return(EXIT_FAILURE);
 	}
-	
-	pgrid->ra=1e-6;
-	pgrid->rb=1;
-	pgrid->dr= (pgrid->rb- pgrid->ra)/(pgrid->nx-1);
+//////////// get mode parameters  
+	try
+	{
+		const Setting &slowing =root["mode"];
+		int n,m,pa,pb;
+		double r_s,delta_r;
+		slowing.lookupValue("n",n);
+		slowing.lookupValue("m",m);
+		slowing.lookupValue("pa",pa);
+		slowing.lookupValue("pb",pb);
+		slowing.lookupValue("r_s",r_s);
+		slowing.lookupValue("delta_r",delta_r);
+		mode->n=n;
+		mode->m=m;
+		mode->pa =pa;
+		mode->pb =pb;
+		mode->r_s=r_s;
+		mode->delta_r=delta_r;
+	}
+	catch(const SettingNotFoundException &nfex)
+        {
+                cout<<"No mode parameters in filename \t"<<filename<<endl;
+                return(EXIT_FAILURE);
+        }
 
-	pgrid->La=1e-6;
-	pgrid->Lb=0.1;
-	pgrid->dL= (pgrid->Lb - pgrid->La)/(pgrid->nL-1);
 
-	pgrid->Ea=0.1;
-	pgrid->Eb=pslowing->E0;	
-	pgrid->dE= (pgrid->Eb -pgrid->Ea)/(pgrid->nE-1);	
-	
-	pgrid->dtheta=2*M_PI/(pgrid->ntheta-1);
-	
+
 	return 0;
 }

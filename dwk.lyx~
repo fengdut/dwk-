@@ -1,0 +1,210 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\frac{4\pi^{2}M}{R_{0}}\int\frac{J}{q}dr\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $J=aR_{0}\bar{J}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\frac{4\pi^{2}Ma}{1}\int\frac{\bar{J}}{q}dr\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r=a\bar{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\frac{4\pi^{2}Ma^{2}}{1}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\omega=\frac{v_{h}}{R_{0}}\bar{\omega}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau=\frac{R_{0}}{v_{h}}\bar{\tau}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\frac{4\pi^{2}Ma^{2}}{1}\frac{R_{0}}{v_{h}}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\bar{\tau}_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $F=\frac{n_{0}}{v_{h}^{3}}\bar{F}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\frac{4\pi^{2}Ma^{2}}{1}\frac{R_{0}}{v_{h}}\frac{n_{0}}{v_{h}^{3}}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial\bar{F}}{\partial\epsilon}\bar{\tau}_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\epsilon=\frac{T_{h}}{M}\bar{\epsilon}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\pi^{2}a^{2}R_{0}n_{0}T_{h}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\bar{\tau}_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{2\pi R_{0}B_{\theta s}^{2}|\xi_{s}^{2}|}{2\mu1/2\pi^{2}a^{2}R_{0}n_{0}T_{h}}\frac{1}{\omega_{A}} & =\nonumber \\
+\frac{2B_{\theta s}^{2}|\xi_{s}^{2}|}{\mu\pi a^{2}n_{0}T_{h}} & \frac{1}{\omega_{A}}= & \frac{2(\frac{r_{s}B_{t}}{R_{0}q_{s}})^{2}|\xi_{s}^{2}|}{\mu\pi a^{2}n_{0}T_{h}}\frac{1}{\omega_{A}}=\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}\frac{1}{\omega_{A}}\frac{1}{\beta_{h}}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}\frac{1}{\beta_{h}}(-i\frac{\omega}{\omega_{A}})+\delta\bar{W}_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
