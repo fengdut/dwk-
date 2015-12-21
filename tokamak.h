@@ -28,6 +28,7 @@ Slowing;
 
 void qprofile(const int nx,const double *xarray, double *q_1D);
 double bf(const Tokamak *tok,const double theta, const double r);
+void J_q(Grid *const grid,double *const q_1D, double *J_q);
 
 
 #endif

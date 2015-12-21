@@ -4,7 +4,7 @@
 #include<iostream>
 #include<complex>
 	using namespace std;
-void linspace(const double xa,const double xb,const int nx,double *xarray)
+void linspace(double const xa,const double xb, int const nx,double *xarray)
 {
 	double dx=(xb-xa)/(nx-1);
 
@@ -14,7 +14,7 @@ void linspace(const double xa,const double xb,const int nx,double *xarray)
 	}
 }
 
-void printv( std::ostream &fout,const int nx,const double *xarray)
+void printv( std::ostream &fout, int const nx,double *const xarray)
 {
 using namespace std;
 	for(int i=0;i<nx;i++)
@@ -23,7 +23,7 @@ using namespace std;
 	}
 }
 
-void v_max_min(const int nx,double *xarray)
+void max_min_1D( int const nx,double *const xarray)
 {
 	double maxf,minf;
 	maxf=minf=xarray[0];
@@ -35,7 +35,7 @@ void v_max_min(const int nx,double *xarray)
 	cout<<"max= "<<maxf<<"\tmin="<<minf<<endl;	
 }
 
-void max_min_2D(const int nx, const int ny, double ** F)
+void max_min_2D( int const nx,  int const  ny, double **const F)
 {
         double maxf,minf;
         maxf=minf=F[0][0];
@@ -50,7 +50,7 @@ void max_min_2D(const int nx, const int ny, double ** F)
 
 }
 
-void max_min_3D(const int nx, const int ny, const int nz, double *** F)
+void max_min_3D( int const nx,  int const  ny, int const nz, double*** const F)
 {
 	double maxf,minf;
 	maxf=minf=F[0][0][0];
@@ -66,7 +66,7 @@ void max_min_3D(const int nx, const int ny, const int nz, double *** F)
 	
 }
 
-void max_min_2D(const int nx, const int ny, complex<double> ** F)
+void max_min_2D( int const nx,  int const  ny, complex<double>** const  F)
 {
         double maxfr,minfr;
         double maxfi,minfi;
@@ -84,6 +84,27 @@ void max_min_2D(const int nx, const int ny, complex<double> ** F)
 
 
 }
+
+void max_min_3D(int const nx, int const  ny, int const nz,complex<double>*** const  F)
+{
+        double maxfr,minfr;
+        double maxfi,minfi;
+        maxfr=minfr=real(F[0][0][0]);
+        maxfi=minfi=imag(F[0][0][0]);
+        for(int ix=0;ix<nx;ix++)
+        for(int iy=0;iy<ny;iy++)
+	for(int iz=0;iz<nz;iz++)
+        {
+                maxfr =maxfr>real(F[ix][iy][iz]) ? maxfr :real(F[ix][iy][iz]);
+                minfr =minfr<real(F[ix][iy][iz]) ? minfr :real(F[ix][iy][iz]);
+                maxfi =maxfi>imag(F[ix][iy][iz]) ? maxfi :imag(F[ix][iy][iz]);
+                minfi =minfi<imag(F[ix][iy][iz]) ? minfi :imag(F[ix][iy][iz]);
+        }
+        cout<<"max(real)= "<<maxfr<<"\t max(imag)"<<maxfi<<"\t min(real)= "<<minfr<<"\t min(imag)"<<minfi<<endl;
+
+
+}
+
 
 #endif
 

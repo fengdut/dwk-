@@ -4,7 +4,7 @@
 #include<iostream>
 #include"AllocArray.h"
 
-void F0_3D(const Slowing* slow,const Grid *grid, double *** F_3D, double ***FE_3D, double ***FR_3D)
+void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,int m,double *** F_3D, double ***FE_3D, double ***FR_3D,double *** omega_star)
 {
 	double *expx,*expx1,*expL,*expE, *erfcE,*erfcE1;
 	Alloc1D(expx,grid->nx);
@@ -51,8 +51,12 @@ void F0_3D(const Slowing* slow,const Grid *grid, double *** F_3D, double ***FE_3
 	{
 		F_3D[ix][iL][iE]  =expx[ix]*expL[iL]*erfcE[iE];
 		FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(erfcE1[iE]+expE[iE]);
-
 		FR_3D[ix][iL][iE]  =expx1[ix]*expL[iL]*erfcE[iE];
+		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
+		if((FE_3D[ix][iL][iE])!=0.0)	
+			omega_star[ix][iL][iE] = omega_star[ix][iL][iE]/FE_3D[ix][iL][iE];
+		else
+			omega_star[ix][iL][iE] =0;
 		
 	}
 

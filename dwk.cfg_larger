@@ -11,7 +11,7 @@ tokamak=
 grid=
 {
 	nx=301;
-	nL=151;
+	nL=301;
 	nE=601;
 	ntheta=100;
 }

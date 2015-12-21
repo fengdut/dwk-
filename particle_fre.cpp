@@ -60,19 +60,42 @@ void omega_b(Grid * const grid, Tokamak * const tok,double ** const kappa, doubl
 {
 	for(int ix=0;ix<grid->nx;ix++)
 	{
-		double q=q_1D
+		double q=q_1D[ix];
+		double x=grid->xarray[ix];
 		for(int iL=0;iL<grid->nL;iL++)
 		{
-			double E = grid->Earray[iE];
+			double L =grid->Larray[iL];
 			for(int iE=0;iE<grid->nE;iE++)
 			{
-				omega_b_3D[ix][iL][iE] = M_PI *sqrt(kappa_2D[ix][iL])	
+				double E = grid->Earray[iE];
+				omega_b_3D[ix][iL][iE] = M_PI *sqrt(kappa[ix][iL])/K[ix][iL]*sqrt(x*tok->eps*L*0.5)/q *sqrt(E);	
 			}
 		}
 	}
 
 }
 
+void tau_b(Grid *const grid, double *** const omega_b_3D, double *** tau_b_3D)
+{
+	for(int ix=0;ix<grid->nx;ix++)
+        for(int iL=0;iL<grid->nL;iL++)
+        for(int iE=0;iE<grid->nE;iE++)
+	{
+		tau_b_3D[ix][iL][iE] = 2*M_PI/omega_b_3D[ix][iL][iE];
+	}
+
+}
+
+void omega_phi(Grid *const grid,double *const q_1D, double ***const omega_b_3D,double *** omega_phi_3D)
+{
+	for(int ix=0;ix<grid->nx;ix++)
+	for(int iL=0;iL<grid->nL;iL++)
+	for(int iE=0;iE<grid->nE;iE++)
+	{
+		omega_phi_3D[ix][iL][iE] = q_1D[ix] * omega_b_3D[ix][iL][iE];
+	}	
+
+}
 
 
 
