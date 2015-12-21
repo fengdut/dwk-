@@ -68,16 +68,54 @@
 
 \begin_body
 
-\begin_layout Standard
+\begin_layout Title
+The document for dwk++ code
+\end_layout
 
+\begin_layout Author
+Feng Wang 
+\end_layout
+
+\begin_layout Author
+12/21/15
+\end_layout
+
+\begin_layout Standard
+The dwk++ code calculate the fishbone dispersion relation:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}\frac{1}{\beta_{h}}(-i\frac{\omega}{\omega_{A}})+\delta\bar{W}_{k}=0
+\delta W_{mhd}+\delta W_{k}+\delta I=0
 \end{equation}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $\delta W_{mhd}=0$
+\end_inset
+
+, the equation reduced to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta\bar{W}_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mbox{C}$
 \end_inset
 
 
