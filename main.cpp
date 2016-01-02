@@ -72,16 +72,46 @@ int main()
 //end calculate non-omega parts--------------------------	
 
 	complex<double> dwk_sum=0;
+	ofstream fout("dwk.out");
 	for(int ip=mode.pa;ip<=mode.pb;ip++)
 	{
 	//	cout<<"ip:"<<ip<<endl;
 		Yps(&grid,G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,ip,Yps_2D);
 		Yp_2(Yps_2D,&grid,Yp2_2D);
 	
-		complex<double> test_omega=1.5 +0.001i;
+		double ia=-0.06, ib=0.05;
+		int ni=20;
+		double di=(ib-ia)/(ni-1);
+		double ra=0, rb=2;
+		int nr=20;
+		double dr=(rb-ra)/(nr-1);
+		
 		complex<double> tdwk_sum;
-		tdwk_sum = dwk(&grid, test_omega,mode.n,ip, omega_phi_3D, omega_b_3D, tau_b_3D, Yp2_2D, J_q_1D, FE_3D, omega_star_3D,dwk_3D);
-		cout<<"dwk(omega,p="<<ip<<")"<<tdwk_sum<<endl;	
+		complex<double> err=1;
+		int maxi=100;
+		complex<double> omega_0=0.1-0.001i;
+		complex<double>ti=1i;
+		double C=0.03;
+		for(int ii=0;ii<maxi;ii++)
+		{
+			tdwk_sum = dwk(&grid, omega_0,mode.n,ip, omega_phi_3D, omega_b_3D, tau_b_3D, Yp2_2D, J_q_1D, FE_3D, omega_star_3D,dwk_3D);
+			err=ti*tdwk_sum +C*omega_0;
+			cout<<"omega_0:"<<omega_0<<"\t tdwk_sum:"<<tdwk_sum<<"\t err:"<<err<<endl;		
+			omega_0=-tdwk_sum*ti/C;
+			if(abs(err)<1e-10)
+				break;
+		}	
+		/*for(int iomega=0;iomega<ni;iomega++)
+		for(int romega=0;romega<nr;romega++)
+		{
+			complex<double> test_omega=(ia+di*iomega)*1.0i + ra +dr*romega;
+			//cout<<"ia+di*iomega*1i:"<<(ia+di*iomega)*1.0i<<endl;
+			//cout<<"ra*dr*romega:"<<ra +dr*romega<<endl;
+			cout<<"omega="<<test_omega<<endl;
+			tdwk_sum = dwk(&grid, test_omega,mode.n,ip, omega_phi_3D, omega_b_3D, tau_b_3D, Yp2_2D, J_q_1D, FE_3D, omega_star_3D,dwk_3D);
+			cout<<"dwk(omega,p="<<ip<<")"<<tdwk_sum<<endl;	
+			fout<<real(test_omega)<<"\t"<<imag(test_omega)<<"\t"<<real(tdwk_sum)<<"\t"<<imag(tdwk_sum)<<endl;
+		}*/
 		dwk_sum =dwk_sum +tdwk_sum;
 	}
 		cout<<"dwk(omega"<<dwk_sum<<endl;	

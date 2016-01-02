@@ -24,8 +24,10 @@ complex<double> dwk(Grid *const grid, complex<double> const omega, int n,int p,
 	for(int iE=0;iE<grid->nE;iE++)
 	{
 		complex<double> Yp_R =Yp2_2D[ix][iL] /(n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);
-		dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE] 
-					*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE] * (real(omega) -omega_star[ix][iL][iE])*Yp_R;
+		//dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE] 
+		//			*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE] * (real(omega) -omega_star[ix][iL][iE])*Yp_R;
+		dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
+                                        *tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE] * ((omega) -omega_star[ix][iL][iE])*Yp_R;
 	}
 	
 	

@@ -106,7 +106,7 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta\bar{W}_{k}=0
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta\bar{W}_{k}=0
 \end{equation}
 
 \end_inset
@@ -115,10 +115,69 @@ Assume
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\mbox{C}$
+\begin_inset Formula 
+\begin{equation}
+C=\frac{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}{\beta_{h}}
+\end{equation}
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C(-i\frac{\omega}{\omega_{A}})+\delta\bar{W}_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{A}=\frac{2}{\tau_{A\theta}s}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau_{A\theta}=\frac{3^{1/2}r_{s}}{(B_{\theta s}^{2}/\mu_{0}\rho_{m})^{1/2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s=r_{s}\frac{dq}{dr(r=r_{s})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+test case 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q$
+\end_inset
+
+ profile
 \end_layout
 
 \end_body
