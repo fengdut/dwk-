@@ -177,7 +177,63 @@ test case
 \begin_inset Formula $q$
 \end_inset
 
- profile
+ profile:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q=0.5+2r^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{s}=0.25a=0.1m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $s=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{0}=1.65m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B_{t0}=4T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B_{\theta s}=\frac{r_{s}B_{t}}{Rq_{s}}=0.2424T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $n_{0}=1\times10^{20}m^{-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho_{m}=$
+\end_inset
+
+
 \end_layout
 
 \end_body
