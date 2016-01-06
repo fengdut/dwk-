@@ -10,7 +10,7 @@ using namespace std;
 void qprofile(const int nx,const double *xarray, double *q_1D)
 {
 	for(int i=0;i<nx;i++)
-		q_1D[i] = 0.5 +2*xarray[i]*xarray[i];
+		q_1D[i] = 0.9 +2*xarray[i]*xarray[i];
 	
 }
 
@@ -48,16 +48,16 @@ CGrid::CGrid(Grid *pgrid,Slowing * pslowing )
         m_pgrid->Earray=Earray;
         m_pgrid->tarray=tarray;
 	
-        m_pgrid->ra=1e-6;
+        m_pgrid->ra=1e-15;
         m_pgrid->rb=1;
         m_pgrid->dr= (pgrid->rb- pgrid->ra)/(pgrid->nx-1);
 
-        m_pgrid->La=1e-6;
-        m_pgrid->Lb=0.1;
+        m_pgrid->La=1e-9;
+        m_pgrid->Lb=pslowing->L0+pslowing->Ld+0.1;
         m_pgrid->dL= (pgrid->Lb - pgrid->La)/(pgrid->nL-1);
 
         m_pgrid->Ea=0.1;
-        m_pgrid->Eb=pslowing->E0;
+        m_pgrid->Eb=pslowing->E0*1.2;
         m_pgrid->dE= (pgrid->Eb -pgrid->Ea)/(pgrid->nE-1);
 
         m_pgrid->dtheta=2*M_PI/(pgrid->ntheta-1);

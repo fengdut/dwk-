@@ -12,6 +12,7 @@ typedef struct MODE
 	double delta_r;
 }Mode;
 
-void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D);
+//void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D);
+void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,double **G_2D);
 
 #endif

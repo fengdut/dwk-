@@ -26,6 +26,24 @@ datatype simpintegral(datatype * const y, int const  ny, double const dx)
 }
 
 template <class datatype>
+datatype simpintegral_2D(datatype** const F_2D, int const nx, double const dx, int const ny,double const dy)
+{
+        datatype sum =0;
+        datatype *F_1D;
+        Alloc1D(F_1D,nx);
+
+        for(int ix=0;ix<nx;ix++)
+                F_1D[ix] = simpintegral(F_2D[ix],ny,dy);
+
+        sum = simpintegral(F_1D,nx,dx);
+
+        Free1D(F_1D);
+        return sum;
+}
+
+
+
+template <class datatype>
 datatype simpintegral_3D(datatype*** const F_3D, int const nx, double const dx, int const ny,double const dy, int const nz, double const dz)
 {
 	datatype sum =0;

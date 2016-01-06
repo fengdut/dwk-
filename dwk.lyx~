@@ -68,10 +68,26 @@
 
 \begin_body
 
+\begin_layout Title
+The document for dwk++ code
+\end_layout
+
+\begin_layout Author
+Feng Wang 
+\end_layout
+
+\begin_layout Author
+12/21/15
+\end_layout
+
+\begin_layout Standard
+The dwk++ code calculate the fishbone dispersion relation:
+\end_layout
+
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k}=\frac{4\pi^{2}M}{R_{0}}\int\frac{J}{q}dr\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\delta W_{mhd}+\delta W_{k}+\delta I=0
 \end{equation}
 
 \end_inset
@@ -80,92 +96,17 @@
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $J=aR_{0}\bar{J}$
+Assume 
+\begin_inset Formula $\delta W_{mhd}=0$
 \end_inset
 
-
+, the equation reduced to:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k}=\frac{4\pi^{2}Ma}{1}\int\frac{\bar{J}}{q}dr\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $r=a\bar{x}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\delta W_{k}=\frac{4\pi^{2}Ma^{2}}{1}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\omega=\frac{v_{h}}{R_{0}}\bar{\omega}$
-\end_inset
-
-, 
-\begin_inset Formula $\tau=\frac{R_{0}}{v_{h}}\bar{\tau}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\delta W_{k}=\frac{4\pi^{2}Ma^{2}}{1}\frac{R_{0}}{v_{h}}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\bar{\tau}_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $F=\frac{n_{0}}{v_{h}^{3}}\bar{F}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\delta W_{k}=\frac{4\pi^{2}Ma^{2}}{1}\frac{R_{0}}{v_{h}}\frac{n_{0}}{v_{h}^{3}}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial\bar{F}}{\partial\epsilon}\bar{\tau}_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\epsilon=\frac{T_{h}}{M}\bar{\epsilon}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\delta W_{k}=\pi^{2}a^{2}R_{0}n_{0}T_{h}\int\frac{\bar{J}}{q}d\bar{x}\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\bar{\tau}_{b}(\omega-\omega_{\star})\cdot\sum\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta\bar{W}_{k}=0
 \end{equation}
 
 \end_inset
@@ -176,19 +117,8 @@
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
+\omega=-iC\delta W_{k}
 \end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray}
-\frac{2\pi R_{0}B_{\theta s}^{2}|\xi_{s}^{2}|}{2\mu1/2\pi^{2}a^{2}R_{0}n_{0}T_{h}}\frac{1}{\omega_{A}} & =\nonumber \\
-\frac{2B_{\theta s}^{2}|\xi_{s}^{2}|}{\mu\pi a^{2}n_{0}T_{h}} & \frac{1}{\omega_{A}}= & \frac{2(\frac{r_{s}B_{t}}{R_{0}q_{s}})^{2}|\xi_{s}^{2}|}{\mu\pi a^{2}n_{0}T_{h}}\frac{1}{\omega_{A}}=\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}\frac{1}{\omega_{A}}\frac{1}{\beta_{h}}
-\end{eqnarray}
 
 \end_inset
 
@@ -198,9 +128,173 @@
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{a}|^{2}\frac{1}{\beta_{h}}(-i\frac{\omega}{\omega_{A}})+\delta\bar{W}_{k}=0
+i\omega=C\delta W_{k}
 \end{equation}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C=\frac{\omega_{A}}{\omega_{0}}\frac{\beta_{h}}{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{A}=\frac{2}{\tau_{A\theta}s}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau_{A\theta}=\frac{3^{1/2}r_{s}}{(B_{\theta s}^{2}/\mu_{0}\rho_{m})^{1/2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s=r_{s}\frac{dq}{dr(r=r_{s})}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $CF=\int dEd\Lambda\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+test case 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q$
+\end_inset
+
+ profile:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $q=0.5+2r^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r_{s}=0.25a=0.1m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $s=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $R_{0}=1.65m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B_{t0}=4T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B_{\theta s}=\frac{r_{s}B_{t}}{Rq_{s}}=0.2424T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $n_{0}=1\times10^{20}m^{-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rho_{m}=3.3452\times10^{-7}kgm^{-3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tau_{A\theta}=4.6328\times10^{-7}s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\omega_{A}=4.317\times10^{6}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{h}=40KeV$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{h}=1.9575\times10^{6}m/s$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\omega_{0}=1.1863\times10^{6}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $C=28.2486$
 \end_inset
 
 

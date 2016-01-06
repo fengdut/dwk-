@@ -38,11 +38,15 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		const Setting &tok =root["tokamak"];
 		double a;
 		double R0;
+		double C;
 		tok.lookupValue("a",a);
 		tok.lookupValue("R0",R0);
+		tok.lookupValue("C",C);
+
 		ptok->a=a;
 		ptok->R0=R0;
 		ptok->eps=a/R0;
+		ptok->C=C;
 	}
 	catch(const SettingNotFoundException &nfex)
   	{
@@ -87,11 +91,13 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		pslowing->E0 =E0;
 		pslowing->Ed =Ed;
 		pslowing->Ec =Ec;
-		double rho_h;
+		double rho_h,rho_d;
 		int sigma;
 		slowing.lookupValue("rho_h",rho_h);
+		slowing.lookupValue("rho_d",rho_d);
 		slowing.lookupValue("sigma",sigma);
 		pslowing->rho_h = rho_h;
+		pslowing->rho_d = rho_d;
 		pslowing->sigma = sigma;
 	}	
 	catch(const SettingNotFoundException &nfex)

@@ -3,6 +3,7 @@
 #include"omp.h"
 #include<iostream>
 #include"AllocArray.h"
+#include"simpintegral.h"
 
 void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,int m,double *** F_3D, double ***FE_3D, double ***FR_3D,double *** omega_star)
 {
@@ -58,6 +59,18 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		else
 			omega_star[ix][iL][iE] =0;
 		
+	}
+	double CF=0;
+	CF=simpintegral_2D(F_3D[0], grid->nL, grid->dL, grid->nE,grid->dE);
+	std::cout<<"CF= "<<CF<<std::endl;	
+	
+	for(int ix=0;ix<grid->nx;ix++)
+        for(int iL=0;iL<grid->nL;iL++)
+        for(int iE=0;iE<grid->nE;iE++)
+	{
+		F_3D[ix][iL][iE]  =F_3D[ix][iL][iE]/CF;
+                FE_3D[ix][iL][iE] =FE_3D[ix][iL][iE] /CF;
+                FR_3D[ix][iL][iE]  =FR_3D[ix][iL][iE]/CF;
 	}
 
 	Free1D(expx);

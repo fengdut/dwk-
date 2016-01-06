@@ -7,7 +7,33 @@
 #include"mode.h"
 using namespace std;
 
-void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D)
+double fxi_r(double x,double r_s, double delta_r)
+{
+	if(x<=r_s-delta_r*0.5)
+	{	
+	
+		return 1.0;
+	}
+	if(x>=r_s+delta_r*0.5)
+	{
+		return 0.0;
+	}
+	double f=(delta_r -  x  +r_s - 0.5*delta_r)/delta_r;
+	return  f;
+}
+double fxi_t(double x,double r_s, double delta_r)
+{
+	if(x<=r_s-delta_r*0.5)
+	{
+                return -1.0*x;
+	}
+        if(x>=r_s+delta_r*0.5)
+	{
+                return 0.0;
+	}
+	return -x*(delta_r -2*x +r_s - 0.5*delta_r)/delta_r;
+}
+void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,double **G_2D)
 {	
 	double r_s=pmode->r_s;
 	double delta_r =pmode->delta_r;
@@ -52,8 +78,9 @@ void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double 
 	for(int ix=0;ix<grid->nx;ix++)
 	for(int it=0;it<grid->ntheta;it++)
 	{
-		xi_r2d[ix][it] = cost[it]*xi_r[ix];
-		xi_t2d[ix][it] = sint[it]*xi_t[ix];
+	//	cout<<"fxi_r:"<<grid->xarray[ix]+slow->rho_d*cost[it]<<"\t"<<fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r)<<endl;
+		xi_r2d[ix][it] = cost[it]*fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
+		xi_t2d[ix][it] = sint[it]*fxi_t(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
 	}
 	
 	double **grr,**gtt,**grt,**kappa_r,**kappa_t;

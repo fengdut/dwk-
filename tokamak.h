@@ -5,6 +5,7 @@ typedef struct TOKAMAK
 {
 	double a,R0;
 	double eps;
+	double C;
 }Tokamak;
 
 typedef struct GRID
@@ -24,6 +25,7 @@ typedef struct SLOWING
 	double  L0,Ld;
         double 	E0,Ed,Ec;
 	double rho_h;
+	double rho_d;
 	int sigma;
 }
 Slowing;

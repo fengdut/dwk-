@@ -1,0 +1,38 @@
+clear;
+clf;
+
+data=load('dwk.out_rho_d005');
+data=load('dwk.out');
+
+romega=data(:,1);
+iomega=data(:,2);
+rdw=data(:,3);
+idw=data(:,4);
+
+
+
+C=3;
+
+ set(gcf,'Units','points','position',[100 500 1200 600],'Color',[1 1 1]);
+% 
+% % 
+ hax=axes('Position',[0.08 0.15 0.4 0.75],'FontSize',24,'FontName','Latex'); 
+
+plot(romega,-rdw*C,'ro--');
+grid on;
+xlabel('$real(\omega)$');
+ylabel('$real(\delta W_k)$');
+hax=axes('Position',[0.56 0.15 0.4 0.75],'FontSize',24); 
+plot(romega,idw*C,'ro--'); 
+hold on;
+
+plot(romega,romega,'k--');
+xlabel('$real(\omega)$');
+ylabel('$imag(\delta W_k)$');
+
+grid on;
+
+
+%myprint('omega_dwk');
+
+
