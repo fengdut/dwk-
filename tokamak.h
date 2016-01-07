@@ -5,7 +5,7 @@ typedef struct TOKAMAK
 {
 	double a,R0;
 	double eps;
-	double C;
+	double C; 	//the normalization coefficient
 }Tokamak;
 
 typedef struct GRID

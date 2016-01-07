@@ -4,7 +4,9 @@
 #include<iostream>
 #include"AllocArray.h"
 #include"simpintegral.h"
+#include"vector.h"
 
+using namespace std;
 void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,int m,double *** F_3D, double ***FE_3D, double ***FR_3D,double *** omega_star)
 {
 	double *expx,*expx1,*expL,*expE, *erfcE,*erfcE1;
@@ -46,12 +48,26 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		erfcE1[iE] =1.5*pow(E,0.5)*erfcE[iE]/E32;
 		
 	}
+	double **EL;
+	Alloc2D(EL,grid->nL,grid->nE);
+	for(int iL=0;iL<grid->nL;iL++)
+        for(int iE=0;iE<grid->nE;iE++)
+	{
+		double L,E;
+		E=grid->dE *iE +grid->Ea;
+                L=grid->dL *iL +grid->La;
+	//	EL[iL][iE] = 2*L*(L - slow->L0)/((slow->Ld*slow->Ld)*E); 
+		EL[iL][iE] =1;
+		
+	}
+
+	
 	for(int ix=0;ix<grid->nx;ix++) 
 	for(int iL=0;iL<grid->nL;iL++)
 	for(int iE=0;iE<grid->nE;iE++)
 	{
 		F_3D[ix][iL][iE]  =expx[ix]*expL[iL]*erfcE[iE];
-		FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(erfcE1[iE]+expE[iE]);
+		FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(erfcE1[iE]+expE[iE])*EL[iL][iE];
 		FR_3D[ix][iL][iE]  =expx1[ix]*expL[iL]*erfcE[iE];
 		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
 		if((FE_3D[ix][iL][iE])!=0.0)	
@@ -60,7 +76,18 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 			omega_star[ix][iL][iE] =0;
 		
 	}
+
 	double CF=0;
+	cout<<"F_3D: ";
+ 	max_min_3D(grid->nx, grid->nL, grid->nE,F_3D);
+	cout<<"FE_3D: ";
+	max_min_3D(grid->nx, grid->nL, grid->nE,FE_3D);
+	cout<<"expx: ";
+	max_min_1D(grid->nx,expx);
+	cout<<"expL: ";
+	max_min_1D(grid->nL,expL);
+	cout<<"expE: ";
+	max_min_1D(grid->nE,erfcE);
 	CF=simpintegral_2D(F_3D[0], grid->nL, grid->dL, grid->nE,grid->dE);
 	std::cout<<"CF= "<<CF<<std::endl;	
 	
@@ -73,6 +100,7 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
                 FR_3D[ix][iL][iE]  =FR_3D[ix][iL][iE]/CF;
 	}
 
+	Free2D(EL);
 	Free1D(expx);
 	Free1D(expx1);
 	Free1D(expL);

@@ -1,0 +1,29 @@
+#include"simpintegral.h"
+#include"AllocArray.h"
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n=10;
+	double x0=0,x1=1;
+	double dx=(x1-x0)/(n-1);
+	double *x;
+	double **x2;
+	Alloc1D(x,n);
+	Alloc2D(x2,n,n);
+	for(int i=0;i<n;i++)
+	{
+		x[i]=1;
+	}
+	for(int i=0;i<n;i++)
+	for(int j=0;j<n;j++)
+		x2[i][j]=1;
+	
+	double sum = simpintegral(x, n, dx);
+	double sum2 = simpintegral_2D(x2, n, dx,n,dx);
+//double sum=simpintegral_3D(x, n, dx, n,dx,n,dx);
+	cout<<"sum="<<sum<<endl;
+	cout<<"sum2="<<sum2<<endl;
+ 	Free1D(x); 
+ 	Free2D(x2); 
+}

@@ -2,6 +2,7 @@
 #define SIMPINTEGRAL_H
 
 #include"AllocArray.h"
+#include<iostream>
 
 //Simpson's 3/8 rule
 //ny mush equiv to 3*n+1
@@ -31,10 +32,13 @@ datatype simpintegral_2D(datatype** const F_2D, int const nx, double const dx, i
         datatype sum =0;
         datatype *F_1D;
         Alloc1D(F_1D,nx);
+	using namespace std;
 
         for(int ix=0;ix<nx;ix++)
+	{
                 F_1D[ix] = simpintegral(F_2D[ix],ny,dy);
-
+	//	cout<<"s_1: "<<F_1D[ix]<<endl;
+	}
         sum = simpintegral(F_1D,nx,dx);
 
         Free1D(F_1D);

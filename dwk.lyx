@@ -181,7 +181,11 @@ s=r_{s}\frac{dq}{dr(r=r_{s})}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $CF=\int dEd\Lambda\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)$
+\begin_inset Formula 
+\[
+CF=\int dEd\Lambda\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)
+\]
+
 \end_inset
 
 
@@ -206,7 +210,7 @@ test case
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $r_{s}=0.25a=0.1m$
+\begin_inset Formula $r_{s}=0.5a=0.2m$
 \end_inset
 
 
@@ -234,7 +238,7 @@ test case
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $B_{\theta s}=\frac{r_{s}B_{t}}{Rq_{s}}=0.2424T$
+\begin_inset Formula $B_{\theta s}=\frac{r_{s}B_{t}}{Rq_{s}}=0.6T$
 \end_inset
 
 

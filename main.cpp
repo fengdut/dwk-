@@ -67,23 +67,26 @@ int main()
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
+	cout<<"omega_phi";
+	max_min_3D(grid.nx, grid.nL, grid.nE,omega_phi_3D);
+
 	tau_b(&grid,omega_b_3D,tau_b_3D);
 	J_q(&grid,q_1D,J_q_1D);
 //end calculate non-omega parts--------------------------	
 	complex<double> dwk_sum=0;
-	ofstream fout("dwk.out");
+	ofstream fout("dwk_omega_only.out");
  	fout.precision (12);
 
  	complex<double> tdwk_sum;
         complex<double> err=1;
-        int maxi=30;
-        complex<double> omega_0=0.0+0.001i;
+        int maxi=100;
+        complex<double> omega_0=0.0+0.002i;
         complex<double>ti=1i;
         for(int tt=0;tt<maxi;tt++)
 	{
 		dwk_sum=0;
 		tdwk_sum=0;
-		omega_0 =omega_0+0.05;
+		omega_0 =omega_0+0.015;
 		//omega_0=0;
 
 		for(int ip=mode.pa;ip<=mode.pb;ip++)
