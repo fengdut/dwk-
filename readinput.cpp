@@ -42,6 +42,23 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		tok.lookupValue("a",a);
 		tok.lookupValue("R0",R0);
 		tok.lookupValue("C",C);
+		Setting& set=tok["qc"];
+		int lqc=set.getLength();
+		int rlqc=0;
+		cout<<"qc: "<<set.getLength()<<endl;
+		if(lqc<nqc)
+			rlqc=lqc;
+		else
+			rlqc=nqc;
+		for(int i=0;i<rlqc;i++)
+		{
+			ptok->qc[i] = set[i];
+		}
+			cout<<"qc[]:"<<ptok->qc[0] <<","<<ptok->qc[1]<<","<<ptok->qc[2]<<","<<ptok->qc[3]<<","<<ptok->qc[4]<<endl;
+		
+		
+		cout<<set.isArray()<<endl;
+		cout<<set.getType()<<endl;
 
 		ptok->a=a;
 		ptok->R0=R0;

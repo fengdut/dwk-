@@ -8,9 +8,7 @@ omega_0=0,
 omega_1=0.99;
 omega=linspace(omega_0,omega_1,n);
 
-%dwk_kd0=-(-omega./(omega-1)+omega+omega.^2.*log(1-1./omega));
-
-dwk_kd0=(omega./(omega-1)-8*omega-8*omega.^2.*log(1-1./omega));
+dwk_kd0=-(-omega./(omega-1)+omega-omega.^2.*log(1-1./omega));
 
 %dwk_kd=omega.^2./(omega-1);
 

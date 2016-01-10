@@ -1,11 +1,14 @@
 #ifndef TOKAMAK_H
 #define TOKAMAK_H
 
+
+int const nqc =5;
 typedef struct TOKAMAK
 {
 	double a,R0;
 	double eps;
 	double C; 	//the normalization coefficient
+	double qc[nqc];   //q profile, polynomial coefficient;
 }Tokamak;
 
 typedef struct GRID
