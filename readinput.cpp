@@ -4,7 +4,9 @@
 #include <libconfig.h++>
 #include"tokamak.h"
 #include"mode.h"
-
+#include<complex>
+#include<assert.h>
+#include"AllocArray.h"
 
 #define EXIT_FAILURE 100
 
@@ -22,12 +24,14 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 	catch(const FileIOException &fioex)
   	{
     		std::cerr << "I/O error while reading file." << std::endl;
+    		std::cerr << "Check the input file:" <<filename<<std::endl;
     		return(EXIT_FAILURE);
  	}
   	catch(const ParseException &pex)
  	{
     		std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
               	<< " - " << pex.getError() << std::endl;
+    		std::cerr << "Check the input file:" <<filename<<std::endl;
     		return(EXIT_FAILURE);
  	}
 
@@ -36,16 +40,17 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 	try
 	{
 		const Setting &tok =root["tokamak"];
-		double a;
-		double R0;
-		double C;
-		tok.lookupValue("a",a);
-		tok.lookupValue("R0",R0);
-		tok.lookupValue("C",C);
+		tok.lookupValue("a",ptok->a);
+		tok.lookupValue("R0",ptok->R0);
+		tok.lookupValue("C",ptok->C);
+		tok.lookupValue("Bt",ptok->Bt);
+		tok.lookupValue("n0",ptok->n0);
+		tok.lookupValue("mi",ptok->mi);
+		tok.lookupValue("E_i0",ptok->E_i0);
+		
 		Setting& set=tok["qc"];
 		int lqc=set.getLength();
 		int rlqc=0;
-		cout<<"qc: "<<set.getLength()<<endl;
 		if(lqc<nqc)
 			rlqc=lqc;
 		else
@@ -54,20 +59,11 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		{
 			ptok->qc[i] = set[i];
 		}
-			cout<<"qc[]:"<<ptok->qc[0] <<","<<ptok->qc[1]<<","<<ptok->qc[2]<<","<<ptok->qc[3]<<","<<ptok->qc[4]<<endl;
-		
-		
-		cout<<set.isArray()<<endl;
-		cout<<set.getType()<<endl;
-
-		ptok->a=a;
-		ptok->R0=R0;
-		ptok->eps=a/R0;
-		ptok->C=C;
 	}
 	catch(const SettingNotFoundException &nfex)
   	{
 		cout<<"No tokamak parameters in filename \t"<<filename<<endl;
+    		std::cerr << "Check the input file:" <<filename<<std::endl;
 		return(EXIT_FAILURE);
   	}
 ////////////////get mesh config
@@ -79,6 +75,10 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
                 grid.lookupValue("nL",nL);
                 grid.lookupValue("nE",nE);
                 grid.lookupValue("ntheta",ntheta);
+		assert(nx%3==1);
+		assert(nL%3==1);
+		assert(nE%3==1);
+		assert(ntheta%3==1);
 		pgrid->nx =nx;
 		pgrid->nL =nL;
 		pgrid->nE =nE;
@@ -125,21 +125,47 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 //////////// get mode parameters  
 	try
 	{
-		const Setting &slowing =root["mode"];
+		const Setting &modeset =root["mode"];
 		int n,m,pa,pb;
 		double r_s,delta_r;
-		slowing.lookupValue("n",n);
-		slowing.lookupValue("m",m);
-		slowing.lookupValue("pa",pa);
-		slowing.lookupValue("pb",pb);
-		slowing.lookupValue("r_s",r_s);
-		slowing.lookupValue("delta_r",delta_r);
+		double omega_0,omega_1,omega_i;
+		int omega_n;
+		modeset.lookupValue("n",n);
+		modeset.lookupValue("m",m);
+		modeset.lookupValue("pa",pa);
+		modeset.lookupValue("pb",pb);
+		modeset.lookupValue("r_s",r_s);
+		modeset.lookupValue("delta_r",delta_r);
+		modeset.lookupValue("omega_0",omega_0);
+		modeset.lookupValue("omega_1",omega_1);
+		modeset.lookupValue("omega_i",omega_i);
+		modeset.lookupValue("omega_n",omega_n);
+		modeset.lookupValue("omega_err",mode->omega_err);
+		modeset.lookupValue("max_iter",mode->max_iter);
+
+
 		mode->n=n;
 		mode->m=m;
 		mode->pa =pa;
 		mode->pb =pb;
+		assert(pa<=pb);
 		mode->r_s=r_s;
 		mode->delta_r=delta_r;
+		mode->omega_0=omega_0;
+		mode->omega_1=omega_1;
+		mode->omega_i=omega_i;
+		mode->omega_n=omega_n;
+	
+		assert(omega_n>1&&omega_n<10000);
+		Alloc1D(mode->omega_array,omega_n);
+		
+		double domega=(omega_1-omega_0)/(omega_n-1);
+		std::complex<double> ti=1.0i;
+		for(int iomega=0;iomega<omega_n;iomega++)
+		{
+			mode->omega_array[iomega] =	omega_0 +domega*iomega +ti*omega_i; 
+		}
+	
 	}
 	catch(const SettingNotFoundException &nfex)
         {
@@ -147,7 +173,10 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
                 return(EXIT_FAILURE);
         }
 
-
-
+/* calculate some paramters base on the inputs */
+		ptok->eps=ptok->a/ptok->R0;
+		double qs=1.0;
+		ptok->Bps=mode->r_s*ptok->a*ptok->Bt/(ptok->R0*qs);
+		
 	return 0;
 }

@@ -56,8 +56,8 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		double L,E;
 		E=grid->dE *iE +grid->Ea;
                 L=grid->dL *iL +grid->La;
-	//	EL[iL][iE] = 2*L*(L - slow->L0)/((slow->Ld*slow->Ld)*E); 
-		EL[iL][iE] =1;
+		EL[iL][iE] = 2*L*(L - slow->L0)/((slow->Ld*slow->Ld)*E); 
+	//	EL[iL][iE] =1;
 		
 	}
 

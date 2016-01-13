@@ -7,13 +7,25 @@
 #include"tokamak.h"
 using namespace std;
 
-void qprofile(const int nx,const double *xarray, double *q_1D)
+void qprofile(int const nx,double const *xarray,double const qc[5], double *q_1D)
 {
 	for(int i=0;i<nx;i++)
-		q_1D[i] = 0.5 +2*xarray[i]*xarray[i];
+	{
+		double x=xarray[i];
+		double x2=x*x;
+		double x3=x2*x;
+		double x4=x3*x;
+		q_1D[i] = qc[0] +qc[1]*x +qc[2]*x2 + qc[3]*x3 +qc[4]*x4;
+	}
 	
 }
 
+void qprofile(int const nx,double const *xarray, double *q_1D)
+{
+        for(int i=0;i<nx;i++)
+                q_1D[i] = 0.5 +2*xarray[i]*xarray[i];
+
+}
 
 double bf(const Tokamak *tok,const double theta, const double r)
 {
@@ -83,6 +95,7 @@ CGrid::~CGrid()
 
 void CGrid::showgrid()
 {
+system("Color 2B");
 	cout<<"--------begin grid information--------"<<endl;
 	cout<<"nr, nL, nE, ntheta:\t"<<m_pgrid->nx<<", "<<m_pgrid->nL<<", "<<m_pgrid->nE<<", "<<m_pgrid->ntheta<<endl;
         cout<<"ra, rb: \t"<<m_pgrid->ra<<"\t"<<m_pgrid->rb<<endl;

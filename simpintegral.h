@@ -3,6 +3,7 @@
 
 #include"AllocArray.h"
 #include<iostream>
+#include<assert.h>
 
 //Simpson's 3/8 rule
 //ny mush equiv to 3*n+1
@@ -11,6 +12,7 @@
 template <class datatype>
 datatype simpintegral(datatype * const y, int const  ny, double const dx)
 {
+	assert(ny%3==1);
         datatype sum=0;
         for(int i=0;i<ny;i++)
         {

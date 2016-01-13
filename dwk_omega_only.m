@@ -1,6 +1,6 @@
 clear;
 figure(2);
-clf(2);
+%clf(2);
 figure(2);
 
 n=1000;
@@ -10,7 +10,7 @@ omega=linspace(omega_0,omega_1,n);
 
 %dwk_kd0=-(-omega./(omega-1)+omega+omega.^2.*log(1-1./omega));
 
-dwk_kd0=(omega./(omega-1)-8*omega-8*omega.^2.*log(1-1./omega));
+dwk_kd0=-((omega.^2-2*omega)./(omega-1)+omega.^2.*log(1-1./omega));
 
 %dwk_kd=omega.^2./(omega-1);
 

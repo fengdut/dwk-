@@ -38,7 +38,7 @@ C=30;
 % % 
  hax=axes('Position',[0.08 0.15 0.4 0.75],'FontSize',24,'FontName','Latex'); 
 
-plot(romega,rdw*C,'ko--');
+plot(romega,-rdw*C,'ko--');
 hold all;
 plot(romega1,rdw1*C,'r+--');
 plot(romega2,rdw2*C,'b*--');
@@ -66,6 +66,6 @@ grid on;
 legend('$E_d=0.1,~~L_d=0.1$','$E_d=0.01,L_d=0.1$','$E_d=0.01,L_d=0.01~$');
 
 
-myprint('omega_dwk_omega_star_ED_LD');
+%myprint('omega_dwk_omega_star_ED_LD');
 
 

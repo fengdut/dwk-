@@ -2,6 +2,7 @@
 #ifndef MODE_H
 #define MODE_H
 #include"tokamak.h"
+#include<complex>
 
 typedef struct MODE
 {
@@ -10,6 +11,14 @@ typedef struct MODE
 	int pa,pb;
 	double r_s;
 	double delta_r;
+	
+	double omega_0,omega_1;
+	double omega_i;
+	int omega_n;
+	std::complex<double> *omega_array;
+	
+	double omega_err;
+	int max_iter;
 }Mode;
 
 //void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D);
