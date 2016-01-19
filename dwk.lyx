@@ -117,7 +117,7 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\omega=-iC\delta W_{k}
+\omega=-iC\beta_{h}\delta W_{k}
 \end{equation}
 
 \end_inset
@@ -128,7 +128,7 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i\omega=C\delta W_{k}
+i\omega=C\beta_{h}\delta W_{k}
 \end{equation}
 
 \end_inset
@@ -139,7 +139,7 @@ i\omega=C\delta W_{k}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C=\frac{\omega_{A}}{\omega_{0}}\frac{\beta_{h}}{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
+C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
 \end{equation}
 
 \end_inset
@@ -182,9 +182,20 @@ s=r_{s}\frac{dq}{dr(r=r_{s})}
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
+\beta_{h}=2\mu_{0}n_{0}T_{h}/B_{t}^{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
 CF=\int dEd\Lambda\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)
-\]
+\end{equation}
 
 \end_inset
 
