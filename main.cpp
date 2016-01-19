@@ -1,9 +1,8 @@
 #include<fstream>
 #include<iostream>
-#include"math.h"
+#include<math.h>
 #include<ctime>
 #include<complex>
-#include<libconfig.h++>
 
 #include"vector.h"
 #include"AllocArray.h"
@@ -18,13 +17,11 @@ using namespace std;
 int main(int arg,char * argx[])
 {	
 	clock_t c_start=clock();
-	
-	if(cmdOptionExists(argx, argx+arg, "-h"))
+	if(cmdOptionExists(argx, argx+arg, "-h"))  //print help information only
 	{
 		help();
 		return 0;
 	}
-	
 
 	char default_ifilename[]="dwk.cfg";
 	char default_ofilename[]="dwk_omega_dwk.out";
@@ -35,7 +32,6 @@ int main(int arg,char * argx[])
 		ifilename=default_ifilename;
         if(ofilename==0)
                 ofilename=default_ofilename;
-	
 	
 	Tokamak tok;
 	Grid 	grid;
@@ -51,7 +47,8 @@ int main(int arg,char * argx[])
 	double *q_1D,*J_q_1D;
 	Alloc1D(q_1D,grid.nx);
 	Alloc1D(J_q_1D,grid.nx);
-	double **G_2D, **Chi_2D, **K_2D,**kappa_2D;	
+	double **Chi_2D, **K_2D,**kappa_2D;	
+	complex<double> **G_2D;
 	Alloc2D(G_2D,grid.nx,grid.ntheta);
 	Alloc2D(Chi_2D,grid.nx,grid.nL);
 	Alloc2D(K_2D,grid.nx,grid.nL);
@@ -76,11 +73,10 @@ int main(int arg,char * argx[])
 
 //begin calculate non-omega parts------------------------
 	qprofile(grid.nx,grid.xarray,tok.qc,q_1D);
-
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D);	
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
-	G_R_theta(&grid,&tok,&slowing,&mode,G_2D); 
+	G_R_theta(&grid,&tok,&slowing,&mode,G_2D,q_1D); 
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
@@ -92,19 +88,57 @@ int main(int arg,char * argx[])
 	complex<double> *dwk_array;
 	Alloc1D(dwk_array,mode.omega_n);
 	
+	if(cmdOptionExists(argx,argx+arg,"-s"))
+        {
+		cout<<"*********************************"<<endl;
+		cout<<"scan dwk(omega)"<<endl;
+                dwk_omega_array(&grid, &mode, omega_phi_3D, omega_b_3D, tau_b_3D,
+                        Yps_2D, J_q_1D, FE_3D, omega_star_3D,
+                        G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,
+                        dwk_array,ofilename);
+		cout<<"outputfile: "<<ofilename<<endl;
+		cout<<"end scan"<<endl;
+		cout<<"*********************************"<<endl;
+        }
+
+	cout<<"*********************************"<<endl;
+	cout<<"this is a test run "<<endl;
 	complex<double> omega_0,dwk_0;
-	omega_0= find_dwk_omega0(&grid,&mode,omega_phi_3D,omega_b_3D,tau_b_3D,
+	omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
 			Yps_2D,J_q_1D,FE_3D,omega_star_3D,
 			G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
+	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
+	cout<<"beta_h is:"<<tok.beta_h<<endl;
+	complex<double> err=0;
+	complex<double> ti =1.0i;
+	err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
+	cout<<scientific;
+	cout<<"error=i*omega_0 -C*beta_h *dwk(omega_0)= "<<err<<endl;
+	cout<<fixed;
+	cout<<"*********************************"<<endl;
 	
-	if(cmdOptionExists(argx,argx+arg,"-s"))
+	for(int gi=0;gi<mode.max_iterg;gi++)
 	{
-		dwk_omega_array(&grid, &mode, omega_phi_3D, omega_b_3D, tau_b_3D,
-                        Yps_2D, J_q_1D, FE_3D, omega_star_3D,
-			G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,
-			dwk_array,ofilename);
+		cout<<"*********************************"<<endl;
+		cout<<"find the solution"<<endl;
+		omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
+                        Yps_2D,J_q_1D,FE_3D,omega_star_3D,
+                        G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
+        	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
+        	cout<<"beta_h is:"<<tok.beta_h<<endl;
+		err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
+		cout<<scientific;
+        	cout<<"error=i*omega_0 -C*beta_h *dwk(omega_0)= "<<err<<endl;
+		cout<<fixed;
+        	cout<<"*********************************"<<endl;
+		if(abs(err)<mode.omega_err*tok.C*tok.beta_h)
+			break;
 	}
-
+	
+	cout<<"      omega_0"<<"\t\t\t\t"<<"dwk"<<"\t\t\t beta_h"<<endl;
+	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h<<endl;	
+	cout<<"*************************************************************"<<endl;
+	
 
 	Free1D(dwk_array);	
 	Free1D(J_q_1D);		Free1D(q_1D);

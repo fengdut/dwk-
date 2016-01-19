@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include<cmath>
 #include"tokamak.h"
@@ -25,7 +24,7 @@ double fxi_t(double x,double r_s, double delta_r)
 {
 	if(x<=r_s-delta_r*0.5)
 	{
-                return -1.0*x;
+                return -1.0*(x);
 	}
         if(x>=r_s+delta_r*0.5)
 	{
@@ -33,7 +32,7 @@ double fxi_t(double x,double r_s, double delta_r)
 	}
 	return -x*(delta_r -2*x +r_s - 0.5*delta_r)/delta_r;
 }
-void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,double **G_2D)
+void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,complex<double> **G_2D, double * const q_1D )
 {	
 	double r_s=pmode->r_s;
 	double delta_r =pmode->delta_r;
@@ -71,18 +70,25 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	for(int ix=0;ix<grid->nx;ix++)
 		xi_t[ix] = xi_t[ix] *grid->xarray[ix];
 	
-	double ** xi_r2d, ** xi_t2d;
+	complex<double> ** xi_r2d, ** xi_t2d;
 	Alloc2D(xi_r2d,grid->nx,grid->ntheta);
 	Alloc2D(xi_t2d,grid->nx,grid->ntheta);
 		
+	complex<double> ti=-1.0i;
 	for(int ix=0;ix<grid->nx;ix++)
 	for(int it=0;it<grid->ntheta;it++)
 	{
 	//	cout<<"fxi_r:"<<grid->xarray[ix]+slow->rho_d*cost[it]<<"\t"<<fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r)<<endl;
-		xi_r2d[ix][it] = cost[it]*fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
-		xi_t2d[ix][it] = sint[it]*fxi_t(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
+		xi_r2d[ix][it] = exp(ti*(double)it*grid->dtheta)   *fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
+		xi_t2d[ix][it] = -1.0*ti*exp(ti*(double)it*grid->dtheta)*fxi_t(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
 	}
+	cout<<"?????"<<endl;
+	cout<<xi_r2d[0][4]<<endl;
 	
+//	cout<<"xi_2D ";
+//	max_min_2D(grid->nx,grid->ntheta,xi_r2d);
+//	max_min_2D(grid->nx,grid->ntheta,xi_t2d);
+
 	double **grr,**gtt,**grt,**kappa_r,**kappa_t;
 	Alloc2D(grr,grid->nx,grid->ntheta);
 	Alloc2D(gtt,grid->nx,grid->ntheta);
@@ -90,23 +96,28 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Alloc2D(kappa_r,grid->nx,grid->ntheta);
 	Alloc2D(kappa_t,grid->nx,grid->ntheta);
 			
+	cout<<xi_r2d[0][4]<<endl;
 	for(int ix=0;ix<grid->nx;ix++)
 	{	
-		double x	=grid->xarray[ix];	
-		double teps	=tok->eps*grid->xarray[ix];
 		for(int it=0;it<grid->ntheta;it++)
 		{
+			double x	=grid->xarray[ix]+slow->rho_d*cost[it];	
+			double teps	=tok->eps*x;
+			double ttheta   =grid->tarray[it];
 			grr[ix][it] =1.0 +teps *cost[it]*0.5;
 			gtt[ix][it] =(1.0-2.5 *teps *cost[it])/(x*x);
 			grt[ix][it] =-1.5*teps *sint[it] /x;
-			kappa_r[ix][it] = -1.0*cost[it]/(1/tok->eps +x *cost[it]);
-			kappa_t[ix][it] = teps*sint[it];
-			G_2D[ix][it] =    (gtt[ix][it] *kappa_t[ix][it] +grt[ix][it] *kappa_r[ix][it])*xi_t2d[ix][it] 
-					+ (grr[ix][it] *kappa_r[ix][it] +grt[ix][it] *kappa_t[ix][it])*xi_r2d[ix][it];
+			
+
+			kappa_r[ix][it] = -1.0*cost[it]*tok->eps +tok->eps *teps*0.25 - tok->eps *1.25*teps*(cos(2*ttheta)-1)-tok->eps*tok->eps *x/q_1D[ix];
+			kappa_t[ix][it] = teps*sint[it]+ 1.25 *teps*teps *sin(2*ttheta);
+			G_2D[ix][it] =    (gtt[ix][it] *kappa_t[ix][it] +grt[ix][it] *kappa_r[ix][it])*(xi_t2d[ix][it]) 
+					+ (grr[ix][it] *kappa_r[ix][it] +grt[ix][it] *kappa_t[ix][it])*(xi_r2d[ix][it]);
 					
 		}
 	}
 	
+	cout<<xi_r2d[0][4]<<endl;
 	cout<<"grr:\t";
 	max_min_2D(grid->nx,grid->ntheta,grr);
 	cout<<"gtt:\t";

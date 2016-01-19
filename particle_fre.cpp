@@ -1,10 +1,14 @@
+#include<cmath>
+#include<complex>
+
 #include"tokamak.h"
 #include"mconf.h"
 #include"protos.h"
-#include<cmath>
-#include<complex>
 #include"AllocArray.h"
 #include"simpintegral.h"
+#include"vector.h"
+
+using namespace std;
 void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,double **kappa_2D,double **K_2D)
 {
 	using namespace std;
@@ -26,11 +30,16 @@ void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,doubl
 	}
 }
 
-void Yps(const Grid *grid, double ** G_2D, double ** Chi_2D, double *** b_lambda_3D, double *** lambda_b_3D,double *** Theta_3D,int p,std::complex<double>** Yps_2D)
+void Yps(const Grid *grid, complex<double> ** G_2D, double ** Chi_2D, double *** b_lambda_3D, double *** lambda_b_3D,double *** Theta_3D,int p,std::complex<double>** Yps_2D)
 {
 	using namespace std;
 	complex<double> *tY;	
 	Alloc1D(tY,grid->ntheta);
+//	cout<<"Chi_2D ";
+//	max_min_2D(grid->nx,grid->nL,Chi_2D);
+//	cout<<"G_2D ";
+//	max_min_2D(grid->nx,grid->nL,G_2D);
+	
 	for(int ix=0;ix<grid->nx;ix++)
 		for(int iL=0;iL<grid->nL;iL++)
 		{
@@ -38,7 +47,9 @@ void Yps(const Grid *grid, double ** G_2D, double ** Chi_2D, double *** b_lambda
 			for(int it=0;it<grid->ntheta;it++)
 			{
 				complex<double> ti(0,-1.0);
+				
 				texp =exp(ti *Chi_2D[ix][iL]*(double)p*Theta_3D[ix][iL][it]);	
+			//	texp=1.0;
 				tY[it] =G_2D[ix][it] *b_lambda_3D[ix][iL][it] * (lambda_b_3D[ix][iL][it] +2*(1-lambda_b_3D[ix][iL][it]))*texp;
  
 			}

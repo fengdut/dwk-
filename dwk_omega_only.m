@@ -1,6 +1,6 @@
 clear;
 figure(2);
-%clf(2);
+clf(2);
 figure(2);
 
 n=1000;
@@ -39,4 +39,4 @@ ylabel('$imag(\delta W_k)$');
 grid on;
 
 
-%myprint('wangsj_dwk_omega_only');
+myprint('wangsj_dwk_omega_only');

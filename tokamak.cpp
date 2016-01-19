@@ -95,7 +95,6 @@ CGrid::~CGrid()
 
 void CGrid::showgrid()
 {
-system("Color 2B");
 	cout<<"--------begin grid information--------"<<endl;
 	cout<<"nr, nL, nE, ntheta:\t"<<m_pgrid->nx<<", "<<m_pgrid->nL<<", "<<m_pgrid->nE<<", "<<m_pgrid->ntheta<<endl;
         cout<<"ra, rb: \t"<<m_pgrid->ra<<"\t"<<m_pgrid->rb<<endl;
@@ -107,9 +106,26 @@ system("Color 2B");
 void showtokamak(Tokamak *ptok,Slowing *pslowing)
 {
 	cout<<"--------begin tokamak information--------"<<endl;
-  	cout<<"a: \t"<<ptok->a<<endl;
-	cout<<"R0: \t"<<ptok->R0<<endl;
+  	cout<<"a: \t"<<ptok->a<<" m"<<endl;
+	cout<<"R0: \t"<<ptok->R0<<" m"<<endl;
 	cout<<"eps: \t"<<ptok->eps<<endl;
+	cout<<"Bt0: \t"<<ptok->Bt<<" Tesla"<<endl;
+	cout<<"Bps: \t"<<ptok->Bps<<" Tesla"<<endl;
+	cout<<"n0: \t"<<ptok->n0<<" 1/m^3"<<endl;
+	cout<<"mi: \t"<<ptok->mi<<" 1/m_p"<<endl;
+	cout<<"rho_m:\t"<<ptok->rho_m<<" kg/m^3"<<endl;
+	cout<<"tau_At:\t"<<ptok->tau_At<<" s"<<endl;
+	cout<<scientific;
+	cout<<"omega_A:\t"<<ptok->omega_A<< " rad/s"<<endl;
+	cout<<fixed;
+	cout<<"E_i0:\t"<<ptok->E_i0<<" kEv"<<endl;
+	cout<<scientific;
+	cout<<"v_i0:\t"<<ptok->v_i0<<" m/s"<<endl;
+	cout<<"omega_i0:\t"<<ptok->omega_i0 <<" rad/s"<<endl;
+	cout<<"C:\t"<<ptok->C<<endl;
+	cout<<fixed;
+	
+	
 	cout<<"--------end tokamak information  --------"<<endl;	
 
 	cout<<"--------begin fast ion distribution function--------"<<endl;

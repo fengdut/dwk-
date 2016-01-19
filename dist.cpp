@@ -67,7 +67,10 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	for(int iE=0;iE<grid->nE;iE++)
 	{
 		F_3D[ix][iL][iE]  =expx[ix]*expL[iL]*erfcE[iE];
-		FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(erfcE1[iE]+expE[iE])*EL[iL][iE];
+		FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(erfcE1[iE]+expE[iE]-EL[iL][iE]*erfcE[iE]);
+		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(erfcE1[iE]);
+		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(expE[iE]);
+		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(-1.0*EL[iL][iE]*erfcE[iE]);
 		FR_3D[ix][iL][iE]  =expx1[ix]*expL[iL]*erfcE[iE];
 		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
 		if((FE_3D[ix][iL][iE])!=0.0)	
@@ -78,16 +81,16 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	}
 
 	double CF=0;
-	cout<<"F_3D: ";
- 	max_min_3D(grid->nx, grid->nL, grid->nE,F_3D);
-	cout<<"FE_3D: ";
-	max_min_3D(grid->nx, grid->nL, grid->nE,FE_3D);
-	cout<<"expx: ";
-	max_min_1D(grid->nx,expx);
-	cout<<"expL: ";
-	max_min_1D(grid->nL,expL);
-	cout<<"expE: ";
-	max_min_1D(grid->nE,erfcE);
+	//cout<<"F_3D: ";
+ 	//max_min_3D(grid->nx, grid->nL, grid->nE,F_3D);
+	//cout<<"FE_3D: ";
+	//max_min_3D(grid->nx, grid->nL, grid->nE,FE_3D);
+	//cout<<"expx: ";
+	//max_min_1D(grid->nx,expx);
+	//cout<<"expL: ";
+	//max_min_1D(grid->nL,expL);
+	//cout<<"expE: ";
+	//max_min_1D(grid->nE,erfcE);
 	CF=simpintegral_2D(F_3D[0], grid->nL, grid->dL, grid->nE,grid->dE);
 	std::cout<<"CF= "<<CF<<std::endl;	
 	
@@ -132,13 +135,16 @@ void Theta(double ***b_lambda_3D,const Grid *grid, double ***Theta_3D)
         for(int it=1;it<grid->ntheta;it++)
 	{
 		Theta_3D[ix][iL][it] = Theta_3D[ix][iL][it-1] +(b_lambda_3D[ix][iL][it] +b_lambda_3D[ix][iL][it-1])*grid->dtheta*0.5;
+		//Theta_3D[ix][iL][it] = Theta_3D[ix][iL][it-1] +(1 +1)*grid->dtheta*0.5;
 	}
-	for(int ix=0;ix<grid->nx;ix++)
-        for(int iL=0;iL<grid->nL;iL++)
-        for(int it=2;it<grid->ntheta;it++)
-	{
-		Theta_3D[ix][iL][it] = Theta_3D[ix][iL][it-1] +Theta_3D[ix][iL][it];
-	}	
+//	cout<<"Theta_3D";
+	//for(int ix=0;ix<grid->nx;ix++)
+        //for(int iL=0;iL<grid->nL;iL++)
+        //for(int it=2;it<grid->ntheta;it++)
+//	{
+		//Theta_3D[ix][iL][it] = Theta_3D[ix][iL][it-1] +Theta_3D[ix][iL][it];
+//	}	
+//	max_min_3D(grid->nx,grid->nL,grid->ntheta,Theta_3D);
 }
 
 

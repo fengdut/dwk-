@@ -19,9 +19,11 @@ typedef struct MODE
 	
 	double omega_err;
 	int max_iter;
+	int max_iterg;
 }Mode;
 
 //void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D);
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,double **G_2D);
+void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,std::complex<double> **G_2D, double *const q_1D);
 
 #endif

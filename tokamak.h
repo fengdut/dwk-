@@ -14,10 +14,12 @@ typedef struct TOKAMAK
 	double Bps;	//poloidal magnetic field at resonance surface.
 	double n0;	//thermal plasma density at axis.		input
 	double mi;	//ion mass in units of protom mass.		input
+	double rho_m;   //mass density   (kg/m^3)
 	double E_i0;	// fast ion injection energy, in units of KeV	input
 	double v_A,omega_A; 
 	double tau_At; // tau_{A,theta}
 	double v_i0,omega_i0;
+	double beta_h; 
 	
 	
 }Tokamak;

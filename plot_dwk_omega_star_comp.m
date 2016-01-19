@@ -12,22 +12,18 @@ rdw=data(:,3);
 idw=data(:,4);
 
 
+
+n=1000;
+omega_0=0,
+omega_1=1.5;
+omega=linspace(omega_0,omega_1,n)+0.002i;
+
+dwk_kd=(1/3 +1/2*omega +omega.^2+omega.^3 .*log(1-1./omega))*20;
+
+
+
 data=load('dwk_omega_ED001.out');
 
-
-romega1=data(:,1);
-iomega1=data(:,2);
-rdw1=data(:,3);
-idw1=data(:,4);
-
-
-data=load('dwk_omega.out');
-
-
-% romega2=data(:,1);
-% iomega2=data(:,2);
-% rdw2=data(:,3);
-% idw2=data(:,4);
 
 
 
@@ -40,8 +36,9 @@ C=30;
 
 plot(romega,rdw*C,'ko--');
 hold all;
-%plot(romega1,rdw1*C,'r+--');
-%plot(romega2,rdw2*C,'b*--');
+
+plot(omega,real(dwk_kd));
+
 
 
 
@@ -54,18 +51,16 @@ ylabel('$real(\delta W_k)$');
 hax=axes('Position',[0.56 0.15 0.4 0.75],'FontSize',24); 
 plot(romega,idw*C,'ko--'); 
 hold all;
-%plot(romega1,idw1*C,'r+--'); 
-%plot(romega2,idw2*C,'b*--'); 
+plot(omega,imag(dwk_kd));
 
 
-%plot(romega,romega,'b--');
 xlabel('$real(\omega)$');
 ylabel('$imag(\delta W_k)$');
 
 grid on;
-legend('$E_d=0.1,~~L_d=0.1$','$E_d=0.01,L_d=0.1$','$E_d=0.01,L_d=0.01~$');
+legend('$dwk++$','$analytical$');
+title('$\omega_\star~ term$');
 
-
-myprint('omega_dwk_omega_star_only');
+myprint('omega_dwk_omega_star_only_comp');
 
 

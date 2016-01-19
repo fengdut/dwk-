@@ -1,0 +1,63 @@
+// the input file for dwk++
+//tokamak parameters
+tokamak=
+{
+	a=0.4;    	//minor radius (m).
+	R0=1.65;  	//major radius (m).
+	Bt =2.0;	//Toroidal magnetic field at axis without plasma, (Tesla).
+	n0 =1.0e20;	//thermal plasma density, (m^-3).
+	mi =2.0;	//ion mass, (protom mass,m_p).
+	E_i0 =40.0;	//Fost ion injection energy, (KeV).
+
+	//q profile, polynomial coefficient, qc[5];
+	//q=qc[0] +qc[1]*r +qc[2]*r^2 +qc[3]*r^3 +qc[4]*r^4;
+	qc=[0.5, 2.0, 0.0, 0.0, 0.0];
+}
+
+//grid parameters
+grid=
+{
+	nx=400; //grid size should be 3n + 1, n is a positive integer. 
+	nL=100; 
+	nE=1000;
+	ntheta=400;
+}
+
+//fast ion distribution
+slowing=
+{
+	r0=0.0;		// (a) 
+	rd=0.2;		// (a)
+	
+	L0=0.01;		
+	Ld=0.01;
+	
+	E0=1.0;		// (E_i0)
+	Ed=0.01;	// (E_i0)
+	Ec=0.01;		// (E_i0)
+	
+	rho_h=0.05;	//gyro orbit width, (a)	
+	rho_d=0.00;     	//drift orbit width, (a)
+	sigma=1;	//co(1) ? count (-1)
+}
+
+// perturbation and omega range for the soultion 
+mode=
+{
+	n=1; 	//toroidal mode number
+	m=1;	//poloidal mode number
+	pa=0;	//resounce: sum Yps/(n*omega_phi +p*omega_theta -\omega), sum from pa to pb
+	pb=0;
+	r_s=0.5; //q==1 surface. 
+	delta_r=0.001;// step function width for kink, (a).
+	omega_0=0.8; //find omega_0(the solution) and scan dwk between omega_0 and omega_1,
+		      // (v_0/R_0), v_0 is the injection speed.
+	omega_1=0.9;
+	omega_i=0.002; //image part of omega
+	omega_n=120;   //scan steps
+	omega_err=1.0e-5; //residual of omega_0
+	max_iter =100;    // maximum iteration number to find the omega_0
+	max_iterg =2;			
+	
+}
+
