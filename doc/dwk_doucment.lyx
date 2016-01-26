@@ -1,0 +1,612 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ for passing particles with finite orbit width
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G_{m,p}^{\sigma}=\frac{1}{\tau_{t}}\oint dt'G_{m}(r',\theta)exp\{i[S_{m}\theta'-(p\omega_{t}+\sigma S_{m}\omega_{t})t']\}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G=\frac{e}{2\epsilon}(\frac{i}{\omega}\mathbf{v_{d}\cdot E_{\perp}+\Psi+\frac{\mu}{e}\sigma B_{\parallel}})\simeq\frac{e}{2\epsilon}(\frac{i}{\omega}\mathbf{v_{d}\cdot E_{\perp}})=\sum_{m}G_{m}(r,\theta)exp[i(m\theta-n\phi-\omega t)]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $G_{m}=$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G_{m,p}^{\sigma}=\frac{1}{\tau_{t}}\int_{0}^{2\pi}d\theta'\frac{qR}{|v_{\parallel}|}G_{m}(r',\theta')exp\{i[S_{m}\theta'-(p\omega_{t}+\sigma S_{m}\omega_{t})\int^{\theta'}d\theta\frac{qR}{|v_{\parallel}|}]\}=G_{m,p}^{\sigma}(r,\epsilon,\Lambda,m,p,\sigma)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+S_{m}=m-n\bar{q}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=-\frac{8\pi^{2}}{M^{2}}\sum_{m',m}^{\sigma,p}\int d\bar{r}\int\frac{d\Lambda}{B}\epsilon^{3}\int d\epsilon\tau_{t}(\omega-\omega_{\star})\frac{\partial F}{\partial\epsilon}\frac{(G_{m',p}^{\sigma})^{*}G_{m,p}}{\omega-\langle\omega_{d}\rangle-\sigma(p+S_{m})\omega_{t}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dispersion relation of fishbone:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-i\omega/\omega_{A}+\delta W_{f}+\delta W_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume energetic particles have slowing down distribution function: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+F & = & \frac{cH(v_{0}-v)}{v^{3}+v_{c}^{3}}exp(-\langle\Psi\rangle/\Delta\Psi)exp(-\frac{(\Lambda-\Lambda_{0})^{2}}{\Delta\Lambda^{2}})\\
+F(\epsilon,\Lambda,\Psi) & = & \frac{cH(\epsilon_{0}-\epsilon)}{(\frac{2\epsilon}{m})^{3/2}+(\frac{2\epsilon_{c}}{m})^{3/2}}exp(-\langle\Psi\rangle/\Delta\Psi)exp(-\frac{(\Lambda-\Lambda_{0})^{2}}{\Delta\Lambda^{2}})
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbb{\mathbb{G}}(r,\epsilon,\Lambda,m,p,\sigma)=(G_{m',p}^{\sigma}(r,\epsilon,\Lambda,m,p,\sigma))^{*}G_{m,p}(r,\epsilon,\Lambda,m,p,\sigma)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbb{F}(\epsilon,\Lambda,\Psi)=\epsilon^{3}\frac{\tau_{t}(\epsilon,r,\Lambda)}{B}F_{e}(\epsilon,\Lambda,\Psi)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbb{\mathbf{\Omega}}(m,p,\sigma,\epsilon,r,\Lambda,\omega)=\frac{(\omega-\omega_{\star}(\epsilon,r,\Lambda))}{\omega-\langle\omega_{d}\rangle-\sigma(p+S_{m})2\pi/\tau_{t}(\epsilon,r,\Lambda)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}(\omega)=-\frac{8\pi^{2}}{M^{2}}\sum_{m',m}^{\sigma,p}\int d\bar{r}d\Lambda d\epsilon\mathbf{\Omega}(m,p,\sigma,\epsilon,r,\lambda,\omega)\mathbb{\mathbb{G}}(r,\epsilon,\Lambda,m,p,\sigma)\mathbb{F}(\epsilon,\Lambda,\Psi)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\sigma=\pm1$
+\end_inset
+
+, 
+\begin_inset Formula $m',m=0,\pm1$
+\end_inset
+
+, 
+\begin_inset Formula $p=0,\pm1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $r=\bar{r}+\Delta rcos(\theta)$
+\end_inset
+
+, 
+\begin_inset Formula $\Psi=r^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $P_{\phi}=\Psi-cv_{\parallel}R=const$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $v_{\parallel}=\bar{v}_{\parallel}+\Delta rcos(\theta)/RC$
+\end_inset
+
+, 
+\begin_inset Formula $C=mc/e$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Delta r=qc(2m\epsilon)^{1/2}/ZeB$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $B=\frac{R_{0}B_{0}}{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Internal kink perturbation
+\end_layout
+
+\begin_layout Standard
+Perturbation are fourier analysed in the form 
+\begin_inset Formula $e^{i(m\theta-n\phi)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\nabla\cdot\xi=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi_{\theta}=-\frac{i}{m}\frac{d}{dr}(r\xi_{r})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi_{r}(r)=\xi H(r-r_{a})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+define 
+\begin_inset Formula $\Delta r$
+\end_inset
+
+ is the resonance layer width,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{r}=\begin{cases}
+\xi, & \:r<r_{a}-\frac{\Delta r}{2}\\
+\xi(\frac{\Delta r-r+(r_{a}-\frac{\Delta r}{2})}{\Delta r}), & \:r_{a}-\frac{\Delta r}{2}\le r\le r_{a}+\frac{\Delta r}{2}\\
+0, & \:r>r_{a}+\frac{\Delta r}{2}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{p,\sigma}(r,\Lambda)=\frac{1}{2\pi}\int_{0}^{2\pi}d\theta\frac{\sigma\pi\sqrt{\kappa}}{K(\kappa^{-1})}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)G(r,\theta)exp\left(-ip\int_{0}^{\theta}d\theta'\frac{\sigma\pi\sqrt{\kappa}}{K(\kappa^{-1})}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\color red
+
+\begin_inset Formula $\chi(r,\Lambda)=\frac{\sigma\pi\sqrt{\kappa}\sqrt{\varepsilon\Lambda/2}}{K(\kappa^{-1})}$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa=\frac{1-\Lambda(1-\varepsilon)}{2\varepsilon\Lambda}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $G(r,\theta)=(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r})\xi_{\theta,m}+(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta})\xi_{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $r<r_{s}-\Delta r/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{r}=\xi_{0}cos\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{\theta}=-\xi_{0}rsin\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $r_{s}-\Delta r/2\le r\le r_{s}+\Delta r/2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{r}=\xi_{0}\left(\frac{\Delta r-r+(r_{s}-\Delta r/2)}{\Delta r}\right)cos\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{\theta}=-\xi_{0}\left(\frac{\Delta r-2r+(r_{s}-\Delta r/2)}{\Delta r}\right)rsin\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $g^{rr}=1+\frac{\varepsilon cos\theta}{2}$
+\end_inset
+
+, 
+\begin_inset Formula $g^{\theta\theta}=\frac{1}{r^{2}}\left(1-\frac{5}{2}\varepsilon cos\theta\right)$
+\end_inset
+
+, 
+\begin_inset Formula $g^{r\theta}=-\frac{3}{2r}\varepsilon sin\theta$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $R=R_{0}+rcos\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\kappa_{r}=-\frac{a}{R}cos\theta$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa_{\theta}=\varepsilon sin\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{p,\sigma}(r,\Lambda)=\frac{\chi}{2\pi}\int_{0}^{2\pi}d\theta\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)G(r,\theta)exp\left(-ip\chi\int_{0}^{\theta}d\theta'\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $\Lambda_{b}(\theta,r,\Lambda)=\frac{\Lambda}{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+Define 
+\begin_inset Formula $B_{\Lambda}(\theta,r,\Lambda)=\frac{1}{b\sqrt{(1-\Lambda_{b})}}$
+\end_inset
+
+, Define 
+\color red
+
+\begin_inset Formula $\Theta(\theta,r,\Lambda)=\int_{0}^{\theta}d\theta'\frac{1}{b\sqrt{(1-\Lambda_{b})}}=\int_{0}^{\theta}B_{\Lambda}$
+\end_inset
+
+ 
+\begin_inset Formula $\chi$
+\end_inset
+
+ in side ?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+{\color{red}Y(r,\Lambda)=\frac{\chi}{2\pi}\int_{0}^{2\pi}d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta)exp\left(-i\chi p\Theta\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=-\pi^{2}\left(\frac{eBa}{\Omega}\right)^{2}R_{0}n_{0}\frac{T_{h}}{M}\int\frac{\bar{j}}{q}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\bar{\tau_{b}}(\bar{\omega}-\bar{\omega}_{\star})\sum_{p=0,\pm1}\frac{|Y_{p}|^{2}}{n\langle\dot{\phi}\rangle+p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F(r,\epsilon,\Lambda)=\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left[-\left(\frac{r-r_{0}}{\Delta r}\right)^{2}\right]\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial F}{\partial\epsilon}=-\left[\frac{2\exp(-(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon})^{2})}{\sqrt{\pi}\Delta\epsilon(\epsilon^{3/2}+\epsilon_{c}^{3/2})}+\frac{3\sqrt{\epsilon}Erfc(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon})}{2(\epsilon^{3/2}+\epsilon_{c}^{3/2})^{2}}-\frac{2\Lambda(\Lambda-\Lambda_{0})}{E\Delta\Lambda^{2}}\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\right]\exp\left[-\left(\frac{r-r_{0}}{\Delta r}\right)^{2}\right]\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial F}{\partial r}=\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\frac{2(r_{0}-r)}{\Delta r^{2}}\exp\left[-\left(\frac{r-r_{0}}{\Delta r}\right)^{2}\right]\exp\left(-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{\star}=\frac{1}{r}\frac{R}{a}\frac{\rho_{h}}{a}\frac{m}{2}\frac{\partial F/\partial r}{\partial F/\partial\epsilon}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial F}{\partial\epsilon}\omega_{\star}=\frac{R\rho_{h}m}{2ra^{2}}\frac{\partial F}{\partial r}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho_{h}=\frac{v_{h}}{\Omega}=\frac{v_{h}M}{Be}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho_{d}=\frac{q}{\Omega}\sqrt{\frac{\epsilon}{2(1-\Lambda/b)}}[\frac{\Lambda}{b}+2(1-\frac{\Lambda}{b})]=\frac{qBe}{M}\sqrt{\frac{\epsilon}{2(1-\Lambda/b)}}[\frac{\Lambda}{b}+2(1-\frac{\Lambda}{b})]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $R=n\langle\dot{\phi}\rangle+\omega_{b}-\omega=n\omega_{\phi}(\epsilon,\Lambda,r)+\omega_{b}(\epsilon,\Lambda,r)-\omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $Y_{p}R=\frac{|Y_{p}|^{2}}{R}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
