@@ -23,7 +23,7 @@ int main(int arg,char * argx[])
 		return 0;
 	}
 	char default_ifilename[]="dwk.cfg";
-	char default_ofilename[]="dwk_omega_dwk.out";
+	char default_ofilename[]="omega_dwk.out";
 	char *ifilename =getCmdOption(argx,argx+arg,"-i");
 	char *ofilename =getCmdOption(argx,argx+arg,"-o");
 
@@ -40,9 +40,7 @@ int main(int arg,char * argx[])
 	read_tokamak(ifilename,&tok,&grid,&slowing,&mode);	
 	CGrid pgrid(&grid,&slowing);
  	cout.precision (12);
-	showtokamak(&tok,&slowing);
 	pgrid.showgrid();	
-	
 //alloc memory
 	double *q_1D,*J_q_1D;
 	Alloc1D(q_1D,grid.nx);
@@ -73,9 +71,10 @@ int main(int arg,char * argx[])
 //end alloc memory
 
 //begin calculate non-omega parts------------------------
-	qprofile(grid.nx,grid.xarray,tok.qc,q_1D);
-	find_rs(&grid,q_1D,mode.q_s, &mode.r_s);
-	cout<<"r_s="<<mode.r_s<<endl;
+	qprofile(&grid,&tok,q_1D);
+	find_rs(&grid,q_1D, &tok);
+	calculate_normalization(&tok, &slowing);
+	showtokamak(&tok,&slowing);
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D);	
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
@@ -137,11 +136,9 @@ int main(int arg,char * argx[])
 		if(abs(err)<mode.omega_err*tok.C*tok.beta_h)
 			break;
 	}
-	
 	cout<<"      omega_0"<<"\t\t\t\t"<<"dwk"<<"\t\t\t beta_h"<<endl;
 	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h<<endl;	
 	cout<<"*************************************************************"<<endl;
-	
 
 	Free1D(dwk_array);	
 	Free1D(J_q_1D);		Free1D(q_1D);

@@ -1,5 +1,8 @@
 *.o
 dwk++
+src/dwk++
 *.swp
 dwk++.dSYM/
+doc/#dwk.lyx#
+doc/dwk.lyx~
 

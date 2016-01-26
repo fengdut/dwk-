@@ -2,6 +2,7 @@
 #define TOKAMAK_H
 
 
+
 int const nqc =5;
 typedef struct TOKAMAK
 {
@@ -10,6 +11,8 @@ typedef struct TOKAMAK
 	double C; 	//the normalization coefficient. useless now. 	input
 	double qc[nqc];   //q profile, polynomial coefficient;      	input
 	double s;	//magnetic shear at resonance surface.
+	double q_s;	//q at resonance surface 
+	double r_s;	//resounce surface (a)
 	double Bt;	//toroidal magnetic field at axis without plasma, in units of tesla  input
 	double Bps;	//poloidal magnetic field at resonance surface.
 	double n0;	//thermal plasma density at axis.		input
@@ -62,14 +65,15 @@ private:
 };
 
 
+void calculate_normalization(Tokamak *ptok, Slowing *pslowing);
 void showtokamak(Tokamak *ptok,Slowing *pslowing);
 
-void qprofile(int const nx,double const *xarray, double *q_1D);
-void qprofile(int const nx,double const *xarray,double const  qc[5], double *q_1D);
+void qprofile(Grid *const grid,Tokamak *ptok, double *q_1D);
 
 double bf(const Tokamak *tok,const double theta, const double r);
 void J_q(Grid *const grid,double *const q_1D, double *J_q);
 
+void find_rs(Grid * const grid,double *const q_1D, Tokamak *ptok);
 
 
 #endif

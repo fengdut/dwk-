@@ -616,6 +616,10 @@ Input file
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "/Volumes/fwang/dwk++/examples/dwk.cfg"

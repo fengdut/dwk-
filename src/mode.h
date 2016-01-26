@@ -9,8 +9,6 @@ typedef struct MODE
 	int n;
 	int m;
 	int pa,pb;
-	double r_s;
-	double q_s;
 	double delta_r;
 	
 	double omega_0,omega_1;
@@ -27,6 +25,5 @@ typedef struct MODE
 //void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D);
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,double **G_2D);
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double *const q_1D,std::complex<double> **G_2D);
-void find_rs(Grid * const grid,double *const q_1D,double const q_s, double *r_s);
 
 #endif

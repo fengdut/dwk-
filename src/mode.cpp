@@ -35,7 +35,7 @@ double fxi_t(double x,double r_s, double delta_r)
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double * const q_1D, 
 	complex<double> **G_2D)
 {	
-	double r_s=pmode->r_s;
+	double r_s=tok->r_s;
 	double delta_r =pmode->delta_r;
 	double *cost,*sint;
 	double *xi_r,*xi_t;
@@ -83,8 +83,6 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 		xi_r2d[ix][it] = exp(ti*(double)it*grid->dtheta)   *fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
 		xi_t2d[ix][it] = -1.0*ti*exp(ti*(double)it*grid->dtheta)*fxi_t(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
 	}
-	cout<<"?????"<<endl;
-	cout<<xi_r2d[0][4]<<endl;
 	
 //	cout<<"xi_2D ";
 //	max_min_2D(grid->nx,grid->ntheta,xi_r2d);
@@ -97,7 +95,6 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Alloc2D(kappa_r,grid->nx,grid->ntheta);
 	Alloc2D(kappa_t,grid->nx,grid->ntheta);
 			
-	cout<<xi_r2d[0][4]<<endl;
 	for(int ix=0;ix<grid->nx;ix++)
 	{	
 		for(int it=0;it<grid->ntheta;it++)
@@ -117,7 +114,7 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 					
 		}
 	}
-	
+/*	
 	cout<<xi_r2d[0][4]<<endl;
 	cout<<"grr:\t";
 	max_min_2D(grid->nx,grid->ntheta,grr);
@@ -137,7 +134,7 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 
 	cout<<"xi_r:\t";
         max_min_2D(grid->nx,grid->ntheta,xi_r2d);
-	
+*/	
 
 	Free2D(kappa_t);
 	Free2D(kappa_r);
@@ -150,24 +147,6 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Free1D(xi_r);
 	Free1D(cost);
 	Free1D(sint);	
-}
-
-void find_rs(Grid * const grid,double *const q_1D,double const q_s, double *r_s)
-{
-	assert(q_s>0&&q_s<100);
-	for(int i=1;i<grid->nx;i++)
-	{
-		if((q_1D[i-1]-q_s)*(q_1D[i]-q_s)<=0)
-		{
-			double dr =grid->dr;
-			double dq=abs(q_s-q_1D[i-1])/abs((q_1D[i]-q_1D[i-1]));
-			*r_s = 	grid->xarray[i-1] +dr *(1-dq);
-			return;	
-			
-		}
-	}
-	
-	cout<<"can not find r_s with q_s= "<<q_s<<endl;
 }
 
 

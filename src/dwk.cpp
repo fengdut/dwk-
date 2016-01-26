@@ -229,7 +229,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 			in++;
 			if(in>mode->max_iter)
 			{
-				cout<<"max iter reach"<<endl;
+				cerr<<"max iter reach"<<endl;
 				break;
 			}
 			
@@ -237,7 +237,8 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	}
 	else
 	{
-		cout<<"*************change the omega range*****************"<<endl;
+		cerr<<"*************change the omega range*****************"<<endl;
+		exit(-1);
 	}
 	
         cout<<"-----end find omega_0--------"<<endl;
