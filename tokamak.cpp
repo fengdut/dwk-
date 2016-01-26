@@ -123,6 +123,7 @@ void showtokamak(Tokamak *ptok,Slowing *pslowing)
 	cout<<"v_i0:\t"<<ptok->v_i0<<" m/s"<<endl;
 	cout<<"omega_i0:\t"<<ptok->omega_i0 <<" rad/s"<<endl;
 	cout<<"C:\t"<<ptok->C<<endl;
+	cout<<"fast ion gyroradius:\t"<<pslowing->rho_h*ptok->a <<" m"<<endl;
 	cout<<fixed;
 	
 	

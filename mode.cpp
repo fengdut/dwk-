@@ -151,5 +151,12 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Free1D(sint);	
 }
 
+void find_rs()
+{
+	
+}
+
+
+
 
 

@@ -6,12 +6,11 @@ CPPFLAGS =  -g -O0
 LDFLAGS = 
 CFLAGS = -fopenmp 
 
-LIBCONFIG_DIR=/usr/local
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++
 COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LIBCONFIG) -c 
 
-LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(BOOST) $(LIBCONFIG)  
+LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG)  
 
 LIBA = 
 

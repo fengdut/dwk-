@@ -46,6 +46,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		tok.lookupValue("n0",ptok->n0);
 		tok.lookupValue("mi",ptok->mi);
 		tok.lookupValue("E_i0",ptok->E_i0);
+		tok.lookupValue("m_ep",ptok->m_ep);
 		
 		Setting& set=tok["qc"];
 		int lqc=set.getLength();
@@ -109,7 +110,6 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		pslowing->Ec =Ec;
 		double rho_h,rho_d;
 		int sigma;
-		slowing.lookupValue("rho_h",rho_h);
 		slowing.lookupValue("rho_d",rho_d);
 		slowing.lookupValue("sigma",sigma);
 		pslowing->rho_h = rho_h;
@@ -142,6 +142,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		modeset.lookupValue("omega_err",mode->omega_err);
 		modeset.lookupValue("max_iter",mode->max_iter);
 		modeset.lookupValue("max_iterg",mode->max_iterg);
+		modeset.lookupValue("dw_f",mode->dw_f);
 
 
 		mode->n=n;
@@ -181,10 +182,12 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 	ptok->rho_m = ptok->mi * ptok->n0 *1.6726e-27;
 	ptok->tau_At =sqrt(3.0) *mode->r_s*ptok->a / (ptok->Bps/sqrt(ptok->rho_m*4.0*M_PI*1.0e-7));
 	ptok->omega_A = 2.0 /(ptok->tau_At *ptok->s);
-	ptok->v_i0 = sqrt(2.0*ptok->E_i0 *1.0e3*1.6022e-19/(ptok->mi*1.6726e-27));
+	ptok->v_i0 = sqrt(2.0*ptok->E_i0 *1.0e3*1.6022e-19/(ptok->m_ep*1.6726e-27));
 	ptok->omega_i0 = ptok->v_i0/ptok->R0;
 		
 	ptok->C = ptok->omega_A/(ptok->omega_i0*4.0/M_PI *(mode->r_s*ptok->a/ptok->R0*0.5)*(mode->r_s*ptok->a/ptok->R0*0.5));
 	ptok->beta_h=0.0;
+	
+	pslowing->rho_h=ptok->m_ep*1.6726e-27 *ptok->v_i0/(1.6022e-19*ptok->Bt)/ptok->a;
 	return 0;
 }

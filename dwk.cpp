@@ -104,7 +104,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                 dwk += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
         }
         Free3D(dwk_3D);
-	return dwk;
+	return dwk-mode->dw_f;
 }
 
 //dwk(omega)
@@ -147,6 +147,7 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
         		}
 			dwk_array[iw] += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
 		}
+		dwk_array[iw] =dwk_array[iw]-mode->dw_f;
 		cout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
 		fout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
 	//	cout<<real(omega)<<'\t'<<endl;
