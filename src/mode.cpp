@@ -32,7 +32,8 @@ double fxi_t(double x,double r_s, double delta_r)
 	}
 	return -x*(delta_r -2*x +r_s - 0.5*delta_r)/delta_r;
 }
-void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,complex<double> **G_2D, double * const q_1D )
+void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double * const q_1D, 
+	complex<double> **G_2D)
 {	
 	double r_s=pmode->r_s;
 	double delta_r =pmode->delta_r;
@@ -151,9 +152,22 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Free1D(sint);	
 }
 
-void find_rs()
+void find_rs(Grid * const grid,double *const q_1D,double const q_s, double *r_s)
 {
+	assert(q_s>0&&q_s<100);
+	for(int i=1;i<grid->nx;i++)
+	{
+		if((q_1D[i-1]-q_s)*(q_1D[i]-q_s)<=0)
+		{
+			double dr =grid->dr;
+			double dq=abs(q_s-q_1D[i-1])/abs((q_1D[i]-q_1D[i-1]));
+			*r_s = 	grid->xarray[i-1] +dr *(1-dq);
+			return;	
+			
+		}
+	}
 	
+	cout<<"can not find r_s with q_s= "<<q_s<<endl;
 }
 
 

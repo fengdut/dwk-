@@ -751,14 +751,6 @@ Appendix
 \end_layout
 
 \begin_layout Standard
-\begin_inset External
-	template PDFPages
-	filename kinetic4v1.pdf
-	draft
-	extra LaTeX "pages="
-
-\end_inset
-
 
 \end_layout
 

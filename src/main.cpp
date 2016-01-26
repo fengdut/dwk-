@@ -17,12 +17,11 @@ using namespace std;
 int main(int arg,char * argx[])
 {	
 	clock_t c_start=clock();
-	if(cmdOptionExists(argx, argx+arg, "-h"))  //print help information only
+	if(cmdOptionExists(argx, argx+arg, "-h"))//print help information only
 	{
 		help();
 		return 0;
 	}
-
 	char default_ifilename[]="dwk.cfg";
 	char default_ofilename[]="dwk_omega_dwk.out";
 	char *ifilename =getCmdOption(argx,argx+arg,"-i");
@@ -44,6 +43,7 @@ int main(int arg,char * argx[])
 	showtokamak(&tok,&slowing);
 	pgrid.showgrid();	
 	
+//alloc memory
 	double *q_1D,*J_q_1D;
 	Alloc1D(q_1D,grid.nx);
 	Alloc1D(J_q_1D,grid.nx);
@@ -70,13 +70,16 @@ int main(int arg,char * argx[])
 	Alloc3D(Theta_3D,grid.nx,grid.nL,grid.ntheta);
 	complex<double> ***dwk_3D;
 	Alloc3D(dwk_3D,grid.nx,grid.nL,grid.nE);
+//end alloc memory
 
 //begin calculate non-omega parts------------------------
 	qprofile(grid.nx,grid.xarray,tok.qc,q_1D);
+	find_rs(&grid,q_1D,mode.q_s, &mode.r_s);
+	cout<<"r_s="<<mode.r_s<<endl;
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D);	
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
-	G_R_theta(&grid,&tok,&slowing,&mode,G_2D,q_1D); 
+	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_2D); 
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);

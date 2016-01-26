@@ -133,7 +133,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		modeset.lookupValue("m",m);
 		modeset.lookupValue("pa",pa);
 		modeset.lookupValue("pb",pb);
-		modeset.lookupValue("r_s",r_s);
+		modeset.lookupValue("q_s",mode->q_s);
 		modeset.lookupValue("delta_r",delta_r);
 		modeset.lookupValue("omega_0",omega_0);
 		modeset.lookupValue("omega_1",omega_1);

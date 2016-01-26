@@ -1,4 +1,5 @@
 *.o
 dwk++
 *.swp
+dwk++.dSYM/
 
