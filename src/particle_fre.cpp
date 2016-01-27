@@ -30,7 +30,7 @@ void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,doubl
 	}
 }
 
-void Yps(const Grid *grid, complex<double> ** G_2D, double ** Chi_2D, double *** b_lambda_3D, double *** lambda_b_3D,double *** Theta_3D,int p,std::complex<double>** Yps_2D)
+void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double *** b_lambda_3D, double *** lambda_b_3D,double *** Theta_3D,int p,std::complex<double>*** Yps_3D)
 {
 	using namespace std;
 	complex<double> *tY;	
@@ -40,31 +40,22 @@ void Yps(const Grid *grid, complex<double> ** G_2D, double ** Chi_2D, double ***
 //	cout<<"G_2D ";
 //	max_min_2D(grid->nx,grid->nL,G_2D);
 	
+	complex<double> texp=0;
+	complex<double> ti(0,-1.0);
 	for(int ix=0;ix<grid->nx;ix++)
 		for(int iL=0;iL<grid->nL;iL++)
 		{
-			complex<double> texp=0;
+			for(int iE=0;iE<grid->nE;iE++)
+			{
 			for(int it=0;it<grid->ntheta;it++)
 			{
-				complex<double> ti(0,-1.0);
-				
 				texp =exp(ti *Chi_2D[ix][iL]*(double)p*Theta_3D[ix][iL][it]);	
-			//	texp=1.0;
-				tY[it] =G_2D[ix][it] *b_lambda_3D[ix][iL][it] * (lambda_b_3D[ix][iL][it] +2*(1-lambda_b_3D[ix][iL][it]))*texp;
- 
+				tY[it] =G_3D[ix][iE][it] *b_lambda_3D[ix][iL][it] * (lambda_b_3D[ix][iL][it] +2*(1-lambda_b_3D[ix][iL][it]))*texp;
 			}
-			Yps_2D[ix][iL] = simpintegral(tY,grid->ntheta,grid->dtheta)*Chi_2D[ix][iL]/(2*M_PI);
+			Yps_3D[ix][iL][iE] = simpintegral(tY,grid->ntheta,grid->dtheta)*Chi_2D[ix][iL]/(2*M_PI);
+			}
 		}	
 	Free1D(tY);
-}
-
-void Yp_2( std::complex<double> ** const Yps_2D, Grid * const grid, double **Yp2)
-{
-	for(int ix=0;ix<grid->nx;ix++)
-	for(int iL=0;iL<grid->nL;iL++)
-	{
-		Yp2[ix][iL] =abs(Yps_2D[ix][iL])*abs(Yps_2D[ix][iL]);	
-	}
 }
 
 void omega_b(Grid * const grid, Tokamak * const tok,double ** const kappa, double ** const K, double * const q_1D,double *** omega_b_3D)

@@ -376,6 +376,47 @@ To simplify the code, we use
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho_{d}(r,E)=\frac{q}{2}\rho_{0}\sqrt{\frac{E}{1-\Lambda_{0,b}}}\left[\Lambda_{0b}+2(1-\Lambda_{_{0}b})\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\Lambda_{0}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho_{d}(r,E)=q\rho_{0}\sqrt{E}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+G\text{(r,E,\theta)}=(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r})\xi_{\theta}(\hat{r}(\bar{r},\rho_{d},\theta),\theta)+(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta})\xi_{r}(\hat{r}(\bar{r},\rho_{d},\theta),\theta)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $g^{rr}=1+\frac{\varepsilon cos\theta}{2}$
 \end_inset
 

@@ -22,8 +22,6 @@ typedef struct MODE
 	double dw_f;
 }Mode;
 
-//void G_R_theta(Grid * const grid, Tokamak * const tok,Mode * const pmode,double **G_2D);
-void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode,double **G_2D);
-void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double *const q_1D,std::complex<double> **G_2D);
+void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double *const q_1D,std::complex<double> ***G_3D);
 
 #endif

@@ -6,7 +6,7 @@
 #include<assert.h>
 
 //Simpson's 3/8 rule
-//ny mush equiv to 3*n+1
+//ny must be equiv to 3*n+1
 //double simpintegral(double *y,int ny,double dx);
 
 template <class datatype>
@@ -25,7 +25,6 @@ datatype simpintegral(datatype * const y, int const  ny, double const dx)
         sum =sum -2.0*(y[0]+y[ny-1]);
         sum =dx*3.0*sum*0.125;
         return sum;
-
 }
 
 template <class datatype>

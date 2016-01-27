@@ -47,7 +47,8 @@ int main(int arg,char * argx[])
 	Alloc1D(J_q_1D,grid.nx);
 	double **Chi_2D, **K_2D,**kappa_2D;	
 	complex<double> ***G_3D;
-	Alloc2D(G_3D,grid.nx,grid.ntheta);
+	Alloc3D(G_3D,grid.nx,grid.nE,grid.ntheta);
+
 	Alloc2D(Chi_2D,grid.nx,grid.nL);
 	Alloc2D(K_2D,grid.nx,grid.nL);
 	Alloc2D(kappa_2D,grid.nx,grid.nL);
@@ -78,7 +79,7 @@ int main(int arg,char * argx[])
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D);	
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
-	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_2D); 
+	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
@@ -95,8 +96,8 @@ int main(int arg,char * argx[])
 		cout<<"*********************************"<<endl;
 		cout<<"scan dwk(omega)"<<endl;
                 dwk_omega_array(&grid, &mode, omega_phi_3D, omega_b_3D, tau_b_3D,
-                        Yps_2D, J_q_1D, FE_3D, omega_star_3D,
-                        G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,
+                        J_q_1D, FE_3D, omega_star_3D,
+                        G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,
                         dwk_array,ofilename);
 		cout<<"outputfile: "<<ofilename<<endl;
 		cout<<"end scan"<<endl;
@@ -107,8 +108,8 @@ int main(int arg,char * argx[])
 	cout<<"this is a test run "<<endl;
 	complex<double> omega_0,dwk_0;
 	omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
-			Yps_2D,J_q_1D,FE_3D,omega_star_3D,
-			G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
+			J_q_1D,FE_3D,omega_star_3D,
+			G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
 	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
 	cout<<"beta_h is:"<<tok.beta_h<<endl;
 	complex<double> err=0;
@@ -124,8 +125,8 @@ int main(int arg,char * argx[])
 		cout<<"*********************************"<<endl;
 		cout<<"find the solution"<<endl;
 		omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
-                        Yps_2D,J_q_1D,FE_3D,omega_star_3D,
-                        G_2D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
+                        J_q_1D,FE_3D,omega_star_3D,
+                        G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
         	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
         	cout<<"beta_h is:"<<tok.beta_h<<endl;
 		err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
@@ -142,7 +143,7 @@ int main(int arg,char * argx[])
 
 	Free1D(dwk_array);	
 	Free1D(J_q_1D);		Free1D(q_1D);
-        Free2D(Chi_2D); 	Free2D(G_2D);
+        Free2D(Chi_2D); 	Free3D(G_3D);
         Free2D(kappa_2D);	Free2D(K_2D);
 	Free3D(Yps_3D);
 	Free3D(dwk_3D); 	Free3D(tau_b_3D);

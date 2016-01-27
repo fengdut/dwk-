@@ -33,21 +33,25 @@ double fxi_t(double x,double r_s, double delta_r)
 	return -x*(delta_r -2*x +r_s - 0.5*delta_r)/delta_r;
 }
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double * const q_1D, 
-	complex<double> **G_2D)
+	complex<double> ***G_3D)
 {	
 	double r_s=tok->r_s;
 	double delta_r =pmode->delta_r;
 	double *cost,*sint;
+	complex<double> *expt;
 	double *xi_r,*xi_t;
 	Alloc1D(cost,grid->ntheta);
 	Alloc1D(sint,grid->ntheta);
+	Alloc1D(expt,grid->ntheta);
 	Alloc1D(xi_r,grid->nx);
 	Alloc1D(xi_t,grid->nx);
 	
+	complex<double> ti=-1.0i;
 	for(int it=0;it<grid->ntheta;it++)
 	{
 		cost[it]=cos(it*grid->dtheta);
 		sint[it]=sin(it*grid->dtheta);
+		expt[it]=exp(ti*double(it)*grid->dtheta);
 	}
 	int nx1,nx2;
 	nx1 = ceil((r_s-0.5*delta_r)/grid->dr);
@@ -57,7 +61,6 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 		xi_r[ix]=1.0;
 		xi_t[ix]=-1.0;
 	}
-		
 	for(int ix=nx1;ix<nx2;ix++)
 	{
 		xi_r[ix] =  (delta_r -  grid->xarray[ix] +r_s - 0.5*delta_r)/delta_r;
@@ -71,43 +74,32 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	for(int ix=0;ix<grid->nx;ix++)
 		xi_t[ix] = xi_t[ix] *grid->xarray[ix];
 	
-	complex<double> ** xi_r2d, ** xi_t2d;
-	Alloc2D(xi_r2d,grid->nx,grid->ntheta);
-	Alloc2D(xi_t2d,grid->nx,grid->ntheta);
-		
-	complex<double> ti=-1.0i;
-	for(int ix=0;ix<grid->nx;ix++)
-	for(int it=0;it<grid->ntheta;it++)
-	{
-		xi_r2d[ix][it] = exp(ti*(double)it*grid->dtheta)   *fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
-		xi_t2d[ix][it] = -1.0*ti*exp(ti*(double)it*grid->dtheta)*fxi_t(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
-	}
-	
-
-	double **grr,**gtt,**grt,**kappa_r,**kappa_t;
-	Alloc2D(grr,grid->nx,grid->ntheta);
-	Alloc2D(gtt,grid->nx,grid->ntheta);
-	Alloc2D(grt,grid->nx,grid->ntheta);
-	Alloc2D(kappa_r,grid->nx,grid->ntheta);
-	Alloc2D(kappa_t,grid->nx,grid->ntheta);
-			
 	for(int ix=0;ix<grid->nx;ix++)
 	{	
+		for(int iE=0;iE<grid->nE;iE++)
+		{
+			double rho_d= q_1D[ix] *slow->rho_h*sqrt(grid->Earray[iE]);   //Lambda_0==0 
 		for(int it=0;it<grid->ntheta;it++)
 		{
-			double x	=grid->xarray[ix]+slow->rho_d*cost[it];	
+			double x	=grid->xarray[ix]+rho_d*cost[it];	
 			double teps	=tok->eps*x;
 			double ttheta   =grid->tarray[it];
-			grr[ix][it] =1.0 +teps *cost[it]*0.5;
-			gtt[ix][it] =(1.0-2.5 *teps *cost[it])/(x*x);
-			grt[ix][it] =-1.5*teps *sint[it] /x;
+			double tgrr,tgtt,tgrt,tkappa_r,tkappa_t;
+			complex<double> txi_t,txi_r;
 			
+			tgrr =1.0 +teps *cost[it]*0.5;
+			tgtt =(1.0-2.5 *teps *cost[it])/(x*x);
+			tgrt =-1.5*teps *sint[it] /x;
+			
+			tkappa_r = -1.0*cost[it]*tok->eps +tok->eps *teps*0.25 - tok->eps *1.25*teps*(cos(2*ttheta)-1)-tok->eps*tok->eps *x/q_1D[ix];
+			tkappa_t = teps*sint[it]+ 1.25 *teps*teps *sin(2*ttheta);
 
-			kappa_r[ix][it] = -1.0*cost[it]*tok->eps +tok->eps *teps*0.25 - tok->eps *1.25*teps*(cos(2*ttheta)-1)-tok->eps*tok->eps *x/q_1D[ix];
-			kappa_t[ix][it] = teps*sint[it]+ 1.25 *teps*teps *sin(2*ttheta);
-			G_2D[ix][it] =    (gtt[ix][it] *kappa_t[ix][it] +grt[ix][it] *kappa_r[ix][it])*(xi_t2d[ix][it]) 
-					+ (grr[ix][it] *kappa_r[ix][it] +grt[ix][it] *kappa_t[ix][it])*(xi_r2d[ix][it]);
+			txi_r  = 	 expt[it]*fxi_r(grid->xarray[ix]+rho_d*cost[it],r_s,delta_r);
+			txi_t  = -1.0*ti*expt[it]*fxi_t(grid->xarray[ix]+rho_d*cost[it],r_s,delta_r);
+			
+			G_3D[ix][iE][it] =    (tgtt *tkappa_t +tgrt *tkappa_r)*txi_t + (tgrr *tkappa_r +tgrt *tkappa_t)*txi_r;
 					
+		}	
 		}
 	}
 /*	
@@ -131,18 +123,11 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	cout<<"xi_r:\t";
         max_min_2D(grid->nx,grid->ntheta,xi_r2d);
 */	
-
-	Free2D(kappa_t);
-	Free2D(kappa_r);
-	Free2D(grt);
-	Free2D(gtt);
-	Free2D(grr);
-	Free2D(xi_r2d);
-	Free2D(xi_t2d);
 	Free1D(xi_t);
 	Free1D(xi_r);
 	Free1D(cost);
 	Free1D(sint);	
+	Free1D(expt);
 }
 
 
