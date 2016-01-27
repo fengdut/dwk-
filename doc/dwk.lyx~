@@ -290,7 +290,7 @@ The transit frequency in toroidal:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-{\color{red}Y(r,\Lambda)=\frac{1}{2\pi}\int_{0}^{2\pi}\chi d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta)exp\left(-i\chi p\Theta\right)}
+{\color{red}Y(r,\Lambda,E)=\frac{1}{2\pi}\int_{0}^{2\pi}\chi d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta,E)exp\left(-i\chi p\Theta\right)}
 \end{equation}
 
 \end_inset
@@ -332,7 +332,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-G=(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r})\xi_{\theta}(\hat{r}(\bar{r},\rho_{d},\theta),\theta)+(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta})\xi_{r}(\hat{r}(\bar{r},\rho_{d},\theta),\theta)
+G\text{(r,\Lambda,E,\theta)}=(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r})\xi_{\theta}(\hat{r}(\bar{r},\rho_{d},\theta),\theta)+(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta})\xi_{r}(\hat{r}(\bar{r},\rho_{d},\theta),\theta)
 \end{equation}
 
 \end_inset
@@ -351,7 +351,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\rho_{d}=\frac{q}{2}\rho_{0}\sqrt{\frac{E}{1-\Lambda/b}}\left[\frac{\Lambda}{b}+2(1-\frac{\Lambda}{b})\right]=\frac{q}{2}\rho_{0}\sqrt{\frac{E}{1-\Lambda_{b}}}\left[\Lambda_{b}+2(1-\Lambda_{b})\right]
+\rho_{d}(r,\Lambda,E)=\frac{q}{2}\rho_{0}\sqrt{\frac{E}{1-\Lambda/b}}\left[\frac{\Lambda}{b}+2(1-\frac{\Lambda}{b})\right]=\frac{q}{2}\rho_{0}\sqrt{\frac{E}{1-\Lambda_{b}}}\left[\Lambda_{b}+2(1-\Lambda_{b})\right]
 \end{equation}
 
 \end_inset
@@ -368,7 +368,7 @@ To simplify the code, we use
 \begin_inset Formula $\Lambda$
 \end_inset
 
-in 
+ in 
 \begin_inset Formula $\rho_{d}$
 \end_inset
 
@@ -616,13 +616,9 @@ Input file
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
-filename "/Volumes/fwang/dwk++/examples/dwk.cfg"
+filename "../examples/dwk.cfg"
 lstparams "caption={a input file example}"
 
 \end_inset

@@ -46,13 +46,13 @@ int main(int arg,char * argx[])
 	Alloc1D(q_1D,grid.nx);
 	Alloc1D(J_q_1D,grid.nx);
 	double **Chi_2D, **K_2D,**kappa_2D;	
-	complex<double> **G_2D;
-	Alloc2D(G_2D,grid.nx,grid.ntheta);
+	complex<double> ***G_3D;
+	Alloc2D(G_3D,grid.nx,grid.ntheta);
 	Alloc2D(Chi_2D,grid.nx,grid.nL);
 	Alloc2D(K_2D,grid.nx,grid.nL);
 	Alloc2D(kappa_2D,grid.nx,grid.nL);
-	complex<double> **Yps_2D;	
-	Alloc2D(Yps_2D,grid.nx,grid.nL);
+	complex<double> ***Yps_3D;	//Yps(r,L) to Yps(r,L,E)	
+	Alloc3D(Yps_3D,grid.nx,grid.nL,grid.nE);
 	double *** omega_b_3D,***omega_phi_3D,*** tau_b_3D;
 	Alloc3D(omega_b_3D,grid.nx,grid.nL,grid.nE);
 	Alloc3D(omega_phi_3D,grid.nx,grid.nL,grid.nE);
@@ -144,7 +144,7 @@ int main(int arg,char * argx[])
 	Free1D(J_q_1D);		Free1D(q_1D);
         Free2D(Chi_2D); 	Free2D(G_2D);
         Free2D(kappa_2D);	Free2D(K_2D);
-	Free2D(Yps_2D);
+	Free3D(Yps_3D);
 	Free3D(dwk_3D); 	Free3D(tau_b_3D);
 	Free3D(omega_phi_3D);	Free3D(omega_b_3D);
 	Free3D(Theta_3D);

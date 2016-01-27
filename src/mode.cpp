@@ -79,14 +79,10 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	for(int ix=0;ix<grid->nx;ix++)
 	for(int it=0;it<grid->ntheta;it++)
 	{
-	//	cout<<"fxi_r:"<<grid->xarray[ix]+slow->rho_d*cost[it]<<"\t"<<fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r)<<endl;
 		xi_r2d[ix][it] = exp(ti*(double)it*grid->dtheta)   *fxi_r(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
 		xi_t2d[ix][it] = -1.0*ti*exp(ti*(double)it*grid->dtheta)*fxi_t(grid->xarray[ix]+slow->rho_d*cost[it],r_s,delta_r);  //rho_d should be here
 	}
 	
-//	cout<<"xi_2D ";
-//	max_min_2D(grid->nx,grid->ntheta,xi_r2d);
-//	max_min_2D(grid->nx,grid->ntheta,xi_t2d);
 
 	double **grr,**gtt,**grt,**kappa_r,**kappa_t;
 	Alloc2D(grr,grid->nx,grid->ntheta);
