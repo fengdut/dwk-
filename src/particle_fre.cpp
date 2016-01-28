@@ -7,6 +7,8 @@
 #include"AllocArray.h"
 #include"simpintegral.h"
 #include"vector.h"
+#include"omp.h"
+#include<ctime>
 
 using namespace std;
 void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,double **kappa_2D,double **K_2D)
@@ -33,29 +35,41 @@ void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,doubl
 void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double *** b_lambda_3D, double *** lambda_b_3D,double *** Theta_3D,int p,std::complex<double>*** Yps_3D)
 {
 	using namespace std;
-	complex<double> *tY;	
-	Alloc1D(tY,grid->ntheta);
-//	cout<<"Chi_2D ";
-//	max_min_2D(grid->nx,grid->nL,Chi_2D);
-//	cout<<"G_2D ";
-//	max_min_2D(grid->nx,grid->nL,G_2D);
+   clock_t c_start=clock();
 	
-	complex<double> texp=0;
-	complex<double> ti(0,-1.0);
-	for(int ix=0;ix<grid->nx;ix++)
+	#pragma omp parallel 
+	{	
+	complex<double>*tY;	
+	Alloc1D(tY,grid->ntheta);
+	int id=omp_get_thread_num();
+	int np=omp_get_num_threads();
+
+	int ni=grid->nx/np;
+	int nm=0;
+	if(id+1==np)
+		nm=grid->nx%np;	
+
+	for(int ix=id*ni;ix<(id+1)*ni+nm;ix=ix+1)
+	{
+		complex<double> texp=0;
+		complex<double> ti(0,-1.0);
 		for(int iL=0;iL<grid->nL;iL++)
 		{
+			double tchi=Chi_2D[ix][iL];
 			for(int iE=0;iE<grid->nE;iE++)
 			{
 			for(int it=0;it<grid->ntheta;it++)
 			{
-				texp =exp(ti *Chi_2D[ix][iL]*(double)p*Theta_3D[ix][iL][it]);	
+				texp =exp(ti *tchi*(double)p*Theta_3D[ix][iL][it]);	
 				tY[it] =G_3D[ix][iE][it] *b_lambda_3D[ix][iL][it] * (lambda_b_3D[ix][iL][it] +2*(1-lambda_b_3D[ix][iL][it]))*texp;
 			}
-			Yps_3D[ix][iL][iE] = simpintegral(tY,grid->ntheta,grid->dtheta)*Chi_2D[ix][iL]/(2*M_PI);
+			Yps_3D[ix][iL][iE] = simpintegral(tY,grid->ntheta,grid->dtheta)*tchi/(2*M_PI);
 			}
 		}	
+	}
 	Free1D(tY);
+	}
+      cout<<"time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<endl;	
 }
 
 void omega_b(Grid * const grid, Tokamak * const tok,double ** const kappa, double ** const K, double * const q_1D,double *** omega_b_3D)
