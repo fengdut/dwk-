@@ -1,6 +1,6 @@
 PRGM = dwk++
 
-CPPFLAGS =   -O2
+CPPFLAGS =   -g
 LDFLAGS = 
 CFLAGS = -fopenmp 
 

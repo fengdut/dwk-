@@ -78,14 +78,17 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	{	
 		for(int iE=0;iE<grid->nE;iE++)
 		{
-			double rho_d= q_1D[ix] *slow->rho_h*sqrt(grid->Earray[iE]);   //Lambda_0==0 
+		//	double rho_d= q_1D[ix] *slow->rho_h*sqrt(grid->Earray[iE]);   //Lambda_0==0 
 		for(int it=0;it<grid->ntheta;it++)
 		{
-			double x	=grid->xarray[ix]+rho_d*cost[it];	
-			double teps	=tok->eps*x;
 			double ttheta   =grid->tarray[it];
 			double tgrr,tgtt,tgrt,tkappa_r,tkappa_t;
 			complex<double> txi_t,txi_r;
+			double b = 1 +	grid->xarray[ix]*tok->eps *cost[it];
+			double lb = slow->L0/b;
+			double rho_d = q_1D[ix] *0.5 *slow->rho_h *sqrt(grid->Earray[iE]/(1-lb))*(2-lb);
+			double x	=grid->xarray[ix]+rho_d*cost[it];	
+			double teps	=tok->eps*x;
 			
 			tgrr =1.0 +teps *cost[it]*0.5;
 			tgtt =(1.0-2.5 *teps *cost[it])/(x*x);

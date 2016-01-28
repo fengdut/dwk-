@@ -5,6 +5,7 @@
 #include"vector.h"
 #include"AllocArray.h"
 #include"tokamak.h"
+#include"stdlib.h"
 using namespace std;
 
 
@@ -83,7 +84,7 @@ CGrid::CGrid(Grid *pgrid,Slowing * pslowing )
         m_pgrid->dr= (pgrid->rb- pgrid->ra)/(pgrid->nx-1);
 
         m_pgrid->La=1e-9;
-        m_pgrid->Lb=pslowing->L0+pslowing->Ld*4.0;
+        m_pgrid->Lb=pslowing->L0+pslowing->Ld*2.0;
         m_pgrid->dL= (pgrid->Lb - pgrid->La)/(pgrid->nL-1);
 
         m_pgrid->Ea=1e-2;

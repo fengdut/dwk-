@@ -63,16 +63,19 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 		{
 			Alloc3D(gYps_3D[i],grid->nx,grid->nL,grid->nE);
 			Yps(grid,G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,mode->pa+i,gYps_3D[i]);	
+			 cout<<"Yps_t:\t";
+        		max_min_3D(grid->nx,grid->nL,grid->nE,gYps_3D[i]);
 		}
 	}
         Alloc3D(dwk_3D,grid->nx,grid->nL,grid->nE);
         for(int p=mode->pa;p<=mode->pb;p++)
         {
+		int ip=p-mode->pa;
                 for(int ix=0;ix<grid->nx;ix++)
                 for(int iL=0;iL<grid->nL;iL++)
                 for(int iE=0;iE<grid->nE;iE++)
                 {
-                        complex<double> Yp_R =abs(gYps_3D[p][ix][iL][iE])*abs(gYps_3D[p][ix][iL][iE])
+                        complex<double> Yp_R =abs(gYps_3D[ip][ix][iL][iE])*abs(gYps_3D[ip][ix][iL][iE])
                         		/(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
@@ -81,7 +84,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                 dwk += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
         }
         Free3D(dwk_3D);
-	return dwk-mode->dw_f;
+	return dwk+mode->dw_f;
 }
 
 //dwk(omega)
@@ -106,7 +109,6 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
 	      	dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
                 G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D);
 
-		dwk_array[iw] =dwk_array[iw]-mode->dw_f;
 		cout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
 		fout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
 	}

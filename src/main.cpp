@@ -52,8 +52,6 @@ int main(int arg,char * argx[])
 	Alloc2D(Chi_2D,grid.nx,grid.nL);
 	Alloc2D(K_2D,grid.nx,grid.nL);
 	Alloc2D(kappa_2D,grid.nx,grid.nL);
-	complex<double> ***Yps_3D;	//Yps(r,L) to Yps(r,L,E)	
-	Alloc3D(Yps_3D,grid.nx,grid.nL,grid.nE);
 	double *** omega_b_3D,***omega_phi_3D,*** tau_b_3D;
 	Alloc3D(omega_b_3D,grid.nx,grid.nL,grid.nE);
 	Alloc3D(omega_phi_3D,grid.nx,grid.nL,grid.nE);
@@ -139,13 +137,16 @@ int main(int arg,char * argx[])
 	}
 	cout<<"      omega_0"<<"\t\t\t\t"<<"dwk"<<"\t\t\t beta_h"<<endl;
 	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h<<endl;	
+	cout <<"in omega_A unit"<<endl;
+	cout <<"     omega_0:"<<omega_0*tok.omega_i0/tok.omega_A<<endl;
+	cout <<"in kHz unit" <<endl;
+	cout <<"     omega_0:"<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
 	cout<<"*************************************************************"<<endl;
 
 	Free1D(dwk_array);	
 	Free1D(J_q_1D);		Free1D(q_1D);
         Free2D(Chi_2D); 	Free3D(G_3D);
         Free2D(kappa_2D);	Free2D(K_2D);
-	Free3D(Yps_3D);
 	Free3D(dwk_3D); 	Free3D(tau_b_3D);
 	Free3D(omega_phi_3D);	Free3D(omega_b_3D);
 	Free3D(Theta_3D);

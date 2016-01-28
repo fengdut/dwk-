@@ -9,6 +9,7 @@
 #include"vector.h"
 #include"omp.h"
 #include<ctime>
+#include"stdlib.h"
 
 using namespace std;
 void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,double **kappa_2D,double **K_2D)
@@ -25,9 +26,16 @@ void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,doubl
 			if(k>1) // for passing particles
 			{
 				double K=ellpk(1/k);
-				K_2D[ix][iL]=K;
+					K_2D[ix][iL]=K;  //passing particles
 				Chi_2D[ix][iL] = sigma *M_PI *sqrt(k*teps *grid->Larray[iL]*0.5)/K;
 			}
+			else
+			{
+				K_2D[ix][iL]=ellpk(k);	//trapped particles
+				cout<<"trapped"<<endl;
+				cerr<<"trapped particle is not finish"<<endl;
+				exit(-1);
+			}	
 		}
 	}
 }
@@ -35,12 +43,14 @@ void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,doubl
 void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double *** b_lambda_3D, double *** lambda_b_3D,double *** Theta_3D,int p,std::complex<double>*** Yps_3D)
 {
 	using namespace std;
-   clock_t c_start=clock();
+   	clock_t c_start=clock();
 	
-	#pragma omp parallel 
+//	#pragma omp parallel 
 	{	
 	complex<double>*tY;	
+	complex<double>*tYb;	
 	Alloc1D(tY,grid->ntheta);
+	Alloc1D(tYb,grid->ntheta);
 	int id=omp_get_thread_num();
 	int np=omp_get_num_threads();
 
@@ -49,6 +59,16 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 	if(id+1==np)
 		nm=grid->nx%np;	
 
+	 cout<<"G_3D:\t";
+        max_min_3D(grid->nx,grid->nE,grid->ntheta,G_3D);
+
+	  cout<<"b_lambda:\t";
+        max_min_3D(grid->nx,grid->nL,grid->ntheta,b_lambda_3D);
+
+	   cout<<"lambda_b:\t";
+        max_min_3D(grid->nx,grid->nL,grid->ntheta,lambda_b_3D);
+
+
 	for(int ix=id*ni;ix<(id+1)*ni+nm;ix=ix+1)
 	{
 		complex<double> texp=0;
@@ -56,18 +76,25 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 		for(int iL=0;iL<grid->nL;iL++)
 		{
 			double tchi=Chi_2D[ix][iL];
-			for(int iE=0;iE<grid->nE;iE++)
-			{
+			double tchi2pi=tchi/(2.0*M_PI);		
+			
 			for(int it=0;it<grid->ntheta;it++)
 			{
-				texp =exp(ti *tchi*(double)p*Theta_3D[ix][iL][it]);	
-				tY[it] =G_3D[ix][iE][it] *b_lambda_3D[ix][iL][it] * (lambda_b_3D[ix][iL][it] +2*(1-lambda_b_3D[ix][iL][it]))*texp;
+				texp 	=exp(ti*tchi*(double)p*Theta_3D[ix][iL][it]);
+                                tY[it] 	=b_lambda_3D[ix][iL][it] * (2.0-lambda_b_3D[ix][iL][it])*texp;		
 			}
-			Yps_3D[ix][iL][iE] = simpintegral(tY,grid->ntheta,grid->dtheta)*tchi/(2*M_PI);
+			for(int iE=0;iE<grid->nE;iE++)
+			{
+				for(int it=0;it<grid->ntheta;it++)
+				{
+					tYb[it] =G_3D[ix][iE][it] *(tY[it]);
+				}
+				Yps_3D[ix][iL][iE] = simpintegral_o(tYb,grid->ntheta,grid->dtheta)*tchi2pi;
 			}
 		}	
 	}
 	Free1D(tY);
+	Free1D(tYb);
 	}
       cout<<"time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<endl;	
 }
@@ -84,7 +111,11 @@ void omega_b(Grid * const grid, Tokamak * const tok,double ** const kappa, doubl
 			for(int iE=0;iE<grid->nE;iE++)
 			{
 				double E = grid->Earray[iE];
-				omega_b_3D[ix][iL][iE] = M_PI *sqrt(kappa[ix][iL])/K[ix][iL]*sqrt(x*tok->eps*L*0.5)/q *sqrt(E);	
+				if(kappa[ix][iL]>=1.0)
+					omega_b_3D[ix][iL][iE] = M_PI *sqrt(kappa[ix][iL])/K[ix][iL]*sqrt(x*tok->eps*L*0.5)/q *sqrt(E);//kappa>1
+				else
+					omega_b_3D[ix][iL][iE] = M_PI /K[ix][iL]*sqrt(x*tok->eps*L*0.5)/q *sqrt(E);//kappa<1
+					
 				//omega_b_3D[ix][iL][iE] = 1;	
 			}
 		}
