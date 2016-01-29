@@ -109,12 +109,8 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		pslowing->E0 =E0;
 		pslowing->Ed =Ed;
 		pslowing->Ec =Ec;
-		double rho_h,rho_d;
 		int sigma;
-		slowing.lookupValue("rho_d",rho_d);
 		slowing.lookupValue("sigma",sigma);
-		pslowing->rho_h = rho_h;
-		pslowing->rho_d = rho_d;
 		pslowing->sigma = sigma;
 	}	
 	catch(const SettingNotFoundException &nfex)

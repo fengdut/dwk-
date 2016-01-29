@@ -2,8 +2,8 @@ clear;
 figure(2);
 clf;
 figure(2);
-%data=load('dwk_omega_dwk.out');
-data=load('test.out');
+data=load('omega_dwk.out');
+%data=load('test.out');
 
 romega=data(:,1);
 iomega=data(:,2);
@@ -15,9 +15,9 @@ idwk=data(:,4);
 % 
 % % 
  hax=axes('Position',[0.08 0.15 0.4 0.75],'FontSize',24,'FontName','Latex'); 
- plot(romega,rdwk-0.064,'ro--');
+ plot(romega,rdwk,'ro--');
  
- grid on;
+ grid on;5
  
 %  ylim([0-0.12 0.1]);
 % xlim([0 1.1]);
