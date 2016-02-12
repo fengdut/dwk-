@@ -18,7 +18,10 @@ void qprofile(Grid *const grid,Tokamak *ptok, double *q_1D)
 		double x2=x*x;
 		double x3=x2*x;
 		double x4=x3*x;
-		q_1D[i] = qc[0] +qc[1]*x +qc[2]*x2 + qc[3]*x3 +qc[4]*x4;
+		double x5=x4*x;
+		double x6=x5*x;
+		double x7=x6*x;
+		q_1D[i] = qc[0] +qc[1]*x +qc[2]*x2 + qc[3]*x3 +qc[4]*x4+qc[5]*x5+qc[6]*x6+qc[7]*x7;
 	}
 	
 	assert(ptok->q_s>0&&ptok->q_s<100);
@@ -40,7 +43,7 @@ void qprofile(Grid *const grid,Tokamak *ptok, double *q_1D)
         	exit(-1);
 	}	
 	double rs=ptok->r_s;
-	ptok->s = qc[1] +2*qc[2] *rs +3*qc[3]*rs*rs +4*qc[4]*rs*rs*rs;
+	ptok->s = qc[1] +2*qc[2] *rs +3*qc[3]*rs*rs +4*qc[4]*rs*rs*rs +5*qc[5] *rs*rs*rs*rs +6*qc[6] *rs*rs*rs*rs*rs +7*qc[7] *rs*rs*rs*rs*rs*rs;
 	ptok->s =rs *ptok->s;
 	
 }
@@ -125,7 +128,7 @@ void CGrid::showgrid()
 void calculate_normalization(Tokamak *ptok, Slowing *pslowing)
 {
 	ptok->eps=ptok->a/ptok->R0;
-        ptok->Bps=ptok->r_s*ptok->a*ptok->Bt/(ptok->R0*ptok->s);
+        ptok->Bps=ptok->r_s*ptok->a*ptok->Bt/(ptok->R0*ptok->q_s);
         ptok->rho_m = ptok->mi * ptok->n0 *1.6726e-27;
         ptok->tau_At =sqrt(3.0) *ptok->r_s*ptok->a / (ptok->Bps/sqrt(ptok->rho_m*4.0*M_PI*1.0e-7));
         ptok->omega_A = 2.0 /(ptok->tau_At *ptok->s);
@@ -150,7 +153,7 @@ void showtokamak(Tokamak *ptok,Slowing *pslowing)
 	cout<<"n0: \t"<<ptok->n0<<" 1/m^3"<<endl;
 	cout<<"mi: \t"<<ptok->mi<<" 1/m_p"<<endl;
 	double *qc=ptok->qc;
-	cout<<"q profile: \t"<<qc[0]<<"+"<<qc[1]<<"*r+"<<qc[2]<<"*r^2+"<<qc[3]<<"*r^3+"<<qc[4]<<"*r^4"<<endl;
+	cout<<"q profile: \t"<<qc[0]<<"+"<<qc[1]<<"*r+"<<qc[2]<<"*r^2+"<<qc[3]<<"*r^3+"<<qc[4]<<"*r^4+"<<qc[5]<<"*r^5+"<<qc[6]<<"*r^6+"<<qc[7]<<"*r^7"<<endl;
 	cout<<"q_s: \t"<<ptok->q_s<<endl;
 	cout<<"r_s: \t"<<ptok->r_s<<endl;
 	cout<<"s : \t"<<ptok->s<<endl;

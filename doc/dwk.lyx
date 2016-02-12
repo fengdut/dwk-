@@ -109,17 +109,24 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-dwk++ A small code to get 
+dwk++ is a small code to calculate 
 \begin_inset Formula $\delta W_{k}$
 \end_inset
 
- and solver fishbone dispersion relation.
- This c++ code is used to calculate delta_W_k in tokamak plasma by 3D integratio
-n (r,Lambda,E).
+ and solver fishbone dispersion relation for toakmak plasmas.
+ The 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ is calculate by 3D integration in phase space (
+\begin_inset Formula $r,\Lambda,E$
+\end_inset
+
+).
  A slowing down distribution function and a kink like mode structure is
  used.
- The goal of this code is to find the Eigenvalues with a mode structure
- input.
+ The goal of this code is to find the fishbone mode frequency with tokamak
+ paramters input.
 \end_layout
 
 \begin_layout Section
@@ -681,99 +688,125 @@ Utilities to plot results
 Examples 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Formula $q$
-\end_inset
-
- profile:
+\begin_layout Subsection
+Compare with (WANG, Destabilization of internal kink modes at high frequency
+ by energetic circulating ions.
+ Physical Review Letters, 2001, 86 ) case:
 \end_layout
 
 \begin_layout Standard
+The 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ analytical results:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta W_{k}=C(\delta W_{k,d}+\delta W_{k,s})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $C=4\cdot\frac{2^{3/2}Bm_{h}\pi^{2}\xi_{0}^{2}}{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k,d}=\frac{-\pi R^{2}v_{0}^{2}}{\Omega_{c}}\int drqH^{2}(r_{s}-r)\frac{\partial c_{0}(r)}{\partial r}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta W_{k,s}=-\pi v_{0}^{2}\int rdrc_{0}(r)H^{2}(r_{s}-r)[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $c_{0}(r)=p_{h}(r)/(2^{3/2}\pi m_{h}BE_{0})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assume 
+\begin_inset Formula $p_{h}=p_{0}exp(-(\frac{r}{\Delta r})^{2})$
+\end_inset
+
+, 
 \begin_inset Formula $q=0.5+2r^{2}$
 \end_inset
 
+, 
+\begin_inset Formula $r_{s}=0.5$
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Formula $\frac{\partial c_{0}(r)}{\partial r}=-\frac{2r}{\Delta r^{2}}p_{0}exp(-(\frac{r}{\Delta r})^{2})/(2^{3/2}\pi m_{h}BE_{0})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\delta W_{k,d} & = & \frac{-\pi R^{2}v_{0}^{2}}{\Omega_{c}}\int drqH^{2}(r_{s}-r)\frac{\partial c_{0}(r)}{\partial r}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\nonumber \\
+ & = & \frac{-\pi R^{2}v_{0}^{2}}{\Omega_{c}}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\int_{0}^{r_{s}}drq\frac{\partial c_{0}(r)}{\partial r}\nonumber \\
+ & = & \frac{\pi R^{2}v_{0}^{2}}{\Omega_{c}}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\frac{2p_{0}}{(2^{3/2}\pi m_{h}BE_{0})\Delta r^{2}}\int_{0}^{r_{s}}dr(0.5+2r^{2})[r*exp(-(\frac{r}{\Delta r})^{2})]\nonumber \\
+ & = & \frac{\pi R^{2}v_{0}^{2}}{\Omega_{c}}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\frac{-2p_{0}}{(2^{3/2}\pi m_{h}BE_{0})}[e^{\frac{-r_{s}^{2}}{\Delta r^{2}}}(\Delta r^{2}+r_{s}^{2}+0.25)-\Delta r^{2}-0.25)]
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\delta W_{k,s} & = & -\pi v_{0}^{2}\int rdrc_{0}(r)H^{2}(r_{s}-r)[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]\nonumber \\
+ & = & -\pi v_{0}^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]\frac{p_{0}}{(2^{3/2}\pi m_{h}BE_{0})}\int_{0}^{r_{s}}rdrexp(-(\frac{r}{\Delta r})^{2})\nonumber \\
+ & = & -\pi v_{0}^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]\frac{p_{0}\frac{1}{2}\Delta r^{2}(1-e^{\frac{-r_{s}^{2}}{\Delta r^{2}}})}{(2^{3/2}\pi m_{h}BE_{0})}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In test case (examples/dwk_p0.cfg), 
+\begin_inset Formula $\Delta r=0.2a=0.08m$
+\end_inset
+
+, 
 \begin_inset Formula $r_{s}=0.5a=0.2m$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $s=1$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $R_{0}=1.65m$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $B_{t0}=4T$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $B_{\theta s}=\frac{r_{s}B_{t}}{Rq_{s}}=0.6T$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $n_{0}=1\times10^{20}m^{-3}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\rho_{m}=3.3452\times10^{-7}kgm^{-3}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\tau_{A\theta}=4.6328\times10^{-7}s$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\omega_{A}=4.317\times10^{6}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $T_{h}=40KeV$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $v_{h}=1.9575\times10^{6}m/s$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\omega_{0}=1.1863\times10^{6}$
 \end_inset
 
 

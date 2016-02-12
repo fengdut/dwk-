@@ -75,15 +75,24 @@ int main(int arg,char * argx[])
 	calculate_normalization(&tok, &slowing);
 	showtokamak(&tok,&slowing);
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D);	
+	cout<<"end F"<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
+	cout<<"end Lambda"<<endl;
 	Theta(b_lambda_3D,&grid,Theta_3D);
+	cout<<"end Thera"<<endl;
 	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
+	cout<<"end G_R"<<endl;
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
+	cout<<"end Chi"<<endl;
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
+	cout<<"end omega_b"<<endl;
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
+	cout<<"end omega_phi"<<endl;
 
 	tau_b(&grid,omega_b_3D,tau_b_3D);
+	cout<<"end tau_b"<<endl;
 	J_q(&grid,q_1D,J_q_1D);
+	cout<<"end J_q"<<endl;
 //end calculate non-omega parts--------------------------	
 
 	complex<double> *dwk_array;

@@ -1,7 +1,7 @@
 clear;
-figure(2);
-clf;
-figure(2);
+ figure(2);
+ clf;
+ figure(2);
 data=load('omega_dwk.out');
 %data=load('test.out');
 
@@ -17,14 +17,14 @@ idwk=data(:,4);
  hax=axes('Position',[0.08 0.15 0.4 0.75],'FontSize',24,'FontName','Latex'); 
  plot(romega,rdwk,'ro--');
  
- grid on;5
+ grid on;
  
 %  ylim([0-0.12 0.1]);
 % xlim([0 1.1]);
 xlabel('$real(\omega)$');
 ylabel('$real(\delta W_k)$');
 
-text(0.4,0.11,'$dwk++:~\Lambda_0=0.28,\Delta \Lambda=0.1,\Delta E=0.3, E_c=0.25, \Delta r=0.001$','FontSize',24);
+%text(0.4,0.11,'$dwk++:~\Lambda_0=0.28,\Delta \Lambda=0.1,\Delta E=0.3, E_c=0.25, \Delta r=0.001$','FontSize',24);
 
 
 

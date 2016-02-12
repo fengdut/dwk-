@@ -9,6 +9,7 @@
 #include"mode.h"
 #include"particle_fre.h"
 #include"vector.h"
+#include"output.h"
 
 using namespace std;
 
@@ -56,18 +57,38 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 	complex<double>dwk=0;
 	if(!init_Yps)
 	{
+		int fileid=0;
+		fileid =open_netcdf(grid,"Yps.nc");
 		init_Yps=1;
 		int np=mode->pb-mode->pa+1;
 		Alloc1D(gYps_3D,np);
+		double *** rYps,***iYps;
+		Alloc3D(rYps,grid->nx,grid->nL,grid->nE);		
+		Alloc3D(iYps,grid->nx,grid->nL,grid->nE);		
 		for(int i=0;i<np;i++)
 		{
 			Alloc3D(gYps_3D[i],grid->nx,grid->nL,grid->nE);
 			Yps(grid,G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,mode->pa+i,gYps_3D[i]);	
 			 cout<<"Yps_t:\t";
         		max_min_3D(grid->nx,grid->nL,grid->nE,gYps_3D[i]);
+			char dataname[10];
+			for(int ix=0;ix<grid->nx;ix++)
+                	for(int iL=0;iL<grid->nL;iL++)
+                	for(int iE=0;iE<grid->nE;iE++)
+			{
+				rYps[ix][iL][iE] = real(gYps_3D[i][ix][iL][iE]);
+				iYps[ix][iL][iE] = imag(gYps_3D[i][ix][iL][iE]);
+			
+			}
+			sprintf(dataname,"rYps_%d",mode->pa+i);
+			write_data_3D(rYps,dataname,fileid);	
+			sprintf(dataname,"iYps_%d",mode->pa+i);
+			write_data_3D(iYps,dataname,fileid);	
 		}
+		close_netcdf(fileid);
 	}
         Alloc3D(dwk_3D,grid->nx,grid->nL,grid->nE);
+         complex<double> Yp_R =0;
         for(int p=mode->pa;p<=mode->pb;p++)
         {
 		int ip=p-mode->pa;
@@ -75,8 +96,8 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                 for(int iL=0;iL<grid->nL;iL++)
                 for(int iE=0;iE<grid->nE;iE++)
                 {
-                        complex<double> Yp_R =abs(gYps_3D[ip][ix][iL][iE])*abs(gYps_3D[ip][ix][iL][iE])
-                        		/(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);
+			Yp_R=abs(gYps_3D[ip][ix][iL][iE])*abs(gYps_3D[ip][ix][iL][iE])
+                                        /(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);	
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
                         		*(real(omega) -omega_star[ix][iL][iE])*Yp_R;
@@ -129,9 +150,17 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
         complex<double> ***dwk_3D;
         Alloc3D(dwk_3D,grid->nx,grid->nL,grid->nE);
         cout.precision (12);
+ 	
+	int init=1;
+
+
+
+	complex<double> dwk_a,dwk_b,dwk_test,omega_0;
+	do
+	{
+	init=0;
         complex<double> omega_a =mode->omega_array[0];
 	complex<double> omega_b =mode->omega_array[mode->omega_n-1];
-	complex<double> dwk_a,dwk_b,dwk_test,omega_0;
 
 	dwk_a= 	dwk_omega(grid,mode,/* */ omega_a /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
         	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D);
@@ -153,6 +182,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 		Cb =tok->C*tok->beta_h;
 	}
 	cout<<"******************"<<endl;
+	cout<<"beta_h: "<<tok->beta_h<<endl;
 	cout<<"gamma: "<<gamma<<endl;
 	cout<<"******************"<<endl;
 	
@@ -198,9 +228,19 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	else
 	{
 		cerr<<"*************change the omega range*****************"<<endl;
-		exit(-1);
+		init=1;	
+		cout<<"0: end, 1 reset omega range"<<endl;
+		int isend=1;
+		cin>>isend;
+		if(isend)
+		{
+			cin>>mode->omega_array[0];
+			cin>>mode->omega_array[1];
+		}
+		else		
+			exit(-1);
 	}
-	
+	}while(init);
         cout<<"-----end find omega_0--------"<<endl;
         Free3D(dwk_3D);
 	*dwk_0 = dwk_test;

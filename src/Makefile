@@ -6,9 +6,10 @@ CFLAGS = -fopenmp
 
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++
-COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LIBCONFIG) -c 
+NETCDF = -I${NETCDF_DIR}/include -L${NETCDF_DIR}/lib -lnetcdf
+COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LIBCONFIG) $(NETCDF) -c 
 
-LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG)  
+LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) 
 
 LIBA = 
 

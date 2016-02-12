@@ -52,13 +52,18 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		int lqc=set.getLength();
 		int rlqc=0;
 		if(lqc<nqc)
+		{
 			rlqc=lqc;
+			for(int i=lqc;i<nqc;i++)
+				ptok->qc[i]=0;
+		}
 		else
 			rlqc=nqc;
 		for(int i=0;i<rlqc;i++)
 		{
 			ptok->qc[i] = set[i];
 		}
+		
 		tok.lookupValue("q_s",ptok->q_s);
 	}
 	catch(const SettingNotFoundException &nfex)

@@ -45,6 +45,7 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Alloc1D(expt,grid->ntheta);
 	Alloc1D(xi_r,grid->nx);
 	Alloc1D(xi_t,grid->nx);
+	cout<<"end alloc1d"<<endl;
 	
 	complex<double> ti=-1.0i;
 	for(int it=0;it<grid->ntheta;it++)

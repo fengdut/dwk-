@@ -3,7 +3,7 @@
 
 
 
-int const nqc =5;
+int const nqc =8;
 typedef struct TOKAMAK
 {
 	double a,R0;	//minor and major radius (m). 			input
