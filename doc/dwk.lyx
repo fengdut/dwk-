@@ -455,18 +455,29 @@ The mode structure
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\xi_{r}(r,\theta)=\xi_{0}(r)exp(-i\theta)$
+\begin_inset Formula $\xi_{r}(r,\theta)=\xi_{r0}(r)exp(-i\theta)$
 \end_inset
 
 , 
-\begin_inset Formula $\xi_{\theta}(r,\theta)=-i\xi_{0}(r)rexp(-i\theta)$
+\begin_inset Formula $\xi_{\theta}(r,\theta)=-i\xi_{\theta0}(r)rexp(-i\theta)$
 \end_inset
 
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\xi_{0}(r)=\begin{cases}
+\begin_inset Formula $\xi_{r0}(r)=\begin{cases}
+1 & \quad r\leq r_{s}-\Delta r/2\\
+\frac{\Delta r-r+r_{s}-\Delta r/2}{\Delta r} & \quad r_{s}-\frac{\Delta r}{2}<r<r_{s}+\frac{\Delta r}{2}\\
+0 & \quad r\geq r_{s}+\frac{\Delta r}{2}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\xi_{\theta0}(r)=\begin{cases}
 1 & \quad r\leq r_{s}-\Delta r/2\\
 \frac{\Delta r-2r+r_{s}-\Delta r/2}{\Delta r} & \quad r_{s}-\frac{\Delta r}{2}<r<r_{s}+\frac{\Delta r}{2}\\
 0 & \quad r\geq r_{s}+\frac{\Delta r}{2}
@@ -528,6 +539,11 @@ The normalized quantities used for
 \end_inset
 
  is the torodial magnetic field at magnetic axis.
+ 
+\begin_inset Formula $\delta W_{k,0}=\frac{1}{2}\pi^{2}a^{2}R_{0}n_{0}T_{h}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -602,6 +618,14 @@ C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\
 \end_layout
 
 \begin_layout Standard
+here 
+\begin_inset Formula $\xi_{s}/\xi_{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \omega_{A}=\frac{2}{\tau_{A\theta}s}
@@ -640,6 +664,44 @@ s=r_{s}\frac{dq}{dr(r=r_{s})}
 \beta_{h}=2\mu_{0}n_{0}T_{h}/B_{t}^{2}
 \end{equation}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $m=1,n=1$
+\end_inset
+
+, including the MHD contribution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+2\pi R\frac{B_{\theta s}^{2}}{2\mu_{0}}|\frac{\xi_{s}}{\xi_{0}}|^{2}\left(\delta W_{T}+\frac{-i\omega}{\omega_{A}}\right)+\frac{1}{2}\pi^{2}a^{2}R_{0}n_{0}T_{h}\delta W_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+i\omega=C\beta_{h}\delta W_{k}+\frac{\omega_{A}}{\omega_{0}}\delta W_{T}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\delta W_{T}=3\pi\left(\frac{r_{s}}{R}\right)^{2}(1-q_{0})\left(\frac{13}{144}-\beta_{ps}^{2}\right)$
 \end_inset
 
 
