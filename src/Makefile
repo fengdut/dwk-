@@ -2,7 +2,7 @@ PRGM = dwk++
 
 CPPFLAGS =   -g
 LDFLAGS = 
-CFLAGS = -fopenmp 
+CFLAGS = -fopenmp  -framework OpenCL  
 
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++

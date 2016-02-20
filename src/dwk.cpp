@@ -105,7 +105,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                 dwk += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
         }
         Free3D(dwk_3D);
-	return dwk+mode->dw_f;
+	return dwk;
 }
 
 //dwk(omega)
@@ -152,6 +152,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
         cout.precision (12);
  	
 	int init=1;
+	double dwt=mode->dw_f *tok->omega_A/tok->omega_i0;
 
 
 
@@ -173,17 +174,17 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	double Cb=1;
 	if(tok->beta_h==0)
 	{
-		gamma=0.0;
+		gamma=0.0+dwt;
 		Cb=1.0;
 	}
 	else
 	{
-		gamma=imag(omega_a);
+		gamma=imag(omega_a)+dwt;
 		Cb =tok->C*tok->beta_h;
 	}
 	cout<<"******************"<<endl;
 	cout<<"beta_h: "<<tok->beta_h<<endl;
-	cout<<"gamma: "<<gamma<<endl;
+	cout<<"gamma: "<<gamma-dwt<<endl;
 	cout<<"******************"<<endl;
 	
 	if((Cb*real(dwk_a)+gamma)*(Cb*real(dwk_b)+gamma)<=0)

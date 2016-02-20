@@ -137,6 +137,7 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing)
 
 
         ptok->C = ptok->omega_A/(ptok->omega_i0*4.0/M_PI *(ptok->r_s*ptok->a/ptok->R0*0.5)*(ptok->r_s*ptok->a/ptok->R0*0.5));
+	ptok->C =ptok->C *0.25;
         ptok->beta_h=0.0;
 
         pslowing->rho_h=ptok->m_ep*1.6726e-27 *ptok->v_i0/(1.6022e-19*ptok->Bt)/ptok->a;
@@ -197,4 +198,11 @@ void find_rs(Grid * const grid,double *const q_1D, Tokamak *ptok)
         cout<<"can not find r_s with q_s= "<<ptok->q_s<<endl;
         exit(-1);
 }
+
+
+double dwt(double q0, double r_s, double R, double beta_ps)
+{
+	return 3.0*M_PI *(r_s/R)*(r_s/R) *(1.0-q0)*(13.0/144.0 -beta_ps*beta_ps);
+}
+
 
