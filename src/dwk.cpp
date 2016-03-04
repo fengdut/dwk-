@@ -10,6 +10,7 @@
 #include"particle_fre.h"
 #include"vector.h"
 #include"output.h"
+#include"dwk.h"
 
 using namespace std;
 
@@ -51,7 +52,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
          double * const J_q_1D, double *** const F_E_3D,
         double *** const omega_star,
         complex<double> ***const G_3D,double **const Chi_2D,double *** const b_lambda_3D, double *** const lambda_b_3D,
-        double ***const Theta_3D)
+        double ***const Theta_3D,Dwkopt *pdwkopt)
 {
         complex<double> ***dwk_3D;
 	complex<double>dwk=0;
@@ -100,7 +101,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                                         /(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);	
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
-                        		*(real(omega) -omega_star[ix][iL][iE])*Yp_R;
+                        		*(pdwkopt->omega_off*real(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
                 }
                 dwk += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
         }
@@ -115,7 +116,7 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
 	double *** const omega_star, 
 	complex<double> ***const G_3D,double **const Chi_2D,double *** const b_lambda_3D, double *** const lambda_b_3D,
 	double ***const Theta_3D,
-	complex<double> * dwk_array,char const *filename)
+	complex<double> * dwk_array,char const *filename,Dwkopt *pdwkopt)
 {
 	cout<<"------omega vs. dwk-------"<<endl;
 	complex<double> ***dwk_3D;
@@ -128,7 +129,7 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
 	{
 		complex<double> omega =mode->omega_array[iw];
 	      	dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
-                G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D);
+                G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt);
 
 		cout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
 		fout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
@@ -144,7 +145,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
         double * const J_q_1D, double *** const F_E_3D,
         double *** const omega_star,
         complex<double> ***const G_3D,double **const Chi_2D,double *** const b_lambda_3D, double *** const lambda_b_3D,
-        double ***const Theta_3D,complex<double> *dwk_0)
+        double ***const Theta_3D,complex<double> *dwk_0,Dwkopt *pdwkopt)
 {
         cout<<"------------------- find omega_0 ----------------------"<<endl;
         complex<double> ***dwk_3D;
@@ -164,9 +165,9 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	complex<double> omega_b =mode->omega_array[mode->omega_n-1];
 
 	dwk_a= 	dwk_omega(grid,mode,/* */ omega_a /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
-        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D);
+        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt);
 	dwk_b= 	dwk_omega(grid,mode,/* */ omega_b /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
-        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D);
+        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt);
         cout<<"omega_a: "<<real(omega_a)<<'\t'<<imag(omega_a)<<'\t'<<real(dwk_a)<<'\t'<<imag(dwk_a)<<endl;
         cout<<"omega_b: "<<real(omega_b)<<'\t'<<imag(omega_b)<<'\t'<<real(dwk_b)<<'\t'<<imag(dwk_b)<<endl;
 	
@@ -182,11 +183,11 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 		gamma=imag(omega_a)+dwt;
 		Cb =tok->C*tok->beta_h;
 	}
-	cout<<"******************"<<endl;
+	/*cout<<"******************"<<endl;
 	cout<<"beta_h: "<<tok->beta_h<<endl;
 	cout<<"gamma: "<<gamma-dwt<<endl;
 	cout<<"******************"<<endl;
-	
+	*/
 	if((Cb*real(dwk_a)+gamma)*(Cb*real(dwk_b)+gamma)<=0)
 	{
 		int in=0;
@@ -195,7 +196,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 			complex<double> omega_test = 0.5*(omega_a+omega_b);
 			dwk_test =dwk_omega(grid,mode,/* */ omega_test /**/,
 				 omega_phi_3D,omega_b_3D, tau_b_3D, J_q_1D, F_E_3D, omega_star,
-                	         G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D); 
+                	         G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt); 
 			if(real(omega_b)-real(omega_a)<mode->omega_err)	
 			{
 				omega_0=omega_test;

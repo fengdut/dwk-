@@ -4,6 +4,7 @@
 #include"AllocArray.h"
 #include"vector.h"
 #include"mode.h"
+#include"dwk.h"
 using namespace std;
 
 double fxi_r(double x,double r_s, double delta_r)
@@ -88,6 +89,7 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 			double b = 1 +	grid->xarray[ix]*tok->eps *cost[it];
 			double lb = slow->L0/b;
 			double rho_d = q_1D[ix] *0.5 *slow->rho_h *sqrt(grid->Earray[iE]/(1-lb))*(2-lb);
+			rho_d=rho_d *pmode->zero_rhod;
 			double x	=grid->xarray[ix]+rho_d*cost[it];	
 			double teps	=tok->eps*x;
 			

@@ -1,0 +1,5264 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Ref of Fu's 1993 paper 
+\end_layout
+
+\begin_layout Section
+The formula of 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The linearized drift kinetic equation assuming 
+\begin_inset Formula $\delta E_{\parallel}=0$
+\end_inset
+
+ is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\partial_{t}+\mathbf{v}_{d}\cdot\nabla+v_{\parallel}\hat{\mathbf{b}}\cdot\nabla\right)g=i\frac{e}{M}\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)\frac{i}{\omega}\mathbf{v}_{d}\cdot\delta\mathbf{E}_{\perp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where,
+\begin_inset Formula $\mathbf{v}_{d}=\frac{\hat{\mathbf{b}}}{\omega_{c}}\times\left(\mu\nabla B+\mathbf{\kappa}v_{\parallel}^{2}\right)\approx\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\hat{\mathbf{b}}\times\vec{\kappa}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{\kappa}=\hat{\mathbf{b}}\cdot\nabla\hat{\mathbf{b}}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu=\frac{v_{\perp}^{2}}{2B}$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{\star}=\frac{i\hat{\mathbf{b}}\times\nabla F\cdot\nabla}{\omega_{c}\partial F/\partial\epsilon}$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon=v^{2}/2=v_{\parallel}^{2}/2+\mu B$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\mathbf{E}_{\perp}=i\omega\vec{\mathbb{\xi}}\times\mathbf{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{c}=\frac{Be}{M}$
+\end_inset
+
+ is the particle cyclotron frequency.[Berk et al, Phys.
+ Fluid B 4 1992].
+ Note that the alter expression for 
+\begin_inset Formula $\omega_{\star}$
+\end_inset
+
+ is 
+\begin_inset Formula $\omega_{\star}=\frac{\partial F/\partial P_{\phi}}{M\partial F/\partial\epsilon}i\frac{\partial}{\partial\phi}=\frac{nq\partial_{r}F}{\omega_{c}r\partial_{\epsilon}F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+The term 
+\begin_inset Formula $\mathbf{v}_{d}\cdot\delta\mathbf{E}_{\perp}$
+\end_inset
+
+ can be expressed by the following form.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{v}_{d}\cdot\delta\mathbf{E}_{\perp}=\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\hat{\mathbf{b}}\times\mathbf{\kappa}\cdot\delta\mathbf{E}_{\perp}=i\omega\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\hat{\mathbf{b}}\times\vec{\kappa}\cdot\left(\vec{\xi}\times\mathbf{B}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-i\omega B\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\vec{\kappa}\cdot\vec{\xi}=-i\omega B\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\left(\nabla\theta\kappa_{\theta}+\nabla r\kappa_{r}\right)\cdot\left({\color{red}\xi}_{\theta}\nabla\theta+{\color{red}\xi_{r}}\nabla r\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-i\omega B\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\left(\nabla\theta\cdot\nabla\theta\xi_{\theta}\kappa_{\theta}+\nabla r\cdot\nabla r\xi_{r}\kappa_{r}+\nabla\theta\cdot\nabla r\xi_{r}\kappa_{\theta}+\nabla r\cdot\nabla\theta\xi_{\theta}\kappa_{r}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-i\omega B\frac{\epsilon}{\omega_{c}}\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)\left(\left(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r}\right)\xi_{\theta}+\left(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta}\right)\xi_{r}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $g^{rr}=\nabla r\cdot\nabla r$
+\end_inset
+
+, 
+\begin_inset Formula $g^{\theta r}=\nabla\theta\cdot\nabla r$
+\end_inset
+
+, 
+\begin_inset Formula $g^{\theta\theta}=\nabla\theta\cdot\nabla\theta$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\xi_{r}\nabla r=\xi_{r}\mathbf{e}_{r}$
+\end_inset
+
+, 
+\begin_inset Formula $\xi_{\theta}\nabla\theta=\frac{1}{r}\xi_{\theta}\mathbf{e}_{\theta}$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa_{\theta}=-\frac{1}{R}\frac{\partial R}{\partial\theta}$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa_{r}\approx-\frac{1}{R}\frac{\partial R}{\partial r}-\frac{r}{q^{2}R^{2}}$
+\end_inset
+
+ [G.
+ Y.
+ Fu, PHYSICS OF PLASMAS 13 2006].
+ 
+\begin_inset Formula $\Lambda=\frac{\mu B_{0}}{\epsilon}$
+\end_inset
+
+, 
+\begin_inset Formula $b=B_{0}/B\approx1+\left(r/R_{0}\right)\cos\theta$
+\end_inset
+
+.
+ Using 
+\begin_inset Formula $\delta\mathbf{E}_{\perp}^{\star}=-i\omega\vec{\xi}^{\star}\times\mathbf{B}$
+\end_inset
+
+, the complex conjugate term thus is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{v}_{d}\cdot\delta\mathbf{E}_{\perp}^{\star}=\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\hat{\mathbf{b}}\times\mathbf{\kappa}\cdot\delta\mathbf{E}_{\perp}^{\star}=-i\omega\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\hat{\mathbf{b}}\times\vec{\kappa}\cdot\left(\vec{\xi}^{\star}\times\mathbf{B}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=i\omega B\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\vec{\kappa}\cdot\vec{\xi}^{\star}=i\omega B\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\left(\nabla\theta\kappa_{\theta}+\nabla r\kappa_{r}\right)\cdot\left({\color{red}\xi}_{\theta}^{\star}\nabla\theta+{\color{red}\xi_{r}^{\star}}\nabla r\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=i\omega B\frac{v_{\perp}^{2}/2+v_{\parallel}^{2}}{\omega_{c}}\left(\nabla\theta\cdot\nabla\theta\xi_{\theta}^{\star}\kappa_{\theta}+\nabla r\cdot\nabla r\xi_{r}^{\star}\kappa_{r}+\nabla\theta\cdot\nabla r\xi_{r}^{\star}\kappa_{\theta}+\nabla r\cdot\nabla\theta\xi_{\theta}^{\star}\kappa_{r}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=i\omega B\frac{\epsilon}{\omega_{c}}\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)\left(\left(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r}\right)\xi_{\theta}^{\star}+\left(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta}\right)\xi_{r}^{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The linearized drift kinetic equation is rewritten as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}g=i\frac{e}{M}\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)B\frac{\epsilon}{\omega_{c}}\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)\left(\left(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r}\right)\xi_{\theta}+\left(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta}\right)\xi_{r}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}g=H\left(r,\theta,\phi,t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The solution of perturbed distribution function 
+\begin_inset Formula $g$
+\end_inset
+
+ is obtained in the followings.
+ 
+\end_layout
+
+\begin_layout Standard
+At equilibrium, the projection of the orbit on the poloidal cross section
+ is a closed curve.
+ For either mirror-trapped or passing orbit, we define the bounce time [F.
+ Porcelli, R.
+ Stankiewicz, and W.
+ Kerner, Phys.
+ Plasmas 1 1994]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tau_{b}=\oint d\tau=\oint\frac{d\psi}{\dot{\psi}}=\oint\frac{d\theta}{\dot{\theta}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as the time it takes to close an equilibrium orbit on the poloidal plane.
+ We assume that perturbations have the form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+X^{\left(1\right)}=\hat{X}^{\left(1\right)}\left(r,\theta\right)\exp\left(-i\omega t+in\phi\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $\hat{X}^{\left(1\right)}\left(r,\theta\right)$
+\end_inset
+
+ is complex, and we take the real part of RHS for any physical variable,
+ i.e.
+ 
+\begin_inset Formula $X^{\left(1\right)}$
+\end_inset
+
+.
+ Thus, 
+\color blue
+for internal kink mode, the displacement 
+\begin_inset Formula $\vec{\xi}$
+\end_inset
+
+ is 
+\begin_inset Formula $\vec{\xi}=\xi_{\theta}^{\prime}\mathbf{e}_{\theta}+\xi_{r}^{\prime}\mathbf{e}_{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{r}^{\prime}=\xi_{0}\exp\left(i\left(\phi-\theta-\omega t\right)\right)$
+\end_inset
+
+ within the region 
+\begin_inset Formula $q=1$
+\end_inset
+
+ rational surface 
+\begin_inset Formula $r=r_{s}$
+\end_inset
+
+.
+ With cylindrical approximation, it can apply the relation 
+\begin_inset Formula $\nabla\cdot\vec{\xi}=0$
+\end_inset
+
+, and thus obtain 
+\begin_inset Formula $\xi_{\theta}^{\prime}=-i\xi_{0}\exp\left[i\left(\phi-\theta-\omega t\right)\right]$
+\end_inset
+
+.
+ Thus, the covariant forms of the perturbation are 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\xi_{r}=\xi_{0}\exp\left(i\left(\phi-\theta-\omega t\right)\right),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\xi_{\theta}=-i\xi_{0}r\exp\left(i\left(\phi-\theta-\omega t\right)\right)
+\end{equation}
+
+\end_inset
+
+
+\color blue
+within the region 
+\begin_inset Formula $q=1$
+\end_inset
+
+ surface.
+ Similarly, the covariant forms of the perturbation are 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\xi_{r}=\xi_{0}\left(\frac{\Delta r-r+\left(r_{s}-\Delta r/2\right)}{\Delta r}\right)\exp\left(i\left(\phi-\theta-\omega t\right)\right),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\xi_{\theta}=-i\xi_{0}r\left(\frac{\Delta r-2r+\left(r_{s}-\Delta r/2\right)}{\Delta r}\right)\exp\left(i\left(\phi-\theta-\omega t\right)\right)
+\end{equation}
+
+\end_inset
+
+
+\color blue
+in the inertial region 
+\begin_inset Formula $r_{s}-\frac{\Delta r}{2}\leq r\leq r_{s}+\frac{\Delta r}{2}$
+\end_inset
+
+ .
+ And 
+\begin_inset Formula $\xi_{r}=\xi_{\theta}=0$
+\end_inset
+
+ in the rest region.
+\end_layout
+
+\begin_layout Standard
+The formal solution of the nonadibatic distribution 
+\begin_inset Formula $g$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g=\int_{-\infty}^{t}i\frac{e}{M}\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)B\frac{\epsilon}{\omega_{c}}G\left(\tau\right)d\tau
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+G=\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)\left(\left(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r}\right)\xi_{\theta}+\left(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta}\right)\xi_{r}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $G\left(\tau\right)=\hat{G}\left[r\left(\tau\right),\theta\left(\tau\right),\Lambda\right]\exp\left(-i\omega\tau+in\phi\left(\tau\right)\right)$
+\end_inset
+
+ and the 
+\begin_inset Formula $\tau$
+\end_inset
+
+ dependence is through the following equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{r}=\dot{\mathbf{R}}\cdot\nabla r,\dot{\theta}=\dot{\mathbf{R}}\cdot\nabla\theta,\dot{\phi}=\dot{\mathbf{R}}\cdot\nabla\phi
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us separate 
+\begin_inset Formula $\phi\left(\tau\right)$
+\end_inset
+
+ into its secular and oscillating parts:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\phi\left(\tau\right)=\left\langle \dot{\phi}\right\rangle \tau+\widetilde{\phi}\left(\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the brackets indicate bounce averaging.
+\end_layout
+
+\begin_layout Standard
+The quantity 
+\begin_inset Formula $\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right),\Lambda\right]=\hat{G}\left[r\left(\tau\right),\theta\left(\tau\right),\Lambda\right]\exp\left(in\tilde{\phi}\left(\tau\right)\right)$
+\end_inset
+
+ is a periodic function of 
+\begin_inset Formula $\tau$
+\end_inset
+
+, which can be expanded in Fourier series,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tilde{G}\left(\tau\right)=\sum_{-\infty}^{\infty}Y_{p}\left(\Lambda,\bar{r};\sigma\right)\exp\left(ip\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{p}\left(\Lambda,\text{\epsilon, }\bar{r};\sigma\right)=\frac{1}{\tau_{b}}\oint d\tau\tilde{G}\left(\tau\right)\exp\left(-ip\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $r\left(\tau\right)=\bar{r}+\rho_{d}\cos\theta\left(\tau\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{d}$
+\end_inset
+
+ represents the finite orbit width for passing particles.
+ 
+\begin_inset Formula $\rho_{d}=\Omega_{d}/\omega_{t}$
+\end_inset
+
+, 
+\begin_inset Formula $\Omega_{d}=\frac{\left(v_{\perp}^{2}/2+v_{\parallel}^{2}\right)}{\omega_{c}R_{0}}$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{t}=\frac{v_{\parallel}}{qR_{0}}$
+\end_inset
+
+.
+ Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\rho_{d}=\frac{q}{\omega_{c}}\sqrt{\frac{\epsilon}{2\left(1-\Lambda/b\right)}}\left[\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Carrying out the time integration, the solution of 
+\begin_inset Formula $g$
+\end_inset
+
+ is obtained
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g=\frac{e}{M}\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)B\frac{\epsilon}{\omega_{c}}\sum_{-\infty}^{\infty}Y_{p}\left(\Lambda,\bar{r};\sigma\right)\frac{\exp\left[i\left(n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega\right)t\right]}{n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The formula of 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ is derived as follows.
+\end_layout
+
+\begin_layout Standard
+
+\color black
+\begin_inset Formula 
+\[
+\delta W_{k}=\int d^{3}x\vec{\xi}^{\star}\cdot\nabla\cdot\delta\mathbf{P}_{k}{\color{red}=e\int d^{3}x\int d^{3}v\left(\frac{i}{\omega}\mathbf{v}_{d}\cdot\delta\mathbf{E}_{\perp}\right)^{\star}g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=e\int d^{3}x\int d^{3}vgB\frac{\epsilon}{\omega_{c}}\left(\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right)\left(\left(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r}\right)\xi_{\theta}^{\star}+\left(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta}\right)\xi_{r}^{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=e\int d^{3}x\int d^{3}vgB\frac{\epsilon}{\omega_{c}}G^{\star}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $G^{\star}=\hat{G}^{\star}\left[r\left(\tau\right),\theta\left(\tau\right),\Lambda\right]\exp\left(i\omega\tau-in\phi\left(\tau\right)\right)$
+\end_inset
+
+ .
+ Let 
+\begin_inset Formula $\tilde{G}^{\star}\left[r\left(\tau\right),\theta\left(\tau\right),\Lambda\right]=\hat{G}^{\star}\left[r\left(\tau\right),\theta\left(\tau\right),\Lambda\right]\exp\left(-in\tilde{\phi}\left(\tau\right)\right)$
+\end_inset
+
+, which is a periodic function of 
+\begin_inset Formula $\tau$
+\end_inset
+
+, which can be expanded in Fourier series,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tilde{G}^{\star}\left(\tau\right)=\sum_{-\infty}^{\infty}Y_{p}^{\star}\left(\Lambda,\bar{r};\sigma\right)\exp\left(-ip\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{p}^{\star}\left(\Lambda,\bar{r};\sigma\right)=\frac{1}{\tau_{b}}\oint d\tau\tilde{G}^{\star}\left(\tau\right)\exp\left(ip\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $r\left(\tau\right)=\bar{r}+\rho_{d}\cos\theta\left(\tau\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta W_{k}=\frac{e^{2}}{M}\int d^{3}x\int d^{3}v\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)B^{2}\frac{\epsilon^{2}}{\omega_{c}^{2}}\sum_{-\infty}^{\infty}Y_{p}\left(\Lambda,\bar{r};\sigma\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\frac{\exp\left[i\left(n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega\right)\tau\right]}{n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega}\sum_{-\infty}^{\infty}Y_{p^{\prime}}^{\star}\left(\Lambda,\epsilon,\bar{r};\sigma\right)\exp\left(i\omega\tau-in\left\langle \dot{\phi}\right\rangle \tau-ip^{\prime}\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta W_{k}=\frac{e^{2}}{M}\int d^{3}x\int d^{3}v\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)B^{2}\frac{\epsilon^{2}}{\omega_{c}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\sum_{-\infty}^{\infty}Y_{p}\left(\Lambda,\epsilon,\bar{r};\sigma\right)\frac{\exp\left[ip\omega_{b}\tau\right]}{n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega}\sum_{-\infty}^{\infty}Y_{p^{\prime}}^{\star}\left(\Lambda,\epsilon,\bar{r};\sigma\right)\exp\left(-ip^{\prime}\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset Formula $d^{3}v=\sqrt{2}\pi\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda\epsilon^{1/2}d\epsilon$
+\end_inset
+
+, 
+\begin_inset Formula $d^{3}x=2\pi Jdrd\theta$
+\end_inset
+
+, yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta W_{k}=\frac{e^{2}}{M}\int2\pi Jdrd\theta\int\sqrt{2}\pi\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda\epsilon^{1/2}d\epsilon\frac{\partial F}{\partial\epsilon}\left(\omega-\omega_{\star}\right)B^{2}\frac{\epsilon^{2}}{\omega_{c}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\sum_{-\infty}^{\infty}Y_{p}\left(\Lambda,\epsilon,\bar{r};\sigma\right)\frac{\exp\left(ip\omega_{b}\tau\right)}{n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega}\sum_{-\infty}^{\infty}Y_{p^{\prime}}^{\star}\left(\Lambda,\epsilon,\bar{r};\sigma\right)\exp\left(-ip^{\prime}\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Applying 
+\begin_inset Formula $d\tau=\frac{qR_{0}}{\sigma\sqrt{2\epsilon}b\sqrt{1-\frac{\Lambda}{b}}}d\theta$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma=\pm1$
+\end_inset
+
+ for the direction of 
+\begin_inset Formula $v_{\parallel}$
+\end_inset
+
+, one finally obtains
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta W_{k}=\frac{4\pi^{2}}{M}\frac{e^{2}B^{2}}{\omega_{c}^{2}}\frac{1}{R_{0}}\int\frac{J}{q}dr\int d\Lambda\epsilon^{3}d\epsilon\frac{\partial F}{\partial\epsilon}\tau_{b}\left(\omega-\omega_{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\sum_{-\infty}^{\infty}\frac{\left|Y_{p}\right|^{2}}{n\left\langle \dot{\phi}\right\rangle +p\omega_{b}-\omega},\label{eq:dWk0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+which is similar to Eq.(35) of 
+\color inherit
+Fu's 1993 paper
+\color blue
+ with replacing 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $J$
+\end_inset
+
+ by 
+\begin_inset Formula $\epsilon\equiv\frac{1}{2}Mv^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $B=qR/J$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\tilde{\phi}\cong0$
+\end_inset
+
+, 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\left\langle \dot{\phi}\right\rangle \cong\omega_{D}^{0}+q\omega_{b},$
+\end_inset
+
+
+\begin_inset Formula $\omega_{D}^{0}\approx0$
+\end_inset
+
+ for passing particles.
+ 
+\end_layout
+
+\begin_layout Standard
+In angle-action coordinate,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{b}=\frac{1}{2\pi}\int p_{\parallel}ds\cong p_{\parallel e}R_{\parallel}\int_{-\theta_{b}}^{\theta_{b}}\sqrt{1-\kappa^{-1}\sin^{2}\frac{\theta}{2}}\frac{d\theta}{\pi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J_{t}=\frac{1}{2\pi}\int p_{\parallel}ds\cong p_{\parallel e}R_{\parallel}\int_{-\pi}^{\pi}\sqrt{1-\kappa^{-1}\sin^{2}\frac{\theta}{2}}\frac{d\theta}{\pi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The formulas of bounce/transit frequency is given by [Alain J.
+ Brizard, PHYSICS OF PLASMAS 18 2011]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{b}=\frac{\partial H}{\partial J_{b}}=\left(\frac{\partial J_{b}}{\partial E}\right)^{-1}=\frac{\pi\omega_{\parallel}}{2K\left(\kappa\right)},\kappa<1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{t}=\frac{\partial H}{\partial J_{t}}=\left(\frac{\partial J_{t}}{\partial E}\right)^{-1}=\frac{\pi\sqrt{\kappa}\omega_{\parallel}}{K\left(\kappa^{-1}\right)},\kappa>1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\omega_{\parallel}=\frac{1}{qR}\sqrt{\varepsilon\mu B_{0}}=\frac{\sqrt{\epsilon}}{qR}\sqrt{\varepsilon\Lambda}$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa=\frac{1-\Lambda\left(1-\varepsilon\right)}{2\varepsilon\Lambda}$
+\end_inset
+
+, 
+\begin_inset Formula $\varepsilon=\frac{r}{R_{0}}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ denotes the complete elliptic integral of the first kind.
+\end_layout
+
+\begin_layout Paragraph
+The normalized relations of the quantities are 
+\begin_inset Formula $v_{h}=\sqrt{\frac{2T_{h}}{M}}$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon=\frac{T_{h}}{M}\bar{\epsilon}$
+\end_inset
+
+, 
+\begin_inset Formula $r=ax$
+\end_inset
+
+, 
+\begin_inset Formula $J=aR_{0}\bar{J}$
+\end_inset
+
+, 
+\begin_inset Formula $R=R_{0}\bar{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{b}=\frac{v_{h}}{R_{0}}\bar{\omega}_{b},\frac{1}{\tau_{b}}=\frac{v_{h}}{2\pi R_{0}}\bar{\omega}_{b}=\frac{v_{h}}{R_{0}}\frac{\bar{\omega}_{b}}{2\pi}=\frac{v_{h}}{R_{0}}\frac{1}{\bar{\tau}_{b}},$
+\end_inset
+
+ 
+\begin_inset Formula $\omega=\frac{v_{h}}{R_{0}}\bar{\omega},$
+\end_inset
+
+ 
+\begin_inset Formula $\omega_{\phi}=\frac{v_{h}}{R_{0}}\bar{\omega}_{\phi},$
+\end_inset
+
+ 
+\begin_inset Formula $\omega_{\star}=\frac{v_{h}}{R_{0}}\bar{\omega}_{\star}$
+\end_inset
+
+ .
+ 
+\color blue
+
+\begin_inset Formula $T_{h}$
+\end_inset
+
+ is arbitrary temperature/energy which can be characteristic quantity, i.e.
+ thermal energy or birth energy of fast ions et al.
+\end_layout
+
+\begin_layout Paragraph
+The slowing down distribution function of fast ions is given by[M.
+ Schneller 2013]
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F\left(r,\epsilon,\Lambda\right)=\frac{n_{0}}{C}\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left[-\left(\frac{r-r_{0}}{\Delta r}\right)^{2}\right]\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C=\int d^{3}\mathbf{v}\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula $n_{0}$
+\end_inset
+
+ is the density at 
+\begin_inset Formula $r=r_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset Formula $d^{3}v=\sqrt{2}\pi\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda\epsilon^{1/2}d\epsilon$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C=\int\sqrt{2}\pi\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda\epsilon^{1/2}d\epsilon\frac{1}{\epsilon^{3/2}+\epsilon_{c}^{3/2}}Erfc\left(\frac{\epsilon-\epsilon_{0}}{\Delta\epsilon}\right)\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\int\sqrt{2}\pi\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda\bar{\epsilon}^{1/2}d\bar{\epsilon}\frac{1}{\bar{\epsilon}^{3/2}+\bar{\epsilon}_{c}^{3/2}}Erfc\left(\frac{\bar{\epsilon}-\bar{\epsilon}_{0}}{\Delta\bar{\epsilon}}\right)\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note 
+\begin_inset Formula $C$
+\end_inset
+
+ is a normalized quantity and is profile dependent parameter.
+ 
+\begin_inset Formula $F$
+\end_inset
+
+ can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F\left(r,\epsilon,\Lambda\right)=\frac{n_{0}}{C}\frac{1}{\left(T_{0}/M\right)^{3/2}}\hat{F}\left(x,\bar{\epsilon},\Lambda\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{F}\left(x,\bar{\epsilon},\Lambda\right)=\frac{1}{\bar{\epsilon}^{3/2}+\bar{\epsilon}_{c}^{3/2}}Erfc\left(\frac{\bar{\epsilon}-\bar{\epsilon}_{0}}{\Delta\bar{\epsilon}}\right)\exp\left[-\left(\frac{x-x_{0}}{\Delta x}\right)^{2}\right]\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the above normalized relations including 
+\begin_inset Formula $F$
+\end_inset
+
+, 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ of Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dWk0"
+
+\end_inset
+
+ then reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\frac{2^{3/2}}{C}\pi^{2}a^{2}R_{0}n_{0}T_{0}\delta\bar{W}_{k}^{\prime}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}^{\prime}=\int\frac{\bar{J}}{q}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\hat{F}}{\partial\bar{\epsilon}}\bar{\tau}_{b}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\cdot\sum_{-\infty}^{\infty}\frac{\left|\bar{Y}_{p}\right|^{2}}{n\overline{\left\langle \dot{\phi}\right\rangle }+p\bar{\omega}_{b}-\bar{\omega}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the normalized coefficient 
+\begin_inset Formula $\frac{2^{3/2}}{C}\pi^{2}a^{2}R_{0}n_{0}T_{0}$
+\end_inset
+
+ is profile dependent parameter which is not convient for different 
+\begin_inset Formula $F$
+\end_inset
+
+ especially in the analytical derivation of 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+.
+ To avoid it, we can use the factor 
+\begin_inset Formula $\frac{n_{0}}{v_{0}^{3}}$
+\end_inset
+
+ to normalize 
+\begin_inset Formula $F$
+\end_inset
+
+'s, i.e.
+ 
+\begin_inset Formula $F=\frac{n_{0}}{v_{0}^{3}}\bar{F}$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $\bar{F}=\left(2^{3/2}/C\right)\hat{F}$
+\end_inset
+
+ here.
+ And 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\pi^{2}a^{2}R_{0}n_{0}T_{0}\delta\bar{W}_{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}=\int\frac{\bar{J}}{q}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\bar{\tau}_{b}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\cdot\sum_{-\infty}^{\infty}\frac{\left|\bar{Y}_{p}\right|^{2}}{n\overline{\left\langle \dot{\phi}\right\rangle }+p\bar{\omega}_{b}-\bar{\omega}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{F}=\frac{2^{3/2}}{C}\frac{1}{\bar{\epsilon}^{3/2}+\bar{\epsilon}_{c}^{3/2}}Erfc\left(\frac{\bar{\epsilon}-\bar{\epsilon}_{0}}{\Delta\bar{\epsilon}}\right)\exp\left[-\left(\frac{x-x_{0}}{\Delta x}\right)^{2}\right]\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here the normalized coefficient 
+\begin_inset Formula $\pi^{2}a^{2}R_{0}n_{0}T_{0}$
+\end_inset
+
+ is profile independent.
+\end_layout
+
+\begin_layout Standard
+For passing particles,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\omega}_{b}=\frac{\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{q}\sqrt{\bar{\epsilon}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{b}t=\bar{\omega}_{b}\frac{v_{h}}{R}\int_{0}^{\theta}\frac{qR_{0}}{\sqrt{2\left(T/M\right)\bar{\epsilon}}b\sqrt{1-\frac{\Lambda}{b}}}d\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\int_{0}^{\theta}\frac{\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\sqrt{\varepsilon\Lambda/2}\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{p}\left(\Lambda,\bar{r};\sigma\right)=\frac{1}{\tau_{b}}\oint d\tau\tilde{G}\left(\tau\right)\exp\left(-ip\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{\omega_{b}}{2\pi}\oint d\tau\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]\exp\left(-ip\omega_{b}\tau\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2\pi}\oint d\left(\omega_{b}\tau\right)\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]\exp\left(-ip\omega_{b}\tau\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2\pi}\int_{0}^{2\pi}d\theta\frac{\sigma\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]\exp\left(-ip\int_{0}^{\theta}d\theta^{\prime}\frac{\sigma\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula 
+\[
+\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]=\left(\frac{\Lambda}{b\left(r,\theta\right)}+2\left(1-\frac{\Lambda}{b\left(r,\theta\right)}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\left(\left(g^{\theta\theta}\kappa_{\theta}+g^{r\theta}\kappa_{r}\right)\hat{\xi}_{\theta}\left(\theta,\bar{r}+\rho_{d}\cos\theta\right)+\left(g^{rr}\kappa_{r}+g^{r\theta}\kappa_{\theta}\right)\hat{\xi}_{r}\left(\theta,\bar{r}+\rho_{d}\cos\theta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the effect of finite orbit width is induced radially in the perturbed
+ 
+\begin_inset Formula $\xi\left(r\right)$
+\end_inset
+
+ for simply.
+ Furthermore, 
+\begin_inset Formula $\tilde{G}$
+\end_inset
+
+ is a normalized quantity, so is 
+\begin_inset Formula $Y_{p}$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tilde{G}\left[x\left(\tau\right),\theta\left(\tau\right)\right]=\left(\frac{\Lambda}{b\left(x,\theta\right)}+2\left(1-\frac{\Lambda}{b\left(x,\theta\right)}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\left(\left(\bar{g}^{\theta\theta}\bar{\kappa}_{\theta}+\bar{g}^{r\theta}\bar{\kappa}_{r}\right)\bar{\hat{\xi}}_{\theta}\left(\theta,\bar{x}+\frac{\rho_{d}}{a}\cos\theta\right)+\left(\bar{g}^{rr}\bar{\kappa}_{r}+\bar{g}^{r\theta}\bar{\kappa}_{\theta}\right)\bar{\hat{\xi}}_{r}\left(\theta,\bar{x}+\frac{\rho_{d}}{a}\cos\theta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, the normalized displacements are 
+\begin_inset Formula $\bar{\hat{\xi}}_{\theta m}=\hat{\xi}_{\theta m}/a^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\hat{\xi}}_{rm}=\hat{\xi}_{rm}/a$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The normalized metric tensors are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{rr}=1+2\Delta^{\prime}\cos\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\Delta^{\prime}=\left(\varepsilon+\alpha\right)/4$
+\end_inset
+
+, 
+\begin_inset Formula $\varepsilon=\frac{r}{R_{0}}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=-R_{0}q^{2}d\beta/dr$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=\frac{2\mu_{0}P}{B^{2}}$
+\end_inset
+
+ set 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+ if 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+, or assume 
+\begin_inset Formula $\bar{g}^{rr}=1$
+\end_inset
+
+ without toroidal effect, 
+\begin_inset Formula $\theta$
+\end_inset
+
+ independent.
+ Specially, in low beta limit,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{rr}=1+\frac{1}{2}\varepsilon\cos\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{\theta\theta}=\frac{1}{x^{2}}\left[1-2\left(\varepsilon+\Delta^{\prime}\right)\cos\theta\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+assume 
+\begin_inset Formula $\bar{g}^{\theta\theta}=\frac{1}{x^{2}}$
+\end_inset
+
+ without toroidal effect.
+ Specially, in low beta limit,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{\theta\theta}=\frac{1}{x^{2}}\left[1-\frac{5}{2}\varepsilon\cos\theta\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{r\theta}=-\frac{1}{x}\left[\varepsilon+\left(r\Delta^{\prime}\right)^{\prime}\right]\sin\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+specially, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{r\theta}=-\frac{1}{x}\frac{3}{2}\varepsilon\sin\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for low beta limit.
+ and 
+\begin_inset Formula $\bar{g}^{r\theta}=0$
+\end_inset
+
+ without toroidal effect.
+\end_layout
+
+\begin_layout Standard
+The normalized curvature are in low beta limit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\kappa}_{r}=-\frac{a}{R}\cos\theta+\frac{a}{R}\frac{\varepsilon}{4}-\frac{a}{R}\frac{5}{4}\varepsilon\left(\cos2\theta-1\right)-\left(\frac{a}{R}\right)^{2}\frac{x}{q}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\kappa}_{\theta}=\varepsilon\sin\theta+\frac{5}{4}\varepsilon^{2}\sin2\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $R=R_{0}+r\cos\theta-\Delta\left(r\right)+r\eta\left(r\right)\left(\cos2\theta-1\right)$
+\end_inset
+
+.
+\begin_inset Formula $\eta\left(r\right)=\left(\varepsilon+\Delta^{\prime}\right)/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The normalized 
+\begin_inset Formula $\omega_{\star}$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\omega}_{\star}=\frac{1}{2}\frac{nq}{x}\frac{R_{0}}{a}\frac{\rho_{h}}{a}\frac{\partial\bar{F}/\partial x}{\partial\bar{F}/\partial\bar{\epsilon}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+or 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\omega}_{\star}=\frac{1}{2}\frac{m}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{\partial\bar{F}/\partial x}{\partial\bar{F}/\partial\bar{\epsilon}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, 
+\begin_inset Formula $n$
+\end_inset
+
+ is toroidal mode number, 
+\begin_inset Formula $m$
+\end_inset
+
+ is poloidal mode number, 
+\begin_inset Formula $\rho_{h}=v_{h}/\omega_{c}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{h}=\sqrt{2T_{h}/M},\omega_{c}=Be/M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The normalized 
+\begin_inset Formula $\rho_{d}$
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\rho}_{d}=\frac{\rho_{d}}{a}=\frac{q}{2}\frac{\rho_{h}}{a}\sqrt{\frac{\bar{\epsilon}}{\left(1-\Lambda/b\right)}}\left[\frac{\Lambda}{b}+2\left(1-\frac{\Lambda}{b}\right)\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The normalized 
+\begin_inset Formula $\xi$
+\end_inset
+
+ are
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+\bar{\xi}_{r}\left(\theta,x\right)=\bar{\xi}_{0}\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+\bar{\xi}_{\theta}\left(\theta,x\right)=-i\bar{\xi}_{0}x\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+within 
+\begin_inset Formula $q=1$
+\end_inset
+
+ surface.
+ 
+\color blue
+In the inertial region 
+\begin_inset Formula $r_{s}-\frac{\Delta r}{2}\leq r\leq r_{s}+\frac{\Delta r}{2}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+\bar{\xi}_{r}\left(\theta,x\right)=\bar{\xi}_{0}\left(\frac{\overline{\Delta r}-x+\left(\bar{r}_{s}-\overline{\Delta r}/2\right)}{\overline{\Delta r}}\right)\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{\xi}_{\theta}\left(\theta,x\right)=-i\bar{\xi}_{0}x\left(\frac{\overline{\Delta r}-2x+\left(\bar{r}_{s}-\overline{\Delta r}/2\right)}{\overline{\Delta r}}\right)\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\bar{\xi}_{0}=\xi_{0}/a$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{r}_{s}=r_{s}/a$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{\Delta r}=\Delta r/a$
+\end_inset
+
+, 
+\begin_inset Formula $x=r/a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+The normalized 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}=\int\frac{\bar{J}}{q}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\bar{\tau}_{b}\left(\bar{\omega}-\bar{\omega}_{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\sum_{-\infty}^{\infty}\frac{\left|\bar{Y}_{p}\right|^{2}}{n\overline{\left\langle \dot{\phi}\right\rangle }+p\bar{\omega}_{b}-\bar{\omega}},\label{eq:deltaWk}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{F}=\frac{2^{3/2}}{C}\frac{1}{\bar{\epsilon}^{3/2}+\bar{\epsilon}_{c}^{3/2}}Erfc\left(\frac{\bar{\epsilon}-\bar{\epsilon}_{0}}{\Delta\bar{\epsilon}}\right)\exp\left[-\left(\frac{x-x_{0}}{\Delta x}\right)^{2}\right]\exp\left[-\left(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda}\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $\bar{J}=x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For passing particles,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\omega}_{b}=\frac{\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{q}\sqrt{\bar{\epsilon}}
+\end{equation}
+
+\end_inset
+
+where, 
+\begin_inset Formula $\kappa=\frac{1-\Lambda\left(1-\varepsilon\right)}{2\varepsilon\Lambda}$
+\end_inset
+
+, 
+\begin_inset Formula $\varepsilon=\frac{r}{R_{0}}$
+\end_inset
+
+.
+ and
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\begin{equation}
+\overline{\left\langle \dot{\phi}\right\rangle }\cong q\bar{\omega}_{b}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{b}t=\bar{\omega}_{b}\frac{v_{h}}{R}\int_{0}^{\theta}\frac{qR_{0}}{\sqrt{2\left(T/M\right)\bar{\epsilon}}b\sqrt{1-\frac{\Lambda}{b}}}d\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\int_{0}^{\theta}\frac{\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\sqrt{\varepsilon\Lambda/2}\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{p}\left(\Lambda,\bar{r};\sigma\right)=\frac{1}{\tau_{b}}\oint d\tau\tilde{G}\left(\tau\right)\exp\left(-ip\omega_{b}\tau\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{\omega_{b}}{2\pi}\oint d\tau\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]\exp\left(-ip\omega_{b}\tau\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2\pi}\oint d\left(\omega_{b}\tau\right)\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]\exp\left(-ip\omega_{b}\tau\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{2\pi}\int_{0}^{2\pi}d\theta\frac{\sigma\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]\exp\left(-ip\int_{0}^{\theta}d\theta^{\prime}\frac{\sigma\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tilde{G}\left[x\left(\tau\right),\theta\left(\tau\right)\right]=\left(\frac{\Lambda}{b\left(x,\theta\right)}+2\left(1-\frac{\Lambda}{b\left(x,\theta\right)}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\left(\left(\bar{g}^{\theta\theta}\bar{\kappa}_{\theta}+\bar{g}^{r\theta}\bar{\kappa}_{r}\right)\bar{\hat{\xi}}_{\theta}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)+\left(\bar{g}^{rr}\bar{\kappa}_{r}+\bar{g}^{r\theta}\bar{\kappa}_{\theta}\right)\bar{\hat{\xi}}_{r}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, the normalized displacements are 
+\begin_inset Formula $\bar{\hat{\xi}}_{\theta m}=\hat{\xi}_{\theta m}/a^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\hat{\xi}}_{rm}=\hat{\xi}_{rm}/a$
+\end_inset
+
+ and normalized drift orbit width is 
+\begin_inset Formula $\bar{\rho}_{d}=\frac{\rho_{d}}{a}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The normalized metric tensors are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{rr}=1+\frac{1}{2}\varepsilon\cos\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{\theta\theta}=\frac{1}{x^{2}}\left[1-\frac{5}{2}\varepsilon\cos\theta\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{r\theta}=-\frac{1}{x}\frac{3}{2}\varepsilon\sin\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The normalized curvature are in low beta limit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\kappa}_{r}=-\frac{a}{R}\cos\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\kappa}_{\theta}=\varepsilon\sin\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The normalized 
+\begin_inset Formula $\omega_{\star}$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\omega}_{\star}=\frac{1}{2}\frac{R_{0}}{a}\frac{\rho_{h}}{a}\frac{nq}{x}\frac{\partial\bar{F}/\partial x}{\partial\bar{F}/\partial\bar{\epsilon}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $n$
+\end_inset
+
+ being toroidal mode number.
+\end_layout
+
+\begin_layout Standard
+The normalized 
+\begin_inset Formula $\xi$
+\end_inset
+
+ are
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+\bar{\xi}_{r}\left(\theta,x\right)=\bar{\xi}_{0}\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+\bar{\xi}_{\theta}\left(\theta,x\right)=-i\bar{\xi}_{0}x\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+within 
+\begin_inset Formula $q=1$
+\end_inset
+
+ surface.
+ 
+\color blue
+In the inertial region 
+\begin_inset Formula $r_{s}-\frac{\Delta r}{2}\leq r\leq r_{s}+\frac{\Delta r}{2}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset Formula 
+\[
+\bar{\xi}_{r}\left(\theta,x\right)=\bar{\xi}_{0}\left(\frac{\overline{\Delta r}-x+\left(\bar{r}_{s}-\overline{\Delta r}/2\right)}{\overline{\Delta r}}\right)\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\bar{\xi}_{\theta}\left(\theta,x\right)=-i\bar{\xi}_{0}x\left(\frac{\overline{\Delta r}-2x+\left(\bar{r}_{s}-\overline{\Delta r}/2\right)}{\overline{\Delta r}}\right)\exp\left(-i\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\bar{\xi}_{0}=\xi_{0}/a$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{r}_{s}=r_{s}/a$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{\Delta r}=\Delta r/a$
+\end_inset
+
+, 
+\begin_inset Formula $x=r/a$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+The fishbone dispersion relation
+\end_layout
+
+\begin_layout Standard
+The quadratic form is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{MHD}+\delta W_{k}+\delta I=0
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta I=\gamma^{2}\int\rho_{m}\left|\vec{\xi}\right|^{2}d\vec{r}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{MHD}=\int\vec{\xi}^{\star}\cdot\left(\nabla\cdot\delta\mathbf{P}_{f}+\delta\mathbf{B}\times\nabla\times\mathbf{B}+\mathbf{B}\times\nabla\times\delta\mathbf{B}\right)d\vec{r}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta W_{k}=\int\vec{\xi}^{\star}\cdot\nabla\delta p_{h}d\vec{r}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For fishbone instability, the dispersion relation can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{i\omega}{\omega_{A}}+\delta\hat{W}_{T}+\delta\hat{W}_{k}=0,\label{eq:dispersion relation-1}
+\end{equation}
+
+\end_inset
+
+where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\hat{W}_{T}=\delta W_{MHD}/\left[2\pi R\xi_{0}^{2}\left(r_{s}B/2R\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\hat{W}_{k}=\delta W_{k}/\left[2\pi R\xi_{0}^{2}\left(r_{s}B/2R\right)^{2}\right]
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\gamma=i\omega$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{A}=v_{A}/3^{1/2}R_{0}\hat{s}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{A}=B/\left(\mu_{0}\rho_{m}\right)^{1/2}$
+\end_inset
+
+,
+\begin_inset Formula $\rho_{m}=m_{i}n_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{s}=r_{s}\frac{dq}{dr}_{r=r_{s}}$
+\end_inset
+
+.
+ Specially, the MHD potential energy 
+\begin_inset Formula $\delta W_{MHD}$
+\end_inset
+
+ of toroidal plasma with circular cross-section for 
+\begin_inset Formula $m=1,n=1$
+\end_inset
+
+ mode is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\hat{W}_{T}=\pi\left(\frac{r_{s}}{R}\right)^{2}3\left(1-q_{0}\right)\left(\frac{13}{144}-\beta_{ps}^{2}\right)
+\end{equation}
+
+\end_inset
+
+and with 
+\begin_inset Formula $\delta W_{k}=\pi^{2}a^{2}R_{0}n_{0}T_{h}\delta\bar{W}_{k}$
+\end_inset
+
+, the kinetic potential energy 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\hat{W}_{k}=\frac{1}{4}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{1}{\left|\xi_{0}/a\right|^{2}}\beta_{h0}\delta\bar{W}_{k}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\beta_{h0}=8\pi n_{0}T_{h}/B^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ is given by Eq.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:deltaWk"
+
+\end_inset
+
+.
+ By normalizing the frequencies 
+\begin_inset Formula $\bar{\omega}=\omega/\left(v_{h}/R_{0}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\omega}_{A}=\omega_{A}/\left(v_{h}/R_{0}\right)$
+\end_inset
+
+, the dispersion relation Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dispersion relation-1"
+
+\end_inset
+
+ is rewritten by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{i\bar{\omega}}{\bar{\omega}_{A}}+\delta\hat{W}_{T}+\delta\hat{W}_{k}=0.\label{eq:dispersion relation-1-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analytic form of the dispersion relation with passing particles and large
+ aspect ratio approximation
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\varepsilon\ll1$
+\end_inset
+
+, the normalized metric tensors are approximated as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{rr}\approx1
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{\theta\theta}\approx\frac{1}{x^{2}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{g}^{r\theta}\approx-\frac{1}{x}\frac{3}{2}\varepsilon\sin\theta
+\end{equation}
+
+\end_inset
+
+and the normalized curvature are in low beta limit
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\kappa}_{r}\approx-\frac{a}{R}\cos\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\kappa}_{\theta}\approx\varepsilon\sin\theta
+\end{equation}
+
+\end_inset
+
+The formula of 
+\begin_inset Formula $\xi_{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{r}$
+\end_inset
+
+ are given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\xi}_{r}\left(\theta,x\right)=\bar{\xi}_{0}\left(x\right)\exp\left(-i\theta\right),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\xi}_{\theta}\left(\theta,x\right)=-i\bar{\xi}_{0}\left(x\right)x\exp\left(-i\theta\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, 
+\begin_inset Formula $\bar{\xi}_{0}\left(x\right)=\bar{\xi}_{s}H\left(x_{s}-x\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $H\left(x\right)$
+\end_inset
+
+ is Heaviside step function, 
+\begin_inset Formula $H=1$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+ and 
+\begin_inset Formula $H=0$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0$
+\end_inset
+
+, 
+\begin_inset Formula $dH/dx=\delta\left(x\right)$
+\end_inset
+
+.
+ Together with 
+\begin_inset Formula $\Lambda\ll1$
+\end_inset
+
+, one obtains
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tilde{G}\left[r\left(\tau\right),\theta\left(\tau\right)\right]=\left(\frac{\Lambda}{b\left(r,\theta\right)}+2\left(1-\frac{\Lambda}{b\left(r,\theta\right)}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\left(\left(\bar{g}^{\theta\theta}\bar{\kappa}_{\theta}+\bar{g}^{r\theta}\bar{\kappa}_{r}\right)\bar{\hat{\xi}}_{\theta}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)+\left(\bar{g}^{rr}\bar{\kappa}_{r}+\bar{g}^{r\theta}\bar{\kappa}_{\theta}\right)\bar{\hat{\xi}}_{r}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\approx2\left(\frac{1}{x^{2}}\varepsilon\sin\theta\bar{\xi}_{\theta}-\frac{a}{R}\cos\theta\bar{\xi}_{r}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\approx2\left(-\frac{a}{R}i\sin\theta\bar{\xi}_{r}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)-\frac{a}{R}\cos\theta\bar{\xi}_{r}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\approx-2\frac{a}{R}\bar{\xi}_{r}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)\left(i\sin\theta+\cos\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\approx-2\frac{a}{R}\bar{\xi}_{r}\left(\theta,\bar{x}+\bar{\rho}_{d}\cos\theta\right)\exp\left(i\theta\right)\label{eq:Ga}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\kappa\gg1$
+\end_inset
+
+, the ellipitic fuction 
+\begin_inset Formula $K$
+\end_inset
+
+ becomes 
+\begin_inset Formula $K\left(\kappa^{-1}\right)=\pi/2$
+\end_inset
+
+.
+ Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\pi\sqrt{\kappa}}{K\left(\kappa^{-1}\right)}\frac{\sqrt{\varepsilon\Lambda/2}}{b\sqrt{1-\frac{\Lambda}{b}}}\approx\frac{\pi\sqrt{\frac{1}{2\varepsilon\Lambda}}}{\pi/2}\frac{\sqrt{\frac{\varepsilon\Lambda}{2}}}{b\sqrt{1-\frac{\Lambda}{b}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{1}{b\sqrt{1-\Lambda/b}}\label{eq:b1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using Eq.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Ga"
+
+\end_inset
+
+ and Eq.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:b1"
+
+\end_inset
+
+, 
+\begin_inset Formula $Y_{p}$
+\end_inset
+
+ is rewritten as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Y_{p}=-\frac{1}{2\pi}\int_{0}^{2\pi}d\theta\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}2\frac{a}{R}\bar{\xi}_{r}\left(\theta,x+\bar{\rho}_{d}\cos\theta\right)\exp\left(i\theta\right)\exp\left(-ip\int_{0}^{\theta}d\theta^{\prime}\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\frac{1}{\pi}\frac{a}{R}\int_{0}^{2\pi}d\theta\bar{\xi}_{r}\left(\theta,x+\bar{\rho}_{d}\cos\theta\right)\exp\left(i\theta\right)\exp\left(-ip\theta\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=-\frac{1}{\pi}\frac{a}{R}\int_{0}^{2\pi}d\theta\bar{\xi}_{s}H\left(x_{s}-x-\bar{\rho}_{d}\cos\theta\right)\exp\left(-i\theta\right)\exp\left(i\theta\right)\exp\left(-ip\theta\right)\label{eq:yp}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The distribution function of passing particles for analytical purpose is
+ given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{F}\left(x,\bar{\epsilon},\Lambda\right)=\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}\text{\delta\left(\Lambda\right)}H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and its derivative of 
+\begin_inset Formula $\bar{\epsilon}$
+\end_inset
+
+ is read as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\bar{F}}{\partial\bar{\epsilon}}=\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left[-\frac{3}{2}\bar{\epsilon}^{-\frac{5}{2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)-\bar{\epsilon}^{-\frac{5}{2}}\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)-\bar{\epsilon}^{-\frac{3}{2}}\delta\left(\Lambda\right)\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}=I_{1}+I_{2}\label{eq:delta wk-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $I_{1}$
+\end_inset
+
+ represents the term with 
+\begin_inset Formula $\bar{\omega}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{2}$
+\end_inset
+
+ the term with 
+\begin_inset Formula $\bar{\omega}_{\star}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $I_{1}$
+\end_inset
+
+ decomposes three parts corresponding to 
+\begin_inset Formula $\partial\bar{F}/\partial\bar{\epsilon}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I_{1}=I_{1}^{\left(1\right)}+I_{1}^{\left(2\right)}+I_{1}^{\left(3\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The dispersion relation for the case of 
+\begin_inset Formula $\rho_{d}=0$
+\end_inset
+
+, 
+\begin_inset Formula $p=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\bar{\rho}_{d}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $p=0$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+Y_{0} & = & -\frac{1}{\pi}\frac{a}{R}\int_{0}^{2\pi}d\theta\bar{\xi}_{s}H\left(x_{s}-x\right)\exp\left(-i\theta\right)\exp\left(i\theta\right)\\
+ & = & -\frac{1}{\pi}\frac{a}{R}\int_{0}^{2\pi}d\theta\bar{\xi}_{s}H\left(x_{s}-x\right)\\
+ & = & -2\frac{a}{R}\bar{\xi}_{s}H\left(x_{s}-x\right)
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $\bar{\omega}_{b}\simeq\sqrt{\bar{\epsilon}}/q$
+\end_inset
+
+ and 
+\begin_inset Formula $p=0$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ of Eq.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:deltaWk"
+
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}=\int_{0}^{x_{s}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\frac{\left|\bar{Y}_{0}\right|^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+here 
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ is zero in the region 
+\begin_inset Formula $x>x_{s}$
+\end_inset
+
+ where 
+\begin_inset Formula $H=0$
+\end_inset
+
+.
+ According to 
+\begin_inset Formula $Y_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{J}$
+\end_inset
+
+ as shown above, 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}=\int_{0}^{x_{s}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\frac{\left(-2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $F_{h}\left(x,\epsilon,\Lambda\right)=c_{0}\left(x\right)\frac{1}{\epsilon^{3/2}}\text{\ensuremath{\delta\left(\Lambda\right)}}H\left(\epsilon_{0}-\epsilon\right),$
+\end_inset
+
+ we can get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+p_{h}\left(x\right) & = & \int d^{3}vM\left(v_{\parallel}^{2}+\frac{1}{2}v_{\perp}^{2}\right)F_{h}\\
+ & \approx & \int d^{3}vMv_{\parallel}^{2}F_{h}\\
+ & = & M\int\sqrt{2}\pi\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda\epsilon^{1/2}d\epsilon2\epsilon F_{h}\\
+ & = & M\int2^{\frac{3}{2}}\pi\epsilon^{\frac{3}{2}}\frac{1}{b\sqrt{1-\frac{\Lambda}{b}}}c_{0}\left(x\right)\frac{1}{\epsilon^{3/2}}\text{\ensuremath{\delta\left(\Lambda\right)}}H\left(\epsilon_{0}-\epsilon\right)d\Lambda d\epsilon\\
+ & = & \pi2^{\frac{3}{2}}Mc_{0}\left(x\right)\epsilon_{0}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, 
+\begin_inset Formula $F_{h}=\left[p_{h}\left(x\right)/\left(\pi M2^{\frac{3}{2}}\epsilon_{0}\right)\right]\frac{1}{\epsilon^{3/2}}\text{\ensuremath{\delta\left(\Lambda\right)}}H\left(\epsilon_{0}-\epsilon\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $c_{0}=p_{h}\left(x\right)/\left(\pi M2^{\frac{3}{2}}\epsilon_{0}\right)$
+\end_inset
+
+.
+ Furthermore, using 
+\begin_inset Formula $F_{h}=\left(n_{0}/v_{0}^{3}\right)\bar{F}_{h}$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{F}_{h}=\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{\frac{3}{2}}}H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\delta\left(\Lambda\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\bar{F}}{\partial\bar{\epsilon}}=\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left[-\frac{3}{2}\bar{\epsilon}^{-\frac{5}{2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)-\bar{\epsilon}^{-\frac{5}{2}}\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)-\bar{\epsilon}^{-\frac{3}{2}}\delta\left(\Lambda\right)\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(1\right)}=\int_{0}^{x_{s}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(-\frac{3}{2}\right)\bar{\epsilon}^{-\frac{5}{2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-6\pi\frac{\bar{\omega}}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{0}^{x_{s}}xp_{h}\left(x\right)dx\int_{0}^{\bar{\epsilon}_{0}}\frac{\sqrt{\bar{\epsilon}}d\sqrt{\bar{\epsilon}}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-6\pi\frac{\bar{\omega}}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{0}^{x_{s}}xp_{h}\left(x\right)dx\left(1+\Omega\ln\left(1-\frac{1}{\Omega}\right)\right)\sqrt{\bar{\epsilon}_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-6\pi\frac{1}{\pi n_{0}T_{h}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left(\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right)\int_{0}^{x_{s}}xp_{h}\left(x\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(2\right)}=\int_{0}^{x_{s}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(-1\right)\bar{\epsilon}^{-\frac{5}{2}}\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}\cdot\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\int_{0}^{x_{s}}xdx\int d\Lambda d\bar{\epsilon}\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(-1\right)\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)2\pi\bar{\omega}\cdot\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=4\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\bar{\omega}\cdot\int_{0}^{x_{s}}xp_{h}\left(x\right)dx\int_{0}^{\bar{\epsilon}_{0}}\frac{\sqrt{\bar{\epsilon}}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}d\sqrt{\bar{\epsilon}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=4\pi\frac{1}{\pi n_{0}T_{h}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left(\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right)\int_{0}^{x_{s}}xp_{h}\left(x\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(3\right)}=\int_{0}^{x_{s}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(-1\right)\bar{\epsilon}^{-\frac{3}{2}}\delta\left(\Lambda\right)\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(3\right)}=-2\pi\frac{1}{\pi n_{0}T_{h}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{\Omega}{1-\Omega}\int_{0}^{x_{s}}xp_{h}\left(x\right)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}=-2\pi\frac{1}{\pi n_{0}T_{h}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right]\int_{0}^{x_{s}}xp_{h}\left(x\right)dx.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\bar{F}_{h}}{\partial x}=\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{dp_{h}\left(x\right)}{dx}\frac{1}{\bar{\epsilon}^{3/2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{\omega}_{\star}=\frac{1}{2}\frac{m}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{\partial\bar{F}/\partial x}{\partial\bar{F}/\partial\bar{\epsilon}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}=-\int_{0}^{x_{s}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}_{\star}\cdot\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{0}^{x_{s}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}\frac{\partial\bar{F}}{\partial x}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}\cdot\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{0}^{x_{s}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{dp_{h}\left(x\right)}{dx}\frac{1}{\bar{\epsilon}^{3/2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}2\pi\frac{1}{2}\frac{R}{a}\frac{\rho_{h}}{a}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{0}^{x_{s}}\frac{dp_{h}\left(x\right)}{dx}dx\int_{0}^{\bar{\epsilon}_{0}}\frac{\bar{\epsilon}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}d\bar{\epsilon}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}2\pi\frac{R}{a}\frac{\rho_{h}}{a}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{0}^{x_{s}}\frac{dp_{h}\left(x\right)}{dx}dx\int_{0}^{\bar{\epsilon}_{0}}\frac{\left(\sqrt{\bar{\epsilon}}\right)^{3}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}d\sqrt{\bar{\epsilon}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & = & -2\pi\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{0}^{x_{s}}\frac{dp_{h}\left(x\right)}{dx}dx\\
+ &  & \cdot\left(\frac{1}{3}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right)\left(\sqrt{\bar{\epsilon}_{0}}\right)^{3}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\delta\bar{W}_{k} & = & I_{1}+I_{2}\nonumber \\
+ & = & -2\pi\frac{1}{\pi n_{0}T_{h}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right]\int_{0}^{x_{s}}xp_{h}\left(x\right)dx\nonumber \\
+ &  & -2\pi\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{0}^{x_{s}}\frac{dp_{h}\left(x\right)}{dx}dx\label{eq:deltaWk0}\\
+ &  & \cdot\left(\frac{1}{3}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right)\left(\sqrt{\bar{\epsilon}_{0}}\right)^{3}\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\delta\hat{W}_{k} & =\frac{1}{4}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{1}{\left|\xi_{0}/a\right|^{2}}\beta_{h0}\delta\bar{W}_{k}\\
+ & =\begin{alignedat}{1}-2\frac{1}{\left(r_{s}/a\right)^{2}}\frac{8\pi\int_{0}^{x_{s}}xp_{h}\left(x\right)dx}{B^{2}}\left[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right]\\
+-2\frac{1}{\Omega_{c}\left(r_{s}/R\right)^{2}}\frac{8\pi\int_{0}^{x_{s}}\frac{dp_{h}\left(x\right)}{dx}dx}{B_{t}^{2}}\left[\frac{1}{3}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{alignedat}
+\end{split}
+\label{eq:dwkp0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Omega_{c}=\omega_{c}/\left[\left(v_{h}/R_{0}\right)\sqrt{\bar{\epsilon}_{0}}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Moreover,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\\
+\delta\hat{W}_{k} & =\begin{alignedat}{1}-\frac{1}{\left(r_{s}/a\right)^{2}}\frac{8\pi\left\langle p_{h}\right\rangle }{B_{t}^{2}}\left[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right]+2\frac{1}{\Omega_{c}\left(r_{s}/Rq_{s}\right)^{2}}\\
+\cdot\frac{8\pi\left(p_{h}\left(0\right)-p_{h}\left(x_{s}\right)\right)}{B_{t}^{2}}\left[\frac{1}{3}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{alignedat}
+\end{split}
+\label{eq:dwkp0-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\left\langle p\right\rangle =\frac{2}{x_{s}^{2}}\int_{0}^{x_{s}}xp_{h}\left(x\right)dx$
+\end_inset
+
+ is volume averaged pressure for 
+\begin_inset Formula $q_{s}=1$
+\end_inset
+
+, Then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\\
+\delta\hat{W}_{k} & =\begin{alignedat}{1}-\frac{1}{\left(r_{s}/a\right)^{2}}\left\langle \beta_{h}\right\rangle \left[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right]+\frac{1}{\Omega_{c}\left(r_{s}/R\right)^{2}}\\
+\cdot2\left(\beta_{h}\left(0\right)-\beta_{h}\left(x_{s}\right)\right)\left[\frac{1}{3}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{alignedat}
+\end{split}
+\label{eq:dwkp0-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\beta_{h}=8\pi p_{h}/B^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The dispersion relation for 
+\begin_inset Formula $p=0$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{i\Omega}{\Omega_{A}}+\delta\hat{W}_{T}+\delta\hat{W}_{k}=0,\label{eq:dispersion relation-1-1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Omega_{A}=\bar{\omega}_{A}/\sqrt{\bar{\epsilon}_{0}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The dispersion relation for the case of 
+\begin_inset Formula $\rho_{d}\neq0$
+\end_inset
+
+, 
+\begin_inset Formula $p=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\bar{\rho}_{d}\neq0$
+\end_inset
+
+, 
+\begin_inset Formula $p=0$
+\end_inset
+
+ and using Eq.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:yp"
+
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+x<x_{s}-\bar{\rho}_{d} &  & Y_{0}=-\frac{1}{\pi}\frac{a}{R}\bar{\xi}_{s}\int_{0}^{2\pi}d\theta=-\frac{2a}{R}\bar{\xi}_{s}\triangleq Y_{0}^{\prime}\\
+x_{s}-\bar{\rho}_{d}<x<x_{s}+\bar{\rho}_{d} &  & Y_{0}=-\frac{1}{\pi}\frac{a}{R}\bar{\xi}_{s}\int_{\theta^{\star}}^{2\pi-\theta^{\star}}d\theta=-\frac{2\pi-2\theta^{\star}}{\pi}\frac{a}{R}\bar{\xi}_{s}\triangleq Y_{0}^{\prime\prime}\\
+x>x_{s}+\bar{\rho}_{d} &  & Y_{0}=0
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\cos\theta^{\star}=\frac{x_{s}-x}{\bar{\rho}_{d}}\in\left[0,\pi\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $\bar{\omega}_{b}\simeq\sqrt{\bar{\epsilon}}/q$
+\end_inset
+
+ and 
+\begin_inset Formula $p=0$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ of Eq.
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:deltaWk"
+
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}=\delta\bar{W}_{k}^{\prime}+\delta\bar{W}_{k}^{\prime\prime}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}^{\prime}=\int_{0}^{x_{s}-\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\frac{\left|Y_{0}^{\prime}\right|^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}^{\prime\prime}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\frac{\left|Y_{0}^{\prime\prime}\right|^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to 
+\begin_inset Formula $\int_{0}^{x_{s}}=\int_{0}^{x_{s}-\bar{\rho}_{d}}+\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}}$
+\end_inset
+
+, one gets
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}^{\prime}=\delta\bar{W}_{k}^{0}-\delta\bar{W}_{k}^{\prime s}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\delta\bar{W}_{k}^{0}$
+\end_inset
+
+ is given by the above Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:deltaWk0"
+
+\end_inset
+
+ , and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}^{\prime s}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\frac{\left|Y_{0}^{\prime}\right|^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray}
+\nonumber \\
+ & = & -2\pi\frac{1}{\pi n_{0}T_{h}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}\ln\left(1-\frac{1}{\Omega}\right)\right]\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}}xp_{h}\left(x\right)dx\nonumber \\
+ &  & -2\pi\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}}q\frac{dp_{h}\left(x\right)}{dx}dx\label{eq:deltaWks}\\
+ &  & \cdot\left(\frac{1}{3}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right)\left(\sqrt{\bar{\epsilon}_{0}}\right)^{3}\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For simplicity, 
+\begin_inset Formula $\delta\bar{W}_{k}^{\prime}$
+\end_inset
+
+ may be approximate to 
+\begin_inset Formula $\delta\bar{W}_{k}^{0}$
+\end_inset
+
+ as 
+\begin_inset Formula $\bar{\rho}_{d}\ll x_{s}$
+\end_inset
+
+ .
+ We let 
+\begin_inset Formula $\delta\bar{W}_{k}^{\prime\prime}=I_{1}+I_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{1}=I_{1}^{\left(1\right)}+I_{1}^{\left(2\right)}+I_{1}^{\left(3\right)}$
+\end_inset
+
+ .
+ Thus, for 
+\begin_inset Formula $\delta\bar{W}_{k}^{\prime\prime}$
+\end_inset
+
+, one obtains
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(1\right)}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(-\frac{3}{2}\right)\bar{\epsilon}^{-\frac{5}{2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}\cdot\frac{\left(2\frac{a}{R}\frac{\pi-\theta^{\star}}{\pi}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-3\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{0}^{\bar{\epsilon}_{0}}\frac{\bar{\omega}d\bar{\epsilon}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xp_{h}\left(x\right)\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}dx
+\]
+
+\end_inset
+
+for the normal profile of 
+\begin_inset Formula $p_{h}$
+\end_inset
+
+, the identity 
+\begin_inset Formula $xp_{h}\left(x\right)=\frac{\delta_{x}}{2}\frac{p_{h}}{r_{p}}$
+\end_inset
+
+ should be satisfied, where 
+\begin_inset Formula $r_{p}=-\left[dp_{h}/pdx\right]^{-1},\delta_{x}$
+\end_inset
+
+ is profile width.
+ and 
+\begin_inset Formula $\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}dx=\frac{\pi-4}{\pi^{2}}\bar{\rho}_{d}$
+\end_inset
+
+.
+ With 
+\color blue
+
+\begin_inset Formula $\bar{\rho}_{d}\simeq q\sqrt{\bar{\epsilon}}\rho_{h}/a$
+\end_inset
+
+
+\color inherit
+, it yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(1\right)}\approx-6\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{\pi-4}{\pi^{2}}\frac{\rho_{h}}{a}\bar{\omega}\int_{0}^{\bar{\epsilon}_{0}}d\sqrt{\bar{\epsilon}}\frac{\left(\sqrt{\bar{\epsilon}}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & \approx & -6\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{\pi-4}{\pi^{2}}\frac{\rho_{h}}{a}\sqrt{\bar{\epsilon}_{0}}\\
+ &  & \cdot\left[\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & \approx & -6\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\left(\pi-4\right)\Delta_{b}\\
+ &  & \cdot\left[\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Delta_{b}=\frac{q_{s}\sqrt{\bar{\epsilon}_{0}}\rho_{h}}{a}$
+\end_inset
+
+ is orbit width.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(2\right)}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\left(-1\right)\bar{\epsilon}^{-\frac{5}{2}}\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{c}-\bar{\epsilon}\right)\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}\cdot\frac{\left(2\frac{a}{R}\frac{\pi-\theta^{\star}}{\pi}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=2\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\cdot\int_{0}^{\epsilon_{0}}\frac{d\bar{\epsilon}\bar{\omega}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xp_{h}\left(x\right)\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\approx\begin{gathered}4\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\left(\pi-4\right)\Delta_{b}\\
+\cdot\left[\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{gathered}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(3\right)}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\left(-1\right)\bar{\epsilon}^{-\frac{3}{2}}\delta\left(\Lambda\right)\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}\cdot\frac{\left(2\frac{a}{R}\frac{\pi-\theta^{\star}}{\pi}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\cdot\bar{\omega}\int\frac{\bar{\epsilon}d\bar{\epsilon}\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)}{\sqrt{\bar{\epsilon}}-\bar{\omega}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xp_{h}\left(x\right)\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\frac{\pi-4}{\pi^{2}}\bar{\omega}\int\frac{\bar{\epsilon}d\bar{\epsilon}\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)}{\sqrt{\bar{\epsilon}}-\bar{\omega}}\bar{\rho}_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\left(\pi-4\right)\Delta_{b}\frac{\Omega}{1-\Omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\bar{F}\left(x,\bar{\epsilon},\Lambda\right)}{\partial x}=\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}\text{\delta\left(\Lambda\right)}H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{dp_{h}\left(x\right)}{dx},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\omega}_{\star}=\frac{1}{2}\frac{m}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{\partial\bar{F}/\partial x}{\partial\bar{F}/\partial\bar{\epsilon}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}_{\star}\cdot\frac{\left(2\frac{a}{R}\frac{\pi-\theta^{\star}}{\pi}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}m\frac{\partial\bar{F}}{\partial x}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}\cdot\frac{\left(2\frac{a}{R}\frac{\pi-\theta^{\star}}{\pi}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{dp_{h}\left(x\right)}{dx}\cdot\frac{\left(2\frac{a}{R}\frac{\pi-\theta^{\star}}{\pi}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\pi\left(2\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\cdot\int_{0}^{\bar{\epsilon}_{0}}\frac{\bar{\epsilon}d\bar{\epsilon}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}\frac{dp_{h}\left(x\right)}{dx}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to 
+\begin_inset Formula $r_{p}=-\left[dp_{h}/pdx\right]^{-1},$
+\end_inset
+
+ the above integral of 
+\begin_inset Formula $x$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{gathered}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}\frac{dp_{h}\left(x\right)}{dx}dx\\
+=-\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\frac{\theta^{\star}}{\pi}\right]^{2}dx\\
+=-\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\frac{\pi-4}{\pi^{2}}\bar{\rho}_{d}\\
+\\
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\cdot\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{\rho_{h}}{a}\left(\pi-4\right)\int_{0}^{\bar{\epsilon}_{0}}\frac{\bar{\epsilon}^{3/2}d\bar{\epsilon}}{\sqrt{\bar{\epsilon}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & = & 2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}}\cdot\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\sqrt{\bar{\epsilon}_{0}}\left(\pi-4\right)\Delta_{b}\\
+ &  & \cdot\left[\frac{1}{4}+\frac{1}{3}\Omega+\frac{1}{2}\Omega^{2}+\Omega^{3}+\Omega^{4}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}^{\prime\prime}=\begin{gathered}-2\pi\left(\pi-4\right)\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\Delta_{b}\\
+\cdot\left[\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)+\frac{\Omega}{1-\Omega}\right]\\
++2\pi\left(\pi-4\right)\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}}\cdot\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\sqrt{\bar{\epsilon}_{0}}\Delta_{b}\\
+\cdot\left[\frac{1}{4}+\frac{1}{3}\Omega+\frac{1}{2}\Omega^{2}+\Omega^{3}+\Omega^{4}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{gathered}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using
+\begin_inset Formula 
+\begin{equation}
+\delta\hat{W}_{k}=\frac{1}{4}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{1}{\left|\xi_{0}/a\right|^{2}}\beta_{h0}\delta\bar{W}_{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+one obtains
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\hat{W}_{k}^{\prime\prime}=\begin{gathered}-\frac{1}{x_{s}^{2}}\left(\frac{2}{\pi}-\frac{8}{\pi^{2}}\right)\frac{\delta_{x}}{2}\left(\frac{\beta_{h}}{r_{p}}\right)_{x_{s}}\Delta_{b}\left[\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)+\frac{\Omega}{1-\Omega}\right]\\
++\frac{1}{x_{s}^{2}}\left(\frac{2}{\pi}-\frac{8}{\pi^{2}}\right)\frac{R}{a}\left(\frac{q\beta_{h}}{r_{p}}\right)_{x_{s}}\Delta_{b}^{2}\left[\frac{1}{4}+\frac{1}{3}\Omega+\frac{1}{2}\Omega^{2}+\Omega^{3}+\Omega^{4}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the dispersion relation is 
+\begin_inset Formula 
+\begin{equation}
+-\frac{i\Omega}{\Omega_{A}}+\delta\hat{W}_{T}+\delta\hat{W}_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Omega_{A}=\bar{\omega}_{A}/\sqrt{\bar{\epsilon}_{0}}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\hat{W}_{k}=\delta\hat{W_{k}^{0}}+\delta\hat{W}_{k}^{\prime\prime}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+The dispersion relation for the case of 
+\begin_inset Formula $p=1$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{d}\neq0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename integral_region.eps
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The integral region
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-integral-region"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $p=1$
+\end_inset
+
+, we arrive at
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{1}=-\frac{1}{\pi}\frac{a}{R}\int_{0}^{2\pi}d\theta\bar{\xi}_{s}H\left(x_{s}-\bar{x}-\bar{\rho}_{d}\cos\theta\right)\exp\left(-i\theta\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-integral-region"
+
+\end_inset
+
+, 
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ is zero in the region 
+\begin_inset Formula $x<x_{s}-\bar{\rho}_{d}$
+\end_inset
+
+ where 
+\begin_inset Formula $H=1$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\left[0,2\pi\right]$
+\end_inset
+
+ since the 
+\begin_inset Formula $\theta$
+\end_inset
+
+ integral of 
+\begin_inset Formula $\sim\exp\left(-i\theta\right)$
+\end_inset
+
+ from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ is zero.
+ In the region 
+\begin_inset Formula $x>x_{s}+\bar{\rho}_{d}$
+\end_inset
+
+, 
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ also is zero since 
+\begin_inset Formula $H=0$
+\end_inset
+
+.
+ Obviously, 
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ is finite in the region 
+\begin_inset Formula $x_{s}-\bar{\rho}_{d}<x<x_{s}+\bar{\rho}_{d}$
+\end_inset
+
+ where 
+\begin_inset Formula $H=1$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\left[\theta^{\star},-\theta^{\star}+2\pi\right]$
+\end_inset
+
+ .
+ 
+\begin_inset Formula $\cos\theta^{\star}=\frac{x_{s}-x}{\bar{\rho}_{d}}\in\left[0,\pi\right]$
+\end_inset
+
+.
+ Thus, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{1}=-\frac{1}{\pi}\frac{a}{R}\int_{\theta^{\star}}^{2\pi-\theta^{\star}}d\theta\bar{\xi}_{s}\exp\left(-i\theta\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\frac{1}{\pi}\frac{a}{R}\bar{\xi}_{s}i\left[\exp\left(-i\left(2\pi-\theta^{\star}\right)\right)-\exp\left(-i\theta^{\star}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\frac{1}{\pi}\frac{a}{R}\bar{\xi}_{s}i\left[\exp\left(-i\left(2\pi-\theta^{\star}\right)\right)-\exp\left(-i\theta^{\star}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\sin\theta^{\star}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $\bar{\omega}_{b}\simeq\sqrt{\bar{\epsilon}}/q$
+\end_inset
+
+ and 
+\begin_inset Formula $p=1$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\frac{\left|Y_{1}\right|^{2}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q}-\bar{\omega}}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\sin^{2}\theta^{\star}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}\left(1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\begin_inset Formula $\bar{J}=x$
+\end_inset
+
+.
+ The distribution function of passing particles for analytical purpose is
+ given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{F}\left(x,\bar{\epsilon},\Lambda\right)=\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}\text{\delta\left(\Lambda\right)}H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right),
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and its derivative of 
+\begin_inset Formula $\bar{\epsilon}$
+\end_inset
+
+ is read as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial\bar{F}}{\partial\bar{\epsilon}}=\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left[-\frac{3}{2}\bar{\epsilon}^{-\frac{5}{2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)-\bar{\epsilon}^{-\frac{5}{2}}\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)-\bar{\epsilon}^{-\frac{3}{2}}\delta\left(\Lambda\right)\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta\bar{W}_{k}=I_{1}+I_{2}\label{eq:delta wk-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $I_{1}$
+\end_inset
+
+ represents the term with 
+\begin_inset Formula $\bar{\omega}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{2}$
+\end_inset
+
+ the term with 
+\begin_inset Formula $\bar{\omega}_{\star}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $I_{1}$
+\end_inset
+
+ decomposes three parts corresponding to 
+\begin_inset Formula $\partial\bar{F}/\partial\bar{\epsilon}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+I_{1}=I_{1}^{\left(1\right)}+I_{1}^{\left(2\right)}+I_{1}^{\left(3\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(1\right)}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\left(-\frac{3}{2}\right)\bar{\epsilon}^{-\frac{5}{2}}\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-3\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xp_{h}\left(x\right)\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]dx\int_{0}^{\bar{\epsilon}_{0}}d\bar{\epsilon}\bar{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{1}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for the normal profile of 
+\begin_inset Formula $p_{h}$
+\end_inset
+
+, the identity 
+\begin_inset Formula $xp_{h}\left(x\right)=\frac{\delta_{x}}{2}\frac{p_{h}}{r_{p}}$
+\end_inset
+
+ should be satisfied, where 
+\begin_inset Formula $r_{p}=-\left[dp_{h}/pdx\right]^{-1},\delta_{x}$
+\end_inset
+
+ is profile width.
+ and 
+\begin_inset Formula $\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]dx=\frac{4}{3}\bar{\rho}_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-3\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\bar{\omega}\int_{0}^{\bar{\epsilon}_{0}}2\sqrt{\bar{\epsilon}}d\sqrt{\bar{\epsilon}}\frac{1}{\left(1+\frac{1}{q_{s}}\right)\sqrt{\bar{\epsilon}}-\bar{\omega}}\frac{4}{3}\bar{\rho}_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With 
+\color blue
+
+\begin_inset Formula $\bar{\rho}_{d}\simeq q\sqrt{\bar{\epsilon}}\rho_{h}/a$
+\end_inset
+
+
+\color inherit
+, we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(1\right)}\approx-3\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{8}{3}\frac{\rho_{h}}{a}\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\int_{0}^{\bar{\epsilon}_{0}}d\sqrt{\bar{\epsilon}}\frac{\left(\sqrt{\bar{\epsilon}}\right)^{2}}{\sqrt{\bar{\epsilon}}-\bar{\omega}/\left(1+\frac{1}{q_{s}}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The integral identity is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\int dy\frac{y^{2}}{y-a}=\int dy\frac{y^{2}-a^{2}+a^{2}}{y-a}=\int dy\left(y+a\right)+\int dy\frac{a^{2}}{y-a}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{1}{2}y^{2}+ay+a^{2}\ln\left(y-a\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=-8\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{\rho_{h}}{a}\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\left[\frac{1}{2}\left(\sqrt{\bar{\epsilon}_{0}}\right)^{2}+\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\sqrt{\bar{\epsilon}_{0}}+\left(\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\right)^{2}\ln\left(\frac{\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}-\sqrt{\bar{\epsilon}_{0}}}{\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}}\right)\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(2\right)}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\left(-1\right)\bar{\epsilon}^{-\frac{5}{2}}\Lambda\delta^{\prime}\left(\Lambda\right)H\left(\bar{\epsilon}_{c}-\bar{\epsilon}\right)\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xp_{h}\left(x\right)\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\int_{0}^{\epsilon_{0}}d\bar{\epsilon}\bar{\omega}\frac{1}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\approx\begin{gathered}\frac{16}{3}\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{\rho_{h}}{a}\\
+\cdot\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\left[\frac{1}{2}\left(\sqrt{\bar{\epsilon}_{0}}\right)^{2}+\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\sqrt{\bar{\epsilon}_{0}}+\left(\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\right)^{2}\ln\left(\frac{\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}-\sqrt{\bar{\epsilon}_{0}}}{\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}}\right)\right]
+\end{gathered}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}^{\left(3\right)}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\left(-1\right)\bar{\epsilon}^{-\frac{3}{2}}\delta\left(\Lambda\right)\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{p_{h}\left(x\right)}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xp_{h}\left(x\right)\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\bar{\omega}\int d\bar{\epsilon}\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{\bar{\epsilon}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\bar{\omega}\int d\bar{\epsilon}\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{\bar{\epsilon}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\bar{\omega}\int d\bar{\epsilon}\delta\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{\bar{\epsilon}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}\frac{4}{3}\bar{\rho}_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-2\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{4}{3}\frac{\rho_{h}}{a}\frac{\bar{\omega}\left(\sqrt{\bar{\epsilon}_{0}}\right)^{3}}{\sqrt{\bar{\epsilon}_{0}}+\frac{\sqrt{\bar{\epsilon}_{0}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\bar{F}\left(x,\bar{\epsilon},\Lambda\right)}{\partial x}=\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}\text{\delta\left(\Lambda\right)}H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{dp_{h}\left(x\right)}{dx},
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}_{\star}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\sin^{2}\theta^{\star}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}m\frac{\partial\bar{F}}{\partial x}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\sin^{2}\theta^{\star}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{dp_{h}\left(x\right)}{dx}\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]\frac{dp_{h}\left(x\right)}{dx}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}d\bar{\epsilon}\frac{1}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to 
+\begin_inset Formula $r_{p}=-\left[dp_{h}/pdx\right]^{-1},$
+\end_inset
+
+ the above integral of 
+\begin_inset Formula $x$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{gathered}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]\frac{dp_{h}\left(x\right)}{dx}dx\\
+=-\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]dx\\
+=-\frac{4}{3}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\bar{\rho}_{d}\\
+\\
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\cdot\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}d\bar{\epsilon}\frac{1}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}\left(-\frac{4}{3}\right)\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\bar{\rho}_{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\left(\frac{\rho_{h}}{a}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(-\frac{4}{3}\right)\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\cdot\int_{0}^{\bar{\epsilon}_{0}}\frac{2\left(\sqrt{\bar{\epsilon}}\right)^{4}}{\sqrt{\bar{\epsilon}}+\frac{\sqrt{\bar{\epsilon}}}{q_{s}}-\bar{\omega}}d\sqrt{\bar{\epsilon}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The integral identity is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\int dy\frac{y^{4}}{y-a}=\int dy\frac{y^{4}-a^{4}+a^{4}}{y-a}=\int dy\left(y+a\right)\left(y^{2}+a^{2}\right)+\int dy\frac{a^{4}}{y-a}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\frac{1}{4}y^{4}+\frac{1}{3}ay^{3}+\frac{1}{2}a^{2}y^{2}+a^{3}y+a^{4}\ln\left(y-a\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+ & = & \frac{8}{3}\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\left(\frac{\rho_{h}}{a}\right)^{2}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{1}{1+\frac{1}{q_{s}}}\\
+ &  & \cdot\left[\begin{gathered}\frac{1}{4}\bar{\epsilon}_{0}^{2}+\frac{1}{3}\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\left(\sqrt{\bar{\epsilon}_{0}}\right)^{3}+\frac{1}{2}\left(\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\right)^{2}\left(\sqrt{\bar{\epsilon}_{0}}\right)^{2}\\
++\left(\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\right)^{3}\left(\sqrt{\bar{\epsilon}_{0}}\right)+\left(\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}\right)^{4}\ln\left(\frac{\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}-\bar{\epsilon}_{0}^{1/2}}{\frac{\bar{\omega}}{1+\frac{1}{q_{s}}}}\right)
+\end{gathered}
+\right]
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Defining 
+\begin_inset Formula $\Omega=\frac{\bar{\omega}}{\left(1+1/q_{s}\right)\bar{\epsilon}_{0}^{1/2}}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ can be rewritten by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\delta\bar{W}_{k} & = & I_{1}+I_{2}\\
+ & = & \begin{gathered}\frac{8}{3}\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\left(\frac{\rho_{h}}{a}\right)\frac{\left(\sqrt{\bar{\epsilon}_{0}}\right)^{3}}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{\delta_{x}}{2}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\\
+\cdot\left[\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)+\frac{1}{\Omega-1}\right]\\
++\frac{8}{3}\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\left(\frac{\rho_{h}}{a}\right)^{2}\frac{\bar{\epsilon}_{0}^{2}}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(\frac{qp_{h}}{r_{p}}\right)_{x_{s}}\frac{1}{1+\frac{1}{q_{s}}}\\
+\cdot\left[\frac{1}{4}+\frac{1}{3}\Omega+\frac{1}{2}\Omega^{2}+\Omega^{3}+\Omega^{4}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{gathered}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\delta\hat{W}_{k} & =\frac{1}{4}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{1}{\left|\xi_{0}/a\right|^{2}}\beta_{h0}\delta\bar{W}_{k}\\
+ & =\begin{gathered}\frac{8}{3\pi^{2}}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{a}{R}\frac{\delta_{x}}{2}\left(\frac{\beta_{h}}{r_{p}}\right)_{x_{s}}\Delta_{b}\left[\frac{1}{\Omega-1}+\frac{1}{2}\Omega+\Omega^{2}+\Omega^{3}\ln\left(1-\frac{1}{\Omega}\right)\right]\\
++\frac{8}{3\pi^{2}}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{1}{q_{s}+1}\left(\frac{\beta_{h}}{r_{p}}\right)_{x_{s}}\Delta_{b}^{2}\left[\frac{1}{4}+\frac{1}{3}\Omega+\frac{1}{2}\Omega^{2}+\Omega^{3}+\Omega^{4}\ln\left(1-\frac{1}{\Omega}\right)\right]
+\end{gathered}
+\\
+\\
+\end{split}
+\label{eq:dwkp0-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, 
+\begin_inset Formula $\Delta_{b}=\frac{q_{s}\sqrt{\bar{\epsilon}_{0}}\rho_{h}}{a}$
+\end_inset
+
+ is orbit width.
+\end_layout
+
+\begin_layout Standard
+According to Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dwkp0-2"
+
+\end_inset
+
+, the dispersion relation
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dispersion relation-1"
+
+\end_inset
+
+ thus can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{i\Omega}{\Omega_{A}}+\delta\hat{W}_{T}+\delta\hat{W}_{k}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\Omega_{A}=\frac{\bar{\omega}_{A}}{\left(1+1/q_{s}\right)\bar{\epsilon}_{0}^{1/2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Subsection
+The dispersion relation for the case of 
+\begin_inset Formula $p=-1$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{d}\neq0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $p=-1$
+\end_inset
+
+, we arrive at
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{-1}=-\frac{1}{\pi}\frac{a}{R}\int_{0}^{2\pi}d\theta\bar{\xi}_{s}H\left(x_{s}-\bar{x}-\bar{\rho}_{d}\cos\theta\right)\exp\left(i\theta\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From Fig.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-integral-region"
+
+\end_inset
+
+, 
+\begin_inset Formula $Y_{-1}$
+\end_inset
+
+ is zero in the region 
+\begin_inset Formula $x<x_{s}-\bar{\rho}_{d}$
+\end_inset
+
+ where 
+\begin_inset Formula $H=1$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\left[0,2\pi\right]$
+\end_inset
+
+ since the 
+\begin_inset Formula $\theta$
+\end_inset
+
+ integral of 
+\begin_inset Formula $\sim\exp\left(-i\theta\right)$
+\end_inset
+
+ from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ is zero.
+ In the region 
+\begin_inset Formula $x>x_{s}+\bar{\rho}_{d}$
+\end_inset
+
+, 
+\begin_inset Formula $Y_{1}$
+\end_inset
+
+ also is zero since 
+\begin_inset Formula $H=0$
+\end_inset
+
+.
+ Obviously, 
+\begin_inset Formula $Y_{-1}$
+\end_inset
+
+ is finite in the region 
+\begin_inset Formula $x_{s}-\bar{\rho}_{d}<x<x_{s}+\bar{\rho}_{d}$
+\end_inset
+
+ where 
+\begin_inset Formula $H=1$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\left[\theta^{\star},-\theta^{\star}+2\pi\right]$
+\end_inset
+
+ .
+ 
+\begin_inset Formula $\cos\theta^{\star}=\frac{x_{s}-x}{\bar{\rho}_{d}}\in\left[0,\pi\right]$
+\end_inset
+
+.
+ Thus, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Y_{-1}=-\frac{1}{\pi}\frac{a}{R}\int_{\theta^{\star}}^{2\pi-\theta^{\star}}d\theta\bar{\xi}_{s}\exp\left(i\theta\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{\pi}\frac{a}{R}\bar{\xi}_{s}i\left[\exp\left(i\left(2\pi-\theta^{\star}\right)\right)-\exp\left(i\theta^{\star}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{1}{\pi}\frac{a}{R}\bar{\xi}_{s}i\left[\exp\left(i\left(2\pi-\theta^{\star}\right)\right)-\exp\left(i\theta^{\star}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\sin\theta^{\star}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $\bar{\omega}_{b}\simeq\sqrt{\bar{\epsilon}}/q$
+\end_inset
+
+ and 
+\begin_inset Formula $p=-1$
+\end_inset
+
+, 
+\begin_inset Formula $\delta\bar{W}_{k}$
+\end_inset
+
+ becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\bar{W}_{k}=\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\left(\bar{\omega}-\bar{\omega}_{\star}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\cdot\frac{\left|Y_{-1}\right|^{2}}{\sqrt{\bar{\epsilon}}-\frac{\sqrt{\bar{\epsilon}}}{q}-\bar{\omega}}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The fishbone of 
+\begin_inset Formula $\bar{\omega}\sim\omega_{\star i}$
+\end_inset
+
+ is studied.
+ Thus the term 
+\begin_inset Formula $I_{2}$
+\end_inset
+
+ dominates over the term 
+\begin_inset Formula $I_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\left|\Re\left(\delta\hat{W}_{k}\right)\right|\ll\left|\Im\left(\delta\hat{W}_{k}\right)\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\bar{J}dx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{\partial\bar{F}}{\partial\bar{\epsilon}}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\bar{\omega}_{\star}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\sin^{2}\theta^{\star}}{\sqrt{\bar{\epsilon}}-\frac{\sqrt{\bar{\epsilon}}}{q}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}m\frac{\partial\bar{F}}{\partial x}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\sin^{2}\theta^{\star}}{\sqrt{\bar{\epsilon}}-\frac{\sqrt{\bar{\epsilon}}}{q}-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}xdx\int d\Lambda\bar{\epsilon}^{3}d\bar{\epsilon}\frac{2\pi}{\sqrt{\bar{\epsilon}}}\frac{1}{2}\frac{1}{x}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\frac{1}{\bar{\epsilon}^{3/2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\delta\left(\Lambda\right)H\left(\bar{\epsilon}_{0}-\bar{\epsilon}\right)\frac{dp_{h}\left(x\right)}{dx}\frac{\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]}{\sqrt{\bar{\epsilon}}\frac{s\left(x_{s}\right)}{q_{s}x_{s}}\left(x-x_{s}\right)-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]\frac{dp_{h}\left(x\right)}{dx}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}d\bar{\epsilon}\frac{1}{\sqrt{\bar{\epsilon}}\frac{s\left(x_{s}\right)}{q_{s}x_{s}}\left(x-x_{s}\right)-\bar{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+since 
+\begin_inset Formula $q=q_{s}+dq/dx\left(x-x_{s}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $s=\frac{x}{q}\frac{dq}{dx}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Rrightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=-\pi\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}d\bar{\epsilon}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\cdot\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]\frac{dp_{h}\left(x\right)}{dx}\frac{1}{\sqrt{\bar{\epsilon}}\frac{s\left(x_{s}\right)}{q_{s}x_{s}}\left(x-x_{s}\right)-\bar{\omega}}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Due to 
+\begin_inset Formula $r_{p}=-\left[dp_{h}/pdx\right]^{-1},$
+\end_inset
+
+ the imaginary part of the above integral of 
+\begin_inset Formula $x$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{gathered}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]\frac{dp_{h}\left(x\right)}{dx}\frac{1}{\sqrt{\bar{\epsilon}}\frac{s\left(x_{s}\right)}{q_{s}x_{s}}\left(x-x_{s}\right)-\bar{\omega}}dx\\
+=-i\pi\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\int_{x_{s}-\bar{\rho}_{d}}^{x_{s}+\bar{\rho}_{d}}\left[1-\left(\frac{x_{s}-x}{\bar{\rho}_{d}}\right)^{2}\right]\frac{1}{\sqrt{\bar{\epsilon}}\frac{s\left(x_{s}\right)}{q_{s}x_{s}}\left(x-x_{s}\right)-\bar{\omega}}dx\\
+=-i\pi\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\begin{gathered}\left[1-\left(\frac{\bar{\omega}x_{s}q_{s}}{\sqrt{\bar{\epsilon}}s\bar{\rho}_{d}}\right)^{2}\right]\end{gathered}
+\\
+\\
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+by using 
+\begin_inset Formula $\sqrt{\bar{\epsilon}}\frac{s\left(x_{s}\right)}{q_{s}x_{s}}\left(x-x_{s}\right)-\bar{\omega}=0$
+\end_inset
+
+.
+ The imaginary part of 
+\begin_inset Formula $I_{2}$
+\end_inset
+
+ with maximum drive by ignoring the term 
+\begin_inset Formula $\frac{\bar{\omega}x_{s}q_{s}}{\sqrt{\bar{\epsilon}}s\bar{\rho}_{d}}$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{2}^{\Im}=i\pi^{2}\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\int_{0}^{\bar{\epsilon}_{0}}\bar{\epsilon}d\bar{\epsilon}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=i\pi^{2}\left(\frac{2}{\pi}\frac{a}{R}\bar{\xi}_{s}\right)^{2}\frac{R}{a}\frac{\rho_{h}}{a}\frac{1}{\pi n_{0}T_{h}\bar{\epsilon}_{0}}\left(\frac{p_{h}}{r_{p}}\right)_{x_{s}}\frac{1}{2}\bar{\epsilon}_{0}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus the imaginary part of 
+\begin_inset Formula $\delta\hat{W}_{k}$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\hat{W}_{k2}^{\Im}=\frac{1}{4}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{1}{\left|\xi_{0}/a\right|^{2}}\beta_{h0}I_{2}^{\Im}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=i\frac{1}{2\pi}\frac{1}{\left(r_{s}/R\right)^{2}}\frac{a}{R}\left(\frac{\beta_{h}}{r_{p}}\right)_{x_{s}}\sqrt{\bar{\epsilon}_{0}}\Delta_{b}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

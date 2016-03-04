@@ -148,7 +148,7 @@ The normalized
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k}=\sum^{p}\int_{0}^{1}dr\int\frac{d\Lambda}{B}\int E^{3}dE\tau_{b}(\omega-\omega_{\star})\frac{\partial F}{\partial E}\frac{|Y_{p}|^{2}}{n\omega_{\phi}+p\omega_{b}-\omega}
+\delta W_{k}=\sum^{p}\int_{0}^{1}\frac{J}{q}dr\int d\Lambda\int E^{3}dE\tau_{b}(\omega-\omega_{\star})\frac{\partial F}{\partial E}\frac{|Y_{p}|^{2}}{n\omega_{\phi}+p\omega_{b}-\omega}
 \end{equation}
 
 \end_inset
@@ -609,7 +609,7 @@ i\omega=C\beta_{h}\delta W_{k}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
+C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{4(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
 \end{equation}
 
 \end_inset
@@ -628,7 +628,7 @@ here
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\omega_{A}=\frac{2}{\tau_{A\theta}s}
+\omega_{A}=\frac{1}{\tau_{A\theta}s}
 \end{equation}
 
 \end_inset

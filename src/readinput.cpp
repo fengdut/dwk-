@@ -7,10 +7,10 @@
 #include<complex>
 #include<assert.h>
 #include"AllocArray.h"
-
+#include"readinput.h"
 #define EXIT_FAILURE 100
 
-int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode *mode)
+int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode *mode,Dwkopt *pdwkopt)
 {
 	using namespace std;
 	using namespace libconfig;
@@ -144,6 +144,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		modeset.lookupValue("max_iter",mode->max_iter);
 		modeset.lookupValue("max_iterg",mode->max_iterg);
 		modeset.lookupValue("dw_f",mode->dw_f);
+		modeset.lookupValue("zero_rhod",mode->zero_rhod);
 
 
 		mode->n=n;
@@ -168,9 +169,23 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		}
 	
 	}
-	catch(const SettingNotFoundException &nfex)
+	 catch(const SettingNotFoundException &nfex)
         {
                 cout<<"No mode parameters in filename \t"<<filename<<endl;
+                return(EXIT_FAILURE);
+        }
+
+	try
+	{
+		const Setting &optset =root["dwkopt"];
+		optset.lookupValue("omega_star_off",pdwkopt->omega_star_off);
+		optset.lookupValue("omega_off",pdwkopt->omega_off);
+
+		
+	}	
+	catch(const SettingNotFoundException &nfex)
+        {
+                cerr<<"No mode parameters in filename \t"<<filename<<endl;
                 return(EXIT_FAILURE);
         }
 	

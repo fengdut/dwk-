@@ -58,6 +58,7 @@ void J_q(Grid *const grid,double *const q_1D, double *J_q)
 {
 	for(int ix=0;ix<grid->nx;ix++)
 	{
+		//J_q[ix] = grid->xarray[ix]/q_1D[ix];
 		J_q[ix] = grid->xarray[ix]/q_1D[ix];
 	}	
 }
@@ -130,14 +131,12 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing)
 	ptok->eps=ptok->a/ptok->R0;
         ptok->Bps=ptok->r_s*ptok->a*ptok->Bt/(ptok->R0*ptok->q_s);
         ptok->rho_m = ptok->mi * ptok->n0 *1.6726e-27;
-        ptok->tau_At =sqrt(3.0) *ptok->r_s*ptok->a / (ptok->Bps/sqrt(ptok->rho_m*4.0*M_PI*1.0e-7));
-        ptok->omega_A = 2.0 /(ptok->tau_At *ptok->s);
+	ptok->v_A=ptok->Bt/sqrt(4.0*M_PI*1.0e-7*ptok->rho_m);
+        ptok->omega_A = ptok->v_A /(sqrt(3)*ptok->R0*ptok->s);
         ptok->v_i0 = sqrt(2.0*ptok->E_i0 *1.0e3*1.6022e-19/(ptok->m_ep*1.6726e-27));
         ptok->omega_i0 = ptok->v_i0/ptok->R0;
 
-
-        ptok->C = ptok->omega_A/(ptok->omega_i0*4.0/M_PI *(ptok->r_s*ptok->a/ptok->R0*0.5)*(ptok->r_s*ptok->a/ptok->R0*0.5));
-	ptok->C =ptok->C *0.25;
+        ptok->C = ptok->omega_A/(ptok->omega_i0*4.0 *(ptok->r_s*ptok->a/ptok->R0)*(ptok->r_s*ptok->a/ptok->R0));
         ptok->beta_h=0.0;
 
         pslowing->rho_h=ptok->m_ep*1.6726e-27 *ptok->v_i0/(1.6022e-19*ptok->Bt)/ptok->a;
@@ -159,7 +158,6 @@ void showtokamak(Tokamak *ptok,Slowing *pslowing)
 	cout<<"r_s: \t"<<ptok->r_s<<endl;
 	cout<<"s : \t"<<ptok->s<<endl;
 	cout<<"rho_m:\t"<<ptok->rho_m<<" kg/m^3"<<endl;
-	cout<<"tau_At:\t"<<ptok->tau_At<<" s"<<endl;
 	cout<<scientific;
 	cout<<"omega_A:\t"<<ptok->omega_A<< " rad/s"<<endl;
 	cout<<fixed;

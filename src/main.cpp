@@ -36,8 +36,9 @@ int main(int arg,char * argx[])
 	Grid 	grid;
 	Slowing slowing;
 	Mode mode;
+	Dwkopt dwkopt;
 //read input parameters
-	read_tokamak(ifilename,&tok,&grid,&slowing,&mode);	
+	read_tokamak(ifilename,&tok,&grid,&slowing,&mode,&dwkopt);	
 	CGrid pgrid(&grid,&slowing);
  	cout.precision (12);
 	pgrid.showgrid();	
@@ -74,7 +75,8 @@ int main(int arg,char * argx[])
 	find_rs(&grid,q_1D, &tok);
 	calculate_normalization(&tok, &slowing);
 	showtokamak(&tok,&slowing);
-	F0_3D(&slowing,&grid,&tok,slowing.rho_h,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D);	
+	double Cbeta=0;
+	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
 	cout<<"end F"<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	cout<<"end Lambda"<<endl;
@@ -105,7 +107,7 @@ int main(int arg,char * argx[])
                 dwk_omega_array(&grid, &mode, omega_phi_3D, omega_b_3D, tau_b_3D,
                         J_q_1D, FE_3D, omega_star_3D,
                         G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,
-                        dwk_array,ofilename);
+                        dwk_array,ofilename,&dwkopt);
 		cout<<"outputfile: "<<ofilename<<endl;
 		cout<<"end scan"<<endl;
 		cout<<"*********************************"<<endl;
@@ -116,9 +118,9 @@ int main(int arg,char * argx[])
 	complex<double> omega_0,dwk_0;
 	omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
 			J_q_1D,FE_3D,omega_star_3D,
-			G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
+			G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0,&dwkopt);
 	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
-	cout<<"beta_h is:"<<tok.beta_h<<endl;
+	cout<<"beta_h is:"<<tok.beta_h*Cbeta<<endl;
 	complex<double> err=0;
 	complex<double> ti =1.0i;
 	err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
@@ -133,9 +135,9 @@ int main(int arg,char * argx[])
 		cout<<"find the solution"<<endl;
 		omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
                         J_q_1D,FE_3D,omega_star_3D,
-                        G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0);
+                        G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0,&dwkopt);
         	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
-        	cout<<"beta_h is:"<<tok.beta_h<<endl;
+        	cout<<"beta_h is:"<<tok.beta_h*Cbeta<<endl;
 		err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
 		cout<<scientific;
         	cout<<"error=i*omega_0 -C*beta_h *dwk(omega_0)= "<<err<<endl;
@@ -145,7 +147,7 @@ int main(int arg,char * argx[])
 			break;
 	}
 	cout<<"      omega_0"<<"\t\t\t\t"<<"dwk"<<"\t\t\t beta_h"<<endl;
-	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h<<endl;	
+	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h*Cbeta<<endl;	
 	cout <<"in omega_A unit"<<endl;
 	cout <<"     omega_0:"<<omega_0*tok.omega_i0/tok.omega_A<<endl;
 	cout <<"in kHz unit" <<endl;

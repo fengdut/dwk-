@@ -51,6 +51,7 @@ typedef struct SLOWING
 Slowing;
 
 
+
 class CGrid
 {
 public:

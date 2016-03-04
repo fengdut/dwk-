@@ -20,6 +20,7 @@ typedef struct MODE
 	int max_iter;
 	int max_iterg;
 	double dw_f;
+	int zero_rhod;
 }Mode;
 
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double *const q_1D,std::complex<double> ***G_3D);

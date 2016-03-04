@@ -7,7 +7,8 @@
 #include"vector.h"
 
 using namespace std;
-void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,int m,double *** F_3D, double ***FE_3D, double ***FR_3D,double *** omega_star)
+void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,double const *q_1D,int m,
+		double *** F_3D, double ***FE_3D, double ***FR_3D,double *** omega_star,double * Cbeta)
 {
 	double *expx,*expx1,*expL,*expE, *erfcE,*erfcE1;
 	Alloc1D(expx,grid->nx);
@@ -72,7 +73,8 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(expE[iE]);
 		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(-1.0*EL[iL][iE]*erfcE[iE]);
 		FR_3D[ix][iL][iE]  =expx1[ix]*expL[iL]*erfcE[iE];
-		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
+		//omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
+		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]) *  q_1D[ix]; 
 		if((FE_3D[ix][iL][iE])!=0.0)	
 			omega_star[ix][iL][iE] = omega_star[ix][iL][iE]/FE_3D[ix][iL][iE];
 		else
@@ -80,7 +82,9 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		
 	}
 
-	double CF=0;
+	double Cn=0,CP=0;
+	cout<<"omega_star: ";
+ 	max_min_3D(grid->nx, grid->nL, grid->nE,omega_star);
 	//cout<<"F_3D: ";
  	//max_min_3D(grid->nx, grid->nL, grid->nE,F_3D);
 	//cout<<"FE_3D: ";
@@ -91,18 +95,34 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	//max_min_1D(grid->nL,expL);
 	//cout<<"expE: ";
 	//max_min_1D(grid->nE,erfcE);
-	CF=simpintegral_2D(F_3D[0], grid->nL, grid->dL, grid->nE,grid->dE);
-	std::cout<<"CF= "<<CF<<std::endl;	
+	double **P0,**Th;
+	Alloc2D(P0,grid->nL,grid->nE);
+	Alloc2D(Th,grid->nL,grid->nE);
+        for(int iL=0;iL<grid->nL;iL++)
+        for(int iE=0;iE<grid->nE;iE++)
+	{
+		P0[iL][iE]=F_3D[0][iL][iE]*sqrt(grid->Earray[iE])*sqrt(2)*M_PI/(sqrt(1-grid->Larray[iL]));
+		Th[iL][iE]=F_3D[0][iL][iE]*sqrt(grid->Earray[iE])*sqrt(2)*M_PI/(sqrt(1-grid->Larray[iL])) *2*grid->Earray[iE];
+	}
+	Cn=simpintegral_2D(P0, grid->nL, grid->dL, grid->nE,grid->dE);
+	CP=simpintegral_2D(Th, grid->nL, grid->dL, grid->nE,grid->dE);
 	
+	std::cout<<"Cn= "<<Cn<<std::endl;
+	std::cout<<"CP= "<<CP<<std::endl;
+	*Cbeta = CP/Cn;
+	std::cout<<"Cbeta= "<<*Cbeta<<std::endl;
+	
+	double T2=2*sqrt(2);
 	for(int ix=0;ix<grid->nx;ix++)
         for(int iL=0;iL<grid->nL;iL++)
         for(int iE=0;iE<grid->nE;iE++)
 	{
-		F_3D[ix][iL][iE]  =F_3D[ix][iL][iE]/CF;
-                FE_3D[ix][iL][iE] =FE_3D[ix][iL][iE] /CF;
-                FR_3D[ix][iL][iE]  =FR_3D[ix][iL][iE]/CF;
+		F_3D[ix][iL][iE]  =F_3D[ix][iL][iE]/Cn*T2;
+                FE_3D[ix][iL][iE] =FE_3D[ix][iL][iE] /Cn*T2;
+                FR_3D[ix][iL][iE]  =FR_3D[ix][iL][iE]/Cn*T2;
 	}
-
+	Free2D(P0);
+	Free2D(Th);
 	Free2D(EL);
 	Free1D(expx);
 	Free1D(expx1);

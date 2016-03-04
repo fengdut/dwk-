@@ -1,0 +1,37 @@
+--------begin grid information--------
+nr, nL, nE, ntheta:	400, 100, 400, 400
+ra, rb: 	1e-15	1
+La, Lb: 	1e-09	0.09
+Ea, Eb: 	0.01	1.2
+--------end grid information  --------
+--------begin tokamak information--------
+a: 	0.4 m
+R0: 	1.65 m
+eps: 	0.242424242424
+Bt0: 	1.34 Tesla
+Bps: 	0.134427084505 Tesla
+n0: 	1.31e+19 1/m^3
+mi: 	2 1/m_p
+q profile: 	0.905365424326+1.22963160229*r+-18.5406103487*r^2+108.59895462*r^3+-306.154727548*r^4+460.198379296*r^5+-352.605165281*r^6+109.708261466*r^7
+q_s: 	1
+r_s: 	0.413814719093
+s : 	0.229031908299
+rho_m:	4.382212e-08 kg/m^3
+tau_At:	5.00485381796e-07 s
+omega_A:	1.744787763935e+07 rad/s
+E_i0:	40.000000000000 kEv
+v_i0:	1.957457372171e+06 m/s
+omega_i0:	1.186337801315e+06 rad/s
+fast ion gyroradius:	3.049951094011e-02 m
+C:	4.591135898457e+03
+--------end tokamak information  --------
+--------begin fast ion distribution function--------
+r0, rd: 	0.000000000000	0.600000000000
+L0, Ld: 	0.050000000000	0.020000000000
+E0, Ed, Ec: 	1.000000000000	0.050000000000	0.050000000000
+--------end fast ion distribution function  --------
+CF= 0.562626898468
+end F
+end Lambda
+end Thera
+end alloc1d
