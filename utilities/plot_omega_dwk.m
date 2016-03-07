@@ -1,9 +1,11 @@
-clear;
- figure(2);
- clf;
- figure(2);
-data=load('omega_dwk.out');
-%data=load('test.out');
+function plot_omega_dwk(filename)
+
+if(nargin<1)
+    filename='omega_dwk.out';
+end
+clf;
+
+data=load(filename);
 
 romega=data(:,1);
 iomega=data(:,2);
@@ -38,3 +40,5 @@ ylabel('$real(\delta W_k)$');
 ylabel('$imag(\delta W_k)$');
   
  % myprint('dwk_omega_dwk');
+ 
+end
