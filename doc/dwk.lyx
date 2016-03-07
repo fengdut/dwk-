@@ -719,9 +719,9 @@ dwk++ code is using c++ language as the main language, so it need a c++
  Gnu/g++ on max os and Linux and intel compiler on Linux was tested.
  To compile the code, libconfig with version >1.5 is needed, and set environment
  variable LIBCONFIG_DIR to the path where libconfig located.
- Set CXX to the c++ compiler (g++, icpc), and run 'make' at 'dwk++/' directory.
+ Set CXX to the c++ compiler (g++, icpc), and run 'make' at 'dwk-/' directory.
  If everything correct, a executable file 'dwk++' should be generated in
- 'dwk++/src/' directory and be copied to current directory.
+ 'dwk-/src/' directory and be copied to current directory.
  Then you can run dwk++ with dwk.cfg input file.
  A example of dwk.cfg can be find in 'dwk++/examples'.
 \end_layout
