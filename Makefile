@@ -21,6 +21,7 @@ all :
 .PHONY:clean
 clean:
 	cd src/;make clean; 
+	rm dwk++
 
 
 
