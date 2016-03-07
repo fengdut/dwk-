@@ -59,7 +59,8 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 	if(!init_Yps)
 	{
 		int fileid=0;
-		fileid =open_netcdf(grid,"Yps.nc");
+	 	char filename[]="Yps.nc";
+		fileid =open_netcdf(grid,filename);
 		init_Yps=1;
 		int np=mode->pb-mode->pa+1;
 		Alloc1D(gYps_3D,np);

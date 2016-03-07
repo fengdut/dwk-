@@ -83,7 +83,10 @@
 \begin_body
 
 \begin_layout Title
-dwk++ Documentation
+\begin_inset Formula $dwk++$
+\end_inset
+
+ User Manual
 \end_layout
 
 \begin_layout Author
@@ -128,8 +131,17 @@ Introduction
 ).
  A slowing down distribution function and a kink like mode structure is
  used.
- The goal of this code is to find the fishbone mode frequency with tokamak
- paramters input.
+ With a small growth rate (imag part of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+) and tokamak parameters as a input, this code find out the fishbone mode
+ frequency and fast ion 
+\begin_inset Formula $\beta_{h,0}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Section
@@ -200,7 +212,7 @@ In current version, we only keep signle
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-F=\frac{2^{3/2}}{C_{f}}\hat{F}(r,\epsilon,\Lambda)=\frac{2^{3/2}}{C_{f}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{r-r_{0}}{\Delta r}^{2})\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
+F=\frac{2^{3/2}}{C_{f}}\hat{F}(r,\epsilon,\Lambda)=\frac{2^{3/2}}{C_{f}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)e^{-(\frac{r-r_{0}}{\Delta r})^{2}}e^{-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}}
 \end{equation}
 
 \end_inset
@@ -211,7 +223,7 @@ F=\frac{2^{3/2}}{C_{f}}\hat{F}(r,\epsilon,\Lambda)=\frac{2^{3/2}}{C_{f}}\frac{1}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{f}=\int d^{3}\mathbf{v}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
+C_{f}=\int d^{3}\mathbf{v}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)e^{-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}}
 \end{equation}
 
 \end_inset
@@ -226,7 +238,7 @@ And
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]d\Lambda E^{1/2}dE
+C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)e^{-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}}d\Lambda E^{1/2}dE
 \end{equation}
 
 \end_inset
@@ -237,8 +249,7 @@ C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{\partial F}{\partial E} & = & \frac{-2^{3/2}}{C_{f}}\left[\frac{2\exp(-(\frac{E-E_{0}}{\Delta E})^{2})}{\sqrt{\pi}\Delta E(E^{3/2}+E_{c}^{3/2})}+\frac{3\sqrt{E}erfc(\frac{E-E_{0}}{\Delta E})}{2(E^{3/2}+E_{c}^{3/2})^{2}}-\frac{2\Lambda(\Lambda-\Lambda_{0})erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E\Delta\Lambda^{2}(E^{3/2}+E_{c}^{3/2})}\right]\nonumber \\
- & * & \exp\left[-(\frac{r-r_{0}}{\Delta r})^{2}\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
+\frac{\partial F}{\partial E} & = & \frac{-2^{3/2}}{C_{f}}\left[\frac{2\exp(-(\frac{E-E_{0}}{\Delta E})^{2})}{\sqrt{\pi}\Delta E(E^{3/2}+E_{c}^{3/2})}+\frac{3\sqrt{E}erfc(\frac{E-E_{0}}{\Delta E})}{2(E^{3/2}+E_{c}^{3/2})^{2}}-\frac{2\Lambda(\Lambda-\Lambda_{0})erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E\Delta\Lambda^{2}(E^{3/2}+E_{c}^{3/2})}\right]e^{-(\frac{r-r_{0}}{\Delta r})^{2}}e^{-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}}\nonumber \\
 \end{eqnarray}
 
 \end_inset
@@ -249,7 +260,7 @@ C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial F}{\partial r}=\frac{2^{3/2}}{C_{f}}\frac{erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E^{3/2}+E_{c}^{3/2}}\frac{2(r_{0}-r)}{\Delta r^{2}}\exp\left[-(\frac{r-r_{0}}{\Delta r})^{2}\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
+\frac{\partial F}{\partial r}=\frac{2^{3/2}}{C_{f}}\frac{erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E^{3/2}+E_{c}^{3/2}}\frac{2(r_{0}-r)}{\Delta r^{2}}e^{-(\frac{r-r_{0}}{\Delta r})^{2}}e^{-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}}
 \end{equation}
 
 \end_inset
@@ -264,7 +275,7 @@ The diamagnetic frequency:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\omega_{\star}=\frac{nq}{2r}\frac{\rho_{0}}{\varepsilon_{0}}\frac{\partial F/\partial r}{\partial F/\partial E}
+\omega_{*}=\frac{nq}{2r}\frac{\rho_{0}}{\varepsilon_{0}}\frac{\partial F/\partial r}{\partial F/\partial E}
 \end{equation}
 
 \end_inset
@@ -286,11 +297,8 @@ where
 \begin_inset Formula $\varepsilon=\frac{r}{R_{0}}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The transit frequency for passing particle is given below: 
+.
+ The transit frequency for passing particle is given below: 
 \end_layout
 
 \begin_layout Standard
@@ -305,7 +313,16 @@ The transit frequency for passing particle is given below:
 \end_layout
 
 \begin_layout Standard
-The transit frequency in toroidal:
+where 
+\begin_inset Formula $\kappa=\frac{1-\Lambda(1-\varepsilon)}{2\varepsilon\Lambda}$
+\end_inset
+
+, and 
+\begin_inset Formula $K$
+\end_inset
+
+ denotes the complete elliptic integral of the first kind.
+ The transit frequency in toroidal:
 \begin_inset Formula $\omega_{\phi}=q\omega_{b}$
 \end_inset
 
@@ -321,7 +338,7 @@ The transit frequency in toroidal:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-{\color{red}Y(r,\Lambda,E)=\frac{1}{2\pi}\int_{0}^{2\pi}\chi d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta,E)exp\left(-i\chi p\Theta\right)}
+{\color{red}{\color{black}Y(r,\Lambda,E)=\frac{1}{2\pi}\int_{0}^{2\pi}\chi d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta,E)e^{-i\chi p\Theta}}}
 \end{equation}
 
 \end_inset
@@ -479,6 +496,19 @@ The mode structure
 \end_layout
 
 \begin_layout Standard
+In the current version, the mode structure is source code, and it is a kink
+ structure with a fixed boundary at 
+\begin_inset Formula $r=1$
+\end_inset
+
+, and with a finite resonce layer width 
+\begin_inset Formula $\Delta r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula $\xi_{r}(r,\theta)=\xi_{r0}(r)exp(-i\theta)$
 \end_inset
 
@@ -564,10 +594,10 @@ The normalized quantities used for
 
  is the torodial magnetic field at magnetic axis.
  
-\begin_inset Formula $\delta W_{k,0}=\frac{1}{2}\pi^{2}a^{2}R_{0}n_{0}T_{h}$
+\begin_inset Formula $\delta W_{k,0}=\pi^{2}a^{2}R_{0}n_{0}T_{h}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -575,32 +605,17 @@ Fishbone dispersion relation
 \end_layout
 
 \begin_layout Standard
-The dwk++ code calculate the fishbone dispersion relation:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\delta W_{mhd}+\delta W_{k}+\delta I=0
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Assume 
 \begin_inset Formula $\delta W_{mhd}=0$
 \end_inset
 
-, the equation reduced to:
+, the normalized dispersion relation is:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta\bar{W}_{k}=0
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta W_{k}=0
 \end{equation}
 
 \end_inset
@@ -609,9 +624,13 @@ Assume
 \end_layout
 
 \begin_layout Standard
+or:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\omega=-iC\beta_{h}\delta W_{k}
+i\omega=C\beta_{h,0}\delta W_{k}
 \end{equation}
 
 \end_inset
@@ -620,14 +639,7 @@ Assume
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-i\omega=C\beta_{h}\delta W_{k}
-\end{equation}
-
-\end_inset
-
-
+where:
 \end_layout
 
 \begin_layout Standard
@@ -643,79 +655,40 @@ C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{4(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}
 
 \begin_layout Standard
 here 
-\begin_inset Formula $\xi_{s}/\xi_{0}=0$
+\begin_inset Formula $\xi_{s}/\xi_{0}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{A}=\frac{v_{A}}{3^{1/2}R_{0}s}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{A}=\frac{B}{\sqrt{\mu_{0}\rho_{m}}}$
+\end_inset
+
+, 
+\begin_inset Formula $s=r_{s}\frac{dq}{dr(r=r_{s})}$
+\end_inset
+
+, and
+\begin_inset Formula $\beta_{h,0}=8\pi n_{0}T_{h}/B_{t}^{2}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\omega_{A}=\frac{1}{\tau_{A\theta}s}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\tau_{A\theta}=\frac{3^{1/2}r_{s}}{(B_{\theta s}^{2}/\mu_{0}\rho_{m})^{1/2}}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-s=r_{s}\frac{dq}{dr(r=r_{s})}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\beta_{h}=2\mu_{0}n_{0}T_{h}/B_{t}^{2}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For 
+Considering MHD contribution from 
 \begin_inset Formula $m=1,n=1$
 \end_inset
 
-, including the MHD contribution:
+:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-2\pi R\frac{B_{\theta s}^{2}}{2\mu_{0}}|\frac{\xi_{s}}{\xi_{0}}|^{2}\left(\delta W_{T}+\frac{-i\omega}{\omega_{A}}\right)+\frac{1}{2}\pi^{2}a^{2}R_{0}n_{0}T_{h}\delta W_{k}=0
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-i\omega=C\beta_{h}\delta W_{k}+\frac{\omega_{A}}{\omega_{0}}\delta W_{T}
+i\omega=C\beta_{h,0}\delta W_{k}+\frac{\omega_{A}}{\omega_{0}}\delta W_{T}
 \end{equation}
 
 \end_inset
@@ -728,7 +701,7 @@ where
 \begin_inset Formula $\delta W_{T}=3\pi\left(\frac{r_{s}}{R}\right)^{2}(1-q_{0})\left(\frac{13}{144}-\beta_{ps}^{2}\right)$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Section
@@ -740,15 +713,54 @@ Compile the code
 \end_layout
 
 \begin_layout Standard
-dwk++ code is using c++ language as the main language, it need a c++ compiler
- to compile the code, gcc/g++ on max os/linux and intel compiler on linux
- was tested.
+dwk++ code is using c++ language as the main language, so it need a c++
+ compiler to compile the code.
+ Gnu/g++ on max os and Linux and intel compiler on Linux was tested.
  To compile the code, libconfig with version >1.5 is needed, and set environment
  variable LIBCONFIG_DIR to the path where libconfig located.
+ Set CXX to the c++ compiler (g++, icpc), and run 'make' at 'dwk-/' directory.
+ If everything correct, a executable file 'dwk++' should be generated in
+ 'dwk-/src/' directory and be copied to current directory.
+ Then you can run dwk++ with dwk.cfg input file.
+ A example of dwk.cfg can be find in 'dwk++/examples'.
+\end_layout
+
+\begin_layout Subsection
+Arguments
+\end_layout
+
+\begin_layout Itemize
+-h print help information.
+\end_layout
+
+\begin_layout Itemize
+-i input file name, dwk.cfg by default.
+ 
+\end_layout
+
+\begin_layout Itemize
+-o outfile name, omega_dwk.out by default.
+\end_layout
+
+\begin_layout Itemize
+-s scan dwk(omega), only find 
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{h,0}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsection
 Input file
+\end_layout
+
+\begin_layout Standard
+Here is an example of input file:
 \end_layout
 
 \begin_layout Standard
@@ -766,8 +778,20 @@ lstparams "caption={a input file example}"
 Output file
 \end_layout
 
+\begin_layout Itemize
+omega_dwk.out, 
+\end_layout
+
+\begin_layout Itemize
+Yps.nc.
+\end_layout
+
 \begin_layout Subsection
 Utilities to plot results
+\end_layout
+
+\begin_layout Standard
+There are some matlab & python scripts in 'dwk++/utilities' directory.
 \end_layout
 
 \begin_layout Section
