@@ -109,10 +109,7 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $dwk++$
-\end_inset
-
- is a small code to calculate 
+dwk++ is a small code to calculate 
 \begin_inset Formula $\delta W_{k}$
 \end_inset
 
@@ -151,7 +148,7 @@ The normalized
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k}=\sum^{p}\int_{0}^{1}\frac{J}{q}dr\int d\Lambda\int E^{3}dE\tau_{b}(\omega-\omega_{\star})\frac{\partial F}{\partial E}\frac{|Y_{p}|^{2}}{n\omega_{\phi}+p\omega_{b}-\omega}
+\delta W_{k}=\sum^{p}\int_{0}^{1}dr\int\frac{d\Lambda}{B}\int E^{3}dE\tau_{b}(\omega-\omega_{\star})\frac{\partial F}{\partial E}\frac{|Y_{p}|^{2}}{n\omega_{\phi}+p\omega_{b}-\omega}
 \end{equation}
 
 \end_inset
@@ -160,12 +157,6 @@ The normalized
 \end_layout
 
 \begin_layout Standard
-In current version, we only keep signle 
-\begin_inset Formula $n$
-\end_inset
-
-.
- 
 \begin_inset Formula $\sigma=\pm1$
 \end_inset
 
@@ -200,7 +191,7 @@ In current version, we only keep signle
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-F=\frac{2^{3/2}}{C_{f}}\hat{F}(r,\epsilon,\Lambda)=\frac{2^{3/2}}{C_{f}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{r-r_{0}}{\Delta r}^{2})\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
+F=\frac{1}{C_{f}}F(r,\epsilon,\Lambda)=\frac{1}{C_{f}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{r-r_{0}}{\Delta r}^{2})\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
 \end{equation}
 
 \end_inset
@@ -211,22 +202,7 @@ F=\frac{2^{3/2}}{C_{f}}\hat{F}(r,\epsilon,\Lambda)=\frac{2^{3/2}}{C_{f}}\frac{1}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C_{f}=\int d^{3}\mathbf{v}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
-\end{equation}
-
-\end_inset
-
-And 
-\begin_inset Formula $d^{3}\mathbf{v}=\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}d\Lambda E^{1/2}dE$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]d\Lambda E^{1/2}dE
+C_{f}=\int dEd\Lambda\frac{1}{E^{3/2}+E_{c}^{3/2}}erfc\left(\frac{E-E_{0}}{\Delta E}\right)\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
 \end{equation}
 
 \end_inset
@@ -237,7 +213,7 @@ C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{\partial F}{\partial E} & = & \frac{-2^{3/2}}{C_{f}}\left[\frac{2\exp(-(\frac{E-E_{0}}{\Delta E})^{2})}{\sqrt{\pi}\Delta E(E^{3/2}+E_{c}^{3/2})}+\frac{3\sqrt{E}erfc(\frac{E-E_{0}}{\Delta E})}{2(E^{3/2}+E_{c}^{3/2})^{2}}-\frac{2\Lambda(\Lambda-\Lambda_{0})erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E\Delta\Lambda^{2}(E^{3/2}+E_{c}^{3/2})}\right]\nonumber \\
+\frac{\partial F}{\partial E} & = & \frac{-1}{C_{f}}\left[\frac{2\exp(-(\frac{E-E_{0}}{\Delta E})^{2})}{\sqrt{\pi}\Delta E(E^{3/2}+E_{c}^{3/2})}+\frac{3\sqrt{E}erfc(\frac{E-E_{0}}{\Delta E})}{2(E^{3/2}+E_{c}^{3/2})^{2}}-\frac{2\Lambda(\Lambda-\Lambda_{0})erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E\Delta\Lambda^{2}(E^{3/2}+E_{c}^{3/2})}\right]\nonumber \\
  & * & \exp\left[-(\frac{r-r_{0}}{\Delta r})^{2}\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
 \end{eqnarray}
 
@@ -249,7 +225,7 @@ C_{f}=\int\frac{\sqrt{2}\pi}{b\sqrt{1-\frac{\Lambda}{b}}}\frac{1}{E^{3/2}+E_{c}^
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial F}{\partial r}=\frac{2^{3/2}}{C_{f}}\frac{erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E^{3/2}+E_{c}^{3/2}}\frac{2(r_{0}-r)}{\Delta r^{2}}\exp\left[-(\frac{r-r_{0}}{\Delta r})^{2}\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
+\frac{\partial F}{\partial r}=\frac{1}{C_{f}}\frac{erfc\left(\frac{E-E_{0}}{\Delta E}\right)}{E^{3/2}+E_{c}^{3/2}}\frac{2(r_{0}-r)}{\Delta r^{2}}\exp\left[-(\frac{r-r_{0}}{\Delta r})^{2}\right]\exp\left[-(\frac{\Lambda-\Lambda_{0}}{\Delta\Lambda})^{2}\right]
 \end{equation}
 
 \end_inset
@@ -264,7 +240,7 @@ The diamagnetic frequency:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\omega_{\star}=\frac{nq}{2r}\frac{\rho_{0}}{\varepsilon_{0}}\frac{\partial F/\partial r}{\partial F/\partial E}
+\omega_{\star}=\frac{m}{2r}\frac{\rho_{0}}{\varepsilon_{0}}\frac{\partial F/\partial r}{\partial F/\partial E}
 \end{equation}
 
 \end_inset
@@ -633,7 +609,7 @@ i\omega=C\beta_{h}\delta W_{k}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{4(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
+C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
 \end{equation}
 
 \end_inset
@@ -652,7 +628,7 @@ here
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\omega_{A}=\frac{1}{\tau_{A\theta}s}
+\omega_{A}=\frac{2}{\tau_{A\theta}s}
 \end{equation}
 
 \end_inset
@@ -754,7 +730,7 @@ Input file
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
-filename "../examples/dwk.cfg"
+filename "examples/dwk.cfg"
 lstparams "caption={a input file example}"
 
 \end_inset
@@ -810,7 +786,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k,d}=\frac{-\pi R^{2}v_{0}^{2}}{\Omega_{c}}\int drqH^{2}(r_{s}-r)\frac{\partial c_{0}(r)}{\partial r}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]
+\delta W_{k,d}=\frac{-\pi R^{2}v_{0}^{3}}{\text{\omega}_{c}}\int drqH^{2}(r_{s}-r)\frac{\partial c_{0}(r)}{\partial r}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]
 \end{equation}
 
 \end_inset

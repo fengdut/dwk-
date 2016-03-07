@@ -5,6 +5,7 @@ src/dwk++
 dwk++.dSYM/
 doc/#dwk.lyx#
 doc/dwk.lyx~
+doc/*~
 *.nc
 
 .DS_Store
