@@ -12,6 +12,7 @@
 #include"mode.h"
 #include"particle_fre.h"
 #include"dwk.h"
+#include"output.h"
 
 using namespace std;
 int main(int arg,char * argx[])
@@ -40,7 +41,7 @@ int main(int arg,char * argx[])
 //read input parameters
 	read_tokamak(ifilename,&tok,&grid,&slowing,&mode,&dwkopt);	
 	CGrid pgrid(&grid,&slowing);
- 	cout.precision (12);
+ 	cout.precision (8);
 	pgrid.showgrid();	
 //alloc memory
 	double *q_1D,*J_q_1D;
@@ -73,28 +74,19 @@ int main(int arg,char * argx[])
 //begin calculate non-omega parts------------------------
 	qprofile(&grid,&tok,q_1D);
 	find_rs(&grid,q_1D, &tok);
-	calculate_normalization(&tok, &slowing);
+	calculate_normalization(&tok, &slowing,&mode);
 	showtokamak(&tok,&slowing);
 	double Cbeta=0;
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
-	cout<<"end F"<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
-	cout<<"end Lambda"<<endl;
 	Theta(b_lambda_3D,&grid,Theta_3D);
-	cout<<"end Thera"<<endl;
 	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
-	cout<<"end G_R"<<endl;
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
-	cout<<"end Chi"<<endl;
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
-	cout<<"end omega_b"<<endl;
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
-	cout<<"end omega_phi"<<endl;
 
 	tau_b(&grid,omega_b_3D,tau_b_3D);
-	cout<<"end tau_b"<<endl;
 	J_q(&grid,q_1D,J_q_1D);
-	cout<<"end J_q"<<endl;
 //end calculate non-omega parts--------------------------	
 
 	complex<double> *dwk_array;
@@ -114,7 +106,7 @@ int main(int arg,char * argx[])
         }
 
 	cout<<"*********************************"<<endl;
-	cout<<"this is a test run "<<endl;
+	cout<<"The test run, assume imag(omega)=0 "<<endl;
 	complex<double> omega_0,dwk_0;
 	omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
 			J_q_1D,FE_3D,omega_star_3D,
@@ -150,10 +142,43 @@ int main(int arg,char * argx[])
 	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h*Cbeta<<endl;	
 	cout <<"in omega_A unit"<<endl;
 	cout <<"     omega_0:"<<omega_0*tok.omega_i0/tok.omega_A<<endl;
-	cout <<"in kHz unit" <<endl;
+	cout <<"in kHz " <<endl;
 	cout <<"     omega_0:"<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
 	cout<<"*************************************************************"<<endl;
 
+	if(cmdOptionExists(argx,argx+arg,"-y"))
+	{
+		cout<<"write Yps_3D to Yps.nc"<<endl;
+		double *** rYps,***iYps;
+                Alloc3D(rYps,grid.nx,grid.nL,grid.nE);
+                Alloc3D(iYps,grid.nx,grid.nL,grid.nE);
+
+		int fileid=0;
+                char filename[]="Yps.nc";
+                fileid =open_netcdf(&grid,filename);
+                char dataname[10];
+
+		int np=mode.pb-mode.pa+1;
+		for(int i=0;i<np;i++)
+		{
+                for(int ix=0;ix<grid.nx;ix++)
+                for(int iL=0;iL<grid.nL;iL++)
+                for(int iE=0;iE<grid.nE;iE++)
+                {
+                        rYps[ix][iL][iE] = real(gYps_3D[i][ix][iL][iE]);
+                        iYps[ix][iL][iE] = imag(gYps_3D[i][ix][iL][iE]);
+
+                }
+                sprintf(dataname,"rYps_%d",mode.pa+i);
+                write_data_3D(rYps,dataname,fileid);
+                sprintf(dataname,"iYps_%d",mode.pa+i);
+                write_data_3D(iYps,dataname,fileid);
+		}
+	        close_netcdf(fileid);
+	        Free3D(rYps);
+                Free3D(iYps);
+		
+	}
 	Free1D(dwk_array);	
 	Free1D(J_q_1D);		Free1D(q_1D);
         Free2D(Chi_2D); 	Free3D(G_3D);
@@ -164,7 +189,7 @@ int main(int arg,char * argx[])
 	Free3D(b_lambda_3D);	Free3D(lambda_b_3D);
 	Free3D(F_3D);		Free3D(FR_3D);	
 	Free3D(FE_3D);		Free3D(omega_star_3D);
-	cout<<"time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<endl;
+	cout<<"dwk++ Elapsed time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<" second"<<endl;
 }
 
 

@@ -46,7 +46,6 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Alloc1D(expt,grid->ntheta);
 	Alloc1D(xi_r,grid->nx);
 	Alloc1D(xi_t,grid->nx);
-	cout<<"end alloc1d"<<endl;
 	
 	complex<double> ti=-1.0i;
 	for(int it=0;it<grid->ntheta;it++)
@@ -74,8 +73,10 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 		xi_t[ix]=0;
 	}
 	for(int ix=0;ix<grid->nx;ix++)
-		xi_t[ix] = xi_t[ix] *grid->xarray[ix];
-	
+	{
+		xi_t[ix] = xi_t[ix] *grid->xarray[ix]*pmode->xi_0;
+		xi_r[ix] = xi_r[ix] *pmode->xi_0;
+	}
 	for(int ix=0;ix<grid->nx;ix++)
 	{	
 		for(int iE=0;iE<grid->nE;iE++)
@@ -100,8 +101,8 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 			tkappa_r = -1.0*cost[it]*tok->eps +tok->eps *teps*0.25 - tok->eps *1.25*teps*(cos(2*ttheta)-1)-tok->eps*tok->eps *x/q_1D[ix];
 			tkappa_t = teps*sint[it]+ 1.25 *teps*teps *sin(2*ttheta);
 
-			txi_r  = 	 expt[it]*fxi_r(grid->xarray[ix]+rho_d*cost[it],r_s,delta_r);
-			txi_t  = -1.0*ti*expt[it]*fxi_t(grid->xarray[ix]+rho_d*cost[it],r_s,delta_r);
+			txi_r  = 	 expt[it]*fxi_r(grid->xarray[ix]+rho_d*cost[it],r_s,delta_r)*pmode->xi_0;
+			txi_t  = -1.0*ti*expt[it]*fxi_t(grid->xarray[ix]+rho_d*cost[it],r_s,delta_r)*pmode->xi_0;
 			
 			G_3D[ix][iE][it] =    (tgtt *tkappa_t +tgrt *tkappa_r)*txi_t + (tgrr *tkappa_r +tgrt *tkappa_t)*txi_r;
 					

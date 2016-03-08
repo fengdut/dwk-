@@ -7,7 +7,7 @@ doc/#dwk.lyx#
 doc/dwk.lyx~
 doc/*~
 *.nc
-
+src/omega_dwk.out
 .DS_Store
 
 

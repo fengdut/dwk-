@@ -145,6 +145,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		modeset.lookupValue("max_iterg",mode->max_iterg);
 		modeset.lookupValue("dw_f",mode->dw_f);
 		modeset.lookupValue("zero_rhod",mode->zero_rhod);
+		modeset.lookupValue("xi_0",mode->xi_0);
 
 
 		mode->n=n;

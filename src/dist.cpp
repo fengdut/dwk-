@@ -83,8 +83,8 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	}
 
 	double Cn=0,CP=0;
-	cout<<"omega_star: ";
- 	max_min_3D(grid->nx, grid->nL, grid->nE,omega_star);
+//	cout<<"omega_star: ";
+//	max_min_3D(grid->nx, grid->nL, grid->nE,omega_star);
 	//cout<<"F_3D: ";
  	//max_min_3D(grid->nx, grid->nL, grid->nE,F_3D);
 	//cout<<"FE_3D: ";
@@ -107,10 +107,12 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	Cn=simpintegral_2D(P0, grid->nL, grid->dL, grid->nE,grid->dE);
 	CP=simpintegral_2D(Th, grid->nL, grid->dL, grid->nE,grid->dE);
 	
-	std::cout<<"Cn= "<<Cn<<std::endl;
-	std::cout<<"CP= "<<CP<<std::endl;
+//	std::cout<<"Cn= "<<Cn<<std::endl;
+//	std::cout<<"CP= "<<CP<<std::endl;
 	*Cbeta = CP/Cn;
 	std::cout<<"Cbeta= "<<*Cbeta<<std::endl;
+	std::cout<<"Th= "<<*Cbeta <<" code unit (Ei_0)"<<std::endl;
+	std::cout<<"Th= "<<*Cbeta*tok->E_i0 <<" KeV"<<std::endl;
 	
 	double T2=2*sqrt(2);
 	for(int ix=0;ix<grid->nx;ix++)

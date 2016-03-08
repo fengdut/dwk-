@@ -25,6 +25,7 @@ void help()
         cout<<"-i <inputfile>, the default input file is dwk.cfg."<<endl;
 	cout<<"-o <outputfile>, the default output file is dwk_omega_dwk.out."<<endl;
 	cout<<"-s scan dwk(omega). Or only find omega_0 and beta_c."<<endl;
+	cout<<"-y write Yps_3D to Yps.nc"<<endl;
 	cout<<endl;
 	
 }
@@ -58,36 +59,16 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 	complex<double>dwk=0;
 	if(!init_Yps)
 	{
-		int fileid=0;
-	 	char filename[]="Yps.nc";
-		fileid =open_netcdf(grid,filename);
 		init_Yps=1;
 		int np=mode->pb-mode->pa+1;
 		Alloc1D(gYps_3D,np);
-		double *** rYps,***iYps;
-		Alloc3D(rYps,grid->nx,grid->nL,grid->nE);		
-		Alloc3D(iYps,grid->nx,grid->nL,grid->nE);		
 		for(int i=0;i<np;i++)
 		{
 			Alloc3D(gYps_3D[i],grid->nx,grid->nL,grid->nE);
 			Yps(grid,G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,mode->pa+i,gYps_3D[i]);	
-			 cout<<"Yps_t:\t";
-        		max_min_3D(grid->nx,grid->nL,grid->nE,gYps_3D[i]);
-			char dataname[10];
-			for(int ix=0;ix<grid->nx;ix++)
-                	for(int iL=0;iL<grid->nL;iL++)
-                	for(int iE=0;iE<grid->nE;iE++)
-			{
-				rYps[ix][iL][iE] = real(gYps_3D[i][ix][iL][iE]);
-				iYps[ix][iL][iE] = imag(gYps_3D[i][ix][iL][iE]);
-			
-			}
-			sprintf(dataname,"rYps_%d",mode->pa+i);
-			write_data_3D(rYps,dataname,fileid);	
-			sprintf(dataname,"iYps_%d",mode->pa+i);
-			write_data_3D(iYps,dataname,fileid);	
+			// cout<<"Yps_t:\t";
+        		//max_min_3D(grid->nx,grid->nL,grid->nE,gYps_3D[i]);
 		}
-		close_netcdf(fileid);
 	}
         Alloc3D(dwk_3D,grid->nx,grid->nL,grid->nE);
          complex<double> Yp_R =0;
@@ -237,8 +218,19 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 		cin>>isend;
 		if(isend)
 		{
-			cin>>mode->omega_array[0];
-			cin>>mode->omega_array[1];
+			cout<<"input omega_0, omega_1 "<<endl;
+			double omega0,omega1;
+			cin>>omega0;
+			cin>>omega1;
+			mode->omega_array[0]=omega0;
+			mode->omega_array[mode->omega_n-1]=omega1;
+			std::complex<double> ti=1.0i;
+			double domega=(omega1-omega0)/(mode->omega_n-1);
+			for(int iomega=0;iomega<mode->omega_n;iomega++)
+        	        {
+                	        mode->omega_array[iomega] =  omega0 +domega*iomega +ti*mode->omega_i;
+                	}
+
 		}
 		else		
 			exit(-1);

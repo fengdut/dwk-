@@ -521,8 +521,8 @@ In the current version, the mode structure is source code, and it is a kink
 
 \begin_layout Standard
 \begin_inset Formula $\xi_{r0}(r)=\begin{cases}
-1 & \quad r\leq r_{s}-\Delta r/2\\
-\frac{\Delta r-r+r_{s}-\Delta r/2}{\Delta r} & \quad r_{s}-\frac{\Delta r}{2}<r<r_{s}+\frac{\Delta r}{2}\\
+\xi_{0} & \quad r\leq r_{s}-\Delta r/2\\
+\xi_{0}\frac{\Delta r-r+r_{s}-\Delta r/2}{\Delta r} & \quad r_{s}-\frac{\Delta r}{2}<r<r_{s}+\frac{\Delta r}{2}\\
 0 & \quad r\geq r_{s}+\frac{\Delta r}{2}
 \end{cases}$
 \end_inset
@@ -532,8 +532,8 @@ In the current version, the mode structure is source code, and it is a kink
 
 \begin_layout Standard
 \begin_inset Formula $\xi_{\theta0}(r)=\begin{cases}
-1 & \quad r\leq r_{s}-\Delta r/2\\
-\frac{\Delta r-2r+r_{s}-\Delta r/2}{\Delta r} & \quad r_{s}-\frac{\Delta r}{2}<r<r_{s}+\frac{\Delta r}{2}\\
+\xi_{0} & \quad r\leq r_{s}-\Delta r/2\\
+\xi_{0}\frac{\Delta r-2r+r_{s}-\Delta r/2}{\Delta r} & \quad r_{s}-\frac{\Delta r}{2}<r<r_{s}+\frac{\Delta r}{2}\\
 0 & \quad r\geq r_{s}+\frac{\Delta r}{2}
 \end{cases}$
 \end_inset
@@ -550,11 +550,11 @@ The normalized quantities used for
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $v_{0}=\sqrt{2T_{h}/M}$
+\begin_inset Formula $v_{0}=\sqrt{2T_{0}/M}$
 \end_inset
 
 , 
-\begin_inset Formula $T_{h}$
+\begin_inset Formula $T_{0}$
 \end_inset
 
  is the fast ions injection energy, 
@@ -585,7 +585,7 @@ The normalized quantities used for
 \end_inset
 
 , 
-\begin_inset Formula $E_{0}=T_{h}/M$
+\begin_inset Formula $E_{0}=T_{0}/M$
 \end_inset
 
 , 
@@ -594,7 +594,7 @@ The normalized quantities used for
 
  is the torodial magnetic field at magnetic axis.
  
-\begin_inset Formula $\delta W_{k,0}=\pi^{2}a^{2}R_{0}n_{0}T_{h}$
+\begin_inset Formula $\delta W_{k,0}=\pi^{2}a^{2}R_{0}n_{0}T_{0}$
 \end_inset
 
 .
@@ -615,7 +615,7 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta W_{k}=0
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{0}}{a})|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta W_{k}=0
 \end{equation}
 
 \end_inset
@@ -645,7 +645,7 @@ where:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{4(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{s}}{\xi_{0}}|^{2}}
+C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{4(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{0}}{a}|^{2}}
 \end{equation}
 
 \end_inset
@@ -755,6 +755,10 @@ Arguments
  
 \end_layout
 
+\begin_layout Itemize
+-y write Yps_3D to Yps.nc.
+\end_layout
+
 \begin_layout Subsection
 Input file
 \end_layout
@@ -801,7 +805,11 @@ Examples
 \begin_layout Subsection
 Compare with (WANG, Destabilization of internal kink modes at high frequency
  by energetic circulating ions.
- Physical Review Letters, 2001, 86 ) case:
+ Physical Review Letters, 2001, 86 ) case.
+\end_layout
+
+\begin_layout Standard
+In directory 'dwk-/runp0_wsj':
 \end_layout
 
 \begin_layout Standard
@@ -927,10 +935,16 @@ Appendix
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $ $
+For more details about formula derivation, please read 
+\begin_inset CommandInset href
+LatexCommand href
+name "limin_kinetic.pdf"
+target "limin_kinetic.pdf"
+type "file:"
+
 \end_inset
 
-
+(dwk-/doc/limin_kinetic.pdf).
 \end_layout
 
 \end_body

@@ -6,6 +6,7 @@
 #include"AllocArray.h"
 #include"tokamak.h"
 #include"stdlib.h"
+#include"mode.h"
 using namespace std;
 
 
@@ -118,15 +119,15 @@ CGrid::~CGrid()
 
 void CGrid::showgrid()
 {
-	cout<<"--------begin grid information--------"<<endl;
+	cout<<"----------begin grid information----------"<<endl;
 	cout<<"nr, nL, nE, ntheta:\t"<<m_pgrid->nx<<", "<<m_pgrid->nL<<", "<<m_pgrid->nE<<", "<<m_pgrid->ntheta<<endl;
         cout<<"ra, rb: \t"<<m_pgrid->ra<<"\t"<<m_pgrid->rb<<endl;
         cout<<"La, Lb: \t"<<m_pgrid->La<<"\t"<<m_pgrid->Lb<<endl;
         cout<<"Ea, Eb: \t"<<m_pgrid->Ea<<"\t"<<m_pgrid->Eb<<endl;
-	cout<<"--------end grid information  --------"<<endl;
+	cout<<"----------end grid information------------"<<endl;
 	
 }
-void calculate_normalization(Tokamak *ptok, Slowing *pslowing)
+void calculate_normalization(Tokamak *ptok, Slowing *pslowing,Mode * pmode)
 {
 	ptok->eps=ptok->a/ptok->R0;
         ptok->Bps=ptok->r_s*ptok->a*ptok->Bt/(ptok->R0*ptok->q_s);
@@ -137,23 +138,32 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing)
         ptok->omega_i0 = ptok->v_i0/ptok->R0;
 
         ptok->C = ptok->omega_A/(ptok->omega_i0*4.0 *(ptok->r_s*ptok->a/ptok->R0)*(ptok->r_s*ptok->a/ptok->R0));
+	ptok->C =ptok->C/(pmode->xi_0*pmode->xi_0);
         ptok->beta_h=0.0;
-
+	
+	ptok->PB =ptok->Bt*ptok->Bt *3.98e6*10.0; 
+	ptok->dwk_001 =M_PI * M_PI * ptok->a *ptok->a *ptok->R0;
         pslowing->rho_h=ptok->m_ep*1.6726e-27 *ptok->v_i0/(1.6022e-19*ptok->Bt)/ptok->a;
 }
 
 void showtokamak(Tokamak *ptok,Slowing *pslowing)
 {
+	cout<<std::scientific;	
 	cout<<"--------begin tokamak information--------"<<endl;
   	cout<<"a: \t"<<ptok->a<<" m"<<endl;
 	cout<<"R0: \t"<<ptok->R0<<" m"<<endl;
 	cout<<"eps: \t"<<ptok->eps<<endl;
 	cout<<"Bt0: \t"<<ptok->Bt<<" Tesla"<<endl;
 	cout<<"Bps: \t"<<ptok->Bps<<" Tesla"<<endl;
+	cout<<"Torodial Magnetic Field Pressure: "<<ptok->PB <<" pascal" <<endl;
 	cout<<"n0: \t"<<ptok->n0<<" 1/m^3"<<endl;
 	cout<<"mi: \t"<<ptok->mi<<" 1/m_p"<<endl;
 	double *qc=ptok->qc;
+	std::cout.precision(4);
+	std::cout<<fixed;
 	cout<<"q profile: \t"<<qc[0]<<"+"<<qc[1]<<"*r+"<<qc[2]<<"*r^2+"<<qc[3]<<"*r^3+"<<qc[4]<<"*r^4+"<<qc[5]<<"*r^5+"<<qc[6]<<"*r^6+"<<qc[7]<<"*r^7"<<endl;
+	cout<<std::scientific;	
+	std::cout.precision(8);
 	cout<<"q_s: \t"<<ptok->q_s<<endl;
 	cout<<"r_s: \t"<<ptok->r_s<<endl;
 	cout<<"s : \t"<<ptok->s<<endl;

@@ -59,7 +59,7 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 	if(id+1==np)
 		nm=grid->nx%np;	
 
-	 cout<<"G_3D:\t";
+/*	 cout<<"G_3D:\t";
         max_min_3D(grid->nx,grid->nE,grid->ntheta,G_3D);
 
 	  cout<<"b_lambda:\t";
@@ -67,7 +67,7 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 
 	   cout<<"lambda_b:\t";
         max_min_3D(grid->nx,grid->nL,grid->ntheta,lambda_b_3D);
-
+*/
 
 	for(int ix=id*ni;ix<(id+1)*ni+nm;ix=ix+1)
 	{

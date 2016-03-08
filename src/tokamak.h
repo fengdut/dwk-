@@ -8,12 +8,14 @@ typedef struct TOKAMAK
 {
 	double a,R0;	//minor and major radius (m). 			input
 	double eps;	//a/R0	  
-	double C; 	//the normalization coefficient. useless now. 	input
+	double C; 	//the normalization coefficient for dispersion relation
+	double dwk_001;   // dwk_0 (SI unit) with beta_h = 1.0% .
 	double qc[nqc];   //q profile, polynomial coefficient;      	input
 	double s;	//magnetic shear at resonance surface.
 	double q_s;	//q at resonance surface 
 	double r_s;	//resounce surface (a)
 	double Bt;	//toroidal magnetic field at axis without plasma, in units of tesla  input
+	double PB;	//magnetic field pressure in SI unit.
 	double Bps;	//poloidal magnetic field at resonance surface.
 	double n0;	//thermal plasma density at axis.		input
 	double mi;	//ion mass in units of protom mass.		input
@@ -66,7 +68,6 @@ private:
 };
 
 
-void calculate_normalization(Tokamak *ptok, Slowing *pslowing);
 void showtokamak(Tokamak *ptok,Slowing *pslowing);
 
 void qprofile(Grid *const grid,Tokamak *ptok, double *q_1D);
