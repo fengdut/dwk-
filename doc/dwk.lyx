@@ -338,7 +338,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-{Y(r,\Lambda,E)=\frac{1}{2\pi}\int_{0}^{2\pi}\chi d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta,E)e^{-i\chi p\Theta}}}
+{Y(r,\Lambda,E)=\frac{1}{2\pi}\int_{0}^{2\pi}\chi d\theta B_{\Lambda}\left(\Lambda_{b}+2\left(1-\Lambda_{b}\right)\right)G(r,\theta,E)e^{-i\chi p\Theta}}
 \end{equation}
 
 \end_inset
@@ -501,7 +501,7 @@ In the current version, the mode structure is source code, and it is a kink
 \begin_inset Formula $r=1$
 \end_inset
 
-, and with a finite resonce layer width 
+, and with a finite resonance layer width 
 \begin_inset Formula $\Delta r$
 \end_inset
 
@@ -750,9 +750,9 @@ Arguments
  and 
 \begin_inset Formula $\beta_{h,0}$
 \end_inset
+
 .
  
-
 \end_layout
 
 \begin_layout Subsection
