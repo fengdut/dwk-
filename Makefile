@@ -1,10 +1,8 @@
 
 
-all :  
+all:  
 	cd src/; make;
 	cp src/dwk++ ./
-
-
 
 
 .PHONY:clean

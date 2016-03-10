@@ -141,9 +141,10 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing,Mode * pmode)
 	ptok->C =ptok->C/(pmode->xi_0*pmode->xi_0);
         ptok->beta_h=0.0;
 	
-	ptok->PB =ptok->Bt*ptok->Bt *3.98e6*10.0; 
+	ptok->PB =ptok->Bt*ptok->Bt *3.98e6/10.0; 
 	ptok->dwk_001 =M_PI * M_PI * ptok->a *ptok->a *ptok->R0;
-        pslowing->rho_h=ptok->m_ep*1.6726e-27 *ptok->v_i0/(1.6022e-19*ptok->Bt)/ptok->a;
+	double Z=1;
+        pslowing->rho_h=1.02*sqrt(ptok->mi)/Z*sqrt(ptok->E_i0*1000)/(ptok->Bt*10000)/ptok->a;
 }
 
 void showtokamak(Tokamak *ptok,Slowing *pslowing)

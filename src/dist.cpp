@@ -75,6 +75,7 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		FR_3D[ix][iL][iE]  =expx1[ix]*expL[iL]*erfcE[iE];
 		//omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
 		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]) *  q_1D[ix]; 
+		
 		if((FE_3D[ix][iL][iE])!=0.0)	
 			omega_star[ix][iL][iE] = omega_star[ix][iL][iE]/FE_3D[ix][iL][iE];
 		else
@@ -112,6 +113,7 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	*Cbeta = CP/Cn;
 	std::cout<<"Cbeta= "<<*Cbeta<<std::endl;
 	std::cout<<"Th= "<<*Cbeta <<" code unit (Ei_0)"<<std::endl;
+	std::cout<<"E0: "<<tok->E_i0<<std::endl;;
 	std::cout<<"Th= "<<*Cbeta*tok->E_i0 <<" KeV"<<std::endl;
 	
 	double T2=2*sqrt(2);
