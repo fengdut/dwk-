@@ -61,9 +61,9 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 1.5cm
+\leftmargin 1.2cm
 \topmargin 1.5cm
-\rightmargin 1.5cm
+\rightmargin 1.2cm
 \bottommargin 1.3cm
 \secnumdepth 3
 \tocdepth 3
@@ -819,7 +819,7 @@ Considering deep passing particles (
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-F=\frac{p_{h}}{\pi n_{0}T_{0}}\frac{1}{E^{3/2}}\delta(\Lambda)H(E_{0}-E)
+F=\frac{p_{h}}{\pi n_{0}T_{0}C_{p}}\frac{1}{E^{3/2}}\delta(\Lambda)H(E_{0}-E)
 \end{equation}
 
 \end_inset
@@ -849,7 +849,7 @@ The
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k,d}=-\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\int_{0}^{r_{s}}dr\frac{dp_{h}}{dr}q
+\delta W_{k,d}=-\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\int_{0}^{r_{s}}dr\frac{dp_{h}}{dr}q
 \end{equation}
 
 \end_inset
@@ -860,7 +860,7 @@ The
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\delta W_{k,s}=\frac{8}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]\int_{0}^{r_{s}}rp_{h}dr\label{eq:w_ks}
+\delta W_{k,s}=\frac{8}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\int_{0}^{r_{s}}rp_{h}dr\label{eq:w_ks}
 \end{equation}
 
 \end_inset
@@ -935,11 +935,11 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-\delta W_{k,d} & = & -\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\int_{0}^{r_{s}}dr\frac{dp_{h}}{dr}q\nonumber \\
- & = & -\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]p_{0}\int_{0}^{r_{s}}dr\frac{de^{-(\frac{r}{\Delta r})^{2}}}{dr}(c_{0}+c_{2}r^{2})\nonumber \\
- & = & \frac{16}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\frac{p_{0}}{\Delta r^{2}}\int_{0}^{r_{s}}re^{-(\frac{r}{\Delta r})^{2}}(c_{0}+c_{2}r^{2})dr\nonumber \\
- & = & \frac{16}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\frac{p_{0}}{\Delta r^{2}}\{-\frac{1}{2}\Delta r^{2}e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\nonumber \\
- & = & -\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]p_{0}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}
+\delta W_{k,d} & = & -\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\int_{0}^{r_{s}}dr\frac{dp_{h}}{dr}q\nonumber \\
+ & = & -\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]p_{0}\int_{0}^{r_{s}}dr\frac{de^{-(\frac{r}{\Delta r})^{2}}}{dr}(c_{0}+c_{2}r^{2})\nonumber \\
+ & = & \frac{16}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\frac{p_{0}}{\Delta r^{2}}\int_{0}^{r_{s}}re^{-(\frac{r}{\Delta r})^{2}}(c_{0}+c_{2}r^{2})dr\nonumber \\
+ & = & \frac{16}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\frac{p_{0}}{\Delta r^{2}}\{-\frac{1}{2}\Delta r^{2}e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\nonumber \\
+ & = & -\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]p_{0}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}
 \end{eqnarray}
 
 \end_inset
@@ -950,15 +950,38 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-\delta W_{k,s} & = & -\frac{8}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]\int_{0}^{r_{s}}rp_{h}dr\nonumber \\
- & = & -\frac{8}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]p_{0}\int_{0}^{r_{s}}re^{-(\frac{r}{\Delta r})^{2}}dr\nonumber \\
- & =- & \frac{8}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]p_{0}[-\frac{1}{2}\Delta r^{2}e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\nonumber \\
- & = & \frac{4}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]p_{0}\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}
+\delta W_{k,s} & = & -\frac{8}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\int_{0}^{r_{s}}rp_{h}dr\nonumber \\
+ & = & -\frac{8}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]p_{0}\int_{0}^{r_{s}}re^{-(\frac{r}{\Delta r})^{2}}dr\nonumber \\
+ & =- & \frac{8}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]p_{0}[-\frac{1}{2}\Delta r^{2}e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\nonumber \\
+ & = & \frac{4}{n_{0}T_{0}C_{p}}(\varepsilon_{0}\xi_{s})^{2}[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}lln(1-\frac{1}{\Omega})]p_{0}\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}
 \end{eqnarray}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+So the normalized 
+\begin_inset Formula $\delta W_{k}$
+\end_inset
+
+ is : 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\frac{4(\varepsilon_{s}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}}\left\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\right\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $W_{a}=[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -971,13 +994,105 @@ Consider the
 
 \begin_layout Standard
 \begin_inset Formula 
+\begin{eqnarray*}
+\delta W_{k,0}\delta W_{k} & =\delta W_{k,0}\frac{4(\varepsilon_{s}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}} & W_{a}\\
+ & =\pi^{2}a^{2}R_{0}n_{0}T_{0}\frac{4(\varepsilon_{s}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}} & W_{a}\\
+ & =\frac{4\pi^{2}a^{2}R_{0}(\varepsilon_{s}\xi_{0})^{2}p_{0}}{C_{p}} & W_{a}\\
+ & =\frac{4\pi^{2}a^{2}R_{0}(\varepsilon_{s}\xi_{0})^{2}p_{0}}{C_{p}} & \Big\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\\
+ &  & -\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\Big\}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then we can get:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+i\frac{\Omega}{\Omega_{A}}=\frac{1}{4}\frac{1}{\varepsilon_{s}^{2}}\frac{\beta_{0}}{|\xi_{0}|^{2}}\delta W_{k}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
 \begin{eqnarray}
-\delta W_{k,} & = & \pi^{2}a^{2}R_{0}n_{0}T_{0}k(\delta W_{k,d}+\delta W_{k,s})\nonumber \\
- & = & \pi^{2}a^{2}R_{0}n_{0}T_{0}k\{-\frac{8}{\varepsilon_{0}}\frac{\rho_{h}}{n_{0}T_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]p_{0}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\}\nonumber \\
- &  & +\pi^{2}a^{2}R_{0}n_{0}T_{0}k\{-\frac{4}{n_{0}T_{0}}(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]p_{0}\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\}\nonumber \\
- & = & -8\pi^{2}a^{2}R_{0}p_{0}\{\frac{\rho_{h}}{\varepsilon_{0}a}(\varepsilon_{0}\xi_{s})^{2}[\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\}\nonumber \\
- &  & +4\pi^{2}a^{2}R_{0}p_{0}\{(\varepsilon_{0}\xi_{s})^{2}[-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})]\Delta\mathcal{}r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\}
+i\frac{\Omega}{\Omega_{A}} & =\frac{1}{\varepsilon_{s}^{2}}\frac{p_{0}\beta_{0}}{n_{0}T_{0}} & \Big\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\nonumber \\
+ &  & -\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\Big\}
 \end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The image part is 
+\begin_inset Formula $\Omega^{3}\log(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}$
+\end_inset
+
+ is 
+\begin_inset Formula $[(\Omega_{r}^{3}-3\Omega_{r}\Omega_{i}^{2})\pi+(3\Omega_{i}\Omega_{r}^{2}-\Omega_{i}^{3})\log\left|1-\frac{1}{\Omega}\right|+2\Omega_{r}\Omega_{i}+\frac{1}{2}\Omega_{i}]$
+\end_inset
+
+, and the image part of 
+\begin_inset Formula $-\frac{\Omega}{\Omega-1}+\Omega+\Omega^{2}log(1-\frac{1}{\Omega})$
+\end_inset
+
+ is 
+\begin_inset Formula $\frac{\Omega_{i}}{(\Omega_{r}-1)^{2}+\Omega_{i}^{2}}+\Omega_{i}+(\Omega_{r}^{2}-\Omega_{i}^{2})\pi+2\Omega_{i}\Omega_{r}log\left|1-\frac{1}{\Omega}\right|$
+\end_inset
+
+.
+ With 
+\begin_inset Formula $\Omega_{i}=0$
+\end_inset
+
+, it becomes 
+\begin_inset Formula $\pi\Omega_{r}^{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\pi\Omega_{r}^{2}$
+\end_inset
+
+.
+ The dipersion relation is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{\Omega_{r}}{\Omega_{A}} & = & \frac{1}{\varepsilon_{s}^{2}}\frac{p_{0}\beta_{0}}{n_{0}T_{0}}\Omega_{r}^{2}\pi\{\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}\Omega_{r}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\}\\
+\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The critical 
+\begin_inset Formula $\beta_{0}^{crit}$
+\end_inset
+
+ given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\beta_{0}^{crit}=\frac{n_{0}T_{0}\varepsilon_{s}^{2}}{p_{0}\pi\Omega_{r}}\frac{1}{\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}\Omega_{r}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}}
+\]
 
 \end_inset
 
@@ -1019,23 +1134,23 @@ reference "fig:compare_analy"
 
 ).
  For 
-\begin_inset Formula $imag(\Omega)=0.01$
+\begin_inset Formula $imag(\Omega)=0.005$
 \end_inset
 
 , the real frequency can be found by the code: 
-\begin_inset Formula $\Omega_{r}=0.8287$
+\begin_inset Formula $\Omega_{r}=0.83$
 \end_inset
 
 ,(
-\begin_inset Formula $0.285\omega_{A}$
+\begin_inset Formula $0.283\omega_{A}$
 \end_inset
 
 , 
-\begin_inset Formula $157.456kHz$
+\begin_inset Formula $157kHz$
 \end_inset
 
 ), 
-\begin_inset Formula $\beta_{h,0}=0.0636$
+\begin_inset Formula $\beta_{h,0}=0.06$
 \end_inset
 
 .
