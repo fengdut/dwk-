@@ -1,5 +1,6 @@
-clear;
 clf;
+clear;
+
 a=0.38;
 R0=1.3;
 p0=2.8083e3;
@@ -13,7 +14,7 @@ B0=0.84;
 mp=2;
 Z=1;
 
-rho_h=1.02*sqrt(mp)/Z*sqrt(E0)/(B0*10000);
+rho_h=3.85698037e-02;
 rho_h=rho_h/a;
 
 delta_r=0.2;
@@ -22,8 +23,8 @@ c2=1.385;
 
 n=100;
 
-omegai=0.01i;
-omega=linspace(0.01+omegai,0.99+omegai,n);
+omegai=0.005i;
+omega=linspace(0.1+omegai,0.95+omegai,n);
 
 Ckd=-8*pi^2*a^2*R0*p0 *rho_h/eps0 *(eps0*xi_s)^2;
 fs=exp (-(r_s/delta_r)^2)*(c2*(delta_r^2+r_s^2)+c0);

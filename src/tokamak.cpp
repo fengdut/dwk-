@@ -144,7 +144,11 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing,Mode * pmode)
 	ptok->PB =ptok->Bt*ptok->Bt *3.98e6/10.0; 
 	ptok->dwk_001 =M_PI * M_PI * ptok->a *ptok->a *ptok->R0;
 	double Z=1;
-        pslowing->rho_h=1.02*sqrt(ptok->mi)/Z*sqrt(ptok->E_i0*1000)/(ptok->Bt*10000)/ptok->a;
+	ptok->omega_c =9.58e3 /ptok->mi*ptok->Bt*10000;
+	
+        pslowing->rho_h= (ptok->v_i0/ptok->omega_c) ;
+        pslowing->rho_h= pslowing->rho_h/ptok->a ;
+
 }
 
 void showtokamak(Tokamak *ptok,Slowing *pslowing)
@@ -176,6 +180,7 @@ void showtokamak(Tokamak *ptok,Slowing *pslowing)
 	cout<<scientific;
 	cout<<"v_i0:\t"<<ptok->v_i0<<" m/s"<<endl;
 	cout<<"omega_i0:\t"<<ptok->omega_i0 <<" rad/s"<<endl;
+	cout<<"omega_c: \t"<<ptok->omega_c <<" rad/s"<<endl;
 	cout<<"fast ion gyroradius:\t"<<pslowing->rho_h*ptok->a <<" m"<<endl;
 	cout<<"C:\t"<<ptok->C<<endl;
 	cout<<fixed;

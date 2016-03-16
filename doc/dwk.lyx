@@ -615,7 +615,7 @@ Assume
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{0}}{a})|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}\delta W_{k}=0
+\frac{4}{\pi}(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{0}}{a})|^{2}(-i\frac{\omega}{\omega_{A}})+\beta_{h}C_{p}\delta W_{k}=0
 \end{equation}
 
 \end_inset
@@ -630,7 +630,7 @@ or:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i\omega=C\beta_{h,0}\delta W_{k}
+i\omega=C\beta_{h,0}C_{p}\delta W_{k}
 \end{equation}
 
 \end_inset
@@ -654,7 +654,12 @@ C=\frac{\omega_{A}}{\omega_{0}}\frac{1}{4(\frac{r_{s}}{R_{0}})^{2}|\frac{\xi_{0}
 \end_layout
 
 \begin_layout Standard
-here 
+and 
+\begin_inset Formula $C_{p}=\frac{p_{0}}{n_{0}T_{0}}$
+\end_inset
+
+.
+ Here 
 \begin_inset Formula $\xi_{s}/\xi_{0}=1$
 \end_inset
 
@@ -675,6 +680,7 @@ here
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -688,7 +694,7 @@ Considering MHD contribution from
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i\omega=C\beta_{h,0}\delta W_{k}+\frac{\omega_{A}}{\omega_{0}}\delta W_{T}
+i\omega=C\beta_{h,0}C_{P}\delta W_{k}+\frac{\omega_{A}}{\omega_{0}}\delta W_{T}
 \end{equation}
 
 \end_inset
@@ -970,7 +976,7 @@ So the normalized
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\frac{4(\varepsilon_{s}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}}\left\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\right\}$
+\begin_inset Formula $\frac{4(\varepsilon_{0}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}}\left\{ [\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\right\} $
 \end_inset
 
 
@@ -995,10 +1001,10 @@ Consider the
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\delta W_{k,0}\delta W_{k} & =\delta W_{k,0}\frac{4(\varepsilon_{s}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}} & W_{a}\\
- & =\pi^{2}a^{2}R_{0}n_{0}T_{0}\frac{4(\varepsilon_{s}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}} & W_{a}\\
- & =\frac{4\pi^{2}a^{2}R_{0}(\varepsilon_{s}\xi_{0})^{2}p_{0}}{C_{p}} & W_{a}\\
- & =\frac{4\pi^{2}a^{2}R_{0}(\varepsilon_{s}\xi_{0})^{2}p_{0}}{C_{p}} & \Big\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\\
+\delta W_{k,0}\delta W_{k} & =\delta W_{k,0}\frac{4(\varepsilon_{0}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}} & W_{a}\\
+ & =\pi^{2}a^{2}R_{0}n_{0}T_{0}\frac{4(\varepsilon_{0}\xi_{0})^{2}p_{0}}{n_{0}T_{0}C_{p}} & W_{a}\\
+ & =\frac{4\pi^{2}a^{2}R_{0}(\varepsilon_{0}\xi_{0})^{2}p_{0}}{C_{p}} & W_{a}\\
+ & =\frac{4\pi^{2}a^{2}R_{0}(\varepsilon_{0}\xi_{0})^{2}p_{0}}{C_{p}} & \Big\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\\
  &  & -\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\Big\}
 \end{eqnarray*}
 
@@ -1025,7 +1031,7 @@ i\frac{\Omega}{\Omega_{A}}=\frac{1}{4}\frac{1}{\varepsilon_{s}^{2}}\frac{\beta_{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-i\frac{\Omega}{\Omega_{A}} & =\frac{1}{\varepsilon_{s}^{2}}\frac{p_{0}\beta_{0}}{n_{0}T_{0}} & \Big\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\nonumber \\
+i\frac{\Omega}{\Omega_{A}} & =\frac{\varepsilon_{0}^{2}}{\varepsilon_{s}^{2}}\frac{p_{0}\beta_{0}}{n_{0}T_{0}C_{p}} & \Big\{[\frac{\Omega}{1-\Omega}+\Omega+\Omega^{2}ln(1-\frac{1}{\Omega})]\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}\nonumber \\
  &  & -\frac{2\rho_{h}}{\varepsilon_{0}}[\Omega^{3}ln(1-\frac{1}{\Omega})+\Omega^{2}+\frac{1}{2}\Omega+\frac{1}{3}]\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\Big\}
 \end{eqnarray}
 
@@ -1071,7 +1077,7 @@ The image part is
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{\Omega_{r}}{\Omega_{A}} & = & \frac{1}{\varepsilon_{s}^{2}}\frac{p_{0}\beta_{0}}{n_{0}T_{0}}\Omega_{r}^{2}\pi\{\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}\Omega_{r}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\}\\
+\frac{\Omega_{r}}{\Omega_{A}} & = & \frac{\varepsilon_{0}^{2}}{\varepsilon_{s}^{2}}\beta_{0}\Omega_{r}^{2}\pi\{\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}\Omega_{r}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}\}\\
 \nonumber 
 \end{eqnarray}
 
@@ -1090,9 +1096,9 @@ The critical
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\beta_{0}^{crit}=\frac{n_{0}T_{0}\varepsilon_{s}^{2}}{p_{0}\pi\Omega_{r}}\frac{1}{\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}\Omega_{r}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}}
-\]
+\begin{equation}
+\beta_{0}^{crit}=\frac{\varepsilon_{s}^{2}}{\pi\Omega_{A}\Omega_{r}\varepsilon_{0}^{2}}\frac{1}{\Delta r^{2}[e^{-(\frac{r}{\Delta r})^{2}}]|_{0}^{r_{s}}-\frac{2\rho_{h}}{\varepsilon_{0}}\Omega_{r}\{e^{-(\frac{r}{\Delta r})^{2}}[c_{2}(\Delta r^{2}+r^{2})+c_{0}]\}|_{0}^{r_{s}}}\label{eq:beta_crit}
+\end{equation}
 
 \end_inset
 
@@ -1101,7 +1107,7 @@ The critical
 
 \begin_layout Standard
 Using 
-\begin_inset Formula $q=0.8+1.3850r^{2}$
+\begin_inset Formula $q=0.8+1.385r^{2}$
 \end_inset
 
 , 
@@ -1138,22 +1144,55 @@ reference "fig:compare_analy"
 \end_inset
 
 , the real frequency can be found by the code: 
-\begin_inset Formula $\Omega_{r}=0.83$
+\begin_inset Formula $\Omega_{r}=0.8472$
 \end_inset
 
 ,(
-\begin_inset Formula $0.283\omega_{A}$
+\begin_inset Formula $0.29137\omega_{A}$
 \end_inset
 
 , 
-\begin_inset Formula $157kHz$
+\begin_inset Formula $160.965kHz$
 \end_inset
 
 ), 
-\begin_inset Formula $\beta_{h,0}=0.06$
+\begin_inset Formula $\beta_{0,crit}=0.0402$
 \end_inset
 
-.
+ (without 
+\begin_inset Formula $\omega$
+\end_inset
+
+ term, 
+\begin_inset Formula $\Omega_{r}=0.8901$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{0,crit}=0.0333$
+\end_inset
+
+).
+ And by Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:beta_crit"
+
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{0,crit}=0.04130$
+\end_inset
+
+ (without 
+\begin_inset Formula $\omega$
+\end_inset
+
+ term, 
+\begin_inset Formula $\beta_{0,crit}=0.03442$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
