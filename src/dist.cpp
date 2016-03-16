@@ -5,6 +5,7 @@
 #include"AllocArray.h"
 #include"simpintegral.h"
 #include"vector.h"
+#include"outlog.h"
 
 using namespace std;
 void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,double const *q_1D,int m,
@@ -108,13 +109,13 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	Cn=simpintegral_2D(P0, grid->nL, grid->dL, grid->nE,grid->dE);
 	CP=simpintegral_2D(Th, grid->nL, grid->dL, grid->nE,grid->dE);
 	
-//	std::cout<<"Cn= "<<Cn<<std::endl;
-//	std::cout<<"CP= "<<CP<<std::endl;
+//	cout<<"Cn= "<<Cn<<std::endl;
+//	cout<<"CP= "<<CP<<std::endl;
 	*Cbeta = CP/Cn;
-	std::cout<<"Cbeta= "<<*Cbeta<<std::endl;
-	std::cout<<"Th= "<<*Cbeta <<" code unit (Ei_0)"<<std::endl;
-	std::cout<<"E0: "<<tok->E_i0<<std::endl;;
-	std::cout<<"Th= "<<*Cbeta*tok->E_i0 <<" KeV"<<std::endl;
+	cout<<"Cbeta= "<<*Cbeta<<std::endl;
+	cout<<"Th= "<<*Cbeta <<" code unit (Ei_0)"<<std::endl;
+	cout<<"E0: "<<tok->E_i0<<std::endl;;
+	cout<<"Th= "<<*Cbeta*tok->E_i0 <<" KeV"<<std::endl;
 	
 	double T2=2*sqrt(2);
 	for(int ix=0;ix<grid->nx;ix++)

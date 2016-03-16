@@ -13,6 +13,9 @@
 #include"particle_fre.h"
 #include"dwk.h"
 #include"output.h"
+#include"outlog.h"
+
+outlog log_cout("dwk.log");
 
 using namespace std;
 int main(int arg,char * argx[])
@@ -112,7 +115,7 @@ int main(int arg,char * argx[])
 			J_q_1D,FE_3D,omega_star_3D,
 			G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0,&dwkopt);
 	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
-	cout<<"beta_h is:"<<tok.beta_h*Cbeta<<endl;
+	cout<<"beta_h_0= "<<tok.beta_h*Cbeta<<endl;
 	complex<double> err=0;
 	complex<double> ti =1.0i;
 	err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
@@ -129,7 +132,7 @@ int main(int arg,char * argx[])
                         J_q_1D,FE_3D,omega_star_3D,
                         G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0,&dwkopt);
         	tok.beta_h = real(omega_0)/(imag(dwk_0)*tok.C);
-        	cout<<"beta_h is:"<<tok.beta_h*Cbeta<<endl;
+        	cout<<"beta_h_"<<gi+1<<"= "<<tok.beta_h*Cbeta<<endl;
 		err =ti*omega_0 -tok.C*tok.beta_h*dwk_0;
 		cout<<scientific;
         	cout<<"error=i*omega_0 -C*beta_h *dwk(omega_0)= "<<err<<endl;
@@ -138,12 +141,13 @@ int main(int arg,char * argx[])
 		if(abs(err)<mode.omega_err*tok.C*tok.beta_h)
 			break;
 	}
-	cout<<"      omega_0"<<"\t\t\t\t"<<"dwk"<<"\t\t\t beta_h"<<endl;
-	cout<<real(omega_0)<<"+"<<imag(omega_0)<<"i \t"<<real(dwk_0)<<"+"<<imag(dwk_0)<<"i\t"<<tok.beta_h*Cbeta<<endl;	
+	
+	cout<<"Omega_0= "<<real(omega_0)<<"+"<<imag(omega_0)<<"i\t"<<"dwk= "<<real(dwk_0)<<"+"<<imag(dwk_0)<<endl;
+	cout<<"Beta_h= "<<tok.beta_h*Cbeta<<endl;
 	cout <<"in omega_A unit"<<endl;
-	cout <<"     omega_0:"<<omega_0*tok.omega_i0/tok.omega_A<<endl;
+	cout <<"Omega_0A="<<omega_0*tok.omega_i0/tok.omega_A<<endl;
 	cout <<"in kHz " <<endl;
-	cout <<"     omega_0:"<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
+	cout <<"Omega_0kHz="<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
 	cout<<"*************************************************************"<<endl;
 
 	if(cmdOptionExists(argx,argx+arg,"-y"))
@@ -190,6 +194,7 @@ int main(int arg,char * argx[])
 	Free3D(F_3D);		Free3D(FR_3D);	
 	Free3D(FE_3D);		Free3D(omega_star_3D);
 	cout<<"dwk++ Elapsed time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<" second"<<endl;
+	fflush(stdout);
 }
 
 

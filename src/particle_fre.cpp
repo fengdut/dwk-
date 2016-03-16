@@ -10,6 +10,7 @@
 #include"omp.h"
 #include<ctime>
 #include"stdlib.h"
+#include"outlog.h"
 
 using namespace std;
 void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,double **kappa_2D,double **K_2D)
@@ -96,7 +97,7 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 	Free1D(tY);
 	Free1D(tYb);
 	}
-      cout<<"time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<endl;	
+//      cout<<"time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<endl;	
 }
 
 void omega_b(Grid * const grid, Tokamak * const tok,double ** const kappa, double ** const K, double * const q_1D,double *** omega_b_3D)

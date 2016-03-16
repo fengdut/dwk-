@@ -11,6 +11,7 @@
 #include"vector.h"
 #include"output.h"
 #include"dwk.h"
+#include"outlog.h"
 
 using namespace std;
 
@@ -165,11 +166,6 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 		gamma=imag(omega_a)+dwt;
 		Cb =tok->C*tok->beta_h;
 	}
-	/*cout<<"******************"<<endl;
-	cout<<"beta_h: "<<tok->beta_h<<endl;
-	cout<<"gamma: "<<gamma-dwt<<endl;
-	cout<<"******************"<<endl;
-	*/
 	if((Cb*real(dwk_a)+gamma)*(Cb*real(dwk_b)+gamma)<=0)
 	{
 		int in=0;
@@ -179,6 +175,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 			dwk_test =dwk_omega(grid,mode,/* */ omega_test /**/,
 				 omega_phi_3D,omega_b_3D, tau_b_3D, J_q_1D, F_E_3D, omega_star,
                 	         G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt); 
+			cout<<in <<"\t omega_test=" <<omega_test<<"\t"<<"dwk_test="<<dwk_test<<endl;
 			if(real(omega_b)-real(omega_a)<mode->omega_err)	
 			{
 				omega_0=omega_test;
@@ -198,7 +195,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 					omega_a=omega_test;
 					dwk_a = dwk_test;
 				}
-				cout<<in<<"\t omega_a"<<omega_a <<"\t omega_b" <<omega_b<<"\terr:"<<real(omega_b-omega_a)<<endl; 
+			//	cout<<in<<"\t omega_a"<<omega_a <<"\t omega_b" <<omega_b<<"\terr:"<<real(omega_b-omega_a)<<endl; 
 			}
 			in++;
 			if(in>mode->max_iter)

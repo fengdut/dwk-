@@ -8,7 +8,8 @@
 #include<assert.h>
 #include"AllocArray.h"
 #include"readinput.h"
-#define EXIT_FAILURE 100
+//#define EXIT_FAILURE 100
+#include"outlog.h"
 
 int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode *mode,Dwkopt *pdwkopt)
 {

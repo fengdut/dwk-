@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<complex>
+#include"outlog.h"
 	using namespace std;
 void linspace(double const xa,const double xb, int const nx,double *xarray)
 {
