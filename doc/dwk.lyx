@@ -789,7 +789,11 @@ Output file
 \end_layout
 
 \begin_layout Itemize
-omega_dwk.out, 
+omega_dwk.out.
+\end_layout
+
+\begin_layout Itemize
+dwk.log.
 \end_layout
 
 \begin_layout Itemize
@@ -1245,7 +1249,7 @@ name "fig:compare_analy"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Appendix
 \end_layout
 
