@@ -1075,7 +1075,7 @@ The image part is
 \end_inset
 
 .
- The dipersion relation is:
+ The image part of the dispersion relation is:
 \end_layout
 
 \begin_layout Standard
@@ -1107,6 +1107,10 @@ The critical
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The real part of the dispersion relation is :
 \end_layout
 
 \begin_layout Standard
