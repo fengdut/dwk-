@@ -9,6 +9,7 @@ doc/*~
 *.nc
 src/omega_dwk.out
 .DS_Store
+runp0/*
 
 
 
