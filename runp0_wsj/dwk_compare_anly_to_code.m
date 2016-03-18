@@ -42,8 +42,8 @@ dwk_ks =Cks *omega_ks;
 
 
 dwk_k=dwk_kd+dwk_ks;
-set(gcf,'Units','points','position',[100 500 1600 800],'Color',[1 1 1]);
-hax=axes('Position',[0.08 0.15 0.4 0.75],'FontSize',24,'FontName','Latex'); 
+set(gcf,'Units','points','position',[100 500 1200 500],'Color',[1 1 1]);
+hax=axes('Position',[0.08 0.14 0.4 0.8],'FontSize',24,'FontName','Latex'); 
 
 plot(real(omega),real(dwk_kd),'-','LineWidth',2);
 hold all;
@@ -93,7 +93,7 @@ dwk_idwk_si=dwk_idwk*Cdwk;
 plot(dwk_romega,dwk_rdwk_si,'rx');
 
 legend('$\delta W_{k,d}~(Analytical)~~$','$\delta W_{k,s}~(Analytical)~~$','$\delta W_{k}~(Analytical)~~$','$\delta W_{k,d} ~(dwk++)~$','$\delta W_{k,s} ~(dwk++)$','$\delta W_{k}~ ~(dwk++)$','Location','southwest');
-hax=axes('Position',[0.56 0.15 0.4 0.75],'FontSize',24); 
+hax=axes('Position',[0.56 0.14 0.4 0.8],'FontSize',24); 
 
 
 grid on;
@@ -137,7 +137,7 @@ dwk_idwk_si=dwk_idwk*Cdwk;
 plot(dwk_romega,dwk_idwk_si,'rx');
 
 
-legend('$\delta W_{k,d} ~(Analytical)~~$','$\delta W_{k,s}~(Analytical)~~$','$\delta W_{k}~(Analytical)~~$','$\delta W_{k,d} ~(dwk++)~$','$\delta W_{k,s} ~(dwk++)$','$\delta W_{k}~(dwk++)$','Location','southwest');
+legend('$\delta W_{k,d} ~(Analytical)~~$','$\delta W_{k,s}~(Analytical)~~$','$\delta W_{k}~(Analytical)~~$','$\delta W_{k,d} ~(dwk++)~$','$\delta W_{k,s} ~(dwk++)$','$\delta W_{k}~(dwk++)$','Location','northwest');
 
 xlabel('$real(\Omega)$');
 ylabel('$imag(\delta_W) ~(J)$');
