@@ -1,7 +1,7 @@
 clear;
 clf;
 
-ncid=netcdf.open('Yps.nc','NC_NOWRITE');
+ncid=netcdf.open('Yps.nc_FRW','NC_NOWRITE');
 id=netcdf.inqVarID(ncid,'r');
 [varname,xtype,varDminIDs,varAtts]=netcdf.inqVar(ncid,id);
 r=netcdf.getVar(ncid,id);
@@ -17,18 +17,18 @@ id=netcdf.inqVarID(ncid,'E');
 E=netcdf.getVar(ncid,id);
 nE=size(E,1);
 
-id=netcdf.inqVarID(ncid,'rYps_-1');
+id=netcdf.inqVarID(ncid,'rYps_0');
 [varname,xtype,varDminIDs,varAtts]=netcdf.inqVar(ncid,id);
 rYps=netcdf.getVar(ncid,id);
 
-id=netcdf.inqVarID(ncid,'iYps_-1');
+id=netcdf.inqVarID(ncid,'iYps_0');
 [varname,xtype,varDminIDs,varAtts]=netcdf.inqVar(ncid,id);
 iYps=netcdf.getVar(ncid,id);
 
 
 netcdf.close(ncid);
 
-iE=100;
+iE=200;
 iL=100;
 
 rYps1(1:nr)=rYps(iE,iL,1:nr);
@@ -40,11 +40,11 @@ rYps1(1:nr)=rYps(iE,iL,1:nr);
 
  
 plot(r,rYps1(:),'r.--');
-titstr=sprintf('$p=-1,E=%f,\\Lambda=%f$',E(iE),L(iL));
+titstr=sprintf('$p=0,E=%f,\\Lambda=%f$',E(iE),L(iL));
 title(titstr);
 
 
-r_s=0.349773148705;
+r_s=0.38;
 dr=0.01;
 
 nrs=10;
