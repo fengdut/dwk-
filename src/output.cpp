@@ -1,4 +1,5 @@
 #include"netcdf.h"
+#include"stdio.h"
 #include<iostream>
 #include"stdlib.h"
 #include"tokamak.h"
