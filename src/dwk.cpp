@@ -221,7 +221,9 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 			cin>>omega1;
 			mode->omega_array[0]=omega0;
 			mode->omega_array[mode->omega_n-1]=omega1;
-			std::complex<double> ti=1.0i;
+			complex<double> ti;
+			ti.real(0.0);
+			ti.imag(1.0);
 			double domega=(omega1-omega0)/(mode->omega_n-1);
 			for(int iomega=0;iomega<mode->omega_n;iomega++)
         	        {

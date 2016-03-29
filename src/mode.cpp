@@ -47,7 +47,9 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Alloc1D(xi_r,grid->nx);
 	Alloc1D(xi_t,grid->nx);
 	
-	complex<double> ti=-1.0i;
+	complex<double> ti;
+	ti.real(0.0);
+	ti.imag(-1.0);
 	for(int it=0;it<grid->ntheta;it++)
 	{
 		cost[it]=cos(it*grid->dtheta);
