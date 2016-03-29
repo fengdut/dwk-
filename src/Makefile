@@ -2,7 +2,9 @@ PRGM = dwk++
 
 CPPFLAGS =   -g
 LDFLAGS = 
-CFLAGS = -fopenmp  -framework OpenCL -O2 -ftree-vectorize -fopt-info-vec 
+#CFLAGS = -fopenmp  -framework OpenCL -O2 -ftree-vectorize -fopt-info-vec 
+CFLAGS = -fopenmp   -O2 -ftree-vectorize
+
 
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++
