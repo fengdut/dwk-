@@ -77,19 +77,14 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 	 try
         {
                 const Setting &grid =root["grid"];
-		int nx,nL,nE,ntheta;
-                grid.lookupValue("nx",nx);
-                grid.lookupValue("nL",nL);
-                grid.lookupValue("nE",nE);
-                grid.lookupValue("ntheta",ntheta);
-		assert(nx%3==1);
-		assert(nL%3==1);
-		assert(nE%3==1);
-		assert(ntheta%3==1);
-		pgrid->nx =nx;
-		pgrid->nL =nL;
-		pgrid->nE =nE;
-		pgrid->ntheta=ntheta;
+                grid.lookupValue("nx",pgrid->nx);
+                grid.lookupValue("nL",pgrid->nL);
+                grid.lookupValue("nE",pgrid->nE);
+                grid.lookupValue("ntheta",pgrid->ntheta);
+		assert(pgrid->nx%3==1);
+		assert(pgrid->nL%3==1);
+		assert(pgrid->nE%3==1);
+		assert(pgrid->ntheta%3==1);
         }
         catch(const SettingNotFoundException &nfex)
         {
@@ -100,24 +95,28 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 	try
 	{
 		const Setting &slowing =root["slowing"];	
-		double rd,r0,L0,Ld,E0,Ed,Ec;
-		slowing.lookupValue("r0",r0);	
-		slowing.lookupValue("rd",rd);	
-		slowing.lookupValue("L0",L0);	
-		slowing.lookupValue("Ld",Ld);	
-		slowing.lookupValue("E0",E0);	
-		slowing.lookupValue("Ed",Ed);	
-		slowing.lookupValue("Ec",Ec);	
-		pslowing->r0 =r0;
-		pslowing->rd =rd;
-		pslowing->L0 =L0;
-		pslowing->Ld =Ld;
-		pslowing->E0 =E0;
-		pslowing->Ed =Ed;
-		pslowing->Ec =Ec;
-		int sigma;
-		slowing.lookupValue("sigma",sigma);
-		pslowing->sigma = sigma;
+		slowing.lookupValue("rflag",pslowing->rflag);
+		slowing.lookupValue("r0",pslowing->r0);	
+		slowing.lookupValue("rd",pslowing->rd);	
+		Setting &set=slowing["rc"];
+		int lrc =set.getLength();
+		if(lrc>nrc)
+		{
+			cout<<"max degree is 9"<<endl;
+			lrc=nrc;
+		}
+		for(int i=0;i<nrc;i++)
+			pslowing->rc[i]=0;
+		for(int i=0;i<lrc;i++)
+			pslowing->rc[i] =set[i];	
+			
+		slowing.lookupValue("L0",pslowing->L0);	
+		slowing.lookupValue("Ld",pslowing->Ld);	
+		slowing.lookupValue("E0",pslowing->E0);	
+		slowing.lookupValue("Ed",pslowing->Ed);	
+		slowing.lookupValue("Ec",pslowing->Ec);	
+		slowing.lookupValue("sigma",pslowing->sigma);
+	
 	}	
 	catch(const SettingNotFoundException &nfex)
 	{
@@ -128,46 +127,32 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 	try
 	{
 		const Setting &modeset =root["mode"];
-		int n,m,pa,pb;
-		double r_s,delta_r;
-		double omega_0,omega_1,omega_i;
-		int omega_n;
-		modeset.lookupValue("n",n);
-		modeset.lookupValue("m",m);
-		modeset.lookupValue("pa",pa);
-		modeset.lookupValue("pb",pb);
-		modeset.lookupValue("delta_r",delta_r);
-		modeset.lookupValue("omega_0",omega_0);
-		modeset.lookupValue("omega_1",omega_1);
-		modeset.lookupValue("omega_i",omega_i);
-		modeset.lookupValue("omega_n",omega_n);
+		modeset.lookupValue("n",mode->n);
+		modeset.lookupValue("m",mode->m);
+		modeset.lookupValue("pa",mode->pa);
+		modeset.lookupValue("pb",mode->pb);
+		modeset.lookupValue("delta_r",mode->delta_r);
+		modeset.lookupValue("omega_0",mode->omega_0);
+		modeset.lookupValue("omega_1",mode->omega_1);
+		modeset.lookupValue("omega_i",mode->omega_i);
+		modeset.lookupValue("omega_n",mode->omega_n);
 		modeset.lookupValue("omega_err",mode->omega_err);
 		modeset.lookupValue("max_iter",mode->max_iter);
 		modeset.lookupValue("max_iterg",mode->max_iterg);
 		modeset.lookupValue("dw_f",mode->dw_f);
 		modeset.lookupValue("zero_rhod",mode->zero_rhod);
+		modeset.lookupValue("zero_iner",mode->zero_iner);
 		modeset.lookupValue("xi_0",mode->xi_0);
 
-
-		mode->n=n;
-		mode->m=m;
-		mode->pa =pa;
-		mode->pb =pb;
-		assert(pa<=pb);
-		mode->delta_r=delta_r;
-		mode->omega_0=omega_0;
-		mode->omega_1=omega_1;
-		mode->omega_i=omega_i;
-		mode->omega_n=omega_n;
-	
-		assert(omega_n>1&&omega_n<10000);
-		Alloc1D(mode->omega_array,omega_n);
+		assert(mode->pa<=mode->pb);
+		assert(mode->omega_n>1&&mode->omega_n<10000);
+		Alloc1D(mode->omega_array,mode->omega_n);
 		
-		double domega=(omega_1-omega_0)/(omega_n-1);
+		double domega=(mode->omega_1-mode->omega_0)/(mode->omega_n-1);
 		std::complex<double> ti=1.0i;
-		for(int iomega=0;iomega<omega_n;iomega++)
+		for(int iomega=0;iomega<mode->omega_n;iomega++)
 		{
-			mode->omega_array[iomega] =	omega_0 +domega*iomega +ti*omega_i; 
+			mode->omega_array[iomega] = mode->omega_0 +domega*iomega +ti*mode->omega_i; 
 		}
 	
 	}
@@ -182,8 +167,6 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		const Setting &optset =root["dwkopt"];
 		optset.lookupValue("omega_star_off",pdwkopt->omega_star_off);
 		optset.lookupValue("omega_off",pdwkopt->omega_off);
-
-		
 	}	
 	catch(const SettingNotFoundException &nfex)
         {

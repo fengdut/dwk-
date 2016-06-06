@@ -44,6 +44,23 @@ datatype simpintegral_o(datatype * const y, int const  ny, double const dx)
 }
 
 template <class datatype>
+datatype simpintegral_o_p(datatype * const y, int const  ny, double const dx)
+{
+        datatype sum=0;
+        float n0=0;
+        for(int i=0;i<ny;i++)
+        {
+                float d=floor(i/3)-n0;
+                sum +=(3.0-d)*y[i];
+                n0=n0+d;
+        }
+ //       sum =sum -2.0*(y[0]+y[ny-1]);
+        sum =dx*3.0*sum*0.125;
+        return sum;
+}
+
+
+template <class datatype>
 datatype simpintegral_2D(datatype** const F_2D, int const nx, double const dx, int const ny,double const dy)
 {
         datatype sum =0;

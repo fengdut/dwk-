@@ -90,7 +90,7 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 				{
 					tYb[it] =G_3D[ix][iE][it] *(tY[it]);
 				}
-				Yps_3D[ix][iL][iE] = simpintegral_o(tYb,grid->ntheta,grid->dtheta)*tchi2pi;
+				Yps_3D[ix][iL][iE] = simpintegral_o_p(tYb,grid->ntheta,grid->dtheta)*tchi2pi;
 			}
 		}	
 	}

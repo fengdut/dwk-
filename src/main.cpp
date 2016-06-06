@@ -183,6 +183,18 @@ int main(int arg,char * argx[])
                 Free3D(iYps);
 		
 	}
+	if(cmdOptionExists(argx,argx+arg,"-o"))
+	{
+		cout <<"write omega_phi_3D to omega_phi.nc"<<endl;
+		int fileid=0;
+                char filename[]="omega_phi.nc";
+                fileid =open_netcdf(&grid,filename);
+                char dataname[10];
+		sprintf(dataname,"omega_phi_3D_x_L_E");
+		write_data_3D(omega_phi_3D,dataname,fileid);
+	        close_netcdf(fileid);
+
+	}
 	Free1D(dwk_array);	
 	Free1D(J_q_1D);		Free1D(q_1D);
         Free2D(Chi_2D); 	Free3D(G_3D);

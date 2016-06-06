@@ -21,6 +21,7 @@ typedef struct MODE
 	int max_iterg;
 	double dw_f;
 	int zero_rhod;
+	int zero_iner;
 	double xi_0;
 }Mode;
 

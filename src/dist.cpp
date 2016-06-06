@@ -22,10 +22,34 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	{
 		double x;
 		x=grid->dr *ix +grid->ra;
-		double tx=(x -slow->r0)/slow->rd;
-                tx=-1.0*tx*tx;	
-		expx[ix] =exp(tx);
-		expx1[ix]=2*expx[ix]*(slow->r0 -x)/(slow->rd*slow->rd);
+		if(slow->rflag==0)
+		{
+			//exponent profile
+			double tx=(x -slow->r0)/slow->rd;
+                	tx=-1.0*tx*tx;	
+			expx[ix] =exp(tx);
+			expx1[ix]=2*expx[ix]*(slow->r0 -x)/(slow->rd*slow->rd);
+		}
+		else if(slow->rflag==1)
+		{
+			//polynomin profile
+			const double * pc=slow->rc;
+			double x2=x*x;
+			double x3=x*x2;
+			double x4=x2*x2;
+			double x5=x4*x;
+			double x6=x3*x3;
+			double x7=x6*x;
+			double x8=x4*x4;
+			expx[ix] = pc[0] + pc[1]*x +pc[2]*x2 +pc[3]*x3 +pc[4]*x4 +pc[5]*x5 +pc[6]*x6 +pc[7]*x7 +pc[8]*x8;
+			expx1[ix]= pc[1] +2*pc[2]*x+3*pc[3]*x2+4*pc[4]*x3+5*pc[5]*x4+6*pc[6]*x5+7*pc[7]*x6+8*pc[8]*x7; 	
+		}
+		else
+		{
+			cerr<<"this option is not available"<<endl;
+			exit(1);
+		}
+
 		
 	}	
 	for(int iL=0;iL<grid->nL;iL++)
@@ -109,8 +133,8 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 	Cn=simpintegral_2D(P0, grid->nL, grid->dL, grid->nE,grid->dE);
 	CP=simpintegral_2D(Th, grid->nL, grid->dL, grid->nE,grid->dE);
 	
-//	cout<<"Cn= "<<Cn<<std::endl;
-//	cout<<"CP= "<<CP<<std::endl;
+	cout<<"Cn= "<<Cn<<std::endl;
+	cout<<"CP= "<<CP<<std::endl;
 	*Cbeta = CP/Cn;
 	cout<<"Cbeta= "<<*Cbeta<<std::endl;
 	cout<<"Th= "<<*Cbeta <<" code unit (Ei_0)"<<std::endl;

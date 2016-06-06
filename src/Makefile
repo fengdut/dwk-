@@ -4,6 +4,7 @@ CPPFLAGS =   -g
 LDFLAGS = 
 #CFLAGS = -fopenmp  -framework OpenCL -O2 -ftree-vectorize -fopt-info-vec 
 CFLAGS = -fopenmp   -O2 -ftree-vectorize
+#CFLAGS = -fopenmp   -O0 
 
 
 

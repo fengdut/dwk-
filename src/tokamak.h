@@ -1,9 +1,8 @@
 #ifndef TOKAMAK_H
 #define TOKAMAK_H
 
-
-
 int const nqc =8;
+int const nrc =9;
 typedef struct TOKAMAK
 {
 	double a,R0;	//minor and major radius (m). 			input
@@ -44,7 +43,9 @@ typedef struct GRID
 
 typedef struct SLOWING
 {
+	int rflag;
 	double  rd,r0;
+	double  rc[nrc];
 	double  L0,Ld;
         double 	E0,Ed,Ec;
 	double rho_h;

@@ -1,7 +1,10 @@
-clear;
-clf;
+function plot_Yps(filename)
 
-ncid=netcdf.open('Yps.nc_FRW','NC_NOWRITE');
+if(nargin<1)
+    filename='Yps.nc';
+end
+
+ncid=netcdf.open(filename,'NC_NOWRITE');
 id=netcdf.inqVarID(ncid,'r');
 [varname,xtype,varDminIDs,varAtts]=netcdf.inqVar(ncid,id);
 r=netcdf.getVar(ncid,id);
@@ -28,10 +31,12 @@ iYps=netcdf.getVar(ncid,id);
 
 netcdf.close(ncid);
 
-iE=200;
-iL=100;
+iE=100;
+iL=200;
 
 rYps1(1:nr)=rYps(iE,iL,1:nr);
+
+iYps1(1:nr)=iYps(iE,iL,1:nr);
 
 
 
@@ -40,6 +45,9 @@ rYps1(1:nr)=rYps(iE,iL,1:nr);
 
  
 plot(r,rYps1(:),'r.--');
+hold all;
+plot(r,iYps1(:),'b.--');
+
 titstr=sprintf('$p=0,E=%f,\\Lambda=%f$',E(iE),L(iL));
 title(titstr);
 
@@ -60,4 +68,5 @@ ylabel('$real(Yps)$');
 
 %myprint('Yps_-1_E05');
 
+end
 
