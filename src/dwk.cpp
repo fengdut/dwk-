@@ -85,7 +85,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
                         		*(pdwkopt->omega_off*real(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
-			if(abs(dwk_3D[ix][iL][iE])>10)
+			if(abs(dwk_3D[ix][iL][iE])>100)
 				cout<<"dwk_3D error "<<dwk_3D[ix][iL][iE]<<endl;
                 }
 		//cout<<"dwk_3D"<<dwk_3D[0][0][0]<<"\t"<<dwk_3D[0][0][1]<<endl;
