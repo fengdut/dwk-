@@ -10,51 +10,51 @@ tokamak=
 	E_i0 =25.142;	//Fost ion injection energy, (KeV).
 	m_ep =2.0; 	//fat ion mass (protom mass,m_p).
 	//qc[0:7] q profile, q=qc[0] +qc[1]*r +qc[2] *r^2 ..... qc[7]*r^7.
-	qc=[0.8, 0.0, 1.384189];
+	qc=[0.7, 0.0, 1.384189];
         q_s=1.0;	//q at resonance surface  
 	
 }
 //grid parameters
 grid=
 {
-	nx=202; //grid size should be 3n + 1, n is a positive integer. 
-	nL=202; 
-	nE=202;
-	ntheta=202;
+	nx=601; //grid size should be 3n + 1, n is a positive integer. 
+	nL=100; 
+	nE=100;
+	ntheta=400;
 }
 //fast ion distribution
 slowing=
 {
-        rflag =1;       //0 for exp profile, 1 for polynomial profile  
+	rflag =0;	//0 for exp profile, 1 for polynomial profile
 	r0=0.0;		//(a) 
 	rd=0.2;		//(a)
-        rc=[1.0, -0.063047119517556, -5.467717976626049, -15.106613290761315, 1.023176989520356e+02, -1.997813155270721e+02, 1.931207901302123e+02, -95.184601556046600, 19.182577241762290]; 
-                        //rc[0:8], F(r) =rc[0] +rc[1]*r +rc[2]*r^2 ... rc[8]*r^8;
-	L0=0.01;	//Lambda_0		
-	Ld=0.02;	//Delta_Lambda
+	rc=[1.0, -0.063047119517556, -5.467717976626049, -15.106613290761315, 1.023176989520356e+02, -1.997813155270721e+02, 1.931207901302123e+02, -95.184601556046600, 19.182577241762290]; 
+			//rc[0:8], F(r) =rc[0] +rc[1]*r +rc[2]*r^2 ... rc[8]*r^8;
+	L0=0.3;	//Lambda_0		
+	Ld=0.2;	//Delta_Lambda
 	E0=1.0;		//(E_i0)
-	Ed=0.01;	//(E_i0)
-	Ec=0.01;	//(E_i0)
+	Ed=0.1;	//(E_i0)
+	Ec=0.1;	//(E_i0)
 	sigma=1;	//co(1) ? count (-1)
 }
 //perturbation and omega range for the soultion 
 mode=
 {
-	n=1; 	//toroidal mode number.
+	n=-1; 	//toroidal mode number.
 	m=1;	//poloidal mode number.
-	pa=0;	//resounces: sum Yps/(n*omega_phi +p*omega_theta -\omega).
-	pb=0;   //sum from pa to pb.
-	delta_r=0.001; //step function width for kink. (a)
-	omega_0=0.1;  //find mode frequency and scan dwk between omega_0 and omega_1.
-	omega_1=0.95;  //omega unit is (v_0/R_0), v_0 is the fast ion injection speed.
+	pa=1;	//resounces: sum Yps/(n*omega_phi +p*omega_theta -\omega).
+	pb=1;   //sum from pa to pb.
+	delta_r=0.05; //step function width for kink. (a)
+	omega_0=-0.0;  //find mode frequency and scan dwk between omega_0 and omega_1.
+	omega_1=0.1;  //omega unit is (v_0/R_0), v_0 is the fast ion injection speed.
 	omega_i=0.005;  //image part of omega, the growth rate.
 	omega_n=100;      //scan steps.
 	omega_err=1.0e-5; //residual of omega_0.
 	max_iter =100;    //maximum iteration number to find the omega_0.
 	max_iterg =2;     // 			
 	dw_f=0.00;        //dw_mhd.
-	zero_rhod=0;	  //1: with drift orbit width effect, 0 without.
-        zero_iner=1;      //1: with iner layer, 0 without.          
+	zero_rhod=1;	  //1: with drift orbit width effect, 0 without.
+	zero_iner=1;
 	xi_0 =0.01; 	  //(a) displacement at r=0.
 }
 

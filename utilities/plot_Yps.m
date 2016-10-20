@@ -20,11 +20,11 @@ id=netcdf.inqVarID(ncid,'E');
 E=netcdf.getVar(ncid,id);
 nE=size(E,1);
 
-id=netcdf.inqVarID(ncid,'rYps_0');
+id=netcdf.inqVarID(ncid,'rYps_1');
 [varname,xtype,varDminIDs,varAtts]=netcdf.inqVar(ncid,id);
 rYps=netcdf.getVar(ncid,id);
 
-id=netcdf.inqVarID(ncid,'iYps_0');
+id=netcdf.inqVarID(ncid,'iYps_1');
 [varname,xtype,varDminIDs,varAtts]=netcdf.inqVar(ncid,id);
 iYps=netcdf.getVar(ncid,id);
 
@@ -32,7 +32,7 @@ iYps=netcdf.getVar(ncid,id);
 netcdf.close(ncid);
 
 iE=100;
-iL=200;
+iL=10;
 
 rYps1(1:nr)=rYps(iE,iL,1:nr);
 

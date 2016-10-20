@@ -7,6 +7,7 @@ CFLAGS = -fopenmp   -O2 -ftree-vectorize
 #CFLAGS = -fopenmp   -O0 
 
 
+CXX=/usr/local/bin/g++-5
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++
 NETCDF = -I${NETCDF_DIR}/include -L${NETCDF_DIR}/lib -lnetcdf

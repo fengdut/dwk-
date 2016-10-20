@@ -54,7 +54,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
          double * const J_q_1D, double *** const F_E_3D,
         double *** const omega_star,
         complex<double> ***const G_3D,double **const Chi_2D,double *** const b_lambda_3D, double *** const lambda_b_3D,
-        double ***const Theta_3D,Dwkopt *pdwkopt)
+        double ***const Theta_3D,Dwkopt *pdwkopt,int writedwk)
 {
         complex<double> ***dwk_3D;
 	complex<double>dwk=0;
@@ -90,6 +90,35 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                 }
 		//cout<<"dwk_3D"<<dwk_3D[0][0][0]<<"\t"<<dwk_3D[0][0][1]<<endl;
                 dwk += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
+		if(writedwk==1)
+		{
+			  cout<<"write dwk_3D to dwk.nc"<<endl;
+                double *** rdwk,***idwk;
+                Alloc3D(rdwk,grid->nx,grid->nL,grid->nE);
+                Alloc3D(idwk,grid->nx,grid->nL,grid->nE);
+
+                int fileid=0;
+                char filename[]="dwk.nc";
+                fileid =open_netcdf(grid,filename);
+                char dataname[10];
+
+
+                for(int ix=0;ix<grid->nx;ix++)
+                for(int iL=0;iL<grid->nL;iL++)
+                for(int iE=0;iE<grid->nE;iE++)
+                {
+                        rdwk[ix][iL][iE] = real(dwk_3D[ix][iL][iE]);
+                        idwk[ix][iL][iE] = imag(dwk_3D[ix][iL][iE]);
+
+                }
+                sprintf(dataname,"rdwk_%d",p);
+                write_data_3D(rdwk,dataname,fileid);
+                sprintf(dataname,"idwk_%d",p);
+                write_data_3D(idwk,dataname,fileid);
+                close_netcdf(fileid);
+                Free3D(rdwk);
+                Free3D(idwk);
+		}
         }
         Free3D(dwk_3D);
 	return dwk;
@@ -115,7 +144,7 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
 	{
 		complex<double> omega =mode->omega_array[iw];
 	      	dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
-                G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt);
+                G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
 
 		cout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
 		fout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
@@ -151,9 +180,9 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	complex<double> omega_b =mode->omega_array[mode->omega_n-1];
 
 	dwk_a= 	dwk_omega(grid,mode,/* */ omega_a /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
-        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt);
+        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
 	dwk_b= 	dwk_omega(grid,mode,/* */ omega_b /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
-        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt);
+        	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
         cout<<"omega_a: "<<real(omega_a)<<'\t'<<imag(omega_a)<<'\t'<<real(dwk_a)<<'\t'<<imag(dwk_a)<<endl;
         cout<<"omega_b: "<<real(omega_b)<<'\t'<<imag(omega_b)<<'\t'<<real(dwk_b)<<'\t'<<imag(dwk_b)<<endl;
 	
@@ -177,7 +206,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 			complex<double> omega_test = 0.5*(omega_a+omega_b);
 			dwk_test =dwk_omega(grid,mode,/* */ omega_test /**/,
 				 omega_phi_3D,omega_b_3D, tau_b_3D, J_q_1D, F_E_3D, omega_star,
-                	         G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt); 
+                	         G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0); 
 			cout<<in <<"\t omega_test=" <<omega_test<<"\t"<<"dwk_test="<<dwk_test<<endl;
 			if(real(omega_b)-real(omega_a)<mode->omega_err)	
 			{
@@ -238,8 +267,13 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 			exit(-1);
 	}
 	}while(init);
+
+
+
+
         cout<<"-----end find omega_0--------"<<endl;
         Free3D(dwk_3D);
+	
 	*dwk_0 = dwk_test;
 	return omega_0;
 }

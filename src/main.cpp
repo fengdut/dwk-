@@ -80,7 +80,7 @@ int main(int arg,char * argx[])
 	calculate_normalization(&tok, &slowing,&mode);
 	showtokamak(&tok,&slowing);
 	double Cbeta=0;
-	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.m,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
+	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.n,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
 	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
@@ -109,6 +109,40 @@ int main(int arg,char * argx[])
         }
 
 	cout<<"*********************************"<<endl;
+	if(cmdOptionExists(argx,argx+arg,"-y"))
+        {
+                cout<<"write Yps_3D to Yps.nc"<<endl;
+                double *** rYps,***iYps;
+                Alloc3D(rYps,grid.nx,grid.nL,grid.nE);
+                Alloc3D(iYps,grid.nx,grid.nL,grid.nE);
+
+                int fileid=0;
+                char filename[]="Yps.nc";
+                fileid =open_netcdf(&grid,filename);
+                char dataname[10];
+
+                int np=mode.pb-mode.pa+1;
+                for(int i=0;i<np;i++)
+                {
+                for(int ix=0;ix<grid.nx;ix++)
+                for(int iL=0;iL<grid.nL;iL++)
+                for(int iE=0;iE<grid.nE;iE++)
+                {
+                        rYps[ix][iL][iE] = real(gYps_3D[i][ix][iL][iE]);
+                        iYps[ix][iL][iE] = imag(gYps_3D[i][ix][iL][iE]);
+
+                }
+                sprintf(dataname,"rYps_%d",mode.pa+i);
+                write_data_3D(rYps,dataname,fileid);
+                sprintf(dataname,"iYps_%d",mode.pa+i);
+                write_data_3D(iYps,dataname,fileid);
+                }
+                close_netcdf(fileid);
+                Free3D(rYps);
+                Free3D(iYps);
+
+        }
+
 	cout<<"The test run, assume imag(omega)=0 "<<endl;
 	complex<double> omega_0,dwk_0;
 	omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
@@ -150,39 +184,6 @@ int main(int arg,char * argx[])
 	cout <<"Omega_0kHz="<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
 	cout<<"*************************************************************"<<endl;
 
-	if(cmdOptionExists(argx,argx+arg,"-y"))
-	{
-		cout<<"write Yps_3D to Yps.nc"<<endl;
-		double *** rYps,***iYps;
-                Alloc3D(rYps,grid.nx,grid.nL,grid.nE);
-                Alloc3D(iYps,grid.nx,grid.nL,grid.nE);
-
-		int fileid=0;
-                char filename[]="Yps.nc";
-                fileid =open_netcdf(&grid,filename);
-                char dataname[10];
-
-		int np=mode.pb-mode.pa+1;
-		for(int i=0;i<np;i++)
-		{
-                for(int ix=0;ix<grid.nx;ix++)
-                for(int iL=0;iL<grid.nL;iL++)
-                for(int iE=0;iE<grid.nE;iE++)
-                {
-                        rYps[ix][iL][iE] = real(gYps_3D[i][ix][iL][iE]);
-                        iYps[ix][iL][iE] = imag(gYps_3D[i][ix][iL][iE]);
-
-                }
-                sprintf(dataname,"rYps_%d",mode.pa+i);
-                write_data_3D(rYps,dataname,fileid);
-                sprintf(dataname,"iYps_%d",mode.pa+i);
-                write_data_3D(iYps,dataname,fileid);
-		}
-	        close_netcdf(fileid);
-	        Free3D(rYps);
-                Free3D(iYps);
-		
-	}
 	if(cmdOptionExists(argx,argx+arg,"-o"))
 	{
 		cout <<"write omega_phi_3D to omega_phi.nc"<<endl;

@@ -8,7 +8,7 @@
 #include"outlog.h"
 
 using namespace std;
-void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,double const *q_1D,int m,
+void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h,double const *q_1D,int n,
 		double *** F_3D, double ***FE_3D, double ***FR_3D,double *** omega_star,double * Cbeta)
 {
 	double *expx,*expx1,*expL,*expE, *erfcE,*erfcE1;
@@ -98,8 +98,8 @@ void F0_3D(const Slowing* slow,const Grid *grid,Tokamak *tok, double const rho_h
 		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(expE[iE]);
 		//FE_3D[ix][iL][iE] =-1.0*expx[ix]*expL[iL]*(-1.0*EL[iL][iE]*erfcE[iE]);
 		FR_3D[ix][iL][iE]  =expx1[ix]*expL[iL]*erfcE[iE];
-		//omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]); 
-		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *m  /(2.0*grid->xarray[ix]) *  q_1D[ix]; 
+		//omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *n  /(2.0*grid->xarray[ix]); 
+		omega_star[ix][iL][iE] = FR_3D[ix][iL][iE]*tok->R0*rho_h/tok->a *n  /(2.0*grid->xarray[ix]) *  q_1D[ix]; 
 		
 		if((FE_3D[ix][iL][iE])!=0.0)	
 			omega_star[ix][iL][iE] = omega_star[ix][iL][iE]/FE_3D[ix][iL][iE];
