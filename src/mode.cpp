@@ -76,6 +76,7 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	double (*fxi_r_t)(double, double, double )=fxi_r;
 	if(pmode->zero_iner==0)
 	{
+		cout<<"inner layer off"<<endl;
 		(fxi_t_t)=fxi_t_layer0;
 		(fxi_r_t)=fxi_r_layer0;
 	}
@@ -83,6 +84,9 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	complex<double> ti;
 	ti.real(0.0);
 	ti.imag(-1.0);
+
+//        ti.real(0.0);
+//        ti.imag(1.0);
 	for(int it=0;it<grid->ntheta;it++)
 	{
 		cost[it]=cos(it*grid->dtheta);
@@ -102,8 +106,9 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 			double ttheta   =grid->tarray[it];
 			double tgrr,tgtt,tgrt,tkappa_r,tkappa_t;
 			complex<double> txi_t,txi_r;
-			//double b = 1 +	grid->xarray[ix]*tok->eps *cost[it];
-			double b = 1 +	grid->xarray[ix]*tok->eps;
+			double b = 1 +	grid->xarray[ix]*tok->eps *cost[it];
+			//double b = 1 +	grid->xarray[ix]*tok->eps;
+			b	= -1.0*b;
 			double lb = slow->L0/b;
 			double rho_d = q_1D[ix] *0.5 *slow->rho_h *sqrt(grid->Earray[iE]/(1-lb))*(2-lb);
 	//		double rho_d = slow->rho_h;

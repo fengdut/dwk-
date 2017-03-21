@@ -82,10 +82,15 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
                 {
 			Yp_R=abs(gYps_3D[ip][ix][iL][iE])*abs(gYps_3D[ip][ix][iL][iE])
                                         /(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);	
+			
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
                         		*(pdwkopt->omega_off*real(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
-			if(abs(dwk_3D[ix][iL][iE])>100)
+
+//                        dwk_3D[ix][iL][iE] = 
+//                  				1.0/(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);
+//			 dwk_3D[ix][iL][iE] =Yp_R;
+			if(abs(dwk_3D[ix][iL][iE])>100000)
 				cout<<"dwk_3D error "<<dwk_3D[ix][iL][iE]<<endl;
                 }
 		//cout<<"dwk_3D"<<dwk_3D[0][0][0]<<"\t"<<dwk_3D[0][0][1]<<endl;
@@ -140,10 +145,15 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
 	ofstream fout(filename);	
 	fout.precision (12);
 
+
 	for(int iw=0;iw<mode->omega_n;iw++)
 	{
 		complex<double> omega =mode->omega_array[iw];
+		if(iw==0)
 	      	dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
+                G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,1);
+		else
+                dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
                 G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
 
 		cout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;

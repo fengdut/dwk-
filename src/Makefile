@@ -3,17 +3,18 @@ PRGM = dwk++
 CPPFLAGS =   -g
 LDFLAGS = 
 #CFLAGS = -fopenmp  -framework OpenCL -O2 -ftree-vectorize -fopt-info-vec 
-CFLAGS = -fopenmp   -O2 -ftree-vectorize
+#CFLAGS = -fopenmp   -O0 -ftree-vectorize
+CFLAGS =    -O0 -fopenmp 
 #CFLAGS = -fopenmp   -O0 
 
 
-CXX=/usr/local/bin/g++-5
+#CXX=/usr/local/bin/g++-6
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++
-NETCDF = -I${NETCDF_DIR}/include -L${NETCDF_DIR}/lib -lnetcdf
+NETCDF = -I${NETCDF_DIR}/include -L${NETCDF_DIR}/lib -lnetcdf -L${HDF5_DIR}/lib
 COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LIBCONFIG) $(NETCDF) -c 
 
-LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) 
+LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) -lcurl  -lhdf5 -lhdf5_hl
 
 LIBA = 
 

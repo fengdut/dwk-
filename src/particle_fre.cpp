@@ -142,10 +142,16 @@ void omega_phi(Grid *const grid,double *const q_1D, double ***const omega_b_3D,d
 	for(int iL=0;iL<grid->nL;iL++)
 	for(int iE=0;iE<grid->nE;iE++)
 	{
-		omega_phi_3D[ix][iL][iE] = -1.0*q_1D[ix] * omega_b_3D[ix][iL][iE];
+//		omega_phi_3D[ix][iL][iE] = -1.0*q_1D[ix] * omega_b_3D[ix][iL][iE];
+		omega_phi_3D[ix][iL][iE] = 1.0*q_1D[ix] * omega_b_3D[ix][iL][iE];
 //		omega_phi_3D[ix][iL][iE] = sqrt(grid->Earray[iE]);
 	
 	}	
+
+ for(int ix=0;ix<grid->nx;ix++)
+{
+        cout<<"omega_b \t"<<omega_b_3D[ix][10][grid->nE-1]<<"\tomega_phi\t"<<omega_phi_3D[ix][10][grid->nE-1]<<endl;
+}
 
 }
 
