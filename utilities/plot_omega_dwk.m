@@ -3,6 +3,7 @@ function plot_omega_dwk(filename)
 if(nargin<1)
     filename='omega_dwk.out';
 end
+%figure(2);
 clf;
 
 data=load(filename);

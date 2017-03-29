@@ -27,6 +27,7 @@ void help()
 	cout<<"-o <outputfile>, the default output file is dwk_omega_dwk.out."<<endl;
 	cout<<"-s scan dwk(omega). Or only find omega_0 and beta_c."<<endl;
 	cout<<"-y write Yps_3D to Yps.nc"<<endl;
+	cout<<"-x do not find the soluation"<<endl;
 	cout<<endl;
 	
 }
@@ -288,6 +289,13 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	return omega_0;
 }
 
+
+
+double dwf(double xi,double rs, double R, double q0, double betaps)
+{
+	double tdwf=0;
+	tdwf =3*3.141592653589793 *(xi*rs/R)*(xi*rs/R)*(1-q0)*(13.0/144-betaps*betaps);
+}
 
 
 

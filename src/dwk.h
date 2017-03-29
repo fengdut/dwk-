@@ -36,6 +36,7 @@ void help();
 char* getCmdOption(char ** begin, char ** end, const std::string & option);
 bool cmdOptionExists(char** begin, char** end, const std::string& option);
 
+double dwf();
 extern complex<double> **** gYps_3D;
 
 #endif

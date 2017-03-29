@@ -31,8 +31,8 @@ iYps=netcdf.getVar(ncid,id);
 
 netcdf.close(ncid);
 
-iE=100;
-iL=10;
+iE=80;
+iL=50;
 
 rYps1(1:nr)=rYps(iE,iL,1:nr);
 
@@ -57,9 +57,9 @@ dr=0.01;
 
 nrs=10;
 rsarray=linspace(r_s,r_s,nrs);
-y=linspace(-0.02, 0.1,nrs);
-hold all;
-plot(rsarray,y,'k-','LineWidth',2);
+% y=linspace(-0.02, 0.1,nrs);
+% hold all;
+% plot(rsarray,y,'k-','LineWidth',2);
 
 xlim([0 1]);
 grid on;

@@ -142,7 +142,8 @@ int main(int arg,char * argx[])
                 Free3D(iYps);
 
         }
-
+	if(!cmdOptionExists(argx,argx+arg,"-x"))
+	{
 	cout<<"The test run, assume imag(omega)=0 "<<endl;
 	complex<double> omega_0,dwk_0;
 	omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
@@ -183,7 +184,7 @@ int main(int arg,char * argx[])
 	cout <<"in kHz " <<endl;
 	cout <<"Omega_0kHz="<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
 	cout<<"*************************************************************"<<endl;
-
+	}
 	if(cmdOptionExists(argx,argx+arg,"-o"))
 	{
 		cout <<"write omega_phi_3D to omega_phi.nc"<<endl;
