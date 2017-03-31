@@ -41,7 +41,7 @@ void Free1D(datatype *& pdata)
 template<class datatype>
 void Alloc3D(datatype ***& pdata,size_t m, size_t n, size_t z)
 {
-	assert(m*n*z<400000000);
+	assert(m*n*z<800000000);
 	pdata	=	new datatype**[m];
 
 	pdata[0]=	new datatype*[n*m];

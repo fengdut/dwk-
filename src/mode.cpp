@@ -96,6 +96,7 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	int nx1,nx2;
 	nx1 = ceil((r_s-0.5*delta_r)/grid->dr);
 	nx2 = ceil((r_s+0.5*delta_r)/grid->dr);
+#pragma omp parallel for
 	for(int ix=0;ix<grid->nx;ix++)
 	{	
 		for(int iE=0;iE<grid->nE;iE++)

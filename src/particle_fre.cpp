@@ -16,6 +16,7 @@ using namespace std;
 void Chi(const Grid *grid,const Tokamak *tok, double sigma,double **Chi_2D,double **kappa_2D,double **K_2D)
 {
 	using namespace std;
+#pragma omp parallel for
 	for(int ix=0;ix<grid->nx;ix++)
 	{
 		double teps =tok->eps *grid->xarray[ix];
@@ -46,7 +47,7 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 	using namespace std;
    	clock_t c_start=clock();
 	
-//	#pragma omp parallel 
+	#pragma omp parallel 
 	{	
 	complex<double>*tY;	
 	complex<double>*tYb;	
@@ -148,10 +149,10 @@ void omega_phi(Grid *const grid,double *const q_1D, double ***const omega_b_3D,d
 	
 	}	
 
- for(int ix=0;ix<grid->nx;ix++)
+/* for(int ix=0;ix<grid->nx;ix++)
 {
         cout<<"omega_b \t"<<omega_b_3D[ix][10][grid->nE-1]<<"\tomega_phi\t"<<omega_phi_3D[ix][10][grid->nE-1]<<endl;
-}
+}*/
 
 }
 

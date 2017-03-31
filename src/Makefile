@@ -1,10 +1,10 @@
 PRGM = dwk++
 
-CPPFLAGS =   -g
+CPPFLAGS =   
 LDFLAGS = 
 #CFLAGS = -fopenmp  -framework OpenCL -O2 -ftree-vectorize -fopt-info-vec 
 #CFLAGS = -fopenmp   -O0 -ftree-vectorize
-CFLAGS =    -O0 -fopenmp 
+CFLAGS =     -fopenmp 
 #CFLAGS = -fopenmp   -O0 
 
 

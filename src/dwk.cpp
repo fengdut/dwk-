@@ -73,16 +73,23 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 		}
 	}
         Alloc3D(dwk_3D,grid->nx,grid->nL,grid->nE);
-         complex<double> Yp_R =0;
         for(int p=mode->pa;p<=mode->pb;p++)
         {
 		int ip=p-mode->pa;
+//#pragma omp parallel for num_threads(36) 
+#pragma omp parallel for 
                 for(int ix=0;ix<grid->nx;ix++)
+		{
+		int tn=mode->n;
+		complex<double> tomega=omega;
+	
                 for(int iL=0;iL<grid->nL;iL++)
                 for(int iE=0;iE<grid->nE;iE++)
                 {
+         	complex<double> Yp_R =0;
+			
 			Yp_R=abs(gYps_3D[ip][ix][iL][iE])*abs(gYps_3D[ip][ix][iL][iE])
-                                        /(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);	
+                                        /(tn*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - tomega);	
 			
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
@@ -94,6 +101,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 			if(abs(dwk_3D[ix][iL][iE])>100000)
 				cout<<"dwk_3D error "<<dwk_3D[ix][iL][iE]<<endl;
                 }
+		}
 		//cout<<"dwk_3D"<<dwk_3D[0][0][0]<<"\t"<<dwk_3D[0][0][1]<<endl;
                 dwk += simpintegral_3D(dwk_3D,grid->nx,grid->dr,grid->nL,grid->dL,grid->nE,grid->dE);
 		if(writedwk==1)

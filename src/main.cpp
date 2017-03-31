@@ -14,13 +14,17 @@
 #include"dwk.h"
 #include"output.h"
 #include"outlog.h"
+#include"sys/time.h"
 
 outlog log_cout("dwk.log");
+
 
 using namespace std;
 int main(int arg,char * argx[])
 {	
-	clock_t c_start=clock();
+	struct timeval start, stop, diff;
+	gettimeofday(&start,0);
+		
 	if(cmdOptionExists(argx, argx+arg, "-h"))//print help information only
 	{
 		help();
@@ -74,6 +78,9 @@ int main(int arg,char * argx[])
 	Alloc3D(dwk_3D,grid.nx,grid.nL,grid.nE);
 //end alloc memory
 
+	       gettimeofday(&stop,0);
+        cout<<"1111 dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+
 //begin calculate non-omega parts------------------------
 	qprofile(&grid,&tok,q_1D);
 	find_rs(&grid,q_1D, &tok);
@@ -81,13 +88,16 @@ int main(int arg,char * argx[])
 	showtokamak(&tok,&slowing);
 	double Cbeta=0;
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.n,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
+       gettimeofday(&stop,0);
+        cout<<"1.2dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
 	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
 	Chi(&grid,&tok,slowing.sigma,Chi_2D,kappa_2D,K_2D);	
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
-
+	       gettimeofday(&stop,0);
+        cout<<"2222 dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	tau_b(&grid,omega_b_3D,tau_b_3D);
 	J_q(&grid,q_1D,J_q_1D);
 //end calculate non-omega parts--------------------------	
@@ -142,6 +152,9 @@ int main(int arg,char * argx[])
                 Free3D(iYps);
 
         }
+       gettimeofday(&stop,0);
+        cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+
 	if(!cmdOptionExists(argx,argx+arg,"-x"))
 	{
 	cout<<"The test run, assume imag(omega)=0 "<<endl;
@@ -207,7 +220,9 @@ int main(int arg,char * argx[])
 	Free3D(b_lambda_3D);	Free3D(lambda_b_3D);
 	Free3D(F_3D);		Free3D(FR_3D);	
 	Free3D(FE_3D);		Free3D(omega_star_3D);
-	cout<<"dwk++ Elapsed time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<" second"<<endl;
+	gettimeofday(&stop,0);
+	cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+	//cout<<"dwk++ Elapsed time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<" second"<<endl;
 	fflush(stdout);
 }
 
