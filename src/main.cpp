@@ -109,7 +109,7 @@ int main(int arg,char * argx[])
         {
 		cout<<"*********************************"<<endl;
 		cout<<"scan dwk(omega)"<<endl;
-                dwk_omega_array(&grid, &mode, omega_phi_3D, omega_b_3D, tau_b_3D,
+                dwk_omega_array(&grid, &mode,&tok, omega_phi_3D, omega_b_3D, tau_b_3D,
                         J_q_1D, FE_3D, omega_star_3D,
                         G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,
                         dwk_array,ofilename,&dwkopt);
@@ -176,6 +176,7 @@ int main(int arg,char * argx[])
 	{
 		cout<<"*********************************"<<endl;
 		cout<<"find the solution"<<endl;
+		cout<<"iter No."<<gi<<endl;
 		omega_0= find_dwk_omega0(&grid,&mode,&tok,omega_phi_3D,omega_b_3D,tau_b_3D,
                         J_q_1D,FE_3D,omega_star_3D,
                         G_3D,Chi_2D,b_lambda_3D,lambda_b_3D,Theta_3D,&dwk_0,&dwkopt);
@@ -186,8 +187,11 @@ int main(int arg,char * argx[])
         	cout<<"error=i*omega_0 -C*beta_h *dwk(omega_0)= "<<err<<endl;
 		cout<<fixed;
         	cout<<"*********************************"<<endl;
-		if(abs(err)<mode.omega_err*tok.C*tok.beta_h)
+		if(abs(err)>mode.omega_err*tok.C*tok.beta_h)
+		{
+			cout<<"err\t"<<err<<endl;
 			break;
+		}
 	}
 	
 	cout<<"Omega_0= "<<real(omega_0)<<"+"<<imag(omega_0)<<"i\t"<<"dwk= "<<real(dwk_0)<<"+"<<imag(dwk_0)<<endl;

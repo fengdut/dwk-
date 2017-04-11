@@ -144,7 +144,7 @@ void omega_phi(Grid *const grid,double *const q_1D, double ***const omega_b_3D,d
 	for(int iE=0;iE<grid->nE;iE++)
 	{
 //		omega_phi_3D[ix][iL][iE] = -1.0*q_1D[ix] * omega_b_3D[ix][iL][iE];
-		omega_phi_3D[ix][iL][iE] = 1.0*q_1D[ix] * omega_b_3D[ix][iL][iE];
+		omega_phi_3D[ix][iL][iE] = 1.0*(q_1D[ix]) * omega_b_3D[ix][iL][iE];
 //		omega_phi_3D[ix][iL][iE] = sqrt(grid->Earray[iE]);
 	
 	}	

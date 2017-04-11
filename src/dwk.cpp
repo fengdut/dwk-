@@ -50,7 +50,7 @@ bool cmdOptionExists(char** begin, char** end, const std::string& option)
 
 
 //dwk(omega)
-complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omega,
+complex<double> dwk_omega(Grid *const grid,Mode *const mode,Tokamak *tok,complex<double> omega,
         double *** const omega_phi_3D, double ***const omega_b_3D, double *** tau_b_3D,
          double * const J_q_1D, double *** const F_E_3D,
         double *** const omega_star,
@@ -59,6 +59,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 {
         complex<double> ***dwk_3D;
 	complex<double>dwk=0;
+        double dwt = mode->dw_f;
 	if(!init_Yps)
 	{
 		init_Yps=1;
@@ -76,7 +77,6 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
         for(int p=mode->pa;p<=mode->pb;p++)
         {
 		int ip=p-mode->pa;
-//#pragma omp parallel for num_threads(36) 
 #pragma omp parallel for 
                 for(int ix=0;ix<grid->nx;ix++)
 		{
@@ -93,13 +93,13 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 			
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
-                        		*(pdwkopt->omega_off*real(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
+                        		*(pdwkopt->omega_off*(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
 
-//                        dwk_3D[ix][iL][iE] = 
-//                  				1.0/(mode->n*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - omega);
-//			 dwk_3D[ix][iL][iE] =Yp_R;
-			if(abs(dwk_3D[ix][iL][iE])>100000)
-				cout<<"dwk_3D error "<<dwk_3D[ix][iL][iE]<<endl;
+//                        dwk_3D[ix][iL][iE] =(pdwkopt->omega_off*real(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE]) 
+//                  				*1.0/(tn*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - tomega);
+//			 dwk_3D[ix][iL][iE] =(pdwkopt->omega_off*(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])/(tn*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - tomega);
+		//	if(abs(dwk_3D[ix][iL][iE])>100000)
+		//		cout<<"dwk_3D error "<<dwk_3D[ix][iL][iE]<<endl;
                 }
 		}
 		//cout<<"dwk_3D"<<dwk_3D[0][0][0]<<"\t"<<dwk_3D[0][0][1]<<endl;
@@ -135,11 +135,13 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,complex<double> omeg
 		}
         }
         Free3D(dwk_3D);
+		
+	dwk+=dwk+dwt;
 	return dwk;
 }
 
 //dwk(omega)
-void dwk_omega_array(Grid *const grid,Mode *const mode, 
+void dwk_omega_array(Grid *const grid,Mode *const mode,Tokamak *tok, 
         double *** const omega_phi_3D, double ***const omega_b_3D, double *** tau_b_3D,
         double * const J_q_1D, double *** const F_E_3D, 
 	double *** const omega_star, 
@@ -154,15 +156,17 @@ void dwk_omega_array(Grid *const grid,Mode *const mode,
 	ofstream fout(filename);	
 	fout.precision (12);
 
+        double dwt = mode->dw_f;
+	  		
 
 	for(int iw=0;iw<mode->omega_n;iw++)
 	{
 		complex<double> omega =mode->omega_array[iw];
 		if(iw==0)
-	      	dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
+	      	dwk_array[iw]=  dwk_omega(grid,mode,tok,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
                 G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,1);
 		else
-                dwk_array[iw]=  dwk_omega(grid,mode,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
+                dwk_array[iw]=  dwk_omega(grid,mode,tok,/* */ omega /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
                 G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
 
 		cout<<real(omega)<<'\t'<<imag(omega)<<'\t'<<real(dwk_array[iw])<<'\t'<<imag(dwk_array[iw])<<endl;
@@ -188,6 +192,7 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
  	
 	int init=1;
 	double dwt=mode->dw_f *tok->omega_A/tok->omega_i0;
+	dwt=0;
 
 
 
@@ -198,9 +203,9 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
         complex<double> omega_a =mode->omega_array[0];
 	complex<double> omega_b =mode->omega_array[mode->omega_n-1];
 
-	dwk_a= 	dwk_omega(grid,mode,/* */ omega_a /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
+	dwk_a= 	dwk_omega(grid,mode,tok,/* */ omega_a /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
         	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
-	dwk_b= 	dwk_omega(grid,mode,/* */ omega_b /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
+	dwk_b= 	dwk_omega(grid,mode,tok,/* */ omega_b /**/, omega_phi_3D,omega_b_3D, tau_b_3D,  J_q_1D, F_E_3D, omega_star,
         	G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0);
         cout<<"omega_a: "<<real(omega_a)<<'\t'<<imag(omega_a)<<'\t'<<real(dwk_a)<<'\t'<<imag(dwk_a)<<endl;
         cout<<"omega_b: "<<real(omega_b)<<'\t'<<imag(omega_b)<<'\t'<<real(dwk_b)<<'\t'<<imag(dwk_b)<<endl;
@@ -217,13 +222,15 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 		gamma=imag(omega_a)+dwt;
 		Cb =tok->C*tok->beta_h;
 	}
+	cout<<"Cb \t"<<Cb<<endl;
+	cout<<"gamma \t"<<gamma<<endl;	
 	if((Cb*real(dwk_a)+gamma)*(Cb*real(dwk_b)+gamma)<=0)
 	{
 		int in=0;
 		while((Cb*real(dwk_a)+gamma)*(Cb*real(dwk_b)+gamma)<=0)
 		{	
 			complex<double> omega_test = 0.5*(omega_a+omega_b);
-			dwk_test =dwk_omega(grid,mode,/* */ omega_test /**/,
+			dwk_test =dwk_omega(grid,mode,tok,/* */ omega_test /**/,
 				 omega_phi_3D,omega_b_3D, tau_b_3D, J_q_1D, F_E_3D, omega_star,
                 	         G_3D, Chi_2D, b_lambda_3D, lambda_b_3D, Theta_3D,pdwkopt,0); 
 			cout<<in <<"\t omega_test=" <<omega_test<<"\t"<<"dwk_test="<<dwk_test<<endl;
@@ -261,10 +268,10 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 	{
 		cerr<<"*************change the omega range*****************"<<endl;
 		init=1;	
-		cout<<"0: end, 1 reset omega range"<<endl;
+		cout<<"0: end, 1 reset omega range, 2 reset beta"<<endl;
 		int isend=1;
 		cin>>isend;
-		if(isend)
+		if(isend==1)
 		{
 			cout<<"input omega_0, omega_1 "<<endl;
 			double omega0,omega1;
@@ -281,6 +288,12 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
                 	        mode->omega_array[iomega] =  omega0 +domega*iomega +ti*mode->omega_i;
                 	}
 
+		}
+		else if(isend==2)
+		{
+			cout<<"input beta"<<endl;
+			double tbeta=0;
+			cin>>tok->beta_h;
 		}
 		else		
 			exit(-1);
