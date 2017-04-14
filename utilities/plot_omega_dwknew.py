@@ -2,6 +2,8 @@
 
 
 from sys import argv
+import csv
+import numpy as np
 
 if (len(argv)<2):
 	print('The default data file is omega_dwk.out')
@@ -9,20 +11,9 @@ if (len(argv)<2):
 else:
 	filename=argv[1]
 
-print 'read file', filename
-omegadwkfile	=open(filename)
-omegadwk	=omegadwkfile.readlines()
-num	=len(omegadwk)	
-import numpy
 
-returnMat = numpy.zeros((num,4))
-index	=	0
-for line in omegadwk:
-	line	=	line.strip()
-	linelist=	line.split()
-	returnMat[index,:]	=linelist[0:4]
-	index	+=1
-#print returnMat
+returnMat	=	np.loadtxt(filename)
+
 	
 import matplotlib.pyplot as plt
 import matplotlib
@@ -34,6 +25,18 @@ omegai	=	returnMat[:,1]
 dwkr	=	returnMat[:,2]
 dwki	=	returnMat[:,3]
 
+font = {'size' : '18'}
+rc('font',**font)
+rc('font',**{'family':'sans-serif','sans-serif':['Computer Modern Roman']})
+rc('text', usetex=True)
+#fig1=plt.figure(figsize=(6,6),)	
+fig1=plt.figure()	
+rect = fig1.patch
+rect.set_facecolor('white')
+
 plt.plot(omegar,dwkr)
+plt.xlabel(r'$\omega$')
+plt.ylabel(r'$\delta W_k$')
+
 plt.show()
 

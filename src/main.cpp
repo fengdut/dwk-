@@ -15,7 +15,6 @@
 #include"output.h"
 #include"outlog.h"
 #include"sys/time.h"
-#include"solver.h"
 #include"newton.h"
 
 outlog log_cout("dwk.log");
