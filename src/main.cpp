@@ -81,7 +81,7 @@ int main(int arg,char * argx[])
 //end alloc memory
 
 	       gettimeofday(&stop,0);
-        cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+  //      cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 
 //begin calculate non-omega parts------------------------
 	qprofile(&grid,&tok,q_1D);
@@ -91,7 +91,7 @@ int main(int arg,char * argx[])
 	double Cbeta=0;
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.n,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
        gettimeofday(&stop,0);
-        cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+      //  cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
 	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
@@ -217,10 +217,11 @@ int main(int arg,char * argx[])
 	cout <<"in kHz " <<endl;
 	cout <<"Omega_0kHz="<<omega_0*tok.omega_i0/2.0/M_PI/1000.0 <<endl;
 	cout<<"*************************************************************"<<endl;
+	cout<<real(omega_0)<<"\t"<<imag(omega_0)<<"\t"<<tok.beta_h*Cbeta<<endl;
 	}
 	if(cmdOptionExists(argx,argx+arg,"-o"))
 	{
-		cout <<"write omega_phi_3D to omega_phi.nc"<<endl;
+//		cout <<"write omega_phi_3D to omega_phi.nc"<<endl;
 		int fileid=0;
                 char filename[]="omega_phi.nc";
                 fileid =open_netcdf(&grid,filename);
@@ -241,7 +242,7 @@ int main(int arg,char * argx[])
 	Free3D(F_3D);		Free3D(FR_3D);	
 	Free3D(FE_3D);		Free3D(omega_star_3D);
 	gettimeofday(&stop,0);
-	cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+	//cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	//cout<<"dwk++ Elapsed time:\t"<<float(clock() - c_start)/CLOCKS_PER_SEC<<" second"<<endl;
 	fflush(stdout);
 }
