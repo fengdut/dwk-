@@ -17,6 +17,24 @@ using namespace std;
 
 int init_Yps=0;
 complex<double> **** gYps_3D;
+
+Grid * tgrid;
+Mode * tmode;
+Tokamak *ttok;
+double ***  tomega_phi_3D;
+double *** tomega_b_3D;
+double *** ttau_b_3D;
+double * tJ_q_1D;
+double ***  tF_E_3D;
+double ***  tomega_star;
+complex<double> *** tG_3D;
+double ** tChi_2D;
+double ***  tb_lambda_3D;
+double ***  tlambda_b_3D;
+double *** tTheta_3D;
+Dwkopt *tpdwkopt;
+
+
 void help()
 {
 	cout<<endl;
@@ -48,6 +66,31 @@ bool cmdOptionExists(char** begin, char** end, const std::string& option)
     return std::find(begin, end, option) != end;
 }
 
+
+
+void setdwk_parameters(Grid *const grid,Mode *const mode,Tokamak *tok,
+        double *** const omega_phi_3D, double ***const omega_b_3D, double *** tau_b_3D,
+         double * const J_q_1D, double *** const F_E_3D,
+        double *** const omega_star,
+        complex<double> ***const G_3D,double **const Chi_2D,double *** const b_lambda_3D, double *** const lambda_b_3D,
+        double ***const Theta_3D,Dwkopt *pdwkopt)
+{
+	tgrid=grid;
+	tmode=mode;
+	ttok=tok;
+	tomega_phi_3D=omega_phi_3D;
+	tomega_b_3D=omega_b_3D;
+	ttau_b_3D=tau_b_3D;
+	tJ_q_1D=J_q_1D;
+	tF_E_3D=F_E_3D;
+	tomega_star=omega_star;
+	tG_3D=G_3D;
+	tChi_2D=Chi_2D;
+	tb_lambda_3D=b_lambda_3D;
+	tlambda_b_3D=lambda_b_3D;
+	tTheta_3D=Theta_3D;
+	tpdwkopt=pdwkopt;	
+}
 
 //dwk(omega)
 complex<double> dwk_omega(Grid *const grid,Mode *const mode,Tokamak *tok,complex<double> omega,
@@ -138,6 +181,18 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,Tokamak *tok,complex
 		
 	dwk+=dwk+dwt;
 	return dwk;
+}
+
+
+complex<double> tdwk_omega(complex<double> omega)
+{
+  complex<double> dwk;
+	  dwk=  dwk_omega(tgrid,tmode,ttok, omega, tomega_phi_3D,tomega_b_3D, ttau_b_3D,  tJ_q_1D, tF_E_3D, tomega_star,
+                tG_3D, tChi_2D, tb_lambda_3D, tlambda_b_3D, tTheta_3D,tpdwkopt,0);	
+
+	dwk	=dwk*ttok->C;
+	return dwk;
+	
 }
 
 //dwk(omega)

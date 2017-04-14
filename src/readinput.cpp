@@ -66,6 +66,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		}
 		
 		tok.lookupValue("q_s",ptok->q_s);
+		tok.lookupValue("beta_h",ptok->beta_h);
 	}
 	catch(const SettingNotFoundException &nfex)
   	{

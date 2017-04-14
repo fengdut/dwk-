@@ -12,9 +12,12 @@ CFLAGS =     -fopenmp
 
 LIBCONFIG = -I${LIBCONFIG_DIR}/include  -L${LIBCONFIG_DIR}/lib -lconfig -lconfig++
 NETCDF = -I${NETCDF_DIR}/include -L${NETCDF_DIR}/lib -lnetcdf -L${HDF5_DIR}/lib
-COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LIBCONFIG) $(NETCDF) -c 
 
-LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) -lcurl  -lhdf5 -lhdf5_hl
+MKL_ROOT =/opt/intel/mkl
+
+COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) -I${MKL_ROOT}/include  $(LIBCONFIG) $(NETCDF) -c 
+
+LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) -lcurl  -lhdf5 -lhdf5_hl -mkl
 
 LIBA = 
 

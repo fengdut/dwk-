@@ -15,6 +15,8 @@
 #include"output.h"
 #include"outlog.h"
 #include"sys/time.h"
+#include"solver.h"
+#include"newton.h"
 
 outlog log_cout("dwk.log");
 
@@ -22,6 +24,7 @@ outlog log_cout("dwk.log");
 using namespace std;
 int main(int arg,char * argx[])
 {	
+
 	struct timeval start, stop, diff;
 	gettimeofday(&start,0);
 		
@@ -79,7 +82,7 @@ int main(int arg,char * argx[])
 //end alloc memory
 
 	       gettimeofday(&stop,0);
-        cout<<"1111 dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+        cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 
 //begin calculate non-omega parts------------------------
 	qprofile(&grid,&tok,q_1D);
@@ -89,7 +92,7 @@ int main(int arg,char * argx[])
 	double Cbeta=0;
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.n,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
        gettimeofday(&stop,0);
-        cout<<"1.2dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+        cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
 	Theta(b_lambda_3D,&grid,Theta_3D);
 	G_R_theta(&grid,&tok,&slowing,&mode,q_1D,G_3D); 
@@ -97,7 +100,7 @@ int main(int arg,char * argx[])
 	omega_b(&grid, &tok,kappa_2D, K_2D, q_1D,omega_b_3D);
 	omega_phi(&grid,q_1D,omega_b_3D,omega_phi_3D);
 	       gettimeofday(&stop,0);
-        cout<<"2222 dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
+        cout<<" dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	tau_b(&grid,omega_b_3D,tau_b_3D);
 	J_q(&grid,q_1D,J_q_1D);
 //end calculate non-omega parts--------------------------	
@@ -155,6 +158,9 @@ int main(int arg,char * argx[])
        gettimeofday(&stop,0);
         cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 
+	setdwk_parameters(&grid,&mode,&tok,omega_phi_3D, omega_b_3D, tau_b_3D,
+        	J_q_1D, FE_3D,omega_star_3D, G_3D, Chi_2D,b_lambda_3D, lambda_b_3D,Theta_3D,&dwkopt);
+
 	if(!cmdOptionExists(argx,argx+arg,"-x"))
 	{
 	cout<<"The test run, assume imag(omega)=0 "<<endl;
@@ -193,7 +199,18 @@ int main(int arg,char * argx[])
 			break;
 		}
 	}
-	
+	cout<<"omega_0"<<omega_0<<endl;
+	cout<<"omega_0_imag"<<omega_0.imag()<<endl;
+	double omegai=omega_0.imag();
+	double omegar=omega_0.real();
+	double betah	=tok.beta_h;
+
+	cout<<"newton_iter"<<endl;
+	newton_iter(omegai,omegar,betah,dwk_0);
+	cout<<"end newton_iter"<<endl;
+	omega_0.real(omegar);
+	omega_0.imag(omegai);
+	cout<<scientific;	
 	cout<<"Omega_0= "<<real(omega_0)<<"+"<<imag(omega_0)<<"i\t"<<"dwk= "<<real(dwk_0)<<"+"<<imag(dwk_0)<<endl;
 	cout<<"Beta_h= "<<tok.beta_h*Cbeta<<endl;
 	cout <<"in omega_A unit"<<endl;
