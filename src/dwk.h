@@ -49,6 +49,7 @@ bool cmdOptionExists(char** begin, char** end, const std::string& option);
 
 double dwf();
 complex<double> tdwk_omega(complex<double> omega);
+complex<double> tdw_omega(complex<double> omega);
 extern complex<double> **** gYps_3D;
 
 #endif

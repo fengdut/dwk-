@@ -23,6 +23,8 @@ typedef struct MODE
 	int zero_rhod;
 	int zero_iner;
 	double xi_0;
+	double gomegar;
+	double gomegai;
 }Mode;
 
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double *const q_1D,std::complex<double> ***G_3D);

@@ -67,6 +67,9 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		
 		tok.lookupValue("q_s",ptok->q_s);
 		tok.lookupValue("beta_h",ptok->beta_h);
+		tok.lookupValue("beta_hb",ptok->beta_hb);
+		cout<<"beta_h "<<ptok->beta_h<<" beta_hb\t"<<ptok->beta_hb<<endl;
+		tok.lookupValue("nbeta",ptok->nbeta);
 	}
 	catch(const SettingNotFoundException &nfex)
   	{
@@ -145,6 +148,8 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		modeset.lookupValue("zero_iner",mode->zero_iner);
 		modeset.lookupValue("xi_0",mode->xi_0);
 
+		modeset.lookupValue("gomegar",mode->gomegar);
+		modeset.lookupValue("gomegai",mode->gomegai);
 		assert(mode->pa<=mode->pb);
 		assert(mode->omega_n>1&&mode->omega_n<10000);
 		Alloc1D(mode->omega_array,mode->omega_n);

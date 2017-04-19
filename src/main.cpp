@@ -53,6 +53,7 @@ int main(int arg,char * argx[])
  	cout.precision (8);
 	pgrid.showgrid();	
 //alloc memory
+	cout<<"1********* betahb\t"<<tok.beta_hb<<endl;
 	double *q_1D,*J_q_1D;
 	Alloc1D(q_1D,grid.nx);
 	Alloc1D(J_q_1D,grid.nx);
@@ -60,6 +61,7 @@ int main(int arg,char * argx[])
 	complex<double> ***G_3D;
 	Alloc3D(G_3D,grid.nx,grid.nE,grid.ntheta);
 
+	cout<<"2********* betahb\t"<<tok.beta_hb<<endl;
 	Alloc2D(Chi_2D,grid.nx,grid.nL);
 	Alloc2D(K_2D,grid.nx,grid.nL);
 	Alloc2D(kappa_2D,grid.nx,grid.nL);
@@ -68,6 +70,7 @@ int main(int arg,char * argx[])
 	Alloc3D(omega_phi_3D,grid.nx,grid.nL,grid.nE);
 	Alloc3D(tau_b_3D,grid.nx,grid.nL,grid.nE);
 	double ***F_3D,***FE_3D,***FR_3D, ***omega_star_3D;
+	cout<<"3********* betahb\t"<<tok.beta_hb<<endl;
 	Alloc3D(F_3D,grid.nx,grid.nL,grid.nE);
 	Alloc3D(FE_3D,grid.nx,grid.nL,grid.nE);
 	Alloc3D(FR_3D,grid.nx,grid.nL,grid.nE);
@@ -78,6 +81,7 @@ int main(int arg,char * argx[])
 	Alloc3D(Theta_3D,grid.nx,grid.nL,grid.ntheta);
 	complex<double> ***dwk_3D;
 	Alloc3D(dwk_3D,grid.nx,grid.nL,grid.nE);
+	cout<<"4********* betahb\t"<<tok.beta_hb<<endl;
 //end alloc memory
 
 	       gettimeofday(&stop,0);
@@ -86,10 +90,14 @@ int main(int arg,char * argx[])
 //begin calculate non-omega parts------------------------
 	qprofile(&grid,&tok,q_1D);
 	find_rs(&grid,q_1D, &tok);
+	cout<<"5********* betahb\t"<<tok.beta_hb<<endl;
 	calculate_normalization(&tok, &slowing,&mode);
 	showtokamak(&tok,&slowing);
+	cout<<"6********* betahb\t"<<tok.beta_hb<<endl;
 	double Cbeta=0;
 	F0_3D(&slowing,&grid,&tok,slowing.rho_h,q_1D,mode.n,F_3D,FE_3D,FR_3D,omega_star_3D,&Cbeta);	
+	tok.beta_h=tok.beta_h/Cbeta;
+	tok.beta_hb=tok.beta_hb/Cbeta;
        gettimeofday(&stop,0);
       //  cout<<"dwk++ Elapsed time:\t"<<1000000*(stop.tv_sec-start.tv_sec)+stop.tv_usec-start.tv_usec<<endl;
 	Lambda_b_L_3D(&grid,&tok,lambda_b_3D,b_lambda_3D);
@@ -160,7 +168,56 @@ int main(int arg,char * argx[])
 	setdwk_parameters(&grid,&mode,&tok,omega_phi_3D, omega_b_3D, tau_b_3D,
         	J_q_1D, FE_3D,omega_star_3D, G_3D, Chi_2D,b_lambda_3D, lambda_b_3D,Theta_3D,&dwkopt);
 
-	if(!cmdOptionExists(argx,argx+arg,"-x"))
+
+	if(cmdOptionExists(argx,argx+arg,"-g"))
+	{
+		double omegai,omegar;
+		complex<double>dw;
+		omegai=mode.gomegai;
+		omegar=mode.gomegar;
+		newton_iter2(omegai,omegar,dw);
+		        cout<<"*************************************************************"<<endl;
+			cout<<"Omegar\t"<<"\t Omegai\t"<<"\tbeta_h"<<endl;
+			        cout<<omegar<<"\t"<<omegai<<"\t"<<tok.beta_h*Cbeta<<endl;
+
+	}
+	cout<<"********* betahb\t"<<tok.beta_hb<<endl;
+	ofstream fout("omega_g_beta.dat");
+	fout.precision (12);
+	if(cmdOptionExists(argx,argx+arg,"-B"))
+	{
+		int ibeta=0;
+		double dbeta=(tok.beta_hb-tok.beta_h)/tok.nbeta;
+		cout<<"mode.omegai"<<mode.gomegai;	
+		double omegai,omegar;
+		omegai=mode.gomegai;
+		omegar=mode.gomegar;
+		complex<double>dw;
+
+		cout<<"beta_h range\t"<<tok.beta_h<<"\t"<<tok.beta_hb<<"\t nbeta"<<tok.nbeta<<endl;
+		for(ibeta=0;ibeta<tok.nbeta;ibeta++)
+		{
+			if(newton_iter2(omegai,omegar,dw)==0)
+			{
+		        cout<<"*************************************************************"<<endl;
+			cout<<"Omegar\t"<<"\t Omegai\t"<<"\tbeta_h"<<endl;
+			        cout<<omegar<<"\t"<<omegai<<"\t"<<tok.beta_h*Cbeta<<endl;
+			        fout<<omegar<<"\t"<<omegai<<"\t"<<tok.beta_h*Cbeta<<endl;
+				tok.beta_h	=tok.beta_h+dbeta;
+				cout<<"new beta_h\t"<<tok.beta_h<<endl;
+
+			}
+			else
+			{
+				cout<<"newton iter not converaged"<<endl;
+				break;
+
+			}
+
+
+		}	
+	}
+	if(cmdOptionExists(argx,argx+arg,"-x"))
 	{
 	cout<<"The test run, assume imag(omega)=0 "<<endl;
 	complex<double> omega_0,dwk_0;
@@ -206,6 +263,7 @@ int main(int arg,char * argx[])
 
 	cout<<"newton_iter"<<endl;
 	newton_iter(omegai,omegar,betah,dwk_0);
+	tok.beta_h=betah;
 	cout<<"end newton_iter"<<endl;
 	omega_0.real(omegar);
 	omega_0.imag(omegai);

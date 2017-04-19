@@ -140,7 +140,8 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing,Mode * pmode)
 
         ptok->C = ptok->omega_A/(ptok->omega_i0*4.0 *(ptok->r_s*ptok->a/ptok->R0)*(ptok->r_s*ptok->a/ptok->R0));
 	ptok->C =ptok->C/(pmode->xi_0*pmode->xi_0);
-        ptok->beta_h=0.0;
+	if(ptok->beta_h<0.0)
+        	ptok->beta_h=0.0;
 	
 	ptok->PB =ptok->Bt*ptok->Bt *3.98e6/10.0; 
 	ptok->dwk_001 =M_PI * M_PI * ptok->a *ptok->a *ptok->R0;
@@ -149,6 +150,7 @@ void calculate_normalization(Tokamak *ptok, Slowing *pslowing,Mode * pmode)
 	
         pslowing->rho_h= (ptok->v_i0/ptok->omega_c) ;
         pslowing->rho_h= pslowing->rho_h/ptok->a ;
+//	pslowing->rho_h=2*pslowing->rho_h;
 
 }
 
@@ -168,6 +170,8 @@ void showtokamak(Tokamak *ptok,Slowing *pslowing)
 	cout.precision(4);
 	cout<<fixed;
 	cout<<"q profile: \t"<<qc[0]<<"+"<<qc[1]<<"*r+"<<qc[2]<<"*r^2+"<<qc[3]<<"*r^3+"<<qc[4]<<"*r^4+"<<qc[5]<<"*r^5+"<<qc[6]<<"*r^6+"<<qc[7]<<"*r^7"<<endl;
+	cout<<"beta_h:\t"<<ptok->beta_h<<endl;
+	cout<<"beta_hb:\t"<<ptok->beta_hb<<endl;
 	cout<<std::scientific;	
 	cout.precision(8);
 	cout<<"q_s: \t"<<ptok->q_s<<endl;
@@ -181,6 +185,7 @@ void showtokamak(Tokamak *ptok,Slowing *pslowing)
 	cout<<scientific;
 	cout<<"v_i0:\t"<<ptok->v_i0<<" m/s"<<endl;
 	cout<<"omega_i0:\t"<<ptok->omega_i0 <<" rad/s"<<endl;
+	cout<<"omega_A/omega_i0:\t"<<ptok->omega_A/ptok->omega_i0<<endl;
 	cout<<"omega_c: \t"<<ptok->omega_c <<" rad/s"<<endl;
 	cout<<"fast ion gyroradius:\t"<<pslowing->rho_h*ptok->a <<" m"<<endl;
 	cout<<"C:\t"<<ptok->C<<endl;

@@ -25,6 +25,8 @@ typedef struct TOKAMAK
 	double tau_At; // tau_{A,theta}
 	double v_i0,omega_i0;
 	double beta_h; 
+	double beta_hb;
+	int 	nbeta;
 	double omega_c; //gyro fre
 	
 	
