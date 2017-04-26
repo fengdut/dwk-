@@ -261,7 +261,6 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
  	
 	int init=1;
 	double dwt=mode->dw_f *tok->omega_A/tok->omega_i0;
-	dwt=0;
 
 
 

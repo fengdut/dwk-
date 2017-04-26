@@ -68,7 +68,7 @@ int newton_iter(double omegai,double& omegar,double& betah,complex<double> &dwk)
 int newton_iter2(double &omegai,double &omegar,complex<double> &dw)
 {
 	int maxit	=50;
-	double eps=1e-12;
+	double eps=1e-15;
 	double x[2],f[2],A[4];
 	x[0]=omegar;
 	x[1]=omegai;
@@ -135,8 +135,8 @@ void fundwk2(double *x, double *f, double *A,complex<double>& dw)
 	complex<double> ti;
         ti.real(0.0);
         ti.imag(1.0);
-        double small=0.00001;
-	complex<double> omega=x[0] +x[1]*ti;
+        double small=0.000001;
+	complex<double> omega=x[0] +0.0003*ti;
 
 	dw=tdw_omega(omega);
 
@@ -147,14 +147,14 @@ void fundwk2(double *x, double *f, double *A,complex<double>& dw)
 	complex<double> dw1	=tdw_omega(omega+small);
 	A[0]	=(dw1.real()-dw0.real())/(2*small);
 
-	complex<double> dwa     =tdw_omega(omega-small*ti);
-	complex<double> dwb     =tdw_omega(omega+small*ti);
-	A[1]	=1	+	(dwb.real()-dwa.real())/(2*small);
-	//A[1]	=1;
+//	complex<double> dwa     =tdw_omega(omega-small*ti);
+//	complex<double> dwb     =tdw_omega(omega+small*ti);
+//	A[1]	=1	+	(dwb.real()-dwa.real())/(2*small);
+	A[1]	=1;
 
 	A[2]	=1	- (dw1.imag()-dw0.imag())/(2*small);
-	A[3]	=	-(dwb.imag()-dwa.imag())/(2*small);
-	//A[3]	=	0;
+//	A[3]	=	-(dwb.imag()-dwa.imag())/(2*small);
+	A[3]	=	0;
 }
 
 

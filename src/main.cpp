@@ -195,7 +195,7 @@ int main(int arg,char * argx[])
 		complex<double>dw;
 
 		cout<<"beta_h range\t"<<tok.beta_h<<"\t"<<tok.beta_hb<<"\t nbeta"<<tok.nbeta<<endl;
-		for(ibeta=0;ibeta<tok.nbeta;ibeta++)
+		for(ibeta=0;ibeta<=tok.nbeta;ibeta++)
 		{
 			if(newton_iter2(omegai,omegar,dw)==0)
 			{
@@ -261,10 +261,10 @@ int main(int arg,char * argx[])
 	double omegar=omega_0.real();
 	double betah	=tok.beta_h;
 
-	cout<<"newton_iter"<<endl;
-	newton_iter(omegai,omegar,betah,dwk_0);
-	tok.beta_h=betah;
-	cout<<"end newton_iter"<<endl;
+//	cout<<"newton_iter"<<endl;
+//	newton_iter(omegai,omegar,betah,dwk_0);
+//	tok.beta_h=betah;
+//	cout<<"end newton_iter"<<endl;
 	omega_0.real(omegar);
 	omega_0.imag(omegai);
 	cout<<scientific;	
