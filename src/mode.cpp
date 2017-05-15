@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<cmath>
 #include"tokamak.h"
 #include"AllocArray.h"
@@ -62,6 +63,61 @@ double fxi_t_layer0(double x,double r_s, double delta_r)
                 return 0.0;
 }
 
+double *g_tr,*g_xir,*g_xit;
+int g_n;
+int read_mode(std::string modefile)
+{
+	int n=0;
+	double *r,*xir,*xit;
+	double *f,*a,*b,*c,*d,*ddy;
+
+	ifstream fin(modefile);
+	fin>>n;
+	cout<<"n: "<<n<<endl;
+	assert(n>5&&n<5000);
+	r=new double[n];
+	xir=new double[n];
+	xit=new double[n];
+	
+	for(int i=0;i<n;i++)
+	{
+		fin>>r[i]>>xir[i]>>xit[i];
+		cout<<r[i]<<"\t"<<xir[i]<<"\t"<<xit[i]<<endl;
+	}
+	g_n=n;	
+	g_tr=r;
+	g_xir=xir;
+	g_xit=xit;
+	return 0;	
+}
+
+double fxi_r_linear(double x,double r_s, double delta_r)
+{
+	double dx=g_tr[1]-g_tr[0];
+	int nx=int(x/dx);
+	double x0=g_tr[nx];
+	double x1=g_tr[nx+1];
+	double y0=g_xir[nx];
+	double y1=g_xir[nx+1];
+
+	double f=	y0*(x-x1)/(x0-x1) +y1*(x-x0)/(x1-x0);
+        return  f;
+}
+
+double fxi_t_linear(double x,double r_s, double delta_r)
+{
+        double dx=g_tr[1]-g_tr[0];
+        int nx=int(x/dx);
+        double x0=g_tr[nx];
+        double x1=g_tr[nx+1];
+        double y0=g_xit[nx];
+        double y1=g_xit[nx+1];
+
+        double f=       y0*(x-x1)/(x0-x1) +y1*(x-x0)/(x1-x0);
+        return  f;
+}
+
+
 void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode * const pmode, double * const q_1D, 
 	complex<double> ***G_3D)
 {	
@@ -74,7 +130,14 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 	Alloc1D(expt,grid->ntheta);
 	double (*fxi_t_t)(double, double, double )=fxi_t;
 	double (*fxi_r_t)(double, double, double )=fxi_r;
-	if(pmode->zero_iner==0)
+	if(pmode->input_i)
+	{
+		cout<<"Using the mode structure in file "<<pmode->mode_filename<<endl;
+		read_mode(pmode->mode_filename);
+		(fxi_t_t)=fxi_t_linear;
+                (fxi_r_t)=fxi_r_linear;	
+	}
+	else	if(pmode->zero_iner==0)
 	{
 		cout<<"inner layer off"<<endl;
 		(fxi_t_t)=fxi_t_layer0;

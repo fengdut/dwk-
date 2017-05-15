@@ -136,6 +136,10 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		modeset.lookupValue("pa",mode->pa);
 		modeset.lookupValue("pb",mode->pb);
 		modeset.lookupValue("delta_r",mode->delta_r);
+		modeset.lookupValue("input_i",mode->input_i);
+		modeset.lookupValue("input_filename",mode->mode_filename);	
+		cout<<"mode filename \t"<<mode->mode_filename<<endl;
+	
 		modeset.lookupValue("omega_0",mode->omega_0);
 		modeset.lookupValue("omega_1",mode->omega_1);
 		modeset.lookupValue("omega_i",mode->omega_i);

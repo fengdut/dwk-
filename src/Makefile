@@ -17,7 +17,7 @@ MKL_ROOT =/opt/intel/mkl
 
 COMPILE = $(CXX) $(CPPFLAGS) $(CFLAGS) -I${MKL_ROOT}/include  $(LIBCONFIG) $(NETCDF) -c 
 
-LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) -lcurl  -lhdf5 -lhdf5_hl -mkl
+LINKCC = $(CXX) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS)  $(LIBCONFIG) $(NETCDF) -lcurl  -lhdf5 -lhdf5_hl
 
 LIBA = 
 

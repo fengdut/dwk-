@@ -3,6 +3,7 @@
 #define MODE_H
 #include"tokamak.h"
 #include<complex>
+#include<string>
 
 typedef struct MODE
 {
@@ -10,6 +11,8 @@ typedef struct MODE
 	int m;
 	int pa,pb;
 	double delta_r;
+	int input_i;
+	std::string mode_filename;	
 	
 	double omega_0,omega_1;
 	double omega_i;
@@ -31,3 +34,5 @@ void G_R_theta(Grid * const grid, Tokamak * const tok, Slowing *const slow,Mode 
 
 void calculate_normalization(Tokamak *ptok, Slowing *pslowing,Mode * pmode);
 #endif
+
+
