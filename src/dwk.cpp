@@ -45,7 +45,9 @@ void help()
 	cout<<"-o <outputfile>, the default output file is dwk_omega_dwk.out."<<endl;
 	cout<<"-s scan dwk(omega). Or only find omega_0 and beta_c."<<endl;
 	cout<<"-y write Yps_3D to Yps.nc"<<endl;
-	cout<<"-x do not find the soluation"<<endl;
+	cout<<"-x find the solution for derpersion relation using iteration"<<endl;
+	cout<<"-g find the solution by newton iteration using initial value gomegar gomegai" <<endl;
+	cout<<"-B fint the solution by newton for beta_h to beta_hb"<<endl;
 	cout<<endl;
 	
 }
@@ -136,7 +138,7 @@ complex<double> dwk_omega(Grid *const grid,Mode *const mode,Tokamak *tok,complex
 			
                         dwk_3D[ix][iL][iE] = J_q_1D[ix] *grid->Earray[iE]*grid->Earray[iE]*grid->Earray[iE]
                         		*tau_b_3D[ix][iL][iE] *F_E_3D[ix][iL][iE]
-                        		*(pdwkopt->omega_off*(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
+                        		*((double)(pdwkopt->omega_off)*(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE])*Yp_R;
 
 //                        dwk_3D[ix][iL][iE] =(pdwkopt->omega_off*real(omega) -pdwkopt->omega_star_off*omega_star[ix][iL][iE]) 
 //                  				*1.0/(tn*omega_phi_3D[ix][iL][iE] +p *omega_b_3D[ix][iL][iE] - tomega);
