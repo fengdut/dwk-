@@ -55,7 +55,6 @@ void Yps(const Grid *grid, complex<double> *** G_3D, double ** Chi_2D, double **
 	Alloc1D(tYb,grid->ntheta);
 	int id=omp_get_thread_num();
 	int np=omp_get_num_threads();
-
 	int ni=grid->nx/np;
 	int nm=0;
 	if(id+1==np)

@@ -71,7 +71,7 @@ int read_mode(std::string modefile)
 	double *r,*xir,*xit;
 	double *f,*a,*b,*c,*d,*ddy;
 
-	ifstream fin(modefile);
+	ifstream fin(modefile.c_str(), std::ifstream::in);
 	fin>>n;
 	cout<<"n: "<<n<<endl;
 	assert(n>5&&n<5000);
@@ -101,6 +101,13 @@ double fxi_r_linear(double x,double r_s, double delta_r)
 	double y1=g_xir[nx+1];
 
 	double f=	y0*(x-x1)/(x0-x1) +y1*(x-x0)/(x1-x0);
+	if(x<=0||x>=1)
+		f=0;
+	//cout<<"y0 \t"<<y0<<endl;
+
+//	cout<<"y1 \t"<<y1<<endl;
+//	cout<<"f \t"<<f<<endl;
+//	f=0;	
         return  f;
 }
 
@@ -114,6 +121,11 @@ double fxi_t_linear(double x,double r_s, double delta_r)
         double y1=g_xit[nx+1];
 
         double f=       y0*(x-x1)/(x0-x1) +y1*(x-x0)/(x1-x0);
+	f=-1*f*x;
+	if(x<=0||x>=1)
+		f=0;
+
+//	f=0;
         return  f;
 }
 
