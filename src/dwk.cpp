@@ -39,6 +39,10 @@ void help()
 {
 	cout<<endl;
         cout<<"dwk++ is a code to calcualte delta wk for energetic particle"<<endl;
+	cout<<"the default input file is dwk.cfg"<<endl;
+	cout<<"the log file is dwk.log"<<endl;
+	cout<<"For more details about the physics, please read document in doc/dwk.pdf"<<endl;
+	cout<<"Contact fengwang@dlut.edu.cn for more details"<<endl;
 	cout<<"in tokamak, and solver dispersion relation."<<endl;
 	cout<<endl;
         cout<<"-i <inputfile>, the default input file is dwk.cfg."<<endl;
@@ -399,13 +403,17 @@ complex<double> find_dwk_omega0(Grid *const grid,Mode *const mode,Tokamak *tok,
 }
 
 
-
+//
 double dwf(double xi,double rs, double R, double q0, double betaps)
 {
 	double tdwf=0;
 	tdwf =3*3.141592653589793 *(xi*rs/R)*(xi*rs/R)*(1-q0)*(13.0/144-betaps*betaps);
+	return tdwf;
 }
 
 
-
+double dwf_adia()
+{
+	return 0;
+} 
 

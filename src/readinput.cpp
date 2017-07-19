@@ -177,6 +177,7 @@ int read_tokamak(char* filename,Tokamak *ptok,Grid *pgrid,Slowing *pslowing,Mode
 		const Setting &optset =root["dwkopt"];
 		optset.lookupValue("omega_star_off",pdwkopt->omega_star_off);
 		optset.lookupValue("omega_off",pdwkopt->omega_off);
+		optset.lookupValue("adiabatic_i",pdwkopt->adiabatic_i);
 	}	
 	catch(const SettingNotFoundException &nfex)
         {

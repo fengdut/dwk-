@@ -13,7 +13,8 @@ typedef struct DWKOPT
 {
 	int omega_star_off;
 	int omega_off;
-	int zero_rhod;
+//	int zero_rhod;
+	int adiabatic_i;
 }Dwkopt;
 
 void setdwk_parameters(Grid *const grid,Mode *const mode,Tokamak *tok,

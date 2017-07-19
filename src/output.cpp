@@ -85,7 +85,10 @@ void write_data_3D(double *** pdata, char * dataname,int fileid)
 	ERR(err);
 		
 }
-
+void write_data_2D(double **pdata, char *dataname,int fileid)
+{
+	
+}
 int close_netcdf(int fileid)
 {
 	nc_close(fileid);

@@ -5,7 +5,7 @@ LDFLAGS =
 #CFLAGS = -fopenmp  -framework OpenCL -O2 -ftree-vectorize -fopt-info-vec 
 #CFLAGS = -fopenmp   -O0 -ftree-vectorize
 CFLAGS =     -fopenmp 
-#CFLAGS = -fopenmp   -O0 
+#CFLAGS =  -g   -O0 
 
 
 #CXX=/usr/local/bin/g++-6
